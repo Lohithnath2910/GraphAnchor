@@ -24,6 +24,7 @@ def extract_graph_from_chunk(text: str) -> GraphExtraction:
             {"role": "user", "content": prompt}
         ],
         format=GraphExtraction.model_json_schema(),
+        options={"num_ctx": 4096}
     )
     
     try:
