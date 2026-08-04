@@ -1,0 +1,16 @@
+[project]
+name = "project-i"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "chromadb>=1.5.9",
+    "fastapi>=0.141.1",
+    "ollama>=0.6.2",
+    "pydantic>=2.13.4",
+    "python-multipart>=0.0.32",
+    "pyyaml>=6.0.3",
+    "tiktoken>=0.13.0",
+    "uvicorn>=0.52.1",
+]

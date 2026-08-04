@@ -1,0 +1,7 @@
+llm_model: "qwen2.5-coder:7b"
+embed_model: "snowflake-arctic-embed2:568m"
+db_path: "./data/graph.db"
+chroma_path: "./data/chroma"
+chunk_size: 300
+chunk_overlap: 50
+similarity_threshold: 0.7

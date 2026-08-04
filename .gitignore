@@ -1,0 +1,12 @@
+# Environment
+.venv/
+.env
+
+# Data and Artifacts
+data/
+test_docs/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
