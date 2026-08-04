@@ -212,7 +212,13 @@ def query_chunks(q: str, k: int = 3):
     
     if entity_res and entity_res.get('ids') and len(entity_res['ids'][0]) > 0:
         top_entity = entity_res['ids'][0][0]
-        entity_distance = entity_res['distances'][0][0]
+        
+        # Safely get the distance, default to 0.0 if not available
+        distances = entity_res.get('distances')
+        if distances is not None and len(distances) > 0 and len(distances[0]) > 0:
+            entity_distance = distances[0][0]
+        else:
+            entity_distance = 0.0
         
         # Only traverse if the entity is reasonably relevant to the query
         if entity_distance < 0.5:  
