@@ -179,21 +179,84 @@ def get_stats():
 @app.get("/query")
 def query_chunks(q: str, k: int = 3):
     emb = get_embedding(q)
+    
+    # 1. Pure Vector Search (Standard RAG)
     res = collection.query(
         query_embeddings=[emb],
         n_results=k
     )
     
-    results = []
-    if res and res.get('ids') and len(res['ids']) > 0 and len(res['ids'][0]) > 0:
+    vector_results = []
+    if res and res.get('ids') and len(res['ids']) > 0 and res['ids'][0]:
         for idx in range(len(res['ids'][0])):
-            results.append({
-                "chunk_id": res['ids'][0][idx],
-                "text": res['documents'][0][idx],
-                "distance": res['distances'][0][idx],
-                "metadata": res['metadatas'][0][idx]
+            chunk_id = res['ids'][0][idx]
+            text = res['documents'][0][idx] if res.get('documents') and res['documents'][0] else None
+            distance = res['distances'][0][idx] if res.get('distances') and res['distances'][0] else None
+            metadata = res['metadatas'][0][idx] if res.get('metadatas') and res['metadatas'][0] else None
+            
+            vector_results.append({
+                "chunk_id": chunk_id,
+                "text": text,
+                "distance": distance,
+                "metadata": metadata
             })
-    return {"query": q, "results": results}
+            
+    # 2. Graph Traversal Search (The Novelty Claim!)
+    graph_results = []
+    
+    # Find the most relevant entity to the user's query
+    entity_res = entities_collection.query(
+        query_embeddings=[emb],
+        n_results=1
+    )
+    
+    if entity_res and entity_res.get('ids') and len(entity_res['ids'][0]) > 0:
+        top_entity = entity_res['ids'][0][0]
+        entity_distance = entity_res['distances'][0][0]
+        
+        # Only traverse if the entity is reasonably relevant to the query
+        if entity_distance < 0.5:  
+            conn = get_db_connection()
+            cursor = conn.cursor()
+            
+            # Fetch all edges connected to this entity
+            cursor.execute("""
+                SELECT source_entity, relation, target_entity, confidence, chunk_id 
+                FROM edges 
+                WHERE source_entity = ? OR target_entity = ?
+                ORDER BY confidence DESC
+            """, (top_entity, top_entity))
+            
+            edges = cursor.fetchall()
+            conn.close()
+            
+            for edge in edges:
+                graph_results.append({
+                    "source": edge[0],
+                    "relation": edge[1],
+                    "target": edge[2],
+                    "confidence": edge[3],
+                    "found_in_chunk": edge[4]
+                })
+                
+            # Attach the top entity we traversed from
+            graph_metadata = {
+                "traversed_from_entity": top_entity,
+                "entity_relevance_distance": entity_distance
+            }
+        else:
+            graph_metadata = {"message": "No highly relevant entities found in graph for this query."}
+    else:
+        graph_metadata = {"message": "Graph is empty."}
+
+    return {
+        "query": q, 
+        "vector_search_results": vector_results,
+        "graph_traversal": {
+            "metadata": graph_metadata,
+            "edges": graph_results
+        }
+    }
 
 if __name__ == "__main__":
     import uvicorn
