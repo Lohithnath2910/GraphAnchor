@@ -127,6 +127,36 @@ async def ingest_document(file: UploadFile = File(...)):
         edges_added=total_edges
     )
 
+@app.delete("/reset")
+def reset_databases():
+    """Clear all data from SQLite and ChromaDB"""
+    global entities_collection, collection
+    
+    # 1. Clear SQLite
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM chunks")
+    cursor.execute("DELETE FROM edges")
+    conn.commit()
+    conn.close()
+    
+    # 2. Clear ChromaDB by deleting and recreating collections
+    try:
+        chroma_client.delete_collection("chunks")
+    except Exception:
+        pass
+        
+    try:
+        chroma_client.delete_collection("entities")
+    except Exception:
+        pass
+        
+    # Recreate them so they are ready for the next ingest
+    collection = chroma_client.get_or_create_collection(name="chunks")
+    entities_collection = chroma_client.get_or_create_collection(name="entities", metadata={"hnsw:space": "cosine"})
+    
+    return {"message": "All databases cleared successfully."}
+
 @app.get("/graph/stats")
 def get_stats():
     conn = get_db_connection()
