@@ -5,3 +5,5 @@ chroma_path: "./data/chroma"
 chunk_size: 300
 chunk_overlap: 50
 similarity_threshold: 0.7
+max_file_size_mb: 5
+ollama_max_retries: 2

@@ -29,19 +29,19 @@ def query(q: str):
 
 if __name__ == "__main__":
     docs = [
-        "test_docs/doc1.txt",
-        "test_docs/doc2.txt",
-        "test_docs/doc3.txt"
+        "test/lohith.txt",
+        "test/shayla.txt",
+        "test/sir.txt"
     ]
-    
+
     print("--- Initial Stats ---")
     get_stats()
-    
+
     for doc in docs:
         upload_file(doc)
-        
+
     print("\n--- Final Stats ---")
     get_stats()
-    
+
     print("\n--- Stretch Goal: Vector Search ---")
-    query("battery factory")
+    query("lohith")
