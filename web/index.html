@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GraphAnchor</title>
+<style>
+  :root {
+    --border: #d9d9d9;
+    --text: #111111;
+    --muted: #666666;
+    --bg: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 40px 16px 80px 16px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.5;
+    font-size: 15px;
+  }
+  .container { max-width: 720px; margin: 0 auto; }
+  h1 { font-size: 21px; margin: 0 0 4px 0; font-weight: 600; }
+  .subtitle { color: var(--muted); margin: 0 0 32px 0; font-size: 14px; }
+  .base-url { color: var(--muted); font-size: 12px; margin: 0 0 32px 0; }
+  .base-url input {
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 12px;
+    border: 1px solid var(--border);
+    padding: 3px 6px;
+    width: 220px;
+  }
+  section {
+    border: 1px solid var(--border);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 0 0 16px 0;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  label {
+    font-size: 13px;
+    display: block;
+    margin-bottom: 4px;
+    color: var(--text);
+  }
+  input[type="text"], input[type="number"], input[type="file"] {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 8px;
+    border: 1px solid var(--border);
+    width: 100%;
+    margin-bottom: 12px;
+    background: #fff;
+    color: var(--text);
+  }
+  button {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 8px 18px;
+    border: 1px solid var(--text);
+    background: #fff;
+    color: var(--text);
+    cursor: pointer;
+  }
+  button:hover { background: var(--text); color: #fff; }
+  button:disabled { opacity: 0.4; cursor: default; }
+  button:disabled:hover { background: #fff; color: var(--text); }
+  .row { display: flex; gap: 12px; align-items: flex-end; }
+  .row > div { flex: 1; }
+  .k-field { max-width: 90px; flex: none !important; }
+  .status { color: var(--muted); font-size: 13px; margin: 12px 0 0 0; }
+  .muted { color: var(--muted); }
+  #answer-box { font-size: 14px; min-height: 20px; white-space: pre-wrap; }
+  .result-item { border-bottom: 1px solid var(--border); padding: 12px 0; }
+  .result-item:first-child { padding-top: 0; }
+  .result-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .result-text { font-size: 14px; }
+  .result-meta { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .edge-row {
+    font-size: 13px;
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    padding: 4px 0;
+  }
+  #graph-section { margin-bottom: 8px; }
+  #graph-section svg { border: 1px solid var(--border); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>GraphAnchor</h1>
+  <p class="subtitle">Local graph based document search.</p>
+  <p class="base-url">
+    Backend address:
+    <input type="text" id="api-base" value="http://localhost:8000">
+  </p>
+
+  <section>
+    <h2>Add a document</h2>
+    <label for="file-input">Text file (.txt)</label>
+    <input type="file" id="file-input" accept=".txt">
+    <button onclick="uploadFile()" id="upload-btn">Upload</button>
+    <p class="status" id="upload-status"></p>
+  </section>
+
+  <section>
+    <h2>Ask a question</h2>
+    <label for="query-input">Question</label>
+    <input type="text" id="query-input" placeholder="who is lohith">
+    <div class="row">
+      <div class="k-field">
+        <label for="k-input">Results</label>
+        <input type="number" id="k-input" value="5" min="1" max="20">
+      </div>
+      <div>
+        <button onclick="askQuestion()" id="ask-btn">Ask</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Answer</h2>
+    <p id="answer-box" class="muted">Ask a question to see an answer here.</p>
+  </section>
+
+  <section>
+    <h2>Matched text</h2>
+    <div id="vector-results"><p class="muted">No query run yet.</p></div>
+  </section>
+
+  <section>
+    <h2>Graph connections</h2>
+    <div id="graph-section"><p class="muted">No query run yet.</p></div>
+    <div id="edge-list"></div>
+  </section>
+
+</div>
+
+<script>
+function apiBase() {
+  return document.getElementById('api-base').value.replace(/\/$/, '');
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str == null ? '' : String(str);
+  return div.innerHTML;
+}
+
+async function uploadFile() {
+  const fileInput = document.getElementById('file-input');
+  const status = document.getElementById('upload-status');
+  const btn = document.getElementById('upload-btn');
+
+  if (!fileInput.files.length) {
+    status.textContent = 'Choose a file first.';
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append('file', fileInput.files[0]);
+
+  btn.disabled = true;
+  status.textContent = 'Uploading...';
+
+  try {
+    const res = await fetch(apiBase() + '/ingest', { method: 'POST', body: formData });
+    const data = await res.json();
+
+    if (!res.ok) {
+      status.textContent = 'Error: ' + (data.detail || res.status);
+      return;
+    }
+
+    if (data.duplicate) {
+      status.textContent = 'Already added earlier (doc_id ' + data.doc_id + ').';
+    } else {
+      let msg = 'Added. Chunks: ' + data.chunks_processed +
+        ', entities: ' + data.entities_extracted +
+        ', edges: ' + data.edges_added + '.';
+      if (data.extraction_failures) {
+        msg += ' ' + data.extraction_failures + ' chunk(s) failed extraction.';
+      }
+      status.textContent = msg;
+    }
+  } catch (err) {
+    status.textContent = 'Could not reach the backend at ' + apiBase() + '.';
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+async function askQuestion() {
+  const q = document.getElementById('query-input').value.trim();
+  const k = document.getElementById('k-input').value || 5;
+  const btn = document.getElementById('ask-btn');
+
+  const answerBox = document.getElementById('answer-box');
+  const vectorList = document.getElementById('vector-results');
+  const graphSection = document.getElementById('graph-section');
+  const edgeList = document.getElementById('edge-list');
+
+  if (!q) return;
+
+  btn.disabled = true;
+  answerBox.className = 'muted';
+  answerBox.textContent = 'Searching...';
+  vectorList.innerHTML = '';
+  edgeList.innerHTML = '';
+  graphSection.innerHTML = '';
+
+  try {
+    const url = apiBase() + '/query?q=' + encodeURIComponent(q) + '&k=' + encodeURIComponent(k);
+    const res = await fetch(url);
+    const data = await res.json();
+
+    if (!res.ok) {
+      answerBox.textContent = 'Error: ' + (data.detail || res.status);
+      return;
+    }
+
+    if (data.answer) {
+      answerBox.className = '';
+      answerBox.textContent = data.answer;
+    } else {
+      answerBox.className = 'muted';
+      answerBox.textContent = 'No generated answer yet. See the matched text and graph connections below.';
+    }
+
+    const results = data.vector_search_results || [];
+    if (results.length === 0) {
+      vectorList.innerHTML = '<p class="muted">No matches.</p>';
+    } else {
+      vectorList.innerHTML = '';
+      results.forEach(function (r) {
+        const item = document.createElement('div');
+        item.className = 'result-item';
+        const dist = (r.distance !== null && r.distance !== undefined) ? Number(r.distance).toFixed(3) : 'n/a';
+        item.innerHTML = '<div class="result-text">' + escapeHtml(r.text) + '</div>' +
+          '<div class="result-meta">distance ' + dist + '</div>';
+        vectorList.appendChild(item);
+      });
+    }
+
+    const traversal = data.graph_traversal || {};
+    const edges = traversal.edges || [];
+    const meta = traversal.metadata || {};
+
+    if (edges.length === 0) {
+      graphSection.innerHTML = '<p class="muted">' + escapeHtml(meta.message || 'No connections found for this query.') + '</p>';
+    } else {
+      drawGraph(meta.traversed_from_entity, edges);
+      edges.forEach(function (e) {
+        const row = document.createElement('div');
+        row.className = 'edge-row';
+        const conf = Number(e.confidence).toFixed(2);
+        row.textContent = e.source + '  ->  ' + e.relation + '  ->  ' + e.target + '   (confidence ' + conf + ')';
+        edgeList.appendChild(row);
+      });
+    }
+  } catch (err) {
+    answerBox.className = 'muted';
+    answerBox.textContent = 'Could not reach the backend at ' + apiBase() + '.';
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+function drawGraph(centerEntity, edges) {
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const width = 600, height = 340, cx = width / 2, cy = height / 2, radius = 120;
+
+  const others = [];
+  edges.forEach(function (e) {
+    const other = (e.source === centerEntity) ? e.target : e.source;
+    if (others.indexOf(other) === -1) others.push(other);
+  });
+
+  const svg = document.createElementNS(svgNS, 'svg');
+  svg.setAttribute('viewBox', '0 0 ' + width + ' ' + height);
+  svg.setAttribute('width', '100%');
+  svg.setAttribute('height', height);
+
+  const positions = {};
+  others.forEach(function (name, i) {
+    const angle = (i / others.length) * 2 * Math.PI - Math.PI / 2;
+    positions[name] = { x: cx + radius * Math.cos(angle), y: cy + radius * Math.sin(angle) };
+  });
+
+  edges.forEach(function (e) {
+    const other = (e.source === centerEntity) ? e.target : e.source;
+    const pos = positions[other];
+
+    const line = document.createElementNS(svgNS, 'line');
+    line.setAttribute('x1', cx);
+    line.setAttribute('y1', cy);
+    line.setAttribute('x2', pos.x);
+    line.setAttribute('y2', pos.y);
+    line.setAttribute('stroke', '#888888');
+    line.setAttribute('stroke-width', '1');
+    svg.appendChild(line);
+
+    const label = document.createElementNS(svgNS, 'text');
+    label.setAttribute('x', (cx + pos.x) / 2);
+    label.setAttribute('y', (cy + pos.y) / 2 - 5);
+    label.setAttribute('font-size', '11');
+    label.setAttribute('fill', '#666666');
+    label.setAttribute('text-anchor', 'middle');
+    label.setAttribute('font-family', '-apple-system, sans-serif');
+    label.textContent = e.relation;
+    svg.appendChild(label);
+  });
+
+  addNode(svg, cx, cy, centerEntity, true);
+  others.forEach(function (name) {
+    addNode(svg, positions[name].x, positions[name].y, name, false);
+  });
+
+  const container = document.getElementById('graph-section');
+  container.innerHTML = '';
+  container.appendChild(svg);
+}
+
+function addNode(svg, x, y, label, isCenter) {
+  const svgNS = 'http://www.w3.org/2000/svg';
+
+  const circle = document.createElementNS(svgNS, 'circle');
+  circle.setAttribute('cx', x);
+  circle.setAttribute('cy', y);
+  circle.setAttribute('r', isCenter ? 7 : 5);
+  circle.setAttribute('fill', isCenter ? '#111111' : '#ffffff');
+  circle.setAttribute('stroke', '#111111');
+  circle.setAttribute('stroke-width', '1.5');
+  svg.appendChild(circle);
+
+  const text = document.createElementNS(svgNS, 'text');
+  text.setAttribute('x', x);
+  text.setAttribute('y', y - 12);
+  text.setAttribute('font-size', '12');
+  text.setAttribute('text-anchor', 'middle');
+  text.setAttribute('fill', '#111111');
+  text.setAttribute('font-family', '-apple-system, sans-serif');
+  text.setAttribute('font-weight', isCenter ? '600' : '400');
+  text.textContent = label;
+  svg.appendChild(text);
+}
+
+document.getElementById('query-input').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') askQuestion();
+});
+</script>
+</body>
+</html>

@@ -77,3 +77,30 @@ If you want to see the "Smart Entity Placement" in action automatically, we have
 python demo.py
 ```
 This will upload 3 intentionally overlapping documents to prove that the similarity threshold correctly merges related entities!
+
+---
+
+## Current Progress
+
+Ingestion, storage, entity placement, and hybrid retrieval (vector search plus single-hop graph traversal on `/query`) are implemented and working end to end.
+
+Backend hardening that has been added on top of that:
+* Upload validation on `/ingest`: rejects non-`.txt`, oversized, empty, or non-UTF8 files instead of crashing
+* Ingestion runs as a single atomic transaction (rollback and connection cleanup on failure, no partial writes)
+* Duplicate document detection by content hash
+* `/reset` requires a `?confirm=true` query parameter
+* Ollama calls retry on transient failures
+* Logging in place of print statements
+* CORS enabled so a local frontend can call the API directly
+
+### Minimal Frontend
+A single-page frontend is available at `web/index.html`. With the backend running (`uvicorn main:app --port 8000`), open the file directly in a browser. It lets you:
+* Upload a `.txt` file
+* Ask a question
+* See the matched text chunks and the graph connections for that query, drawn as a simple diagram
+
+The page has a spot reserved for a generated answer. It will show automatically once the `/query` response includes an `answer` field (or the endpoint producing that is wired in), and shows a placeholder message until then.
+
+### Still Open
+* A generation endpoint that turns retrieved and traversed chunks into a final answer
+* A full automated test suite
