@@ -10,6 +10,8 @@ class AppConfig(BaseModel):
     chunk_size: int
     chunk_overlap: int
     similarity_threshold: float
+    max_file_size_mb: float = 5.0
+    ollama_max_retries: int = 2
 
 def load_config(path: str = "config.yaml") -> AppConfig:
     if not Path(path).exists():
