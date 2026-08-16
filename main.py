@@ -4,6 +4,7 @@ import hashlib
 import logging
 import chromadb
 from fastapi import FastAPI, File, UploadFile, HTTPException, Query
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Dict
 
@@ -17,6 +18,14 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(na
 logger = logging.getLogger("graphanchor")
 
 app = FastAPI(title="GraphAnchor")
+
+# Allow the local frontend (opened as a file, or served from any port) to call this API.
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Ensure entities collection uses cosine distance for proper thresholding
 entities_collection = chroma_client.get_or_create_collection(name="entities", metadata={"hnsw:space": "cosine"})
