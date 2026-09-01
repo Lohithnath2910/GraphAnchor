@@ -458,16 +458,25 @@
     <div id="answer-box" class="muted">Ask a question above to see an evidence-grounded answer here.</div>
   </section>
 
-  <!-- Knowledge Graph Subgraph -->
+  <!-- Knowledge Graph Section -->
   <section>
     <h2>
-      <span>Knowledge Graph Connections</span>
-      <span id="graph-meta" style="font-size: 11px; text-transform: none; font-weight: 400; color: var(--text-muted);"></span>
+      <span id="graph-title">Knowledge Graph (Global View)</span>
+      <div style="display: flex; gap: 8px; align-items: center;">
+        <span id="graph-meta" style="font-size: 11px; text-transform: none; font-weight: 400; color: var(--text-muted);"></span>
+        <button class="btn-subtle" onclick="fetchGlobalGraph(true)" style="text-transform: none;">Fit Graph</button>
+      </div>
     </h2>
-    <div id="graph-section">
-      <p style="padding: 32px 16px; text-align: center; color: var(--text-dim); font-size: 13px;">No graph query run yet.</p>
+    <div id="graph-section" style="position: relative; height: 360px; border: 1px solid var(--border); border-radius: var(--radius); background: #ffffff; overflow: hidden; cursor: grab;">
+      <canvas id="graph-canvas" style="display: block; width: 100%; height: 100%;"></canvas>
+      <div id="graph-empty-overlay" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 13px; pointer-events: none;">
+        No graph data available. Upload documents to build the graph.
+      </div>
+      <div style="position: absolute; bottom: 8px; right: 10px; font-size: 10px; color: var(--text-dim); background: rgba(255,255,255,0.85); padding: 2px 6px; border-radius: 3px; border: 1px solid var(--border); pointer-events: none;">
+        Drag nodes to explore &bull; Scroll to zoom
+      </div>
     </div>
-    <div class="edge-list" id="edge-list"></div>
+    <div class="edge-list" id="edge-list" style="margin-top: 14px;"></div>
   </section>
 
   <!-- Retrieved Text Passages -->
@@ -536,10 +545,10 @@ async function resetDatabase() {
     if (res.ok) {
       alert(data.message || 'Database reset successfully.');
       fetchStats();
+      fetchGlobalGraph();
       document.getElementById('answer-box').className = 'muted';
       document.getElementById('answer-box').textContent = 'Ask a question above to see an evidence-grounded answer here.';
       document.getElementById('vector-results').innerHTML = '<p style="color: var(--text-dim); font-size: 13px;">No query run yet.</p>';
-      document.getElementById('graph-section').innerHTML = '<p style="padding: 32px 16px; text-align: center; color: var(--text-dim); font-size: 13px;">No graph query run yet.</p>';
       document.getElementById('edge-list').innerHTML = '';
       document.getElementById('upload-status').textContent = '';
       document.getElementById('graph-meta').textContent = '';
@@ -594,6 +603,7 @@ async function uploadFile() {
       fileInput.value = '';
     }
     fetchStats();
+    fetchGlobalGraph();
   } catch (err) {
     status.className = 'status error';
     status.textContent = 'Could not reach backend at ' + apiBase() + '.';
@@ -602,6 +612,394 @@ async function uploadFile() {
   }
 }
 
+// -------------------------------------------------------------
+// Interactive Force-Directed Knowledge Graph Engine
+// -------------------------------------------------------------
+let graphNodes = [];
+let graphEdges = [];
+let activeAnchors = new Set();
+let activeEdges = new Set();
+let isSimulating = false;
+let draggedNode = null;
+let zoomLevel = 1.0;
+let panOffset = { x: 0, y: 0 };
+let isPanning = false;
+let startPan = { x: 0, y: 0 };
+
+const canvas = document.getElementById('graph-canvas');
+const ctx = canvas.getContext('2d');
+
+function initCanvasSize() {
+  const rect = canvas.getBoundingClientRect();
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  ctx.scale(dpr, dpr);
+}
+
+window.addEventListener('resize', () => {
+  initCanvasSize();
+  renderGraph();
+});
+
+async function fetchGlobalGraph(resetPositions = false) {
+  try {
+    const res = await fetch(apiBase() + '/graph/all');
+    if (!res.ok) throw new Error();
+    const data = await res.json();
+
+    const overlay = document.getElementById('graph-empty-overlay');
+    const edgeList = document.getElementById('edge-list');
+    const graphTitle = document.getElementById('graph-title');
+    const graphMeta = document.getElementById('graph-meta');
+
+    graphTitle.textContent = 'Knowledge Graph (Global View)';
+    graphMeta.textContent = `(${data.node_count} entities, ${data.edge_count} edges)`;
+
+    if (data.edges.length === 0) {
+      overlay.style.display = 'flex';
+      graphNodes = [];
+      graphEdges = [];
+      edgeList.innerHTML = '';
+      renderGraph();
+      return;
+    }
+
+    overlay.style.display = 'none';
+    activeAnchors.clear();
+    activeEdges.clear();
+
+    setupGraphData(data.nodes, data.edges, resetPositions);
+    renderEdgeList(data.edges);
+  } catch (err) {
+    console.warn('Could not fetch global graph:', err);
+  }
+}
+
+function renderEdgeList(edges) {
+  const edgeList = document.getElementById('edge-list');
+  edgeList.innerHTML = '';
+  edges.forEach((e) => {
+    const row = document.createElement('div');
+    row.className = 'edge-row';
+    const conf = (e.confidence !== null && e.confidence !== undefined) ? Number(e.confidence).toFixed(2) : '1.00';
+    row.innerHTML = `
+      <span><b>${escapeHtml(e.source)}</b> &rarr; <i>${escapeHtml(e.relation)}</i> &rarr; <b>${escapeHtml(e.target)}</b></span>
+      <span style="color: var(--text-dim); font-size: 11px;">conf ${conf}</span>
+    `;
+    edgeList.appendChild(row);
+  });
+}
+
+function setupGraphData(nodesData, edgesData, resetPositions = false) {
+  const rect = canvas.getBoundingClientRect();
+  const cx = rect.width / 2;
+  const cy = rect.height / 2;
+
+  const oldPos = {};
+  graphNodes.forEach(n => { oldPos[n.id] = { x: n.x, y: n.y }; });
+
+  graphNodes = nodesData.map((n, i) => {
+    const existing = (!resetPositions && oldPos[n.id]) ? oldPos[n.id] : null;
+    const angle = (i / Math.max(1, nodesData.length)) * 2 * Math.PI;
+    const radius = 80 + Math.random() * 40;
+    return {
+      id: n.id,
+      label: n.label,
+      x: existing ? existing.x : cx + radius * Math.cos(angle),
+      y: existing ? existing.y : cy + radius * Math.sin(angle),
+      vx: 0,
+      vy: 0,
+      radius: 18
+    };
+  });
+
+  graphEdges = edgesData.map(e => ({
+    source: e.source,
+    target: e.target,
+    relation: e.relation,
+    confidence: e.confidence
+  }));
+
+  if (resetPositions) {
+    zoomLevel = 1.0;
+    panOffset = { x: 0, y: 0 };
+  }
+
+  runSimulation(120);
+}
+
+function runSimulation(steps = 100) {
+  let count = 0;
+  function step() {
+    simulateStep();
+    renderGraph();
+    count++;
+    if (count < steps || draggedNode) {
+      requestAnimationFrame(step);
+    }
+  }
+  requestAnimationFrame(step);
+}
+
+function simulateStep() {
+  const rect = canvas.getBoundingClientRect();
+  const cx = rect.width / 2;
+  const cy = rect.height / 2;
+
+  const nodeMap = {};
+  graphNodes.forEach(n => { nodeMap[n.id] = n; });
+
+  // 1. Node Repulsion
+  for (let i = 0; i < graphNodes.length; i++) {
+    for (let j = i + 1; j < graphNodes.length; j++) {
+      const n1 = graphNodes[i];
+      const n2 = graphNodes[j];
+      const dx = n2.x - n1.x;
+      const dy = n2.y - n1.y;
+      const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+      const minDist = 110;
+
+      if (dist < 280) {
+        const force = (minDist * minDist) / (dist * dist) * 1.8;
+        const fx = (dx / dist) * force;
+        const fy = (dy / dist) * force;
+
+        if (n1 !== draggedNode) { n1.vx -= fx; n1.vy -= fy; }
+        if (n2 !== draggedNode) { n2.vx += fx; n2.vy += fy; }
+      }
+    }
+  }
+
+  // 2. Edge Spring Attraction
+  graphEdges.forEach(e => {
+    const s = nodeMap[e.source];
+    const t = nodeMap[e.target];
+    if (!s || !t) return;
+
+    const dx = t.x - s.x;
+    const dy = t.y - s.y;
+    const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+    const targetDist = 130;
+    const force = (dist - targetDist) * 0.04;
+    const fx = (dx / dist) * force;
+    const fy = (dy / dist) * force;
+
+    if (s !== draggedNode) { s.vx += fx; s.vy += fy; }
+    if (t !== draggedNode) { t.vx -= fx; t.vy -= fy; }
+  });
+
+  // 3. Center Gravity & Damping
+  graphNodes.forEach(n => {
+    if (n === draggedNode) return;
+    n.vx += (cx - n.x) * 0.015;
+    n.vy += (cy - n.y) * 0.015;
+
+    n.vx *= 0.82;
+    n.vy *= 0.82;
+
+    n.x += n.vx;
+    n.y += n.vy;
+  });
+}
+
+function renderGraph() {
+  const rect = canvas.getBoundingClientRect();
+  ctx.clearRect(0, 0, rect.width, rect.height);
+
+  ctx.save();
+  ctx.translate(panOffset.x, panOffset.y);
+  ctx.scale(zoomLevel, zoomLevel);
+
+  const nodeMap = {};
+  graphNodes.forEach(n => { nodeMap[n.id] = n; });
+
+  const hasActiveQuery = activeAnchors.size > 0;
+
+  // 1. Draw Edges
+  graphEdges.forEach(e => {
+    const s = nodeMap[e.source];
+    const t = nodeMap[e.target];
+    if (!s || !t) return;
+
+    const isTraversed = activeEdges.has(`${e.source}->${e.target}`) || activeEdges.has(`${e.target}->${e.source}`);
+    const isDimmed = hasActiveQuery && !isTraversed;
+
+    ctx.save();
+    ctx.strokeStyle = isTraversed ? '#111111' : (isDimmed ? '#e0e0e0' : '#bbbbbb');
+    ctx.lineWidth = isTraversed ? 2.0 : 1.2;
+
+    ctx.beginPath();
+    ctx.moveTo(s.x, s.y);
+    ctx.lineTo(t.x, t.y);
+    ctx.stroke();
+
+    // Directional Arrow
+    const angle = Math.atan2(t.y - s.y, t.x - s.x);
+    const arrowDist = 28;
+    const arrowX = t.x - arrowDist * Math.cos(angle);
+    const arrowY = t.y - arrowDist * Math.sin(angle);
+
+    ctx.fillStyle = isTraversed ? '#111111' : (isDimmed ? '#cccccc' : '#888888');
+    ctx.beginPath();
+    ctx.moveTo(arrowX, arrowY);
+    ctx.lineTo(arrowX - 8 * Math.cos(angle - Math.PI / 6), arrowY - 8 * Math.sin(angle - Math.PI / 6));
+    ctx.lineTo(arrowX - 8 * Math.cos(angle + Math.PI / 6), arrowY - 8 * Math.sin(angle + Math.PI / 6));
+    ctx.closePath();
+    ctx.fill();
+
+    // Relation Pill Tag
+    if (e.relation) {
+      const midX = (s.x + t.x) / 2;
+      const midY = (s.y + t.y) / 2;
+      ctx.font = '10px "JetBrains Mono", monospace';
+      const textWidth = ctx.measureText(e.relation).width;
+      const pillW = textWidth + 10;
+      const pillH = 16;
+
+      ctx.fillStyle = isDimmed ? 'rgba(255,255,255,0.7)' : '#ffffff';
+      ctx.strokeStyle = isTraversed ? '#111111' : (isDimmed ? '#e5e5e5' : '#d4d4d4');
+      ctx.lineWidth = 1;
+
+      ctx.beginPath();
+      roundRect(ctx, midX - pillW / 2, midY - pillH / 2, pillW, pillH, 4);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = isTraversed ? '#111111' : (isDimmed ? '#999999' : '#555555');
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(e.relation, midX, midY + 0.5);
+    }
+    ctx.restore();
+  });
+
+  // 2. Draw Nodes (Rounded Badges)
+  graphNodes.forEach(n => {
+    const isAnchor = activeAnchors.has(n.id.toLowerCase());
+    const isConnected = !hasActiveQuery || isAnchor || isNodeTraversed(n.id);
+    const isDimmed = hasActiveQuery && !isConnected;
+
+    ctx.save();
+    ctx.font = isAnchor ? 'bold 12px "Inter", sans-serif' : '11px "Inter", sans-serif';
+    const textWidth = ctx.measureText(n.label).width;
+    const badgeW = Math.max(textWidth + 20, 48);
+    const badgeH = 26;
+
+    // Node Box
+    ctx.beginPath();
+    roundRect(ctx, n.x - badgeW / 2, n.y - badgeH / 2, badgeW, badgeH, 13);
+
+    if (isAnchor) {
+      ctx.fillStyle = '#111111';
+      ctx.strokeStyle = '#000000';
+      ctx.lineWidth = 2;
+      ctx.shadowColor = 'rgba(0,0,0,0.2)';
+      ctx.shadowBlur = 8;
+    } else {
+      ctx.fillStyle = isDimmed ? '#f8f8f8' : '#ffffff';
+      ctx.strokeStyle = isConnected ? '#111111' : '#e0e0e0';
+      ctx.lineWidth = isConnected ? 1.5 : 1;
+      ctx.shadowBlur = 0;
+    }
+    ctx.fill();
+    ctx.stroke();
+
+    // Node Text
+    ctx.fillStyle = isAnchor ? '#ffffff' : (isDimmed ? '#aaaaaa' : '#111111');
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(n.label, n.x, n.y + 0.5);
+
+    ctx.restore();
+  });
+
+  ctx.restore();
+}
+
+function roundRect(ctx, x, y, width, height, radius) {
+  ctx.moveTo(x + radius, y);
+  ctx.lineTo(x + width - radius, y);
+  ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+  ctx.lineTo(x + width, y + height - radius);
+  ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+  ctx.lineTo(x + radius, y + height);
+  ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+  ctx.lineTo(x, y + radius);
+  ctx.quadraticCurveTo(x, y, x + radius, y);
+}
+
+function isNodeTraversed(id) {
+  const low = id.toLowerCase();
+  for (let pair of activeEdges) {
+    if (pair.toLowerCase().includes(low)) return true;
+  }
+  return false;
+}
+
+// Canvas Mouse Interactions (Dragging & Panning)
+function getCanvasMousePos(e) {
+  const rect = canvas.getBoundingClientRect();
+  const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+  const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+  const rawX = clientX - rect.left;
+  const rawY = clientY - rect.top;
+  return {
+    x: (rawX - panOffset.x) / zoomLevel,
+    y: (rawY - panOffset.y) / zoomLevel,
+    screenX: rawX,
+    screenY: rawY
+  };
+}
+
+canvas.addEventListener('mousedown', (e) => {
+  const pos = getCanvasMousePos(e);
+  // Check if clicked a node
+  for (let n of graphNodes) {
+    const dx = pos.x - n.x;
+    const dy = pos.y - n.y;
+    if (Math.sqrt(dx * dx + dy * dy) < 30) {
+      draggedNode = n;
+      runSimulation(60);
+      return;
+    }
+  }
+  isPanning = true;
+  startPan = { x: e.clientX - panOffset.x, y: e.clientY - panOffset.y };
+  canvas.style.cursor = 'grabbing';
+});
+
+window.addEventListener('mousemove', (e) => {
+  if (draggedNode) {
+    const pos = getCanvasMousePos(e);
+    draggedNode.x = pos.x;
+    draggedNode.y = pos.y;
+    draggedNode.vx = 0;
+    draggedNode.vy = 0;
+    renderGraph();
+  } else if (isPanning) {
+    panOffset.x = e.clientX - startPan.x;
+    panOffset.y = e.clientY - startPan.y;
+    renderGraph();
+  }
+});
+
+window.addEventListener('mouseup', () => {
+  draggedNode = null;
+  isPanning = false;
+  canvas.style.cursor = 'grab';
+});
+
+canvas.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  const zoomFactor = e.deltaY < 0 ? 1.08 : 0.92;
+  zoomLevel = Math.max(0.4, Math.min(2.5, zoomLevel * zoomFactor));
+  renderGraph();
+});
+
+// -------------------------------------------------------------
+// Ask Question Handler
+// -------------------------------------------------------------
 async function askQuestion() {
   const q = document.getElementById('query-input').value.trim();
   const enableGraph = document.getElementById('graph-toggle').checked;
@@ -609,8 +1007,7 @@ async function askQuestion() {
 
   const answerBox = document.getElementById('answer-box');
   const vectorList = document.getElementById('vector-results');
-  const graphSection = document.getElementById('graph-section');
-  const edgeList = document.getElementById('edge-list');
+  const graphTitle = document.getElementById('graph-title');
   const graphMeta = document.getElementById('graph-meta');
   const passagesMeta = document.getElementById('passages-meta');
 
@@ -620,8 +1017,6 @@ async function askQuestion() {
   answerBox.className = 'muted';
   answerBox.textContent = 'Searching index and synthesizing answer...';
   vectorList.innerHTML = '';
-  edgeList.innerHTML = '';
-  graphSection.innerHTML = '<p style="padding: 32px 16px; text-align: center; color: var(--text-dim); font-size: 13px;">Computing graph layout...</p>';
 
   try {
     const url = apiBase() + '/query?q=' + encodeURIComponent(q) +
@@ -684,163 +1079,33 @@ async function askQuestion() {
       });
     }
 
-    // 3. Knowledge Graph
+    // 3. Highlight Query Subgraph
     const traversal = data.graph_traversal || {};
     const edges = traversal.edges || [];
     const meta = traversal.metadata || {};
 
-    if (edges.length === 0) {
-      graphSection.innerHTML = `<p style="padding: 32px 16px; text-align: center; color: var(--text-dim); font-size: 13px;">${escapeHtml(meta.message || 'No graph connections found for this query.')}</p>`;
-      graphMeta.textContent = '';
-      edgeList.innerHTML = '';
-    } else {
-      const anchorEntities = meta.anchor_entities || (meta.traversed_from_entity ? [meta.traversed_from_entity] : []);
-      graphMeta.textContent = '(' + edges.length + ' edges traversed)';
-      drawCleanGraph(anchorEntities, edges);
+    activeAnchors.clear();
+    activeEdges.clear();
 
-      edgeList.innerHTML = '';
-      edges.forEach((e) => {
-        const row = document.createElement('div');
-        row.className = 'edge-row';
-        const conf = (e.confidence !== null && e.confidence !== undefined) ? Number(e.confidence).toFixed(2) : '1.00';
-        row.innerHTML = `
-          <span>${escapeHtml(e.source)} &rarr; <i>${escapeHtml(e.relation)}</i> &rarr; ${escapeHtml(e.target)}</span>
-          <span style="color: var(--text-dim); font-size: 11px;">conf ${conf}</span>
-        `;
-        edgeList.appendChild(row);
-      });
-    }
+    const anchorEntities = meta.anchor_entities || (meta.traversed_from_entity ? [meta.traversed_from_entity] : []);
+    anchorEntities.forEach(a => activeAnchors.add(String(a).toLowerCase()));
+    edges.forEach(e => {
+      activeEdges.add(`${e.source}->${e.target}`);
+      activeEdges.add(`${e.target}->${e.source}`);
+    });
+
+    graphTitle.textContent = 'Knowledge Graph (Query Traversed Path)';
+    graphMeta.textContent = `(${edges.length} edges traversed for query)`;
+
+    renderEdgeList(edges.length > 0 ? edges : graphEdges);
+    runSimulation(80);
+
   } catch (err) {
     answerBox.className = 'status error';
     answerBox.textContent = 'Could not reach backend at ' + apiBase();
   } finally {
     btn.disabled = false;
   }
-}
-
-function drawCleanGraph(anchorEntities, edges) {
-  const svgNS = 'http://www.w3.org/2000/svg';
-  const width = 600, height = 300;
-  const cx = width / 2, cy = height / 2;
-
-  const nodeSet = new Set();
-  const anchorSet = new Set(anchorEntities.map(a => String(a).toLowerCase()));
-
-  edges.forEach((e) => {
-    if (e.source) nodeSet.add(e.source);
-    if (e.target) nodeSet.add(e.target);
-  });
-
-  const nodes = Array.from(nodeSet);
-  if (nodes.length === 0) return;
-
-  const svg = document.createElementNS(svgNS, 'svg');
-  svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-  svg.setAttribute('width', '100%');
-  svg.setAttribute('height', height);
-
-  // Arrow marker
-  const defs = document.createElementNS(svgNS, 'defs');
-  defs.innerHTML = `
-    <marker id="arrow" markerWidth="6" markerHeight="6" refX="14" refY="3" orient="auto">
-      <polygon points="0 0, 6 3, 0 6" fill="#888888" />
-    </marker>
-  `;
-  svg.appendChild(defs);
-
-  // Calculate layout
-  const positions = {};
-  const primaryAnchors = nodes.filter(n => anchorSet.has(n.toLowerCase()));
-  const otherNodes = nodes.filter(n => !anchorSet.has(n.toLowerCase()));
-
-  if (primaryAnchors.length === 1) {
-    positions[primaryAnchors[0]] = { x: cx, y: cy };
-  } else if (primaryAnchors.length > 1) {
-    const innerRadius = 50;
-    primaryAnchors.forEach((name, i) => {
-      const angle = (i / primaryAnchors.length) * 2 * Math.PI - Math.PI / 2;
-      positions[name] = {
-        x: cx + innerRadius * Math.cos(angle),
-        y: cy + innerRadius * Math.sin(angle)
-      };
-    });
-  }
-
-  const outerRadius = Math.min(115, Math.max(85, 20 + otherNodes.length * 12));
-  otherNodes.forEach((name, i) => {
-    const angle = (i / Math.max(1, otherNodes.length)) * 2 * Math.PI - Math.PI / 2;
-    positions[name] = {
-      x: cx + outerRadius * Math.cos(angle),
-      y: cy + outerRadius * Math.sin(angle)
-    };
-  });
-
-  nodes.forEach((name, i) => {
-    if (!positions[name]) {
-      const angle = (i / nodes.length) * 2 * Math.PI;
-      positions[name] = { x: cx + 90 * Math.cos(angle), y: cy + 90 * Math.sin(angle) };
-    }
-  });
-
-  // Draw Edges
-  edges.forEach((e) => {
-    const p1 = positions[e.source];
-    const p2 = positions[e.target];
-    if (!p1 || !p2) return;
-
-    const line = document.createElementNS(svgNS, 'line');
-    line.setAttribute('x1', p1.x);
-    line.setAttribute('y1', p1.y);
-    line.setAttribute('x2', p2.x);
-    line.setAttribute('y2', p2.y);
-    line.setAttribute('stroke', '#cccccc');
-    line.setAttribute('stroke-width', '1.2');
-    line.setAttribute('marker-end', 'url(#arrow)');
-    svg.appendChild(line);
-
-    // Edge text
-    const midX = (p1.x + p2.x) / 2;
-    const midY = (p1.y + p2.y) / 2;
-    const text = document.createElementNS(svgNS, 'text');
-    text.setAttribute('x', midX);
-    text.setAttribute('y', midY - 4);
-    text.setAttribute('font-size', '10');
-    text.setAttribute('fill', '#666666');
-    text.setAttribute('text-anchor', 'middle');
-    text.setAttribute('font-family', "'JetBrains Mono', monospace");
-    text.textContent = e.relation;
-    svg.appendChild(text);
-  });
-
-  // Draw Nodes
-  nodes.forEach((name) => {
-    const pos = positions[name];
-    const isAnchor = anchorSet.has(name.toLowerCase());
-
-    const circle = document.createElementNS(svgNS, 'circle');
-    circle.setAttribute('cx', pos.x);
-    circle.setAttribute('cy', pos.y);
-    circle.setAttribute('r', isAnchor ? 7 : 5);
-    circle.setAttribute('fill', isAnchor ? '#111111' : '#ffffff');
-    circle.setAttribute('stroke', '#111111');
-    circle.setAttribute('stroke-width', '1.5');
-    svg.appendChild(circle);
-
-    const label = document.createElementNS(svgNS, 'text');
-    label.setAttribute('x', pos.x);
-    label.setAttribute('y', pos.y + (pos.y < cy ? -10 : 16));
-    label.setAttribute('font-size', '11');
-    label.setAttribute('font-weight', isAnchor ? '600' : '400');
-    label.setAttribute('text-anchor', 'middle');
-    label.setAttribute('fill', '#111111');
-    label.setAttribute('font-family', "'Inter', sans-serif");
-    label.textContent = name;
-    svg.appendChild(label);
-  });
-
-  const container = document.getElementById('graph-section');
-  container.innerHTML = '';
-  container.appendChild(svg);
 }
 
 function copyAnswer() {
@@ -851,8 +1116,10 @@ function copyAnswer() {
   });
 }
 
-// Initial stats fetch on load
+// Initial stats & graph fetch on page load
+initCanvasSize();
 fetchStats();
+fetchGlobalGraph(true);
 
 document.getElementById('query-input').addEventListener('keydown', (e) => {
   if (e.key === 'Enter') askQuestion();

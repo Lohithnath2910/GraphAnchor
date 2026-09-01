@@ -248,6 +248,45 @@ def get_stats():
         logger.error(f"Stats query failed: {e}")
         raise HTTPException(status_code=500, detail="Failed to read graph stats.")
 
+@app.get("/graph/all")
+def get_entire_graph():
+    """Returns all nodes and edges currently in the Knowledge Graph for upfront visualization."""
+    try:
+        with db_cursor() as cursor:
+            cursor.execute("""
+                SELECT source_entity, relation, target_entity, confidence, chunk_id
+                FROM edges
+                ORDER BY id ASC
+            """)
+            rows = cursor.fetchall()
+            edges = [
+                {
+                    "source": r[0],
+                    "relation": r[1],
+                    "target": r[2],
+                    "confidence": r[3],
+                    "chunk_id": r[4]
+                }
+                for r in rows
+            ]
+            
+            node_set = set()
+            for e in edges:
+                if e["source"]: node_set.add(e["source"])
+                if e["target"]: node_set.add(e["target"])
+                
+            nodes = [{"id": n, "label": n} for n in sorted(node_set)]
+            
+        return {
+            "node_count": len(nodes),
+            "edge_count": len(edges),
+            "nodes": nodes,
+            "edges": edges
+        }
+    except Exception as e:
+        logger.error(f"Failed to fetch full graph: {e}")
+        raise HTTPException(status_code=500, detail="Failed to fetch entire graph.")
+
 def find_query_anchor_entities(query_text: str, query_emb: List[float], max_anchors: int = 3) -> List[Tuple[str, float]]:
     """Identify starting graph entities using exact token substring matching and vector similarity."""
     anchor_scores: Dict[str, float] = {}
