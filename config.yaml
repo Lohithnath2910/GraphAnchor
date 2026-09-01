@@ -1,4 +1,4 @@
-llm_model: "qwen2.5-coder:7b"
+llm_model: "llama3.2"
 embed_model: "snowflake-arctic-embed2:568m"
 db_path: "./data/graph.db"
 chroma_path: "./data/chroma"
