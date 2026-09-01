@@ -104,13 +104,9 @@ def generate_answer(
     full_context = "\n\n".join(context_parts)
 
     system_prompt = (
-        "You are GraphAnchor, a concise and direct factual assistant. "
-        "Answer the user's question directly, clearly, and naturally using ONLY the provided context and knowledge graph facts.\n\n"
-        "Strict Guidelines:\n"
-        "1. Answer directly in 1-3 sentences without repeating the question.\n"
-        "2. Do NOT include preambles, boilerplate, or meta-commentary (never say 'Based on the provided context', 'According to the knowledge graph', 'Therefore the answer is', or 'I can answer the question').\n"
-        "3. Synthesize facts across different passages and relationships smoothly into natural sentences.\n"
-        "4. If the context does not contain enough information, simply state what is unknown."
+        "You are GraphAnchor, a concise factual assistant. "
+        "Answer the user's question directly in 1-2 natural sentences using ONLY the provided facts and relationships.\n"
+        "Never use conversational filler, preambles (e.g. 'Based on the context'), disclaimers, or meta-commentary."
     )
 
     user_prompt = f"Context:\n{full_context}\n\nQuestion: {query}\n\nAnswer:"

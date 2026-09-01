@@ -46,19 +46,44 @@ class IngestResponse(BaseModel):
     extraction_failures: int = 0
     duplicate: bool = False
 
-def place_entity(entity_str: str, staged_entities: Optional[List[str]] = None) -> Tuple[str, float]:
+INVALID_ENTITIES = {
+    "is", "are", "was", "were", "has", "have", "had", "the", "a", "an",
+    "this", "that", "these", "those", "it", "its", "it's"
+}
+
+PRONOUNS = {
+    "he", "she", "they", "him", "her", "his", "their", "them", "my", "i", "me", "we", "us"
+}
+
+def place_entity(entity_str: str, staged_entities: Optional[List[str]] = None, chunk_context: str = "") -> Tuple[str, float]:
     """Returns canonical entity name and confidence.
-    If a new entity is created and staged_entities is provided, tracks it for rollback safety."""
+    Filters out invalid verbs/pronouns and performs fuzzy embedding deduplication."""
     if not entity_str:
         return "", 0.0
 
     entity_clean = entity_str.strip()
-    if not entity_clean:
+    if not entity_clean or len(entity_clean) <= 1:
         return "", 0.0
+
+    # 1. Filter out verbs / articles
+    if entity_clean.lower() in INVALID_ENTITIES:
+        return "", 0.0
+
+    # 2. Resolve pronoun to primary subject of chunk if available
+    if entity_clean.lower() in PRONOUNS:
+        if chunk_context:
+            import re
+            words = re.findall(r'\b([A-Z][a-z]+|[a-z]{3,})\b', chunk_context)
+            for w in words:
+                if w.lower() not in INVALID_ENTITIES and w.lower() not in PRONOUNS and w.lower() not in {'most', 'very', 'person', 'good', 'smart', 'grace', 'planet', 'partner', 'project'}:
+                    entity_clean = w
+                    break
+        if entity_clean.lower() in PRONOUNS:
+            return "", 0.0
 
     entities_col = get_entities_collection()
 
-    # 1. Exact match lookup
+    # 3. Exact match lookup
     try:
         res = entities_col.get(ids=[entity_clean])
         if res and res.get('ids') and len(res['ids']) > 0:
@@ -66,7 +91,7 @@ def place_entity(entity_str: str, staged_entities: Optional[List[str]] = None) -
     except Exception as e:
         logger.warning(f"Exact-match lookup failed for '{entity_clean}': {e}")
 
-    # 2. Embedding similarity fallback
+    # 4. Embedding similarity fallback (for fuzzy matching like 'lohtih' -> 'Lohith')
     emb = get_embedding(entity_clean)
 
     if entities_col.count() > 0:
@@ -77,13 +102,12 @@ def place_entity(entity_str: str, staged_entities: Optional[List[str]] = None) -
 
         if search_res and search_res.get('distances') and len(search_res['distances'][0]) > 0:
             dist = search_res['distances'][0][0]
-            # Chroma cosine distance is 1 - cosine_similarity
             sim = 1.0 - dist
             if sim >= config.similarity_threshold:
                 canonical = search_res['ids'][0][0]
                 return canonical, float(sim)
 
-    # 3. Insert as unconnected island
+    # 5. Insert as new canonical entity
     entities_col.add(
         ids=[entity_clean],
         embeddings=[emb],
@@ -173,10 +197,13 @@ async def ingest_document(file: UploadFile = File(...)):
                 total_entities += len(extraction.entities)
 
                 for rel in extraction.relations:
-                    src_canonical, src_conf = place_entity(rel.entity, staged_entities=staged_entity_ids)
-                    tgt_canonical, tgt_conf = place_entity(rel.target_entity, staged_entities=staged_entity_ids)
+                    src_raw = rel.entity.strip()
+                    tgt_raw = rel.target_entity.strip()
 
-                    if not src_canonical or not tgt_canonical:
+                    src_canonical, src_conf = place_entity(src_raw, staged_entities=staged_entity_ids, chunk_context=chunk_text_content)
+                    tgt_canonical, tgt_conf = place_entity(tgt_raw, staged_entities=staged_entity_ids, chunk_context=chunk_text_content)
+
+                    if not src_canonical or not tgt_canonical or src_canonical.lower() == tgt_canonical.lower():
                         continue
 
                     edge_conf = min(src_conf, tgt_conf)
