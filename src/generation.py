@@ -45,9 +45,9 @@ def extract_graph_from_chunk(text: str) -> GraphExtraction:
 
 def generate_answer(
     query: str,
-    vector_chunks: List[dict] = None,
-    graph_edges: List[dict] = None,
-    traversed_chunks: List[dict] = None
+    vector_chunks: Optional[List[dict]] = None,
+    graph_edges: Optional[List[dict]] = None,
+    traversed_chunks: Optional[List[dict]] = None
 ) -> str:
     """Generate grounded answer from retrieved text chunks and knowledge graph facts."""
     vector_chunks = vector_chunks or []
