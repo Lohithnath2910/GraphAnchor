@@ -1,7 +1,10 @@
 import sqlite3
 import chromadb
 from contextlib import contextmanager
-from src.config import config
+try:
+    from .config import config
+except ImportError:
+    from src.config import config
 import os
 import logging
 

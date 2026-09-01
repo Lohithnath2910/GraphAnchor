@@ -1,7 +1,10 @@
 import ollama
 import logging
 import time
-from src.config import config
+try:
+    from .config import config
+except ImportError:
+    from src.config import config
 from typing import List
 
 logger = logging.getLogger("graphanchor")

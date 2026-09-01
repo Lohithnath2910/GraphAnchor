@@ -3,7 +3,10 @@ import logging
 import time
 from pydantic import BaseModel, Field
 from typing import List, Optional
-from src.config import config
+try:
+    from .config import config
+except ImportError:
+    from src.config import config
 
 logger = logging.getLogger("graphanchor")
 

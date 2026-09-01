@@ -1,7 +1,10 @@
 import tiktoken
 from typing import List
 
-from src.config import config
+try:
+    from .config import config
+except ImportError:
+    from src.config import config
 
 def chunk_text(text: str) -> List[str]:
     """Token-based sliding window splitter"""

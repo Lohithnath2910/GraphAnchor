@@ -1,7 +1,12 @@
 import os
+import sys
 import uuid
 import hashlib
 import logging
+
+# Ensure root directory is always on python path for imports
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from fastapi import FastAPI, File, UploadFile, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
