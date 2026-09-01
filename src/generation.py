@@ -22,15 +22,27 @@ class GraphExtraction(BaseModel):
 def extract_graph_from_chunk(text: str) -> GraphExtraction:
     """Extract entities and relationships from text using Ollama JSON mode.
     Resolves coreferences, eliminates pronouns/verbs as nodes, and runs deterministically (temp=0.0)."""
-    prompt = (
-        "Extract clean, canonical entities and factual relationships from the text.\n\n"
-        "Strict Rules:\n"
-        "1. Canonical Entities: Extract clear named entities (people, facilities, materials, projects, organizations, traits).\n"
-        "2. Coreference Resolution: Always resolve pronouns (he, she, it, they, his, her) to the actual named entity.\n"
-        "3. No First-Person/Verbs: NEVER use pronouns ('I', 'me', 'my', 'our', 'he', 'she') or verbs ('is', 'has') as entity names. Convert 'my project partner' to 'project partner'.\n"
-        "4. Concise Relations: Use concise relation verbs (e.g. 'leads', 'specializes_in', 'manufactured_by', 'partner_of', 'located_in', 'is').\n\n"
-        f"Text:\n{text}"
+    system_prompt = (
+        "You are the GraphAnchor Knowledge Graph Extraction Engine, a specialized system for converting unstructured text into structured (Entity, Relation, Target) triples.\n"
+        "Your objective is to extract high-precision facts, relationships, attributes, roles, and dependencies from the provided text.\n\n"
+        "Strict Extraction Rules:\n"
+        "1. Entity Recognition & Canonicalization:\n"
+        "   - Identify clear, distinct named entities: People, Projects, Organizations, Facilities, Components, Technologies, Conditions, Chemicals, Locations, and Roles.\n"
+        "   - Use proper canonical casing and exact names (e.g., 'Dr. Aris Thorne', 'Munich Foundry', 'Inhibitor-Z').\n"
+        "2. Coreference & Pronoun Resolution:\n"
+        "   - ALWAYS resolve anaphoric pronouns ('he', 'she', 'they', 'it', 'his', 'her', 'their', 'its') to the primary named entity referenced in the text.\n"
+        "   - NEVER create entity nodes with pronoun names like 'He', 'She', 'It', or 'They'.\n"
+        "3. First-Person & Possessive Normalization:\n"
+        "   - Strip first-person possessives from roles and targets (convert 'my project partner' -> 'project partner', 'our lead engineer' -> 'lead engineer').\n"
+        "   - NEVER output 'I', 'me', 'my', or 'we' as entity names.\n"
+        "4. Relation Formatting:\n"
+        "   - Use concise, meaningful verb phrases (e.g., 'leads', 'specializes_in', 'manufactured_by', 'partner_of', 'located_in', 'reports_to', 'authenticates_with', 'secured_by', 'is').\n"
+        "   - NEVER output standalone verbs ('is', 'has', 'was') as entity names.\n"
+        "5. Output Schema:\n"
+        "   - Return strictly valid JSON containing the list of unique 'entities' and 'relations' matching the requested schema."
     )
+
+    user_prompt = f"Extract all factual entities and relationships from the following text:\n\n{text}"
 
     last_err = None
     for attempt in range(config.ollama_max_retries + 1):
@@ -38,8 +50,8 @@ def extract_graph_from_chunk(text: str) -> GraphExtraction:
             response = ollama.chat(
                 model=config.llm_model,
                 messages=[
-                    {"role": "system", "content": "You are an expert knowledge graph extraction engine. Output strictly valid JSON matching the schema."},
-                    {"role": "user", "content": prompt}
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt}
                 ],
                 format=GraphExtraction.model_json_schema(),
                 options={"num_ctx": 4096, "temperature": 0.0}
@@ -104,12 +116,21 @@ def generate_answer(
     full_context = "\n\n".join(context_parts)
 
     system_prompt = (
-        "You are GraphAnchor, an objective AI synthesis engine. "
-        "Answer the user's question using ONLY the provided text passages and knowledge graph relationships.\n\n"
-        "Mandatory Guidelines:\n"
-        "1. Third-Person Perspective: ALWAYS speak from an objective third-person perspective. Never refer to anyone as 'I', 'me', 'my', 'our', or 'you' (even if the source text uses first person).\n"
-        "2. Multi-Hop Bridging: When multi-hop facts are provided, construct a clear factual bridge connecting the starting entity to the final entity.\n"
-        "3. Direct Answer: Provide a direct, factual 1-2 sentence answer without conversational filler, disclaimers, or preambles."
+        "You are GraphAnchor, an advanced factual question-answering and multi-hop reasoning engine.\n"
+        "Your task is to provide an accurate, completely grounded, and objective answer to the user's question using the provided context.\n\n"
+        "Reasoning & Synthesis Instructions:\n"
+        "1. Objective Third-Person Voice:\n"
+        "   - ALWAYS formulate your response using an objective, neutral third-person perspective.\n"
+        "   - NEVER use first-person pronouns ('I', 'me', 'my', 'we', 'our') or second-person pronouns ('you', 'your'), even if the source document was written in the first person.\n"
+        "2. Cross-Document Multi-Hop Bridging:\n"
+        "   - When answering questions that require traversing multiple facts, explicitly state the relational bridge linking the starting entity, intermediate components, and the final answer entity.\n"
+        "   - Example format: '[Entity A], which [relates to Entity B], is [connected/managed/secured by Entity C].'\n"
+        "3. Strict Evidence Grounding:\n"
+        "   - Rely ONLY on the facts explicitly stated in the provided text passages and knowledge graph relationships.\n"
+        "   - Do NOT extrapolate, hallucinate, or assume facts not present in the evidence.\n"
+        "4. Tone and Style:\n"
+        "   - Be direct, articulate, and complete (1-3 well-constructed sentences).\n"
+        "   - Avoid conversational filler, introductory preambles (e.g., 'Based on the provided text', 'According to the graph'), disclaimers, or meta-commentary."
     )
 
     user_prompt = f"Context:\n{full_context}\n\nQuestion: {query}\n\nAnswer:"
