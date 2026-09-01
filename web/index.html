@@ -452,7 +452,10 @@
   <!-- Grounded Answer Card -->
   <section class="answer-card">
     <h2>
-      <span>Grounded Answer</span>
+      <span style="display: flex; align-items: center; gap: 8px;">
+        <span>Grounded Answer</span>
+        <span id="rag-mode-badge" class="badge badge-graph" style="font-size: 10px; text-transform: uppercase;">Hybrid Graph RAG</span>
+      </span>
       <button class="btn-subtle" onclick="copyAnswer()" style="text-transform: none;">Copy</button>
     </h2>
     <div id="answer-box" class="muted">Ask a question above to see an evidence-grounded answer here.</div>
@@ -462,12 +465,13 @@
   <section>
     <h2>
       <span id="graph-title">Knowledge Graph (Global View)</span>
-      <div style="display: flex; gap: 8px; align-items: center;">
+      <div style="display: flex; gap: 6px; align-items: center;">
         <span id="graph-meta" style="font-size: 11px; text-transform: none; font-weight: 400; color: var(--text-muted);"></span>
-        <button class="btn-subtle" onclick="fetchGlobalGraph(true)" style="text-transform: none;">Fit Graph</button>
+        <button class="btn-subtle" onclick="fetchGlobalGraph(true)" style="text-transform: none;" title="Reset view and display all nodes">Full Graph</button>
+        <button class="btn-subtle" onclick="runSimulation(80)" style="text-transform: none;" title="Re-settle node layout">Fit</button>
       </div>
     </h2>
-    <div id="graph-section" style="position: relative; height: 360px; border: 1px solid var(--border); border-radius: var(--radius); background: #ffffff; overflow: hidden; cursor: grab;">
+    <div id="graph-section" style="position: relative; height: 380px; border: 1px solid var(--border); border-radius: var(--radius); background: #ffffff; overflow: hidden; cursor: grab;">
       <canvas id="graph-canvas" style="display: block; width: 100%; height: 100%;"></canvas>
       <div id="graph-empty-overlay" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 13px; pointer-events: none;">
         No graph data available. Upload documents to build the graph.
@@ -1012,6 +1016,15 @@ async function askQuestion() {
   const passagesMeta = document.getElementById('passages-meta');
 
   if (!q) return;
+
+  const ragBadge = document.getElementById('rag-mode-badge');
+  if (enableGraph) {
+    ragBadge.className = 'badge badge-graph';
+    ragBadge.textContent = 'Hybrid Graph RAG';
+  } else {
+    ragBadge.className = 'badge';
+    ragBadge.textContent = 'Standard Vector RAG';
+  }
 
   btn.disabled = true;
   answerBox.className = 'muted';

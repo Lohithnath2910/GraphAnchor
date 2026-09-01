@@ -21,9 +21,15 @@ class GraphExtraction(BaseModel):
 
 def extract_graph_from_chunk(text: str) -> GraphExtraction:
     """Extract entities and relationships from text using Ollama JSON mode.
-    Retries on transient failures (connection issues or malformed JSON) instead
-    of failing the whole ingest on the first hiccup."""
-    prompt = f"Extract all entities and relationships from the following text:\n\n{text}"
+    Resolves coreferences/pronouns to actual named entities and runs deterministically (temp=0.0)."""
+    prompt = (
+        "Extract all factual entities and relationships from the following text.\n\n"
+        "Strict Rules:\n"
+        "1. Coreference Resolution: Always resolve pronouns (he, she, it, they, his, her) to the actual named entity they refer to (e.g. 'Shayla', 'Lohith'). NEVER output pronouns as entity names.\n"
+        "2. Extract all traits, attributes, roles, and relationships as clean (entity, relation, target_entity) triples.\n"
+        "3. Keep entity and relation names concise, canonical, and meaningful.\n\n"
+        f"Text:\n{text}"
+    )
 
     last_err = None
     for attempt in range(config.ollama_max_retries + 1):
@@ -31,11 +37,11 @@ def extract_graph_from_chunk(text: str) -> GraphExtraction:
             response = ollama.chat(
                 model=config.llm_model,
                 messages=[
-                    {"role": "system", "content": "You are a graph extraction AI. Always respond in JSON matching the requested schema. Do not add any conversational text."},
+                    {"role": "system", "content": "You are an expert knowledge graph extraction engine. Output strictly valid JSON matching the schema."},
                     {"role": "user", "content": prompt}
                 ],
                 format=GraphExtraction.model_json_schema(),
-                options={"num_ctx": 4096}
+                options={"num_ctx": 4096, "temperature": 0.0}
             )
             return GraphExtraction.model_validate_json(response['message']['content'])
         except Exception as e:
