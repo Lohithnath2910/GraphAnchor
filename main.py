@@ -400,63 +400,53 @@ def query_chunks(
         connected_chunks = []
 
         if enable_graph:
-            anchor_entities = find_query_anchor_entities(q, emb, max_anchors=3)
+            anchor_entities = find_query_anchor_entities(q, emb, max_anchors=5)
             traversed_edges_set = set()
             traversed_chunk_ids = set()
 
             if anchor_entities:
-                anchor_names = {a[0] for a in anchor_entities}
-                with db_cursor() as cursor:
-                    # Hop 1 traversal
-                    hop1_neighbors = set()
-                    for ent, score in anchor_entities:
-                        cursor.execute("""
-                            SELECT source_entity, relation, target_entity, confidence, chunk_id
-                            FROM edges
-                            WHERE source_entity = ? OR target_entity = ?
-                            ORDER BY confidence DESC
-                            LIMIT 10
-                        """, (ent, ent))
-                        for row in cursor.fetchall():
-                            edge_key = (row[0], row[1], row[2])
-                            if edge_key not in traversed_edges_set:
-                                traversed_edges_set.add(edge_key)
-                                graph_results.append({
-                                    "source": row[0],
-                                    "relation": row[1],
-                                    "target": row[2],
-                                    "confidence": row[3],
-                                    "found_in_chunk": row[4]
-                                })
-                                if row[4]:
-                                    traversed_chunk_ids.add(row[4])
-                            # Collect next hops
-                            neighbor = row[2] if row[0] == ent else row[0]
-                            hop1_neighbors.add(neighbor)
+                visited_nodes = set()
+                current_frontier = {a[0] for a in anchor_entities}
 
-                    # Hop 2 traversal (expand top neighbor entities, avoiding immediate starting anchors)
-                    next_hop_candidates = [n for n in hop1_neighbors if n not in anchor_names]
-                    for neighbor in next_hop_candidates[:3]:
-                        cursor.execute("""
-                            SELECT source_entity, relation, target_entity, confidence, chunk_id
-                            FROM edges
-                            WHERE source_entity = ? OR target_entity = ?
-                            ORDER BY confidence DESC
-                            LIMIT 5
-                        """, (neighbor, neighbor))
-                        for row in cursor.fetchall():
-                            edge_key = (row[0], row[1], row[2])
-                            if edge_key not in traversed_edges_set:
-                                traversed_edges_set.add(edge_key)
-                                graph_results.append({
-                                    "source": row[0],
-                                    "relation": row[1],
-                                    "target": row[2],
-                                    "confidence": row[3],
-                                    "found_in_chunk": row[4]
-                                })
-                                if row[4]:
-                                    traversed_chunk_ids.add(row[4])
+                with db_cursor() as cursor:
+                    # Multi-hop BFS traversal up to depth 4
+                    for depth in range(4):
+                        if not current_frontier or len(traversed_edges_set) >= 35:
+                            break
+
+                        next_frontier = set()
+                        for node in current_frontier:
+                            if node in visited_nodes:
+                                continue
+                            visited_nodes.add(node)
+
+                            cursor.execute("""
+                                SELECT source_entity, relation, target_entity, confidence, chunk_id
+                                FROM edges
+                                WHERE source_entity = ? OR target_entity = ?
+                                ORDER BY confidence DESC
+                                LIMIT 10
+                            """, (node, node))
+
+                            for row in cursor.fetchall():
+                                edge_key = (row[0], row[1], row[2])
+                                if edge_key not in traversed_edges_set:
+                                    traversed_edges_set.add(edge_key)
+                                    graph_results.append({
+                                        "source": row[0],
+                                        "relation": row[1],
+                                        "target": row[2],
+                                        "confidence": row[3],
+                                        "found_in_chunk": row[4]
+                                    })
+                                    if row[4]:
+                                        traversed_chunk_ids.add(row[4])
+
+                                neighbor = row[2] if row[0] == node else row[0]
+                                if neighbor not in visited_nodes:
+                                    next_frontier.add(neighbor)
+
+                        current_frontier = next_frontier
 
                 primary_anchor = anchor_entities[0][0] if anchor_entities else None
                 graph_metadata = {

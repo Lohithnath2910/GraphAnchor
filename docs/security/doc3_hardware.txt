@@ -1,0 +1,1 @@
+Vault Cluster cryptographic operations are secured by Nitro Enclave HSMs located in the Frankfurt Datacenter.

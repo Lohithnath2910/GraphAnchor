@@ -21,14 +21,14 @@ class GraphExtraction(BaseModel):
 
 def extract_graph_from_chunk(text: str) -> GraphExtraction:
     """Extract entities and relationships from text using Ollama JSON mode.
-    Resolves coreferences/pronouns to actual named entities and runs deterministically (temp=0.0)."""
+    Resolves coreferences, eliminates pronouns/verbs as nodes, and runs deterministically (temp=0.0)."""
     prompt = (
-        "Extract clean, factual knowledge graph triples from the text.\n\n"
+        "Extract clean, canonical entities and factual relationships from the text.\n\n"
         "Strict Rules:\n"
-        "1. Coreference Resolution: Always resolve pronouns (he, she, it, they, his, her) to the actual named entity (e.g. 'Shayla', 'Lohith'). NEVER output pronouns like 'He' or 'She' as entity names.\n"
-        "2. The relation must be a concise verb phrase (e.g. 'is', 'has', 'partner_of').\n"
-        "3. The target must be the attribute, trait, or related entity (e.g. 'good person', 'very smart', 'god\\'s grace on this planet').\n"
-        "4. Extract all stated traits and relationships into clean (entity, relation, target_entity) triples.\n\n"
+        "1. Canonical Entities: Extract clear named entities (people, facilities, materials, projects, organizations, traits).\n"
+        "2. Coreference Resolution: Always resolve pronouns (he, she, it, they, his, her) to the actual named entity.\n"
+        "3. No First-Person/Verbs: NEVER use pronouns ('I', 'me', 'my', 'our', 'he', 'she') or verbs ('is', 'has') as entity names. Convert 'my project partner' to 'project partner'.\n"
+        "4. Concise Relations: Use concise relation verbs (e.g. 'leads', 'specializes_in', 'manufactured_by', 'partner_of', 'located_in', 'is').\n\n"
         f"Text:\n{text}"
     )
 
@@ -84,7 +84,7 @@ def generate_answer(
             seen_texts.add(txt)
             text_contexts.append(txt.strip())
 
-    # Format graph triples cleanly without confidence scores
+    # Format graph triples cleanly
     edge_contexts = []
     for edge in graph_edges:
         src = edge.get("source")
@@ -104,9 +104,12 @@ def generate_answer(
     full_context = "\n\n".join(context_parts)
 
     system_prompt = (
-        "You are GraphAnchor, a concise factual assistant. "
-        "Answer the user's question directly in 1-2 natural sentences using ONLY the provided facts and relationships.\n"
-        "Never use conversational filler, preambles (e.g. 'Based on the context'), disclaimers, or meta-commentary."
+        "You are GraphAnchor, an objective AI synthesis engine. "
+        "Answer the user's question using ONLY the provided text passages and knowledge graph relationships.\n\n"
+        "Mandatory Guidelines:\n"
+        "1. Third-Person Perspective: ALWAYS speak from an objective third-person perspective. Never refer to anyone as 'I', 'me', 'my', 'our', or 'you' (even if the source text uses first person).\n"
+        "2. Multi-Hop Bridging: When multi-hop facts are provided, construct a clear factual bridge connecting the starting entity to the final entity.\n"
+        "3. Direct Answer: Provide a direct, factual 1-2 sentence answer without conversational filler, disclaimers, or preambles."
     )
 
     user_prompt = f"Context:\n{full_context}\n\nQuestion: {query}\n\nAnswer:"
