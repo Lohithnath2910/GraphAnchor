@@ -3,150 +3,495 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GraphAnchor</title>
+<title>GraphAnchor — Local Hybrid Graph Search</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --border: #d9d9d9;
-    --text: #111111;
-    --muted: #666666;
     --bg: #ffffff;
+    --panel-bg: #fafafa;
+    --border: #e5e5e5;
+    --border-dark: #d4d4d4;
+    --text-main: #111111;
+    --text-muted: #666666;
+    --text-dim: #999999;
+    --accent: #000000;
+    --radius: 6px;
   }
-  * { box-sizing: border-box; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
   body {
-    margin: 0;
-    padding: 40px 16px 80px 16px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    color: var(--text);
     background: var(--bg);
+    color: var(--text-main);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     line-height: 1.5;
-    font-size: 15px;
+    font-size: 14px;
+    padding: 40px 20px 80px;
+    -webkit-font-smoothing: antialiased;
   }
-  .container { max-width: 720px; margin: 0 auto; }
-  h1 { font-size: 21px; margin: 0 0 4px 0; font-weight: 600; }
-  .subtitle { color: var(--muted); margin: 0 0 32px 0; font-size: 14px; }
-  .base-url { color: var(--muted); font-size: 12px; margin: 0 0 32px 0; }
-  .base-url input {
-    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  header {
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .brand h1 {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .brand-badge {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 1px 6px;
+    border: 1px solid var(--border-dark);
+    border-radius: 3px;
+    color: var(--text-muted);
+    background: #fff;
+  }
+
+  .brand p {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .top-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 12px;
-    border: 1px solid var(--border);
-    padding: 3px 6px;
-    width: 220px;
   }
+
+  .api-box {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--border);
+    padding: 4px 8px;
+    border-radius: var(--radius);
+    background: #fff;
+    color: var(--text-muted);
+  }
+
+  .api-box input {
+    border: none;
+    outline: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-main);
+    width: 140px;
+  }
+
+  /* Live Stats Bar */
+  .stats-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    background: var(--panel-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 16px;
+    margin-bottom: 24px;
+    font-size: 12px;
+  }
+
+  .stat-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--text-muted);
+  }
+
+  .stat-group span b {
+    color: var(--text-main);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Cards / Sections */
   section {
     border: 1px solid var(--border);
+    border-radius: var(--radius);
     padding: 20px;
     margin-bottom: 20px;
+    background: #ffffff;
   }
+
   h2 {
-    font-size: 13px;
+    font-size: 12px;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    margin: 0 0 16px 0;
-    color: var(--muted);
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
     font-weight: 600;
+    margin-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
+
   label {
-    font-size: 13px;
     display: block;
+    font-size: 12px;
+    color: var(--text-muted);
     margin-bottom: 4px;
-    color: var(--text);
+    font-weight: 500;
   }
-  input[type="text"], input[type="number"], input[type="file"] {
-    font-family: inherit;
-    font-size: 14px;
-    padding: 8px;
-    border: 1px solid var(--border);
+
+  input[type="text"], input[type="number"] {
     width: 100%;
-    margin-bottom: 12px;
+    padding: 8px 10px;
+    font-family: inherit;
+    font-size: 13px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-main);
     background: #fff;
-    color: var(--text);
+    outline: none;
+    transition: border-color 0.15s ease;
   }
+
+  input[type="text"]:focus, input[type="number"]:focus {
+    border-color: #111111;
+  }
+
+  /* Buttons */
   button {
     font-family: inherit;
-    font-size: 14px;
-    padding: 8px 18px;
-    border: 1px solid var(--text);
-    background: #fff;
-    color: var(--text);
-    cursor: pointer;
-  }
-  button:hover { background: var(--text); color: #fff; }
-  button:disabled { opacity: 0.4; cursor: default; }
-  button:disabled:hover { background: #fff; color: var(--text); }
-  .row { display: flex; gap: 12px; align-items: flex-end; }
-  .row > div { flex: 1; }
-  .k-field { max-width: 90px; flex: none !important; }
-  .status { color: var(--muted); font-size: 13px; margin: 12px 0 0 0; }
-  .muted { color: var(--muted); }
-  #answer-box { font-size: 14px; min-height: 20px; white-space: pre-wrap; }
-  .result-item { border-bottom: 1px solid var(--border); padding: 12px 0; }
-  .result-item:first-child { padding-top: 0; }
-  .result-item:last-child { border-bottom: none; padding-bottom: 0; }
-  .result-text { font-size: 14px; }
-  .result-meta { font-size: 12px; color: var(--muted); margin-top: 4px; }
-  .edge-row {
     font-size: 13px;
-    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
-    padding: 4px 0;
+    font-weight: 500;
+    padding: 7px 14px;
+    border-radius: var(--radius);
+    border: 1px solid var(--text-main);
+    background: #ffffff;
+    color: var(--text-main);
+    cursor: pointer;
+    transition: all 0.15s ease;
   }
-  #graph-section { margin-bottom: 8px; }
-  #graph-section svg { border: 1px solid var(--border); }
+
+  button:hover {
+    background: var(--text-main);
+    color: #ffffff;
+  }
+
+  button.btn-black {
+    background: var(--text-main);
+    color: #ffffff;
+  }
+
+  button.btn-black:hover {
+    background: #333333;
+    border-color: #333333;
+  }
+
+  button.btn-subtle {
+    border-color: var(--border);
+    color: var(--text-muted);
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+
+  button.btn-subtle:hover {
+    color: var(--text-main);
+    border-color: var(--text-main);
+    background: #fff;
+  }
+
+  button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  /* Layout helpers */
+  .row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+  }
+
+  .k-field {
+    max-width: 80px;
+    flex: none !important;
+  }
+
+  .prompt-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .pill {
+    font-size: 11px;
+    padding: 3px 8px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--text-muted);
+    background: var(--panel-bg);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .pill:hover {
+    color: var(--text-main);
+    border-color: var(--border-dark);
+  }
+
+  .toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+  }
+
+  .toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-muted);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .toggle-label input[type="checkbox"] {
+    accent-color: #000000;
+  }
+
+  /* Status messages */
+  .status {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 8px;
+  }
+
+  .status.error { color: #b91c1c; }
+  .status.success { color: #15803d; }
+
+  /* Answer Card */
+  .answer-card {
+    background: #ffffff;
+    border: 1px solid #111111;
+  }
+
+  #answer-box {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-main);
+    white-space: pre-wrap;
+    min-height: 24px;
+  }
+
+  #answer-box.muted {
+    color: var(--text-dim);
+  }
+
+  /* Passages / Chunks */
+  .passage-item {
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
+  }
+
+  .passage-item:first-child { padding-top: 0; }
+  .passage-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .passage-meta {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .badge {
+    font-size: 10px;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-weight: 500;
+    border: 1px solid var(--border-dark);
+    background: var(--panel-bg);
+    color: var(--text-main);
+    text-transform: uppercase;
+  }
+
+  .badge.badge-graph {
+    background: #111111;
+    color: #ffffff;
+    border-color: #111111;
+  }
+
+  .passage-text {
+    font-size: 13px;
+    color: var(--text-main);
+    line-height: 1.5;
+  }
+
+  /* Graph */
+  #graph-section {
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+    background: #ffffff;
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  #graph-section svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .edge-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+  }
+
+  .edge-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 0;
+    border-bottom: 1px dotted var(--border);
+  }
+
+  .edge-row:last-child { border-bottom: none; }
 </style>
 </head>
 <body>
 <div class="container">
 
-  <h1>GraphAnchor</h1>
-  <p class="subtitle">Local graph based document search.</p>
-  <p class="base-url">
-    Backend address:
-    <input type="text" id="api-base" value="http://localhost:8000">
-  </p>
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <h1>GraphAnchor <span class="brand-badge">Hybrid RAG</span></h1>
+      <p>Local knowledge graph traversal and vector-augmented document search.</p>
+    </div>
 
-  <section>
-    <h2>Add a document</h2>
-    <label for="file-input">Text file (.txt)</label>
-    <input type="file" id="file-input" accept=".txt">
-    <button onclick="uploadFile()" id="upload-btn">Upload</button>
-    <p class="status" id="upload-status"></p>
-  </section>
+    <div class="top-controls">
+      <div class="api-box">
+        <span>API:</span>
+        <input type="text" id="api-base" value="http://localhost:8000" onchange="fetchStats()">
+      </div>
+      <button class="btn-subtle" onclick="fetchStats()" title="Refresh live stats">↻ Refresh</button>
+      <button class="btn-subtle" onclick="resetDatabase()" title="Clear all indexed documents">Reset DB</button>
+    </div>
+  </header>
 
+  <!-- Live Stats Bar -->
+  <div class="stats-bar">
+    <div class="stat-group">
+      <span>Indexed Chunks: <b id="stat-chunks">-</b></span>
+      <span>Graph Edges: <b id="stat-edges">-</b></span>
+      <span>Known Entities: <b id="stat-entities">-</b></span>
+    </div>
+    <div class="stat-group">
+      <span style="font-size: 11px;">LLM: <b>qwen2.5-coder:7b</b></span>
+      <span style="font-size: 11px;">Embeddings: <b>arctic-embed2</b></span>
+    </div>
+  </div>
+
+  <!-- Document Ingest Section -->
   <section>
-    <h2>Ask a question</h2>
-    <label for="query-input">Question</label>
-    <input type="text" id="query-input" placeholder="who is lohith">
+    <h2>Add a document (.txt)</h2>
     <div class="row">
-      <div class="k-field">
-        <label for="k-input">Results</label>
-        <input type="number" id="k-input" value="5" min="1" max="20">
+      <div style="flex: 1;">
+        <input type="file" id="file-input" accept=".txt">
       </div>
       <div>
-        <button onclick="askQuestion()" id="ask-btn">Ask</button>
+        <button onclick="uploadFile()" id="upload-btn" class="btn-black">Upload &amp; Extract</button>
       </div>
+    </div>
+    <div class="status" id="upload-status"></div>
+  </section>
+
+  <!-- Question & Search Section -->
+  <section>
+    <h2>Ask a question</h2>
+    <input type="text" id="query-input" placeholder="e.g. who is lohith and what are his traits?">
+    
+    <div class="prompt-pills">
+      <span class="pill" onclick="setQuery('who is lohith')">who is lohith</span>
+      <span class="pill" onclick="setQuery('who is shayla and who is her project partner?')">shayla &amp; partner</span>
+      <span class="pill" onclick="setQuery('who is shayla\'s project partner and what are his traits?')">cross-document 2-hop</span>
+    </div>
+
+    <div class="toggle-row">
+      <label class="toggle-label" title="Enable multi-hop knowledge graph traversal to link cross-document relationships">
+        <input type="checkbox" id="graph-toggle" checked>
+        <span>Enable 2-Hop Graph Traversal (Hybrid RAG)</span>
+      </label>
+      <button onclick="askQuestion()" id="ask-btn" class="btn-black">Ask</button>
     </div>
   </section>
 
-  <section>
-    <h2>Answer</h2>
-    <p id="answer-box" class="muted">Ask a question to see an answer here.</p>
+  <!-- Grounded Answer Card -->
+  <section class="answer-card">
+    <h2>
+      <span>Grounded Answer</span>
+      <button class="btn-subtle" onclick="copyAnswer()" style="text-transform: none;">Copy</button>
+    </h2>
+    <div id="answer-box" class="muted">Ask a question above to see an evidence-grounded answer here.</div>
   </section>
 
+  <!-- Knowledge Graph Subgraph -->
   <section>
-    <h2>Matched text</h2>
-    <div id="vector-results"><p class="muted">No query run yet.</p></div>
+    <h2>
+      <span>Knowledge Graph Connections</span>
+      <span id="graph-meta" style="font-size: 11px; text-transform: none; font-weight: 400; color: var(--text-muted);"></span>
+    </h2>
+    <div id="graph-section">
+      <p style="padding: 32px 16px; text-align: center; color: var(--text-dim); font-size: 13px;">No graph query run yet.</p>
+    </div>
+    <div class="edge-list" id="edge-list"></div>
   </section>
 
+  <!-- Retrieved Text Passages -->
   <section>
-    <h2>Graph connections</h2>
-    <div id="graph-section"><p class="muted">No query run yet.</p></div>
-    <div id="edge-list"></div>
+    <h2>
+      <span>Retrieved Text Passages</span>
+      <span id="passages-meta" style="font-size: 11px; text-transform: none; font-weight: 400; color: var(--text-muted);"></span>
+    </h2>
+    <div id="vector-results">
+      <p style="color: var(--text-dim); font-size: 13px;">No query run yet.</p>
+    </div>
   </section>
 
 </div>
 
 <script>
+// Auto-detect backend if served directly from FastAPI
+if (window.location.protocol.startsWith('http')) {
+  document.getElementById('api-base').value = window.location.origin;
+}
+
 function apiBase() {
-  return document.getElementById('api-base').value.replace(/\/$/, '');
+  const val = document.getElementById('api-base').value.trim();
+  return val.replace(/\/$/, '') || window.location.origin;
 }
 
 function escapeHtml(str) {
@@ -155,13 +500,66 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
+function setQuery(text) {
+  const input = document.getElementById('query-input');
+  input.value = text;
+  input.focus();
+  askQuestion();
+}
+
+async function fetchStats() {
+  const chunksEl = document.getElementById('stat-chunks');
+  const edgesEl = document.getElementById('stat-edges');
+  const entitiesEl = document.getElementById('stat-entities');
+
+  try {
+    const res = await fetch(apiBase() + '/graph/stats');
+    if (!res.ok) throw new Error();
+    const data = await res.json();
+    chunksEl.textContent = data.chunk_count;
+    edgesEl.textContent = data.edge_count;
+    entitiesEl.textContent = data.total_entities_known;
+  } catch (err) {
+    chunksEl.textContent = '-';
+    edgesEl.textContent = '-';
+    entitiesEl.textContent = '-';
+  }
+}
+
+async function resetDatabase() {
+  if (!confirm('Are you sure you want to permanently clear all documents, chunks, and graph edges from SQLite and ChromaDB?')) {
+    return;
+  }
+  try {
+    const res = await fetch(apiBase() + '/reset?confirm=true', { method: 'DELETE' });
+    const data = await res.json();
+    if (res.ok) {
+      alert(data.message || 'Database reset successfully.');
+      fetchStats();
+      document.getElementById('answer-box').className = 'muted';
+      document.getElementById('answer-box').textContent = 'Ask a question above to see an evidence-grounded answer here.';
+      document.getElementById('vector-results').innerHTML = '<p style="color: var(--text-dim); font-size: 13px;">No query run yet.</p>';
+      document.getElementById('graph-section').innerHTML = '<p style="padding: 32px 16px; text-align: center; color: var(--text-dim); font-size: 13px;">No graph query run yet.</p>';
+      document.getElementById('edge-list').innerHTML = '';
+      document.getElementById('upload-status').textContent = '';
+      document.getElementById('graph-meta').textContent = '';
+      document.getElementById('passages-meta').textContent = '';
+    } else {
+      alert('Reset failed: ' + (data.detail || res.status));
+    }
+  } catch (err) {
+    alert('Could not reach backend at ' + apiBase());
+  }
+}
+
 async function uploadFile() {
   const fileInput = document.getElementById('file-input');
   const status = document.getElementById('upload-status');
   const btn = document.getElementById('upload-btn');
 
   if (!fileInput.files.length) {
-    status.textContent = 'Choose a file first.';
+    status.className = 'status error';
+    status.textContent = 'Please choose a .txt file first.';
     return;
   }
 
@@ -169,30 +567,36 @@ async function uploadFile() {
   formData.append('file', fileInput.files[0]);
 
   btn.disabled = true;
-  status.textContent = 'Uploading...';
+  status.className = 'status';
+  status.textContent = 'Extracting entities & building graph...';
 
   try {
     const res = await fetch(apiBase() + '/ingest', { method: 'POST', body: formData });
     const data = await res.json();
 
     if (!res.ok) {
+      status.className = 'status error';
       status.textContent = 'Error: ' + (data.detail || res.status);
       return;
     }
 
+    status.className = 'status success';
     if (data.duplicate) {
-      status.textContent = 'Already added earlier (doc_id ' + data.doc_id + ').';
+      status.textContent = 'Document already indexed earlier (doc_id: ' + data.doc_id.slice(0, 8) + '...).';
     } else {
-      let msg = 'Added. Chunks: ' + data.chunks_processed +
+      let msg = 'Indexed successfully! Chunks: ' + data.chunks_processed +
         ', entities: ' + data.entities_extracted +
         ', edges: ' + data.edges_added + '.';
       if (data.extraction_failures) {
-        msg += ' ' + data.extraction_failures + ' chunk(s) failed extraction.';
+        msg += ' (' + data.extraction_failures + ' chunk extraction warnings).';
       }
       status.textContent = msg;
+      fileInput.value = '';
     }
+    fetchStats();
   } catch (err) {
-    status.textContent = 'Could not reach the backend at ' + apiBase() + '.';
+    status.className = 'status error';
+    status.textContent = 'Could not reach backend at ' + apiBase() + '.';
   } finally {
     btn.disabled = false;
   }
@@ -200,128 +604,238 @@ async function uploadFile() {
 
 async function askQuestion() {
   const q = document.getElementById('query-input').value.trim();
-  const k = document.getElementById('k-input').value || 5;
+  const enableGraph = document.getElementById('graph-toggle').checked;
   const btn = document.getElementById('ask-btn');
 
   const answerBox = document.getElementById('answer-box');
   const vectorList = document.getElementById('vector-results');
   const graphSection = document.getElementById('graph-section');
   const edgeList = document.getElementById('edge-list');
+  const graphMeta = document.getElementById('graph-meta');
+  const passagesMeta = document.getElementById('passages-meta');
 
   if (!q) return;
 
   btn.disabled = true;
   answerBox.className = 'muted';
-  answerBox.textContent = 'Searching...';
+  answerBox.textContent = 'Searching index and synthesizing answer...';
   vectorList.innerHTML = '';
   edgeList.innerHTML = '';
-  graphSection.innerHTML = '';
+  graphSection.innerHTML = '<p style="padding: 32px 16px; text-align: center; color: var(--text-dim); font-size: 13px;">Computing graph layout...</p>';
 
   try {
-    const url = apiBase() + '/query?q=' + encodeURIComponent(q) + '&k=' + encodeURIComponent(k);
+    const url = apiBase() + '/query?q=' + encodeURIComponent(q) +
+      '&k=3' +
+      '&enable_graph=' + encodeURIComponent(enableGraph);
     const res = await fetch(url);
     const data = await res.json();
 
     if (!res.ok) {
+      answerBox.className = 'status error';
       answerBox.textContent = 'Error: ' + (data.detail || res.status);
       return;
     }
 
+    // 1. Answer Box
     if (data.answer) {
       answerBox.className = '';
       answerBox.textContent = data.answer;
     } else {
       answerBox.className = 'muted';
-      answerBox.textContent = 'No generated answer yet. See the matched text and graph connections below.';
+      answerBox.textContent = 'No answer generated.';
     }
 
-    const results = data.vector_search_results || [];
-    if (results.length === 0) {
-      vectorList.innerHTML = '<p class="muted">No matches.</p>';
+    // 2. Passages
+    const vectorResults = data.vector_search_results || [];
+    const connectedChunks = (data.graph_traversal && data.graph_traversal.connected_chunks) || [];
+    const totalPassages = vectorResults.length + connectedChunks.length;
+    passagesMeta.textContent = '(' + totalPassages + ' total passages)';
+
+    if (totalPassages === 0) {
+      vectorList.innerHTML = '<p style="color: var(--text-dim); font-size: 13px;">No matching text passages found.</p>';
     } else {
       vectorList.innerHTML = '';
-      results.forEach(function (r) {
+      
+      vectorResults.forEach((r, idx) => {
         const item = document.createElement('div');
-        item.className = 'result-item';
+        item.className = 'passage-item';
         const dist = (r.distance !== null && r.distance !== undefined) ? Number(r.distance).toFixed(3) : 'n/a';
-        item.innerHTML = '<div class="result-text">' + escapeHtml(r.text) + '</div>' +
-          '<div class="result-meta">distance ' + dist + '</div>';
+        item.innerHTML = `
+          <div class="passage-meta">
+            <span class="badge">Vector Match #${idx + 1}</span>
+            <span>cosine distance: ${dist}</span>
+          </div>
+          <div class="passage-text">${escapeHtml(r.text)}</div>
+        `;
+        vectorList.appendChild(item);
+      });
+
+      connectedChunks.forEach((c) => {
+        const item = document.createElement('div');
+        item.className = 'passage-item';
+        item.innerHTML = `
+          <div class="passage-meta">
+            <span class="badge badge-graph">Graph-Connected Passage</span>
+            <span>chunk ID: ${escapeHtml(c.chunk_id)}</span>
+          </div>
+          <div class="passage-text">${escapeHtml(c.text)}</div>
+        `;
         vectorList.appendChild(item);
       });
     }
 
+    // 3. Knowledge Graph
     const traversal = data.graph_traversal || {};
     const edges = traversal.edges || [];
     const meta = traversal.metadata || {};
 
     if (edges.length === 0) {
-      graphSection.innerHTML = '<p class="muted">' + escapeHtml(meta.message || 'No connections found for this query.') + '</p>';
+      graphSection.innerHTML = `<p style="padding: 32px 16px; text-align: center; color: var(--text-dim); font-size: 13px;">${escapeHtml(meta.message || 'No graph connections found for this query.')}</p>`;
+      graphMeta.textContent = '';
+      edgeList.innerHTML = '';
     } else {
-      drawGraph(meta.traversed_from_entity, edges);
-      edges.forEach(function (e) {
+      const anchorEntities = meta.anchor_entities || (meta.traversed_from_entity ? [meta.traversed_from_entity] : []);
+      graphMeta.textContent = '(' + edges.length + ' edges traversed)';
+      drawCleanGraph(anchorEntities, edges);
+
+      edgeList.innerHTML = '';
+      edges.forEach((e) => {
         const row = document.createElement('div');
         row.className = 'edge-row';
-        const conf = Number(e.confidence).toFixed(2);
-        row.textContent = e.source + '  ->  ' + e.relation + '  ->  ' + e.target + '   (confidence ' + conf + ')';
+        const conf = (e.confidence !== null && e.confidence !== undefined) ? Number(e.confidence).toFixed(2) : '1.00';
+        row.innerHTML = `
+          <span>${escapeHtml(e.source)} &rarr; <i>${escapeHtml(e.relation)}</i> &rarr; ${escapeHtml(e.target)}</span>
+          <span style="color: var(--text-dim); font-size: 11px;">conf ${conf}</span>
+        `;
         edgeList.appendChild(row);
       });
     }
   } catch (err) {
-    answerBox.className = 'muted';
-    answerBox.textContent = 'Could not reach the backend at ' + apiBase() + '.';
+    answerBox.className = 'status error';
+    answerBox.textContent = 'Could not reach backend at ' + apiBase();
   } finally {
     btn.disabled = false;
   }
 }
 
-function drawGraph(centerEntity, edges) {
+function drawCleanGraph(anchorEntities, edges) {
   const svgNS = 'http://www.w3.org/2000/svg';
-  const width = 600, height = 340, cx = width / 2, cy = height / 2, radius = 120;
+  const width = 600, height = 300;
+  const cx = width / 2, cy = height / 2;
 
-  const others = [];
-  edges.forEach(function (e) {
-    const other = (e.source === centerEntity) ? e.target : e.source;
-    if (others.indexOf(other) === -1) others.push(other);
+  const nodeSet = new Set();
+  const anchorSet = new Set(anchorEntities.map(a => String(a).toLowerCase()));
+
+  edges.forEach((e) => {
+    if (e.source) nodeSet.add(e.source);
+    if (e.target) nodeSet.add(e.target);
   });
 
+  const nodes = Array.from(nodeSet);
+  if (nodes.length === 0) return;
+
   const svg = document.createElementNS(svgNS, 'svg');
-  svg.setAttribute('viewBox', '0 0 ' + width + ' ' + height);
+  svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
   svg.setAttribute('width', '100%');
   svg.setAttribute('height', height);
 
+  // Arrow marker
+  const defs = document.createElementNS(svgNS, 'defs');
+  defs.innerHTML = `
+    <marker id="arrow" markerWidth="6" markerHeight="6" refX="14" refY="3" orient="auto">
+      <polygon points="0 0, 6 3, 0 6" fill="#888888" />
+    </marker>
+  `;
+  svg.appendChild(defs);
+
+  // Calculate layout
   const positions = {};
-  others.forEach(function (name, i) {
-    const angle = (i / others.length) * 2 * Math.PI - Math.PI / 2;
-    positions[name] = { x: cx + radius * Math.cos(angle), y: cy + radius * Math.sin(angle) };
+  const primaryAnchors = nodes.filter(n => anchorSet.has(n.toLowerCase()));
+  const otherNodes = nodes.filter(n => !anchorSet.has(n.toLowerCase()));
+
+  if (primaryAnchors.length === 1) {
+    positions[primaryAnchors[0]] = { x: cx, y: cy };
+  } else if (primaryAnchors.length > 1) {
+    const innerRadius = 50;
+    primaryAnchors.forEach((name, i) => {
+      const angle = (i / primaryAnchors.length) * 2 * Math.PI - Math.PI / 2;
+      positions[name] = {
+        x: cx + innerRadius * Math.cos(angle),
+        y: cy + innerRadius * Math.sin(angle)
+      };
+    });
+  }
+
+  const outerRadius = Math.min(115, Math.max(85, 20 + otherNodes.length * 12));
+  otherNodes.forEach((name, i) => {
+    const angle = (i / Math.max(1, otherNodes.length)) * 2 * Math.PI - Math.PI / 2;
+    positions[name] = {
+      x: cx + outerRadius * Math.cos(angle),
+      y: cy + outerRadius * Math.sin(angle)
+    };
   });
 
-  edges.forEach(function (e) {
-    const other = (e.source === centerEntity) ? e.target : e.source;
-    const pos = positions[other];
+  nodes.forEach((name, i) => {
+    if (!positions[name]) {
+      const angle = (i / nodes.length) * 2 * Math.PI;
+      positions[name] = { x: cx + 90 * Math.cos(angle), y: cy + 90 * Math.sin(angle) };
+    }
+  });
+
+  // Draw Edges
+  edges.forEach((e) => {
+    const p1 = positions[e.source];
+    const p2 = positions[e.target];
+    if (!p1 || !p2) return;
 
     const line = document.createElementNS(svgNS, 'line');
-    line.setAttribute('x1', cx);
-    line.setAttribute('y1', cy);
-    line.setAttribute('x2', pos.x);
-    line.setAttribute('y2', pos.y);
-    line.setAttribute('stroke', '#888888');
-    line.setAttribute('stroke-width', '1');
+    line.setAttribute('x1', p1.x);
+    line.setAttribute('y1', p1.y);
+    line.setAttribute('x2', p2.x);
+    line.setAttribute('y2', p2.y);
+    line.setAttribute('stroke', '#cccccc');
+    line.setAttribute('stroke-width', '1.2');
+    line.setAttribute('marker-end', 'url(#arrow)');
     svg.appendChild(line);
 
-    const label = document.createElementNS(svgNS, 'text');
-    label.setAttribute('x', (cx + pos.x) / 2);
-    label.setAttribute('y', (cy + pos.y) / 2 - 5);
-    label.setAttribute('font-size', '11');
-    label.setAttribute('fill', '#666666');
-    label.setAttribute('text-anchor', 'middle');
-    label.setAttribute('font-family', '-apple-system, sans-serif');
-    label.textContent = e.relation;
-    svg.appendChild(label);
+    // Edge text
+    const midX = (p1.x + p2.x) / 2;
+    const midY = (p1.y + p2.y) / 2;
+    const text = document.createElementNS(svgNS, 'text');
+    text.setAttribute('x', midX);
+    text.setAttribute('y', midY - 4);
+    text.setAttribute('font-size', '10');
+    text.setAttribute('fill', '#666666');
+    text.setAttribute('text-anchor', 'middle');
+    text.setAttribute('font-family', "'JetBrains Mono', monospace");
+    text.textContent = e.relation;
+    svg.appendChild(text);
   });
 
-  addNode(svg, cx, cy, centerEntity, true);
-  others.forEach(function (name) {
-    addNode(svg, positions[name].x, positions[name].y, name, false);
+  // Draw Nodes
+  nodes.forEach((name) => {
+    const pos = positions[name];
+    const isAnchor = anchorSet.has(name.toLowerCase());
+
+    const circle = document.createElementNS(svgNS, 'circle');
+    circle.setAttribute('cx', pos.x);
+    circle.setAttribute('cy', pos.y);
+    circle.setAttribute('r', isAnchor ? 7 : 5);
+    circle.setAttribute('fill', isAnchor ? '#111111' : '#ffffff');
+    circle.setAttribute('stroke', '#111111');
+    circle.setAttribute('stroke-width', '1.5');
+    svg.appendChild(circle);
+
+    const label = document.createElementNS(svgNS, 'text');
+    label.setAttribute('x', pos.x);
+    label.setAttribute('y', pos.y + (pos.y < cy ? -10 : 16));
+    label.setAttribute('font-size', '11');
+    label.setAttribute('font-weight', isAnchor ? '600' : '400');
+    label.setAttribute('text-anchor', 'middle');
+    label.setAttribute('fill', '#111111');
+    label.setAttribute('font-family', "'Inter', sans-serif");
+    label.textContent = name;
+    svg.appendChild(label);
   });
 
   const container = document.getElementById('graph-section');
@@ -329,33 +843,21 @@ function drawGraph(centerEntity, edges) {
   container.appendChild(svg);
 }
 
-function addNode(svg, x, y, label, isCenter) {
-  const svgNS = 'http://www.w3.org/2000/svg';
-
-  const circle = document.createElementNS(svgNS, 'circle');
-  circle.setAttribute('cx', x);
-  circle.setAttribute('cy', y);
-  circle.setAttribute('r', isCenter ? 7 : 5);
-  circle.setAttribute('fill', isCenter ? '#111111' : '#ffffff');
-  circle.setAttribute('stroke', '#111111');
-  circle.setAttribute('stroke-width', '1.5');
-  svg.appendChild(circle);
-
-  const text = document.createElementNS(svgNS, 'text');
-  text.setAttribute('x', x);
-  text.setAttribute('y', y - 12);
-  text.setAttribute('font-size', '12');
-  text.setAttribute('text-anchor', 'middle');
-  text.setAttribute('fill', '#111111');
-  text.setAttribute('font-family', '-apple-system, sans-serif');
-  text.setAttribute('font-weight', isCenter ? '600' : '400');
-  text.textContent = label;
-  svg.appendChild(text);
+function copyAnswer() {
+  const answer = document.getElementById('answer-box').textContent;
+  if (!answer || answer.includes('Ask a question above')) return;
+  navigator.clipboard.writeText(answer).then(() => {
+    alert('Answer copied to clipboard!');
+  });
 }
 
-document.getElementById('query-input').addEventListener('keydown', function (e) {
+// Initial stats fetch on load
+fetchStats();
+
+document.getElementById('query-input').addEventListener('keydown', (e) => {
   if (e.key === 'Enter') askQuestion();
 });
 </script>
 </body>
 </html>
+
