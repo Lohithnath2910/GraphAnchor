@@ -77,16 +77,14 @@ def generate_answer(
             seen_texts.add(txt)
             text_contexts.append(txt.strip())
 
-    # Format graph triples
+    # Format graph triples cleanly without confidence scores
     edge_contexts = []
     for edge in graph_edges:
         src = edge.get("source")
         rel = edge.get("relation")
         tgt = edge.get("target")
-        conf = edge.get("confidence")
         if src and rel and tgt:
-            conf_str = f" (confidence: {conf:.2f})" if isinstance(conf, (int, float)) else ""
-            edge_contexts.append(f"- {src} -> {rel} -> {tgt}{conf_str}")
+            edge_contexts.append(f"- {src} -> {rel} -> {tgt}")
 
     context_parts = []
     if text_contexts:
@@ -99,10 +97,13 @@ def generate_answer(
     full_context = "\n\n".join(context_parts)
 
     system_prompt = (
-        "You are GraphAnchor, an intelligent assistant answering questions based on personal documents and a local knowledge graph. "
-        "Answer the user's question accurately, concisely, and objectively using ONLY the facts present in the provided context below. "
-        "Combine information from both text passages and knowledge graph relationships where helpful. "
-        "If the context does not contain enough information to answer the question, state that clearly."
+        "You are GraphAnchor, a concise and direct factual assistant. "
+        "Answer the user's question directly, clearly, and naturally using ONLY the provided context and knowledge graph facts.\n\n"
+        "Strict Guidelines:\n"
+        "1. Answer directly in 1-3 sentences without repeating the question.\n"
+        "2. Do NOT include preambles, boilerplate, or meta-commentary (never say 'Based on the provided context', 'According to the knowledge graph', 'Therefore the answer is', or 'I can answer the question').\n"
+        "3. Synthesize facts across different passages and relationships smoothly into natural sentences.\n"
+        "4. If the context does not contain enough information, simply state what is unknown."
     )
 
     user_prompt = f"Context:\n{full_context}\n\nQuestion: {query}\n\nAnswer:"
@@ -116,7 +117,7 @@ def generate_answer(
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt}
                 ],
-                options={"num_ctx": 4096, "temperature": 0.2}
+                options={"num_ctx": 4096, "temperature": 0.1}
             )
             return response['message']['content'].strip()
         except Exception as e:
