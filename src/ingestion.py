@@ -16,6 +16,7 @@ def chunk_text(text: str) -> List[str]:
         return []
         
     start = 0
+    step = max(1, chunk_size - overlap)
     while start < len(tokens):
         end = min(start + chunk_size, len(tokens))
         chunk_tokens = tokens[start:end]
@@ -24,7 +25,7 @@ def chunk_text(text: str) -> List[str]:
         if end == len(tokens):
             break
             
-        start += (chunk_size - overlap)
+        start += step
         
     return chunks
 

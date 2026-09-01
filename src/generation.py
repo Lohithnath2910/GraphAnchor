@@ -1,5 +1,4 @@
 import ollama
-import json
 import logging
 import time
 from pydantic import BaseModel, Field
@@ -44,8 +43,90 @@ def extract_graph_from_chunk(text: str) -> GraphExtraction:
 
     raise RuntimeError(f"Graph extraction failed after {config.ollama_max_retries + 1} attempt(s): {last_err}") from last_err
 
+def generate_answer(
+    query: str,
+    vector_chunks: List[dict] = None,
+    graph_edges: List[dict] = None,
+    traversed_chunks: List[dict] = None
+) -> str:
+    """Generate grounded answer from retrieved text chunks and knowledge graph facts."""
+    vector_chunks = vector_chunks or []
+    graph_edges = graph_edges or []
+    traversed_chunks = traversed_chunks or []
+
+    # If completely empty context
+    if not vector_chunks and not graph_edges and not traversed_chunks:
+        return "I could not find any relevant information in the knowledge base to answer your question."
+
+    # Collect and deduplicate unique text chunks
+    seen_texts = set()
+    text_contexts = []
+
+    for item in vector_chunks:
+        txt = item.get("text")
+        if txt and txt.strip() and txt not in seen_texts:
+            seen_texts.add(txt)
+            text_contexts.append(txt.strip())
+
+    for item in traversed_chunks:
+        txt = item.get("text")
+        if txt and txt.strip() and txt not in seen_texts:
+            seen_texts.add(txt)
+            text_contexts.append(txt.strip())
+
+    # Format graph triples
+    edge_contexts = []
+    for edge in graph_edges:
+        src = edge.get("source")
+        rel = edge.get("relation")
+        tgt = edge.get("target")
+        conf = edge.get("confidence")
+        if src and rel and tgt:
+            conf_str = f" (confidence: {conf:.2f})" if isinstance(conf, (int, float)) else ""
+            edge_contexts.append(f"- {src} -> {rel} -> {tgt}{conf_str}")
+
+    context_parts = []
+    if text_contexts:
+        passages = "\n\n".join(f"[{i+1}] {t}" for i, t in enumerate(text_contexts))
+        context_parts.append(f"### Relevant Text Passages:\n{passages}")
+    if edge_contexts:
+        triples = "\n".join(edge_contexts)
+        context_parts.append(f"### Knowledge Graph Relationships:\n{triples}")
+
+    full_context = "\n\n".join(context_parts)
+
+    system_prompt = (
+        "You are GraphAnchor, an intelligent assistant answering questions based on personal documents and a local knowledge graph. "
+        "Answer the user's question accurately, concisely, and objectively using ONLY the facts present in the provided context below. "
+        "Combine information from both text passages and knowledge graph relationships where helpful. "
+        "If the context does not contain enough information to answer the question, state that clearly."
+    )
+
+    user_prompt = f"Context:\n{full_context}\n\nQuestion: {query}\n\nAnswer:"
+
+    last_err = None
+    for attempt in range(config.ollama_max_retries + 1):
+        try:
+            response = ollama.chat(
+                model=config.llm_model,
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt}
+                ],
+                options={"num_ctx": 4096, "temperature": 0.2}
+            )
+            return response['message']['content'].strip()
+        except Exception as e:
+            last_err = e
+            logger.warning(f"Answer generation attempt {attempt + 1} failed: {e}")
+            if attempt < config.ollama_max_retries:
+                time.sleep(1.5 * (attempt + 1))
+
+    raise RuntimeError(f"Answer generation failed after {config.ollama_max_retries + 1} attempt(s): {last_err}") from last_err
+
 if __name__ == "__main__":
     sample_text = "Apple was founded by Steve Jobs and Steve Wozniak in Cupertino, California."
     print("Extracting graph...")
     res = extract_graph_from_chunk(sample_text)
     print(res.model_dump_json(indent=2))
+

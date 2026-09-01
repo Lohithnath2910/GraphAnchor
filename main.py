@@ -2,20 +2,26 @@ import os
 import uuid
 import hashlib
 import logging
-import chromadb
 from fastapi import FastAPI, File, UploadFile, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
-from typing import List, Dict
+from typing import List, Dict, Optional, Tuple
 
 from src.config import config
 from src.ingestion import chunk_text
-from src.storage import get_db_connection, db_cursor, collection, chroma_client
+from src.storage import (
+    db_cursor,
+    get_chunks_collection,
+    get_entities_collection,
+    reset_all_data
+)
 from src.retrieval import get_embedding
-from src.generation import extract_graph_from_chunk, GraphExtraction
+from src.generation import extract_graph_from_chunk, generate_answer, GraphExtraction
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
 logger = logging.getLogger("graphanchor")
+
 
 app = FastAPI(title="GraphAnchor")
 
@@ -27,9 +33,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Ensure entities collection uses cosine distance for proper thresholding
-entities_collection = chroma_client.get_or_create_collection(name="entities", metadata={"hnsw:space": "cosine"})
-
 class IngestResponse(BaseModel):
     doc_id: str
     chunks_processed: int
@@ -38,25 +41,31 @@ class IngestResponse(BaseModel):
     extraction_failures: int = 0
     duplicate: bool = False
 
-def place_entity(entity_str: str) -> tuple[str, float]:
-    """Returns canonical entity name and confidence"""
+def place_entity(entity_str: str, staged_entities: Optional[List[str]] = None) -> Tuple[str, float]:
+    """Returns canonical entity name and confidence.
+    If a new entity is created and staged_entities is provided, tracks it for rollback safety."""
     if not entity_str:
         return "", 0.0
 
-    # 1. Exact match
+    entity_clean = entity_str.strip()
+    if not entity_clean:
+        return "", 0.0
+
+    entities_col = get_entities_collection()
+
+    # 1. Exact match lookup
     try:
-        res = entities_collection.get(ids=[entity_str])
+        res = entities_col.get(ids=[entity_clean])
         if res and res.get('ids') and len(res['ids']) > 0:
-            return entity_str, 1.0
+            return entity_clean, 1.0
     except Exception as e:
-        logger.warning(f"Exact-match lookup failed for '{entity_str}': {e}")
+        logger.warning(f"Exact-match lookup failed for '{entity_clean}': {e}")
 
     # 2. Embedding similarity fallback
-    emb = get_embedding(entity_str)
+    emb = get_embedding(entity_clean)
 
-    # If DB is empty, just insert
-    if entities_collection.count() > 0:
-        search_res = entities_collection.query(
+    if entities_col.count() > 0:
+        search_res = entities_col.query(
             query_embeddings=[emb],
             n_results=1
         )
@@ -70,12 +79,14 @@ def place_entity(entity_str: str) -> tuple[str, float]:
                 return canonical, float(sim)
 
     # 3. Insert as unconnected island
-    entities_collection.add(
-        ids=[entity_str],
+    entities_col.add(
+        ids=[entity_clean],
         embeddings=[emb],
-        documents=[entity_str]
+        documents=[entity_clean]
     )
-    return entity_str, 1.0
+    if staged_entities is not None:
+        staged_entities.append(entity_clean)
+    return entity_clean, 1.0
 
 @app.post("/ingest", response_model=IngestResponse)
 async def ingest_document(file: UploadFile = File(...)):
@@ -118,6 +129,11 @@ async def ingest_document(file: UploadFile = File(...)):
     total_edges = 0
     extraction_failures = 0
 
+    staged_chunk_ids: List[str] = []
+    staged_entity_ids: List[str] = []
+    chunks_col = get_chunks_collection()
+    entities_col = get_entities_collection()
+
     try:
         with db_cursor() as cursor:
             for i, chunk_text_content in enumerate(chunks):
@@ -127,16 +143,19 @@ async def ingest_document(file: UploadFile = File(...)):
                 chunk_emb = get_embedding(chunk_text_content)
 
                 # Add to ChromaDB chunks
-                collection.add(
+                chunks_col.add(
                     ids=[chunk_id],
                     embeddings=[chunk_emb],
                     documents=[chunk_text_content],
                     metadatas=[{"chunk_id": chunk_id, "doc_id": doc_id}]
                 )
+                staged_chunk_ids.append(chunk_id)
 
                 # Add to SQLite chunks
-                cursor.execute("INSERT INTO chunks (chunk_id, doc_id, text) VALUES (?, ?, ?)",
-                              (chunk_id, doc_id, chunk_text_content))
+                cursor.execute(
+                    "INSERT INTO chunks (chunk_id, doc_id, text) VALUES (?, ?, ?)",
+                    (chunk_id, doc_id, chunk_text_content)
+                )
 
                 # Extract graph
                 try:
@@ -149,8 +168,8 @@ async def ingest_document(file: UploadFile = File(...)):
                 total_entities += len(extraction.entities)
 
                 for rel in extraction.relations:
-                    src_canonical, src_conf = place_entity(rel.entity)
-                    tgt_canonical, tgt_conf = place_entity(rel.target_entity)
+                    src_canonical, src_conf = place_entity(rel.entity, staged_entities=staged_entity_ids)
+                    tgt_canonical, tgt_conf = place_entity(rel.target_entity, staged_entities=staged_entity_ids)
 
                     if not src_canonical or not tgt_canonical:
                         continue
@@ -168,7 +187,18 @@ async def ingest_document(file: UploadFile = File(...)):
                 (doc_id, content_hash, file.filename)
             )
     except Exception as e:
-        logger.error(f"Ingest failed for doc {doc_id}: {e}")
+        logger.error(f"Ingest failed for doc {doc_id}: {e}. Rolling back staged ChromaDB entries.")
+        # Roll back ChromaDB chunks and entities to maintain 100% sync with SQLite transaction rollback
+        if staged_chunk_ids:
+            try:
+                chunks_col.delete(ids=staged_chunk_ids)
+            except Exception as rollback_err:
+                logger.warning(f"Error rolling back ChromaDB chunks: {rollback_err}")
+        if staged_entity_ids:
+            try:
+                entities_col.delete(ids=staged_entity_ids)
+            except Exception as rollback_err:
+                logger.warning(f"Error rolling back ChromaDB entities: {rollback_err}")
         raise HTTPException(status_code=500, detail="Ingestion failed; no partial data was committed.")
 
     return IngestResponse(
@@ -181,38 +211,16 @@ async def ingest_document(file: UploadFile = File(...)):
 
 @app.delete("/reset")
 def reset_databases(confirm: bool = False):
-    """Clear all data from SQLite and ChromaDB. Pass ?confirm=true to actually run this."""
+    """Clear all data from SQLite and ChromaDB. Pass ?confirm=true to proceed."""
     if not confirm:
         raise HTTPException(status_code=400, detail="This permanently deletes all data. Pass ?confirm=true to proceed.")
 
-    global entities_collection, collection
-
-    # 1. Clear SQLite
     try:
-        with db_cursor() as cursor:
-            cursor.execute("DELETE FROM chunks")
-            cursor.execute("DELETE FROM edges")
-            cursor.execute("DELETE FROM documents")
+        reset_all_data()
+        return {"message": "All databases cleared successfully."}
     except Exception as e:
-        logger.error(f"SQLite reset failed: {e}")
-        raise HTTPException(status_code=500, detail="Failed to reset SQLite tables.")
-
-    # 2. Clear ChromaDB by deleting and recreating collections
-    try:
-        chroma_client.delete_collection("chunks")
-    except Exception:
-        pass
-
-    try:
-        chroma_client.delete_collection("entities")
-    except Exception:
-        pass
-
-    # Recreate them so they are ready for the next ingest
-    collection = chroma_client.get_or_create_collection(name="chunks")
-    entities_collection = chroma_client.get_or_create_collection(name="entities", metadata={"hnsw:space": "cosine"})
-
-    return {"message": "All databases cleared successfully."}
+        logger.error(f"Reset failed: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to reset databases: {e}")
 
 @app.get("/graph/stats")
 def get_stats():
@@ -224,7 +232,7 @@ def get_stats():
             cursor.execute("SELECT COUNT(*) FROM edges")
             edge_count = cursor.fetchone()[0]
 
-        entities_count = entities_collection.count()
+        entities_count = get_entities_collection().count()
 
         return {
             "chunk_count": chunk_count,
@@ -235,8 +243,56 @@ def get_stats():
         logger.error(f"Stats query failed: {e}")
         raise HTTPException(status_code=500, detail="Failed to read graph stats.")
 
+def find_query_anchor_entities(query_text: str, query_emb: List[float], max_anchors: int = 3) -> List[Tuple[str, float]]:
+    """Identify starting graph entities using exact token substring matching and vector similarity."""
+    anchor_scores: Dict[str, float] = {}
+
+    # 1. Substring / Token matching against known entities from SQLite
+    try:
+        with db_cursor() as cursor:
+            cursor.execute("""
+                SELECT DISTINCT source_entity FROM edges
+                UNION
+                SELECT DISTINCT target_entity FROM edges
+            """)
+            known_entities = [row[0] for row in cursor.fetchall() if row[0]]
+
+        q_lower = query_text.lower()
+        for ent in known_entities:
+            if ent.lower() in q_lower:
+                anchor_scores[ent] = 1.0
+    except Exception as e:
+        logger.warning(f"Error querying known entities for substring match: {e}")
+
+    # 2. Vector search against entities collection
+    entities_col = get_entities_collection()
+    if entities_col.count() > 0:
+        try:
+            n_search = min(5, entities_col.count())
+            entity_res = entities_col.query(
+                query_embeddings=[query_emb],
+                n_results=n_search
+            )
+            if entity_res and entity_res.get('ids') and len(entity_res['ids'][0]) > 0:
+                for idx, ent_id in enumerate(entity_res['ids'][0]):
+                    dist = entity_res['distances'][0][idx] if entity_res.get('distances') else 0.0
+                    sim = 1.0 - dist
+                    # Include if reasonably close or if we have few anchors
+                    if sim >= 0.35:
+                        if ent_id not in anchor_scores or sim > anchor_scores[ent_id]:
+                            anchor_scores[ent_id] = float(sim)
+        except Exception as e:
+            logger.warning(f"Error during vector entity query: {e}")
+
+    sorted_anchors = sorted(anchor_scores.items(), key=lambda x: x[1], reverse=True)
+    return sorted_anchors[:max_anchors]
+
 @app.get("/query")
-def query_chunks(q: str = Query(..., min_length=1), k: int = Query(3, ge=1, le=20)):
+def query_chunks(
+    q: str = Query(..., min_length=1),
+    k: int = Query(3, ge=1, le=20),
+    enable_graph: bool = Query(True, description="Toggle graph traversal augmentation")
+):
     try:
         emb = get_embedding(q)
     except Exception as e:
@@ -244,13 +300,15 @@ def query_chunks(q: str = Query(..., min_length=1), k: int = Query(3, ge=1, le=2
         raise HTTPException(status_code=503, detail="Embedding service unavailable. Is Ollama running?")
 
     try:
-        # 1. Pure Vector Search (Standard RAG)
-        res = collection.query(
+        # 1. Pure Vector Search (Semantic Chunk Search)
+        chunks_col = get_chunks_collection()
+        res = chunks_col.query(
             query_embeddings=[emb],
             n_results=k
         )
 
         vector_results = []
+        retrieved_chunk_ids = set()
         if res and res.get('ids') and len(res['ids']) > 0 and res['ids'][0]:
             for idx in range(len(res['ids'][0])):
                 chunk_id = res['ids'][0][idx]
@@ -264,68 +322,155 @@ def query_chunks(q: str = Query(..., min_length=1), k: int = Query(3, ge=1, le=2
                     "distance": distance,
                     "metadata": metadata
                 })
+                retrieved_chunk_ids.add(chunk_id)
 
-        # 2. Graph Traversal Search (The Novelty Claim!)
+        # 2. Multi-Entity Graph Traversal (2 Hops, if enabled)
         graph_results = []
+        connected_chunks = []
 
-        # Find the most relevant entity to the user's query
-        entity_res = entities_collection.query(
-            query_embeddings=[emb],
-            n_results=1
-        )
+        if enable_graph:
+            anchor_entities = find_query_anchor_entities(q, emb, max_anchors=3)
+            traversed_edges_set = set()
+            traversed_chunk_ids = set()
 
-        if entity_res and entity_res.get('ids') and len(entity_res['ids'][0]) > 0:
-            top_entity = entity_res['ids'][0][0]
-
-            # Safely get the distance, default to 0.0 if not available
-            distances = entity_res.get('distances')
-            if distances is not None and len(distances) > 0 and len(distances[0]) > 0:
-                entity_distance = distances[0][0]
-            else:
-                entity_distance = 0.0
-
-            # Only traverse if the entity is reasonably relevant to the query
-            if entity_distance < 0.5:
+            if anchor_entities:
+                anchor_names = {a[0] for a in anchor_entities}
                 with db_cursor() as cursor:
-                    cursor.execute("""
-                        SELECT source_entity, relation, target_entity, confidence, chunk_id
-                        FROM edges
-                        WHERE source_entity = ? OR target_entity = ?
-                        ORDER BY confidence DESC
-                    """, (top_entity, top_entity))
+                    # Hop 1 traversal
+                    hop1_neighbors = set()
+                    for ent, score in anchor_entities:
+                        cursor.execute("""
+                            SELECT source_entity, relation, target_entity, confidence, chunk_id
+                            FROM edges
+                            WHERE source_entity = ? OR target_entity = ?
+                            ORDER BY confidence DESC
+                            LIMIT 10
+                        """, (ent, ent))
+                        for row in cursor.fetchall():
+                            edge_key = (row[0], row[1], row[2])
+                            if edge_key not in traversed_edges_set:
+                                traversed_edges_set.add(edge_key)
+                                graph_results.append({
+                                    "source": row[0],
+                                    "relation": row[1],
+                                    "target": row[2],
+                                    "confidence": row[3],
+                                    "found_in_chunk": row[4]
+                                })
+                                if row[4]:
+                                    traversed_chunk_ids.add(row[4])
+                            # Collect next hops
+                            neighbor = row[2] if row[0] == ent else row[0]
+                            hop1_neighbors.add(neighbor)
 
-                    edges = cursor.fetchall()
+                    # Hop 2 traversal (expand top neighbor entities, avoiding immediate starting anchors)
+                    next_hop_candidates = [n for n in hop1_neighbors if n not in anchor_names]
+                    for neighbor in next_hop_candidates[:3]:
+                        cursor.execute("""
+                            SELECT source_entity, relation, target_entity, confidence, chunk_id
+                            FROM edges
+                            WHERE source_entity = ? OR target_entity = ?
+                            ORDER BY confidence DESC
+                            LIMIT 5
+                        """, (neighbor, neighbor))
+                        for row in cursor.fetchall():
+                            edge_key = (row[0], row[1], row[2])
+                            if edge_key not in traversed_edges_set:
+                                traversed_edges_set.add(edge_key)
+                                graph_results.append({
+                                    "source": row[0],
+                                    "relation": row[1],
+                                    "target": row[2],
+                                    "confidence": row[3],
+                                    "found_in_chunk": row[4]
+                                })
+                                if row[4]:
+                                    traversed_chunk_ids.add(row[4])
 
-                for edge in edges:
-                    graph_results.append({
-                        "source": edge[0],
-                        "relation": edge[1],
-                        "target": edge[2],
-                        "confidence": edge[3],
-                        "found_in_chunk": edge[4]
-                    })
-
+                primary_anchor = anchor_entities[0][0] if anchor_entities else None
                 graph_metadata = {
-                    "traversed_from_entity": top_entity,
-                    "entity_relevance_distance": entity_distance
+                    "traversed_from_entity": primary_anchor,
+                    "anchor_entities": [a[0] for a in anchor_entities],
+                    "edge_count": len(graph_results)
                 }
             else:
-                graph_metadata = {"message": "No highly relevant entities found in graph for this query."}
+                graph_metadata = {"message": "No relevant entities found in graph for this query."}
+
+            # 3. Fetch connected chunks' text from SQLite (for chunks not already retrieved via vector search)
+            needed_chunk_ids = list(traversed_chunk_ids - retrieved_chunk_ids)
+            if needed_chunk_ids:
+                with db_cursor() as cursor:
+                    placeholders = ",".join("?" * len(needed_chunk_ids))
+                    cursor.execute(f"SELECT chunk_id, text FROM chunks WHERE chunk_id IN ({placeholders})", needed_chunk_ids)
+                    for row in cursor.fetchall():
+                        connected_chunks.append({
+                            "chunk_id": row[0],
+                            "text": row[1]
+                        })
         else:
-            graph_metadata = {"message": "Graph is empty."}
+            graph_metadata = {"message": "Graph traversal is disabled."}
+
+        # 4. Generate grounded LLM answer using combined context
+        try:
+            answer = generate_answer(
+                query=q,
+                vector_chunks=vector_results,
+                graph_edges=graph_results,
+                traversed_chunks=connected_chunks
+            )
+        except Exception as gen_err:
+            logger.error(f"Answer generation failed: {gen_err}")
+            answer = "Error generating answer from LLM. Please check Ollama connection."
+
+    except HTTPException:
+        raise
     except Exception as e:
         logger.error(f"Query failed: {e}")
         raise HTTPException(status_code=500, detail="Query failed while searching vectors/graph.")
 
     return {
         "query": q,
+        "answer": answer,
         "vector_search_results": vector_results,
         "graph_traversal": {
             "metadata": graph_metadata,
-            "edges": graph_results
+            "edges": graph_results,
+            "connected_chunks": connected_chunks
         }
     }
+
+class QueryRequest(BaseModel):
+    query: str
+    k: int = 3
+    enable_graph: bool = True
+
+class AnswerResponse(BaseModel):
+    query: str
+    answer: str
+
+@app.get("/answer", response_model=AnswerResponse)
+def get_answer_endpoint(
+    q: str = Query(..., min_length=1, description="Question to answer"),
+    k: int = Query(3, ge=1, le=20),
+    enable_graph: bool = Query(True, description="Toggle graph traversal")
+):
+    """Direct answer endpoint returning only the synthesized grounded answer."""
+    full_result = query_chunks(q=q, k=k, enable_graph=enable_graph)
+    return AnswerResponse(query=full_result["query"], answer=full_result["answer"])
+
+@app.post("/answer", response_model=AnswerResponse)
+def post_answer_endpoint(req: QueryRequest):
+    """Direct POST answer endpoint returning only the synthesized grounded answer."""
+    full_result = query_chunks(q=req.query, k=req.k, enable_graph=req.enable_graph)
+    return AnswerResponse(query=full_result["query"], answer=full_result["answer"])
+
+# Mount static files so opening http://localhost:8000/ directly serves the web UI
+if os.path.exists("web"):
+    app.mount("/", StaticFiles(directory="web", html=True), name="static")
+
 
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
+

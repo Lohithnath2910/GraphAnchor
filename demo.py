@@ -1,6 +1,5 @@
 import requests
 import os
-import time
 
 API_URL = "http://localhost:8000"
 

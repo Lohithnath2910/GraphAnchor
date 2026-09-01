@@ -3,17 +3,41 @@ import chromadb
 from contextlib import contextmanager
 from src.config import config
 import os
+import logging
+
+logger = logging.getLogger("graphanchor")
 
 # Ensure data directory exists
 os.makedirs(os.path.dirname(config.chroma_path), exist_ok=True)
 
 # Chroma Setup
 chroma_client = chromadb.PersistentClient(path=config.chroma_path)
-collection = chroma_client.get_or_create_collection(name="chunks")
+
+def get_chunks_collection():
+    return chroma_client.get_or_create_collection(name="chunks")
+
+def get_entities_collection():
+    return chroma_client.get_or_create_collection(
+        name="entities",
+        metadata={"hnsw:space": "cosine"}
+    )
+
+# Backward-compatibility module aliases
+collection = get_chunks_collection()
+entities_collection = get_entities_collection()
+
 
 # SQLite Setup
+def get_db_connection():
+    conn = sqlite3.connect(config.db_path, timeout=10.0, check_same_thread=False)
+    conn.execute("PRAGMA journal_mode=WAL;")
+    conn.execute("PRAGMA synchronous=NORMAL;")
+    conn.execute("PRAGMA busy_timeout=5000;")
+    conn.execute("PRAGMA foreign_keys=ON;")
+    return conn
+
 def init_db():
-    conn = sqlite3.connect(config.db_path)
+    conn = get_db_connection()
     cursor = conn.cursor()
 
     cursor.execute('''
@@ -47,15 +71,10 @@ def init_db():
     conn.commit()
     conn.close()
 
-def get_db_connection():
-    return sqlite3.connect(config.db_path)
-
 @contextmanager
 def db_cursor():
     """Context manager: yields a cursor, commits on success, rolls back and
-    re-raises on any error, and always closes the connection. Use this instead
-    of get_db_connection() directly so a failure mid-request can't leave a
-    connection open or a half-written transaction behind."""
+    re-raises on any error, and always closes the connection."""
     conn = get_db_connection()
     try:
         cursor = conn.cursor()
@@ -67,4 +86,31 @@ def db_cursor():
     finally:
         conn.close()
 
+def reset_all_data():
+    """Wipes all data from SQLite and ChromaDB, and re-initializes clean schemas."""
+    global collection, entities_collection
+
+    # 1. Clear SQLite tables
+    with db_cursor() as cursor:
+        cursor.execute("DELETE FROM chunks")
+        cursor.execute("DELETE FROM edges")
+        cursor.execute("DELETE FROM documents")
+        
+    # 2. Reset Chroma collections
+    try:
+        chroma_client.delete_collection("chunks")
+    except Exception:
+        pass
+    try:
+        chroma_client.delete_collection("entities")
+    except Exception:
+        pass
+
+    # Recreate fresh collections
+    collection = get_chunks_collection()
+    entities_collection = get_entities_collection()
+    return True
+
 init_db()
+
+
