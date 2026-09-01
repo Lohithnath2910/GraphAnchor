@@ -23,11 +23,12 @@ def extract_graph_from_chunk(text: str) -> GraphExtraction:
     """Extract entities and relationships from text using Ollama JSON mode.
     Resolves coreferences/pronouns to actual named entities and runs deterministically (temp=0.0)."""
     prompt = (
-        "Extract all factual entities and relationships from the following text.\n\n"
+        "Extract clean, factual knowledge graph triples from the text.\n\n"
         "Strict Rules:\n"
-        "1. Coreference Resolution: Always resolve pronouns (he, she, it, they, his, her) to the actual named entity they refer to (e.g. 'Shayla', 'Lohith'). NEVER output pronouns as entity names.\n"
-        "2. Extract all traits, attributes, roles, and relationships as clean (entity, relation, target_entity) triples.\n"
-        "3. Keep entity and relation names concise, canonical, and meaningful.\n\n"
+        "1. Coreference Resolution: Always resolve pronouns (he, she, it, they, his, her) to the actual named entity (e.g. 'Shayla', 'Lohith'). NEVER output pronouns like 'He' or 'She' as entity names.\n"
+        "2. The relation must be a concise verb phrase (e.g. 'is', 'has', 'partner_of').\n"
+        "3. The target must be the attribute, trait, or related entity (e.g. 'good person', 'very smart', 'god\\'s grace on this planet').\n"
+        "4. Extract all stated traits and relationships into clean (entity, relation, target_entity) triples.\n\n"
         f"Text:\n{text}"
     )
 
