@@ -2,27 +2,35 @@ import os
 import sys
 import uuid
 import hashlib
+import json
 import logging
 
-# Ensure root directory is always on python path for imports
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from fastapi import FastAPI, File, UploadFile, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import RedirectResponse, StreamingResponse
 from pydantic import BaseModel
 from typing import List, Dict, Optional, Tuple
 
 from src.config import config
-from src.ingestion import chunk_text
+from src.ingestion import chunk_text, extract_text_from_file
 from src.storage import (
     db_cursor,
     get_chunks_collection,
     get_entities_collection,
-    reset_all_data
+    reset_all_data,
+    list_documents,
+    delete_document
 )
 from src.retrieval import get_embedding
-from src.generation import extract_graph_from_chunk, generate_answer, GraphExtraction
+from src.generation import (
+    extract_graph_from_chunk,
+    generate_answer,
+    stream_answer,
+    GraphExtraction
+)
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
 logger = logging.getLogger("graphanchor")
@@ -30,7 +38,14 @@ logger = logging.getLogger("graphanchor")
 
 app = FastAPI(title="GraphAnchor")
 
-# Allow the local frontend (opened as a file, or served from any port) to call this API.
+@app.get("/docs/", include_in_schema=False)
+def redirect_docs():
+    return RedirectResponse(url="/docs")
+
+@app.get("/redoc/", include_in_schema=False)
+def redirect_redoc():
+    return RedirectResponse(url="/redoc")
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -65,11 +80,9 @@ def place_entity(entity_str: str, staged_entities: Optional[List[str]] = None, c
     if not entity_clean or len(entity_clean) <= 1:
         return "", 0.0
 
-    # 1. Filter out verbs / articles
     if entity_clean.lower() in INVALID_ENTITIES:
         return "", 0.0
 
-    # 2. Resolve pronoun to primary subject of chunk if available
     if entity_clean.lower() in PRONOUNS:
         if chunk_context:
             import re
@@ -83,7 +96,6 @@ def place_entity(entity_str: str, staged_entities: Optional[List[str]] = None, c
 
     entities_col = get_entities_collection()
 
-    # 3. Exact match lookup
     try:
         res = entities_col.get(ids=[entity_clean])
         if res and res.get('ids') and len(res['ids']) > 0:
@@ -91,7 +103,6 @@ def place_entity(entity_str: str, staged_entities: Optional[List[str]] = None, c
     except Exception as e:
         logger.warning(f"Exact-match lookup failed for '{entity_clean}': {e}")
 
-    # 4. Embedding similarity fallback (for fuzzy matching like 'lohtih' -> 'Lohith')
     emb = get_embedding(entity_clean)
 
     if entities_col.count() > 0:
@@ -107,7 +118,6 @@ def place_entity(entity_str: str, staged_entities: Optional[List[str]] = None, c
                 canonical = search_res['ids'][0][0]
                 return canonical, float(sim)
 
-    # 5. Insert as new canonical entity
     entities_col.add(
         ids=[entity_clean],
         embeddings=[emb],
@@ -119,8 +129,14 @@ def place_entity(entity_str: str, staged_entities: Optional[List[str]] = None, c
 
 @app.post("/ingest", response_model=IngestResponse)
 async def ingest_document(file: UploadFile = File(...)):
-    if not file.filename or not file.filename.lower().endswith(".txt"):
-        raise HTTPException(status_code=415, detail="Only .txt files are supported.")
+    allowed_exts = {".txt", ".md", ".markdown", ".pdf"}
+    fname = file.filename or ""
+    file_ext = os.path.splitext(fname.lower())[1]
+    if file_ext not in allowed_exts:
+        raise HTTPException(
+            status_code=415,
+            detail=f"Unsupported file format '{file_ext}'. Supported formats: {', '.join(sorted(allowed_exts))}"
+        )
 
     content = await file.read()
 
@@ -129,16 +145,17 @@ async def ingest_document(file: UploadFile = File(...)):
         raise HTTPException(status_code=413, detail=f"File exceeds max size of {config.max_file_size_mb} MB.")
 
     try:
-        text = content.decode("utf-8")
-    except UnicodeDecodeError:
-        raise HTTPException(status_code=400, detail="File must be valid UTF-8 text.")
+        text = extract_text_from_file(fname, content)
+    except ValueError as val_err:
+        raise HTTPException(status_code=400, detail=str(val_err))
+    except Exception as parse_err:
+        raise HTTPException(status_code=400, detail=f"Failed to read file content: {parse_err}")
 
     if not text.strip():
-        raise HTTPException(status_code=400, detail="File is empty.")
+        raise HTTPException(status_code=400, detail="File is empty or contains no extractable text.")
 
     content_hash = hashlib.sha256(content).hexdigest()
 
-    # Dedup check - skip reprocessing a document we've already ingested
     with db_cursor() as cursor:
         cursor.execute("SELECT doc_id FROM documents WHERE content_hash = ?", (content_hash,))
         existing = cursor.fetchone()
@@ -168,25 +185,21 @@ async def ingest_document(file: UploadFile = File(...)):
             for i, chunk_text_content in enumerate(chunks):
                 chunk_id = f"{doc_id}_{i}"
 
-                # Embed chunk
                 chunk_emb = get_embedding(chunk_text_content)
 
-                # Add to ChromaDB chunks
                 chunks_col.add(
                     ids=[chunk_id],
                     embeddings=[chunk_emb],
                     documents=[chunk_text_content],
-                    metadatas=[{"chunk_id": chunk_id, "doc_id": doc_id}]
+                    metadatas=[{"chunk_id": chunk_id, "doc_id": doc_id, "filename": fname}]
                 )
                 staged_chunk_ids.append(chunk_id)
 
-                # Add to SQLite chunks
                 cursor.execute(
                     "INSERT INTO chunks (chunk_id, doc_id, text) VALUES (?, ?, ?)",
                     (chunk_id, doc_id, chunk_text_content)
                 )
 
-                # Extract graph
                 try:
                     extraction = extract_graph_from_chunk(chunk_text_content)
                 except Exception as e:
@@ -220,7 +233,6 @@ async def ingest_document(file: UploadFile = File(...)):
             )
     except Exception as e:
         logger.error(f"Ingest failed for doc {doc_id}: {e}. Rolling back staged ChromaDB entries.")
-        # Roll back ChromaDB chunks and entities to maintain 100% sync with SQLite transaction rollback
         if staged_chunk_ids:
             try:
                 chunks_col.delete(ids=staged_chunk_ids)
@@ -253,6 +265,66 @@ def reset_databases(confirm: bool = False):
     except Exception as e:
         logger.error(f"Reset failed: {e}")
         raise HTTPException(status_code=500, detail=f"Failed to reset databases: {e}")
+
+@app.get("/documents")
+def get_documents_endpoint():
+    """List all ingested documents along with chunk and graph edge counts."""
+    try:
+        docs = list_documents()
+        return {"documents": docs, "total_documents": len(docs)}
+    except Exception as e:
+        logger.error(f"Failed to list documents: {e}")
+        raise HTTPException(status_code=500, detail="Failed to retrieve documents.")
+
+@app.get("/documents/{doc_id}")
+def get_single_document_endpoint(doc_id: str):
+    """Retrieve metadata and stored chunks for a specific document."""
+    try:
+        with db_cursor() as cursor:
+            cursor.execute("SELECT doc_id, filename, content_hash, created_at FROM documents WHERE doc_id = ?", (doc_id,))
+            doc = cursor.fetchone()
+            if not doc:
+                raise HTTPException(status_code=404, detail=f"Document '{doc_id}' not found.")
+            
+            cursor.execute("SELECT chunk_id, text FROM chunks WHERE doc_id = ? ORDER BY chunk_id ASC", (doc_id,))
+            chunks = [{"chunk_id": r[0], "text": r[1]} for r in cursor.fetchall()]
+
+            cursor.execute("""
+                SELECT source_entity, relation, target_entity, confidence, chunk_id
+                FROM edges
+                WHERE chunk_id IN (SELECT chunk_id FROM chunks WHERE doc_id = ?)
+            """, (doc_id,))
+            edges = [{"source": r[0], "relation": r[1], "target": r[2], "confidence": r[3], "chunk_id": r[4]} for r in cursor.fetchall()]
+
+        return {
+            "doc_id": doc[0],
+            "filename": doc[1],
+            "content_hash": doc[2],
+            "created_at": doc[3],
+            "chunk_count": len(chunks),
+            "edge_count": len(edges),
+            "chunks": chunks,
+            "edges": edges
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Failed to fetch document {doc_id}: {e}")
+        raise HTTPException(status_code=500, detail="Failed to fetch document.")
+
+@app.delete("/documents/{doc_id}")
+def delete_single_document_endpoint(doc_id: str):
+    """Selectively and atomically delete a single document and all associated chunks and edges."""
+    try:
+        success = delete_document(doc_id)
+        if not success:
+            raise HTTPException(status_code=404, detail=f"Document '{doc_id}' not found.")
+        return {"message": f"Document '{doc_id}' and all associated chunks and edges deleted successfully."}
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Failed to delete document {doc_id}: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to delete document: {e}")
 
 @app.get("/graph/stats")
 def get_stats():
@@ -318,7 +390,6 @@ def find_query_anchor_entities(query_text: str, query_emb: List[float], max_anch
     """Identify starting graph entities using exact token substring matching and vector similarity."""
     anchor_scores: Dict[str, float] = {}
 
-    # 1. Substring / Token matching against known entities from SQLite
     try:
         with db_cursor() as cursor:
             cursor.execute("""
@@ -335,7 +406,6 @@ def find_query_anchor_entities(query_text: str, query_emb: List[float], max_anch
     except Exception as e:
         logger.warning(f"Error querying known entities for substring match: {e}")
 
-    # 2. Vector search against entities collection
     entities_col = get_entities_collection()
     if entities_col.count() > 0:
         try:
@@ -348,7 +418,6 @@ def find_query_anchor_entities(query_text: str, query_emb: List[float], max_anch
                 for idx, ent_id in enumerate(entity_res['ids'][0]):
                     dist = entity_res['distances'][0][idx] if entity_res.get('distances') else 0.0
                     sim = 1.0 - dist
-                    # Include if reasonably close or if we have few anchors
                     if sim >= 0.35:
                         if ent_id not in anchor_scores or sim > anchor_scores[ent_id]:
                             anchor_scores[ent_id] = float(sim)
@@ -357,6 +426,68 @@ def find_query_anchor_entities(query_text: str, query_emb: List[float], max_anch
 
     sorted_anchors = sorted(anchor_scores.items(), key=lambda x: x[1], reverse=True)
     return sorted_anchors[:max_anchors]
+
+def rank_and_fuse_chunks(
+    vector_results: List[Dict],
+    connected_chunks: List[Dict],
+    graph_edges: List[Dict],
+    alpha: float = 0.55
+) -> List[Dict]:
+    """Combines vector similarity search results and graph traversal chunks using
+    hybrid score fusion with confidence decay."""
+    fused: Dict[str, Dict] = {}
+
+    for rank, v in enumerate(vector_results):
+        cid = v["chunk_id"]
+        dist = v.get("distance")
+        vec_score = max(0.0, 1.0 - dist) if dist is not None else 0.8
+        fused[cid] = {
+            "chunk_id": cid,
+            "text": v.get("text", ""),
+            "metadata": v.get("metadata") or {},
+            "vector_score": round(vec_score, 4),
+            "graph_score": 0.0,
+            "composite_score": round(vec_score, 4),
+            "source_type": "vector",
+            "hop_distance": 0
+        }
+
+    edge_by_chunk: Dict[str, List[Dict]] = {}
+    for e in graph_edges:
+        found_cid = e.get("found_in_chunk")
+        if found_cid:
+            edge_by_chunk.setdefault(found_cid, []).append(e)
+
+    for g in connected_chunks:
+        cid = g["chunk_id"]
+        edges = edge_by_chunk.get(cid, [])
+        max_conf = max([e.get("confidence", 1.0) for e in edges], default=0.85)
+        hop = 1 if cid in edge_by_chunk else 2
+        hop_decay = 0.8 ** hop
+        graph_score = max_conf * hop_decay
+
+        if cid in fused:
+            v_score = fused[cid]["vector_score"]
+            composite = alpha * v_score + (1.0 - alpha) * graph_score + 0.15
+            fused[cid]["graph_score"] = round(graph_score, 4)
+            fused[cid]["composite_score"] = round(min(1.0, composite), 4)
+            fused[cid]["source_type"] = "hybrid"
+            fused[cid]["hop_distance"] = hop
+        else:
+            composite = graph_score * 0.9
+            fused[cid] = {
+                "chunk_id": cid,
+                "text": g.get("text", ""),
+                "metadata": g.get("metadata") or {},
+                "vector_score": 0.0,
+                "graph_score": round(graph_score, 4),
+                "composite_score": round(composite, 4),
+                "source_type": "graph",
+                "hop_distance": hop
+            }
+
+    ranked = sorted(fused.values(), key=lambda x: x["composite_score"], reverse=True)
+    return ranked
 
 @app.get("/query")
 def query_chunks(
@@ -371,7 +502,6 @@ def query_chunks(
         raise HTTPException(status_code=503, detail="Embedding service unavailable. Is Ollama running?")
 
     try:
-        # 1. Pure Vector Search (Semantic Chunk Search)
         chunks_col = get_chunks_collection()
         res = chunks_col.query(
             query_embeddings=[emb],
@@ -395,7 +525,6 @@ def query_chunks(
                 })
                 retrieved_chunk_ids.add(chunk_id)
 
-        # 2. Multi-Entity Graph Traversal (2 Hops, if enabled)
         graph_results = []
         connected_chunks = []
 
@@ -409,7 +538,6 @@ def query_chunks(
                 current_frontier = {a[0] for a in anchor_entities}
 
                 with db_cursor() as cursor:
-                    # Multi-hop BFS traversal up to depth 4
                     for depth in range(4):
                         if not current_frontier or len(traversed_edges_set) >= 35:
                             break
@@ -457,7 +585,6 @@ def query_chunks(
             else:
                 graph_metadata = {"message": "No relevant entities found in graph for this query."}
 
-            # 3. Fetch connected chunks' text from SQLite (for chunks not already retrieved via vector search)
             needed_chunk_ids = list(traversed_chunk_ids - retrieved_chunk_ids)
             if needed_chunk_ids:
                 with db_cursor() as cursor:
@@ -471,13 +598,18 @@ def query_chunks(
         else:
             graph_metadata = {"message": "Graph traversal is disabled."}
 
-        # 4. Generate grounded LLM answer using combined context
+        # Rank and fuse all retrieved & traversed chunks
+        ranked_chunks = rank_and_fuse_chunks(
+            vector_results=vector_results,
+            connected_chunks=connected_chunks,
+            graph_edges=graph_results
+        )
+
         try:
             answer = generate_answer(
                 query=q,
-                vector_chunks=vector_results,
-                graph_edges=graph_results,
-                traversed_chunks=connected_chunks
+                vector_chunks=ranked_chunks,
+                graph_edges=graph_results
             )
         except Exception as gen_err:
             logger.error(f"Answer generation failed: {gen_err}")
@@ -497,7 +629,8 @@ def query_chunks(
             "metadata": graph_metadata,
             "edges": graph_results,
             "connected_chunks": connected_chunks
-        }
+        },
+        "ranking_breakdown": ranked_chunks
     }
 
 class QueryRequest(BaseModel):
@@ -525,7 +658,36 @@ def post_answer_endpoint(req: QueryRequest):
     full_result = query_chunks(q=req.query, k=req.k, enable_graph=req.enable_graph)
     return AnswerResponse(query=full_result["query"], answer=full_result["answer"])
 
-# Mount static files so opening http://localhost:8000/ directly serves the web UI
+@app.get("/answer/stream")
+def get_answer_stream_endpoint(
+    q: str = Query(..., min_length=1, description="Question to answer"),
+    k: int = Query(3, ge=1, le=20),
+    enable_graph: bool = Query(True, description="Toggle graph traversal")
+):
+    """Server-Sent Events (SSE) endpoint streaming grounded answer tokens in real time."""
+    full_result = query_chunks(q=q, k=k, enable_graph=enable_graph)
+    ranked_chunks = full_result.get("ranking_breakdown", [])
+    graph_edges = full_result.get("graph_traversal", {}).get("edges", [])
+
+    def event_stream():
+        meta = {
+            "query": full_result["query"],
+            "anchors": full_result.get("graph_traversal", {}).get("metadata", {}).get("anchor_entities", []),
+            "chunk_count": len(ranked_chunks),
+            "edge_count": len(graph_edges)
+        }
+        yield f"event: meta\ndata: {json.dumps(meta)}\n\n"
+        for token in stream_answer(query=q, vector_chunks=ranked_chunks, graph_edges=graph_edges):
+            yield f"event: token\ndata: {json.dumps(token)}\n\n"
+        yield "event: done\ndata: {}\n\n"
+
+    return StreamingResponse(event_stream(), media_type="text/event-stream")
+
+@app.post("/answer/stream")
+def post_answer_stream_endpoint(req: QueryRequest):
+    """Server-Sent Events (SSE) POST endpoint streaming grounded answer tokens in real time."""
+    return get_answer_stream_endpoint(q=req.query, k=req.k, enable_graph=req.enable_graph)
+
 if os.path.exists("web"):
     app.mount("/", StaticFiles(directory="web", html=True), name="static")
 

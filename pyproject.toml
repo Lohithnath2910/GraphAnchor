@@ -9,6 +9,7 @@ dependencies = [
     "fastapi>=0.141.1",
     "ollama>=0.6.2",
     "pydantic>=2.13.4",
+    "pypdf>=6.17.0",
     "python-multipart>=0.0.32",
     "pyyaml>=6.0.3",
     "tiktoken>=0.13.0",

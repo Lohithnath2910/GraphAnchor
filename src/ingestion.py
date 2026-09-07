@@ -1,3 +1,4 @@
+import io
 import tiktoken
 from typing import List
 
@@ -5,6 +6,39 @@ try:
     from .config import config
 except ImportError:
     from src.config import config
+
+def extract_text_from_file(filename: str, content: bytes) -> str:
+    """Extract clean plain text from raw file bytes based on file extension."""
+    ext = filename.lower().split('.')[-1] if '.' in filename else ''
+    
+    if ext in {"txt", "md", "markdown"}:
+        try:
+            return content.decode("utf-8")
+        except UnicodeDecodeError:
+            try:
+                return content.decode("latin-1")
+            except Exception as err:
+                raise ValueError("Could not decode text file as UTF-8 or Latin-1.") from err
+
+    elif ext == "pdf":
+        try:
+            import pypdf
+            reader = pypdf.PdfReader(io.BytesIO(content))
+            extracted_pages = []
+            for i, page in enumerate(reader.pages):
+                text = page.extract_text()
+                if text and text.strip():
+                    extracted_pages.append(text.strip())
+            if not extracted_pages:
+                raise ValueError("PDF contains no extractable text (it might be scanned/image-only).")
+            return "\n\n".join(extracted_pages)
+        except Exception as e:
+            if isinstance(e, ValueError):
+                raise
+            raise ValueError(f"Failed to parse PDF document: {e}") from e
+
+    else:
+        raise ValueError(f"Unsupported file format: '.{ext}'. Supported formats: .txt, .md, .pdf")
 
 def chunk_text(text: str) -> List[str]:
     """Token-based sliding window splitter"""
