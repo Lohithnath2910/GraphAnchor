@@ -436,10 +436,16 @@ def rank_and_fuse_chunks(
     # Combines vector similarity search results and graph traversal chunks using hybrid score fusion.
     fused: Dict[str, Dict] = {}
 
+    valid_dists = [v.get("distance") for v in vector_results if v.get("distance") is not None]
+    max_dist = max(valid_dists) if valid_dists else 1.0
+    min_dist = min(valid_dists) if valid_dists else 0.0
+    if max_dist == min_dist:
+        max_dist = min_dist + 1e-5
+
     for rank, v in enumerate(vector_results):
         cid = v["chunk_id"]
         dist = v.get("distance")
-        vec_score = max(0.0, 1.0 - dist) if dist is not None else 0.8
+        vec_score = (1.0 - ((dist - min_dist) / (max_dist - min_dist))) if dist is not None else 0.8
         fused[cid] = {
             "chunk_id": cid,
             "text": v.get("text", ""),
@@ -538,13 +544,13 @@ def query_chunks(
                 current_frontier = {a[0] for a in anchor_entities}
 
                 with db_cursor() as cursor:
-                    for depth in range(4):
-                        if not current_frontier or len(traversed_edges_set) >= 35:
+                    for depth in range(6):
+                        if not current_frontier or len(traversed_edges_set) >= 100:
                             break
 
                         next_frontier = set()
                         for node in current_frontier:
-                            if len(traversed_edges_set) >= 35:
+                            if len(traversed_edges_set) >= 100:
                                 break
                             
                             if node in visited_nodes:
@@ -560,7 +566,7 @@ def query_chunks(
                             """, (node, node))
 
                             for row in cursor.fetchall():
-                                if len(traversed_edges_set) >= 35:
+                                if len(traversed_edges_set) >= 100:
                                     break
                                 
                                 edge_key = (row[0], row[1], row[2])
@@ -604,11 +610,12 @@ def query_chunks(
         else:
             graph_metadata = {"message": "Graph traversal is disabled."}
 
+        limit = (k + len(connected_chunks)) if enable_graph else k
         ranked_chunks = rank_and_fuse_chunks(
             vector_results=vector_results,
             connected_chunks=connected_chunks,
             graph_edges=graph_results
-        )[:max(k*2, 10)]
+        )[:limit]
 
         # Limit graph edges to top 15 to avoid flooding the LLM context with noise
         top_graph_edges = sorted(graph_results, key=lambda x: x.get("confidence", 0), reverse=True)[:15]
