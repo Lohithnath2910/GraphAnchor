@@ -1034,15 +1034,26 @@ function setupGraphData(nodesData, edgesData, resetPositions = false) {
   });
   ctx.restore();
 
+  // Deduplicate edges: if multiple chunks extract the exact same semantic triple, keep the one with the highest confidence
+  const uniqueEdgesMap = new Map();
+  edgesData.forEach(e => {
+    const key = `${e.source}|||${e.relation}|||${e.target}`;
+    const conf = e.confidence !== undefined && e.confidence !== null ? e.confidence : 1.0;
+    if (!uniqueEdgesMap.has(key) || (uniqueEdgesMap.get(key).confidence || 1.0) < conf) {
+      uniqueEdgesMap.set(key, e);
+    }
+  });
+  const uniqueEdges = Array.from(uniqueEdgesMap.values());
+
   // Group edges between identical node pairs to assign curvature offsets
   const pairCounts = {};
-  edgesData.forEach(e => {
+  uniqueEdges.forEach(e => {
     const pairKey = [e.source, e.target].sort().join('|||');
     pairCounts[pairKey] = (pairCounts[pairKey] || 0) + 1;
   });
 
   const pairIndices = {};
-  graphEdges = edgesData.map(e => {
+  graphEdges = uniqueEdges.map(e => {
     const pairKey = [e.source, e.target].sort().join('|||');
     const idx = pairIndices[pairKey] || 0;
     pairIndices[pairKey] = idx + 1;
