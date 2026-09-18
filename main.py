@@ -544,6 +544,9 @@ def query_chunks(
 
                         next_frontier = set()
                         for node in current_frontier:
+                            if len(traversed_edges_set) >= 35:
+                                break
+                            
                             if node in visited_nodes:
                                 continue
                             visited_nodes.add(node)
@@ -553,10 +556,13 @@ def query_chunks(
                                 FROM edges
                                 WHERE source_entity = ? OR target_entity = ?
                                 ORDER BY confidence DESC
-                                LIMIT 10
+                                LIMIT 5
                             """, (node, node))
 
                             for row in cursor.fetchall():
+                                if len(traversed_edges_set) >= 35:
+                                    break
+                                
                                 edge_key = (row[0], row[1], row[2])
                                 if edge_key not in traversed_edges_set:
                                     traversed_edges_set.add(edge_key)
@@ -602,13 +608,16 @@ def query_chunks(
             vector_results=vector_results,
             connected_chunks=connected_chunks,
             graph_edges=graph_results
-        )
+        )[:max(k*2, 10)]
+
+        # Limit graph edges to top 15 to avoid flooding the LLM context with noise
+        top_graph_edges = sorted(graph_results, key=lambda x: x.get("confidence", 0), reverse=True)[:15]
 
         try:
             answer = generate_answer(
                 query=q,
                 vector_chunks=ranked_chunks,
-                graph_edges=graph_results
+                graph_edges=top_graph_edges
             )
         except Exception as gen_err:
             logger.error(f"Answer generation failed: {gen_err}")
@@ -665,18 +674,22 @@ def get_answer_stream_endpoint(
 ):
     # Server-Sent Events (SSE) endpoint streaming grounded answer tokens in real time.
     full_result = query_chunks(q=q, k=k, enable_graph=enable_graph)
+    
+    # query_chunks already applies the chunk limit to ranking_breakdown, 
+    # but we also need to apply the edge limit for the stream_answer call.
     ranked_chunks = full_result.get("ranking_breakdown", [])
     graph_edges = full_result.get("graph_traversal", {}).get("edges", [])
+    top_graph_edges = sorted(graph_edges, key=lambda x: x.get("confidence", 0), reverse=True)[:15]
 
     def event_stream():
         meta = {
             "query": full_result["query"],
             "anchors": full_result.get("graph_traversal", {}).get("metadata", {}).get("anchor_entities", []),
             "chunk_count": len(ranked_chunks),
-            "edge_count": len(graph_edges)
+            "edge_count": len(graph_edges)  # Send original total count for UI stats
         }
         yield f"event: meta\ndata: {json.dumps(meta)}\n\n"
-        for token in stream_answer(query=q, vector_chunks=ranked_chunks, graph_edges=graph_edges):
+        for token in stream_answer(query=q, vector_chunks=ranked_chunks, graph_edges=top_graph_edges):
             yield f"event: token\ndata: {json.dumps(token)}\n\n"
         yield "event: done\ndata: {}\n\n"
 
