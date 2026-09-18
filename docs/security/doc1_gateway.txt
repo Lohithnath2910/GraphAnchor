@@ -1,1 +1,0 @@
-The API Gateway routes external customer traffic to the Session Broker for authentication.

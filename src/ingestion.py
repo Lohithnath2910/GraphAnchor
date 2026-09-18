@@ -8,7 +8,7 @@ except ImportError:
     from src.config import config
 
 def extract_text_from_file(filename: str, content: bytes) -> str:
-    """Extract clean plain text from raw file bytes based on file extension."""
+    # Extracts clean plain text from raw file bytes based on the file extension (.txt, .md, .pdf).
     ext = filename.lower().split('.')[-1] if '.' in filename else ''
     
     if ext in {"txt", "md", "markdown"}:
@@ -41,7 +41,7 @@ def extract_text_from_file(filename: str, content: bytes) -> str:
         raise ValueError(f"Unsupported file format: '.{ext}'. Supported formats: .txt, .md, .pdf")
 
 def chunk_text(text: str) -> List[str]:
-    """Token-based sliding window splitter"""
+    # Splits text into overlapping token-based chunks using the cl100k_base tokenizer.
     enc = tiktoken.get_encoding("cl100k_base")
     tokens = enc.encode(text)
     

@@ -11,14 +11,14 @@ import shutil
 
 logger = logging.getLogger("graphanchor")
 
-# Ensure data directory exists
 os.makedirs(os.path.dirname(config.chroma_path), exist_ok=True)
 
-# Chroma Setup
 chroma_client = chromadb.PersistentClient(
     path=config.chroma_path,
     settings=chromadb.Settings(allow_reset=True)
 )
+
+# Manages the unified local storage layer combining SQLite for graph edges and ChromaDB for vector embeddings.
 
 def get_chunks_collection():
     return chroma_client.get_or_create_collection(name="chunks")
@@ -29,7 +29,6 @@ def get_entities_collection():
         metadata={"hnsw:space": "cosine"}
     )
 
-# Backward-compatibility module aliases
 collection = get_chunks_collection()
 entities_collection = get_entities_collection()
 
@@ -80,24 +79,24 @@ def init_db():
         cursor.execute("CREATE INDEX IF NOT EXISTS idx_chunks_doc_id ON chunks(doc_id)")
         cursor.execute("CREATE INDEX IF NOT EXISTS idx_documents_hash ON documents(content_hash)")
         
-        # Backward-compatible migrations for existing SQLite databases
         for tbl, col, col_type in [
-            ("chunks", "created_at", "TIMESTAMP DEFAULT CURRENT_TIMESTAMP"),
-            ("edges", "created_at", "TIMESTAMP DEFAULT CURRENT_TIMESTAMP"),
+            ("chunks", "created_at", "TIMESTAMP DEFAULT '1970-01-01 00:00:00'"),
+            ("edges", "created_at", "TIMESTAMP DEFAULT '1970-01-01 00:00:00'"),
             ("documents", "filename", "TEXT"),
-            ("documents", "created_at", "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+            ("documents", "created_at", "TIMESTAMP DEFAULT '1970-01-01 00:00:00'")
         ]:
             try:
                 conn.execute(f"ALTER TABLE {tbl} ADD COLUMN {col} {col_type}")
-            except Exception:
-                pass
+            except sqlite3.OperationalError as e:
+                err_msg = str(e).lower()
+                if "duplicate column name" not in err_msg and "non-constant default" not in err_msg:
+                    logger.error(f"Failed to migrate table {tbl}: {e}")
+                    raise
 
         conn.commit()
 
 @contextmanager
 def db_cursor():
-    """Context manager for SQLite operations that automatically commits,
-    re-raises on any error, and always closes the connection."""
     conn = get_db_connection()
     try:
         cursor = conn.cursor()
@@ -110,30 +109,23 @@ def db_cursor():
         conn.close()
 
 def reset_all_data():
-    """Wipes all data from SQLite and ChromaDB, removes disk segment folders, and re-initializes clean schemas."""
     global collection, entities_collection
 
-    # 1. Clear SQLite tables
     with db_cursor() as cursor:
         cursor.execute("DELETE FROM chunks")
         cursor.execute("DELETE FROM edges")
         cursor.execute("DELETE FROM documents")
         
-    # 2. Reset ChromaDB via client reset
     try:
         chroma_client.reset()
     except Exception as e:
         logger.warning(f"ChromaDB client.reset() encountered: {e}")
         try:
             chroma_client.delete_collection("chunks")
-        except Exception:
-            pass
-        try:
             chroma_client.delete_collection("entities")
         except Exception:
             pass
 
-    # 3. Clean up orphaned UUID segment directories on disk
     if os.path.exists(config.chroma_path):
         for item in os.listdir(config.chroma_path):
             item_path = os.path.join(config.chroma_path, item)
@@ -143,13 +135,11 @@ def reset_all_data():
                 except Exception as clean_err:
                     logger.debug(f"Could not remove segment directory {item}: {clean_err}")
 
-    # 4. Recreate fresh clean collections
     collection = get_chunks_collection()
     entities_collection = get_entities_collection()
     return True
 
 def list_documents():
-    """Returns a summary of all ingested documents, their chunk counts, and associated edge counts."""
     with db_cursor() as cursor:
         cursor.execute("""
             SELECT 
@@ -179,8 +169,6 @@ def list_documents():
         ]
 
 def delete_document(doc_id: str) -> bool:
-    """Atomically removes a document, its chunks, and its graph edges from SQLite,
-    and purges associated chunk embeddings and orphaned entity nodes from ChromaDB."""
     chunks_col = get_chunks_collection()
     entities_col = get_entities_collection()
 

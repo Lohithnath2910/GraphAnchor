@@ -2,6 +2,8 @@ import yaml
 from pydantic import BaseModel
 from pathlib import Path
 
+# Loads configuration parameters for the RAG engine, falling back to defaults if config.yaml is missing.
+
 class AppConfig(BaseModel):
     llm_model: str
     embed_model: str
@@ -12,6 +14,9 @@ class AppConfig(BaseModel):
     similarity_threshold: float
     max_file_size_mb: float = 5.0
     ollama_max_retries: int = 2
+    hybrid_fusion_alpha: float = 0.55
+    vector_anchor_confidence: float = 0.35
+    graph_edge_base_confidence: float = 0.85
 
 def load_config(path: str = "config.yaml") -> AppConfig:
     if not Path(path).exists():

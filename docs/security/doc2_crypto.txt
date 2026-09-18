@@ -1,1 +1,0 @@
-Session Broker authenticates user tokens using private keys stored in the Vault Cluster.

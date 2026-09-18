@@ -10,8 +10,7 @@ from typing import List
 logger = logging.getLogger("graphanchor")
 
 def get_embedding(text: str) -> List[float]:
-    """Get embeddings using Ollama. Retries on transient failures so a single
-    dropped connection doesn't fail an entire ingest or query."""
+    # Retrieves vector embeddings using the configured Ollama model, with automatic retries for transient failures.
     last_err = None
     for attempt in range(config.ollama_max_retries + 1):
         try:

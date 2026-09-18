@@ -71,8 +71,7 @@ PRONOUNS = {
 }
 
 def place_entity(entity_str: str, staged_entities: Optional[List[str]] = None, chunk_context: str = "") -> Tuple[str, float]:
-    """Returns canonical entity name and confidence.
-    Filters out invalid verbs/pronouns and performs fuzzy embedding deduplication."""
+    # Returns canonical entity name and confidence by filtering invalid words and performing fuzzy deduplication.
     if not entity_str:
         return "", 0.0
 
@@ -129,6 +128,7 @@ def place_entity(entity_str: str, staged_entities: Optional[List[str]] = None, c
 
 @app.post("/ingest", response_model=IngestResponse)
 async def ingest_document(file: UploadFile = File(...)):
+    # Handles uploading a document, extracting its text, generating graph triples, and storing the data.
     allowed_exts = {".txt", ".md", ".markdown", ".pdf"}
     fname = file.filename or ""
     file_ext = os.path.splitext(fname.lower())[1]
@@ -255,7 +255,7 @@ async def ingest_document(file: UploadFile = File(...)):
 
 @app.delete("/reset")
 def reset_databases(confirm: bool = False):
-    """Clear all data from SQLite and ChromaDB. Pass ?confirm=true to proceed."""
+    # Clears all data from SQLite and ChromaDB permanently.
     if not confirm:
         raise HTTPException(status_code=400, detail="This permanently deletes all data. Pass ?confirm=true to proceed.")
 
@@ -268,7 +268,7 @@ def reset_databases(confirm: bool = False):
 
 @app.get("/documents")
 def get_documents_endpoint():
-    """List all ingested documents along with chunk and graph edge counts."""
+    # Lists all ingested documents with chunk and graph edge counts.
     try:
         docs = list_documents()
         return {"documents": docs, "total_documents": len(docs)}
@@ -278,7 +278,7 @@ def get_documents_endpoint():
 
 @app.get("/documents/{doc_id}")
 def get_single_document_endpoint(doc_id: str):
-    """Retrieve metadata and stored chunks for a specific document."""
+    # Retrieves metadata and stored chunks for a specific document.
     try:
         with db_cursor() as cursor:
             cursor.execute("SELECT doc_id, filename, content_hash, created_at FROM documents WHERE doc_id = ?", (doc_id,))
@@ -314,7 +314,7 @@ def get_single_document_endpoint(doc_id: str):
 
 @app.delete("/documents/{doc_id}")
 def delete_single_document_endpoint(doc_id: str):
-    """Selectively and atomically delete a single document and all associated chunks and edges."""
+    # Selectively deletes a document and all its associated chunks and edges.
     try:
         success = delete_document(doc_id)
         if not success:
@@ -328,6 +328,7 @@ def delete_single_document_endpoint(doc_id: str):
 
 @app.get("/graph/stats")
 def get_stats():
+    # Returns aggregate statistics for the entire database.
     try:
         with db_cursor() as cursor:
             cursor.execute("SELECT COUNT(*) FROM chunks")
@@ -349,7 +350,7 @@ def get_stats():
 
 @app.get("/graph/all")
 def get_entire_graph():
-    """Returns all nodes and edges currently in the Knowledge Graph for upfront visualization."""
+    # Returns all nodes and edges currently in the Knowledge Graph.
     try:
         with db_cursor() as cursor:
             cursor.execute("""
@@ -387,7 +388,7 @@ def get_entire_graph():
         raise HTTPException(status_code=500, detail="Failed to fetch entire graph.")
 
 def find_query_anchor_entities(query_text: str, query_emb: List[float], max_anchors: int = 3) -> List[Tuple[str, float]]:
-    """Identify starting graph entities using exact token substring matching and vector similarity."""
+    # Identifies starting graph entities using exact token matching and vector similarity.
     anchor_scores: Dict[str, float] = {}
 
     try:
@@ -418,7 +419,7 @@ def find_query_anchor_entities(query_text: str, query_emb: List[float], max_anch
                 for idx, ent_id in enumerate(entity_res['ids'][0]):
                     dist = entity_res['distances'][0][idx] if entity_res.get('distances') else 0.0
                     sim = 1.0 - dist
-                    if sim >= 0.35:
+                    if sim >= config.vector_anchor_confidence:
                         if ent_id not in anchor_scores or sim > anchor_scores[ent_id]:
                             anchor_scores[ent_id] = float(sim)
         except Exception as e:
@@ -430,11 +431,9 @@ def find_query_anchor_entities(query_text: str, query_emb: List[float], max_anch
 def rank_and_fuse_chunks(
     vector_results: List[Dict],
     connected_chunks: List[Dict],
-    graph_edges: List[Dict],
-    alpha: float = 0.55
+    graph_edges: List[Dict]
 ) -> List[Dict]:
-    """Combines vector similarity search results and graph traversal chunks using
-    hybrid score fusion with confidence decay."""
+    # Combines vector similarity search results and graph traversal chunks using hybrid score fusion.
     fused: Dict[str, Dict] = {}
 
     for rank, v in enumerate(vector_results):
@@ -461,14 +460,14 @@ def rank_and_fuse_chunks(
     for g in connected_chunks:
         cid = g["chunk_id"]
         edges = edge_by_chunk.get(cid, [])
-        max_conf = max([e.get("confidence", 1.0) for e in edges], default=0.85)
+        max_conf = max([e.get("confidence", 1.0) for e in edges], default=config.graph_edge_base_confidence)
         hop = 1 if cid in edge_by_chunk else 2
         hop_decay = 0.8 ** hop
         graph_score = max_conf * hop_decay
 
         if cid in fused:
             v_score = fused[cid]["vector_score"]
-            composite = alpha * v_score + (1.0 - alpha) * graph_score + 0.15
+            composite = config.hybrid_fusion_alpha * v_score + (1.0 - config.hybrid_fusion_alpha) * graph_score + 0.15
             fused[cid]["graph_score"] = round(graph_score, 4)
             fused[cid]["composite_score"] = round(min(1.0, composite), 4)
             fused[cid]["source_type"] = "hybrid"
@@ -495,6 +494,7 @@ def query_chunks(
     k: int = Query(3, ge=1, le=20),
     enable_graph: bool = Query(True, description="Toggle graph traversal augmentation")
 ):
+    # Executes hybrid search combining vector retrieval and graph traversal to generate an answer.
     try:
         emb = get_embedding(q)
     except Exception as e:
@@ -598,7 +598,6 @@ def query_chunks(
         else:
             graph_metadata = {"message": "Graph traversal is disabled."}
 
-        # Rank and fuse all retrieved & traversed chunks
         ranked_chunks = rank_and_fuse_chunks(
             vector_results=vector_results,
             connected_chunks=connected_chunks,
@@ -648,13 +647,13 @@ def get_answer_endpoint(
     k: int = Query(3, ge=1, le=20),
     enable_graph: bool = Query(True, description="Toggle graph traversal")
 ):
-    """Direct answer endpoint returning only the synthesized grounded answer."""
+    # Direct GET endpoint returning only the synthesized grounded answer.
     full_result = query_chunks(q=q, k=k, enable_graph=enable_graph)
     return AnswerResponse(query=full_result["query"], answer=full_result["answer"])
 
 @app.post("/answer", response_model=AnswerResponse)
 def post_answer_endpoint(req: QueryRequest):
-    """Direct POST answer endpoint returning only the synthesized grounded answer."""
+    # Direct POST endpoint returning only the synthesized grounded answer.
     full_result = query_chunks(q=req.query, k=req.k, enable_graph=req.enable_graph)
     return AnswerResponse(query=full_result["query"], answer=full_result["answer"])
 
@@ -664,7 +663,7 @@ def get_answer_stream_endpoint(
     k: int = Query(3, ge=1, le=20),
     enable_graph: bool = Query(True, description="Toggle graph traversal")
 ):
-    """Server-Sent Events (SSE) endpoint streaming grounded answer tokens in real time."""
+    # Server-Sent Events (SSE) endpoint streaming grounded answer tokens in real time.
     full_result = query_chunks(q=q, k=k, enable_graph=enable_graph)
     ranked_chunks = full_result.get("ranking_breakdown", [])
     graph_edges = full_result.get("graph_traversal", {}).get("edges", [])
@@ -685,7 +684,7 @@ def get_answer_stream_endpoint(
 
 @app.post("/answer/stream")
 def post_answer_stream_endpoint(req: QueryRequest):
-    """Server-Sent Events (SSE) POST endpoint streaming grounded answer tokens in real time."""
+    # Server-Sent Events (SSE) POST endpoint streaming grounded answer tokens in real time.
     return get_answer_stream_endpoint(q=req.query, k=req.k, enable_graph=req.enable_graph)
 
 if os.path.exists("web"):

@@ -20,8 +20,7 @@ class GraphExtraction(BaseModel):
     relations: List[Relation] = Field(description="List of relationships between entities")
 
 def extract_graph_from_chunk(text: str) -> GraphExtraction:
-    """Extract entities and relationships from text using Ollama JSON mode.
-    Resolves coreferences, eliminates pronouns/verbs as nodes, and runs deterministically (temp=0.0)."""
+    # Extracts factual entities and relationships from text using Ollama JSON mode with a fixed schema.
     system_prompt = (
         "You are the GraphAnchor Knowledge Graph Extraction Engine, a specialized system for converting unstructured text into structured (Entity, Relation, Target) triples.\n"
         "Your objective is to extract high-precision facts, relationships, attributes, roles, and dependencies from the provided text.\n\n"
@@ -71,7 +70,7 @@ def _build_rag_prompts(
     graph_edges: Optional[List[dict]] = None,
     traversed_chunks: Optional[List[dict]] = None
 ) -> Tuple[Optional[str], Optional[str]]:
-    """Constructs grounded context and system/user prompts with structured passage citations."""
+    # Constructs grounded context and system/user prompts incorporating both text chunks and graph relationships.
     vector_chunks = vector_chunks or []
     graph_edges = graph_edges or []
     traversed_chunks = traversed_chunks or []
@@ -140,7 +139,7 @@ def generate_answer(
     graph_edges: Optional[List[dict]] = None,
     traversed_chunks: Optional[List[dict]] = None
 ) -> str:
-    """Generate grounded answer from retrieved text chunks and knowledge graph facts."""
+    # Generates a grounded answer from retrieved chunks and graph facts using Ollama.
     system_prompt, user_prompt = _build_rag_prompts(query, vector_chunks, graph_edges, traversed_chunks)
     if not system_prompt or not user_prompt:
         return "I could not find any relevant information in the knowledge base to answer your question."
@@ -171,7 +170,7 @@ def stream_answer(
     graph_edges: Optional[List[dict]] = None,
     traversed_chunks: Optional[List[dict]] = None
 ):
-    """Stream grounded answer tokens from Ollama for real-time typing effect in UI."""
+    # Streams a grounded answer token-by-token from Ollama for real-time UI display.
     system_prompt, user_prompt = _build_rag_prompts(query, vector_chunks, graph_edges, traversed_chunks)
     if not system_prompt or not user_prompt:
         yield "I could not find any relevant information in the knowledge base to answer your question."
