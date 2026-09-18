@@ -182,6 +182,10 @@ async def ingest_document(file: UploadFile = File(...)):
 
     try:
         with db_cursor() as cursor:
+            cursor.execute(
+                "INSERT INTO documents (doc_id, content_hash, filename) VALUES (?, ?, ?)",
+                (doc_id, content_hash, file.filename)
+            )
             for i, chunk_text_content in enumerate(chunks):
                 chunk_id = f"{doc_id}_{i}"
 
@@ -227,10 +231,6 @@ async def ingest_document(file: UploadFile = File(...)):
                     """, (src_canonical, rel.relation, tgt_canonical, chunk_id, edge_conf))
                     total_edges += 1
 
-            cursor.execute(
-                "INSERT INTO documents (doc_id, content_hash, filename) VALUES (?, ?, ?)",
-                (doc_id, content_hash, file.filename)
-            )
     except Exception as e:
         logger.error(f"Ingest failed for doc {doc_id}: {e}. Rolling back staged ChromaDB entries.")
         if staged_chunk_ids:
@@ -707,5 +707,6 @@ if os.path.exists("web"):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
 
 

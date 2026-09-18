@@ -71,12 +71,8 @@ From this UI, you can manually interact with the API:
 * **GET `/graph/stats`**: View the current number of nodes and edges in your SQLite database.
 * **GET `/query`**: Perform a semantic vector search over your ingested chunks.
 
-### 3. Automated Demo Script
-If you want to see the "Smart Entity Placement" in action automatically, we have provided a demo script. Keep the server running, open a **new terminal window**, activate the virtual environment, and run:
-```bash
-python demo.py
-```
-This will upload 3 intentionally overlapping documents to prove that the similarity threshold correctly merges related entities!
+### 3. Testing with the Dataset
+If you want to see the "Smart Entity Placement" and multi-hop reasoning in action, use the frontend UI to upload the files located in the `data/massive_dataset` directory. This dataset contains 100 documents with an embedded 6-hop storyline hidden amongst noise, allowing you to test the isolated graph traversal mechanism against standard vector semantic search!
 
 ---
 
