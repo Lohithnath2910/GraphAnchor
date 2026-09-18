@@ -1,2 +1,0 @@
-Project Chimera focuses exclusively on the development of next-generation Quantum Cores.
-These cores require extremely stable environments to function without decoherence.
