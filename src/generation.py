@@ -1,8 +1,9 @@
-import ollama
 import logging
 import time
+
+import ollama
 from pydantic import BaseModel, Field
-from typing import List, Optional, Tuple
+
 try:
     from .config import config
 except ImportError:
@@ -16,8 +17,8 @@ class Relation(BaseModel):
     target_entity: str = Field(description="The target entity")
 
 class GraphExtraction(BaseModel):
-    entities: List[str] = Field(description="List of all unique entities extracted from the text")
-    relations: List[Relation] = Field(description="List of relationships between entities")
+    entities: list[str] = Field(description="List of all unique entities extracted from the text")
+    relations: list[Relation] = Field(description="List of relationships between entities")
 
 def extract_graph_from_chunk(text: str) -> GraphExtraction:
     # Extracts factual entities and relationships from text using Ollama JSON mode with a fixed schema.
@@ -66,10 +67,10 @@ def extract_graph_from_chunk(text: str) -> GraphExtraction:
 
 def _build_rag_prompts(
     query: str,
-    vector_chunks: Optional[List[dict]] = None,
-    graph_edges: Optional[List[dict]] = None,
-    traversed_chunks: Optional[List[dict]] = None
-) -> Tuple[Optional[str], Optional[str]]:
+    vector_chunks: list[dict] | None = None,
+    graph_edges: list[dict] | None = None,
+    traversed_chunks: list[dict] | None = None
+) -> tuple[str | None, str | None]:
     # Constructs grounded context and system/user prompts incorporating both text chunks and graph relationships.
     vector_chunks = vector_chunks or []
     graph_edges = graph_edges or []
@@ -135,9 +136,9 @@ def _build_rag_prompts(
 
 def generate_answer(
     query: str,
-    vector_chunks: Optional[List[dict]] = None,
-    graph_edges: Optional[List[dict]] = None,
-    traversed_chunks: Optional[List[dict]] = None
+    vector_chunks: list[dict] | None = None,
+    graph_edges: list[dict] | None = None,
+    traversed_chunks: list[dict] | None = None
 ) -> str:
     # Generates a grounded answer from retrieved chunks and graph facts using Ollama.
     system_prompt, user_prompt = _build_rag_prompts(query, vector_chunks, graph_edges, traversed_chunks)
@@ -166,9 +167,9 @@ def generate_answer(
 
 def stream_answer(
     query: str,
-    vector_chunks: Optional[List[dict]] = None,
-    graph_edges: Optional[List[dict]] = None,
-    traversed_chunks: Optional[List[dict]] = None
+    vector_chunks: list[dict] | None = None,
+    graph_edges: list[dict] | None = None,
+    traversed_chunks: list[dict] | None = None
 ):
     # Streams a grounded answer token-by-token from Ollama for real-time UI display.
     system_prompt, user_prompt = _build_rag_prompts(query, vector_chunks, graph_edges, traversed_chunks)

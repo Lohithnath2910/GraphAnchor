@@ -1,12 +1,14 @@
 import sqlite3
-import chromadb
 from contextlib import contextmanager
+
+import chromadb
+
 try:
     from .config import config
 except ImportError:
     from src.config import config
-import os
 import logging
+import os
 import shutil
 
 logger = logging.getLogger("graphanchor")

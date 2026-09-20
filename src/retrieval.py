@@ -1,15 +1,16 @@
-import ollama
 import logging
 import time
+
+import ollama
+
 try:
     from .config import config
 except ImportError:
     from src.config import config
-from typing import List
 
 logger = logging.getLogger("graphanchor")
 
-def get_embedding(text: str) -> List[float]:
+def get_embedding(text: str) -> list[float]:
     # Retrieves vector embeddings using the configured Ollama model, with automatic retries for transient failures.
     last_err = None
     for attempt in range(config.ollama_max_retries + 1):

@@ -1,6 +1,6 @@
 import io
+
 import tiktoken
-from typing import List
 
 try:
     from .config import config
@@ -40,7 +40,7 @@ def extract_text_from_file(filename: str, content: bytes) -> str:
     else:
         raise ValueError(f"Unsupported file format: '.{ext}'. Supported formats: .txt, .md, .pdf")
 
-def chunk_text(text: str) -> List[str]:
+def chunk_text(text: str) -> list[str]:
     # Splits text into overlapping token-based chunks using the cl100k_base tokenizer.
     enc = tiktoken.get_encoding("cl100k_base")
     tokens = enc.encode(text)

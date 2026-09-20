@@ -1,6 +1,7 @@
+from pathlib import Path
+
 import yaml
 from pydantic import BaseModel
-from pathlib import Path
 
 # Loads configuration parameters for the RAG engine, falling back to defaults if config.yaml is missing.
 

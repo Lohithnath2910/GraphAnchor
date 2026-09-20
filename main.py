@@ -1,35 +1,34 @@
-import os
-import sys
-import uuid
 import hashlib
 import json
 import logging
+import os
+import sys
+import uuid
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from fastapi import FastAPI, File, UploadFile, HTTPException, Query
+
+from fastapi import FastAPI, File, HTTPException, Query, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
 from fastapi.responses import RedirectResponse, StreamingResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
-from typing import List, Dict, Optional, Tuple
 
 from src.config import config
-from src.ingestion import chunk_text, extract_text_from_file
-from src.storage import (
-    db_cursor,
-    get_chunks_collection,
-    get_entities_collection,
-    reset_all_data,
-    list_documents,
-    delete_document
-)
-from src.retrieval import get_embedding
 from src.generation import (
     extract_graph_from_chunk,
     generate_answer,
     stream_answer,
-    GraphExtraction
+)
+from src.ingestion import chunk_text, extract_text_from_file
+from src.retrieval import get_embedding
+from src.storage import (
+    db_cursor,
+    delete_document,
+    get_chunks_collection,
+    get_entities_collection,
+    list_documents,
+    reset_all_data,
 )
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
@@ -70,7 +69,7 @@ PRONOUNS = {
     "he", "she", "they", "him", "her", "his", "their", "them", "my", "i", "me", "we", "us"
 }
 
-def place_entity(entity_str: str, staged_entities: Optional[List[str]] = None, chunk_context: str = "") -> Tuple[str, float]:
+def place_entity(entity_str: str, staged_entities: list[str] | None = None, chunk_context: str = "") -> tuple[str, float]:
     # Returns canonical entity name and confidence by filtering invalid words and performing fuzzy deduplication.
     if not entity_str:
         return "", 0.0
@@ -175,8 +174,8 @@ async def ingest_document(file: UploadFile = File(...)):
     total_edges = 0
     extraction_failures = 0
 
-    staged_chunk_ids: List[str] = []
-    staged_entity_ids: List[str] = []
+    staged_chunk_ids: list[str] = []
+    staged_entity_ids: list[str] = []
     chunks_col = get_chunks_collection()
     entities_col = get_entities_collection()
 
@@ -387,9 +386,9 @@ def get_entire_graph():
         logger.error(f"Failed to fetch full graph: {e}")
         raise HTTPException(status_code=500, detail="Failed to fetch entire graph.")
 
-def find_query_anchor_entities(query_text: str, query_emb: List[float], max_anchors: int = 3) -> List[Tuple[str, float]]:
+def find_query_anchor_entities(query_text: str, query_emb: list[float], max_anchors: int = 3) -> list[tuple[str, float]]:
     # Identifies starting graph entities using exact token matching and vector similarity.
-    anchor_scores: Dict[str, float] = {}
+    anchor_scores: dict[str, float] = {}
 
     try:
         with db_cursor() as cursor:
@@ -429,12 +428,12 @@ def find_query_anchor_entities(query_text: str, query_emb: List[float], max_anch
     return sorted_anchors[:max_anchors]
 
 def rank_and_fuse_chunks(
-    vector_results: List[Dict],
-    connected_chunks: List[Dict],
-    graph_edges: List[Dict]
-) -> List[Dict]:
+    vector_results: list[dict],
+    connected_chunks: list[dict],
+    graph_edges: list[dict]
+) -> list[dict]:
     # Combines vector similarity search results and graph traversal chunks using hybrid score fusion.
-    fused: Dict[str, Dict] = {}
+    fused: dict[str, dict] = {}
 
     valid_dists = [v.get("distance") for v in vector_results if v.get("distance") is not None]
     max_dist = max(valid_dists) if valid_dists else 1.0
@@ -457,7 +456,7 @@ def rank_and_fuse_chunks(
             "hop_distance": 0
         }
 
-    edge_by_chunk: Dict[str, List[Dict]] = {}
+    edge_by_chunk: dict[str, list[dict]] = {}
     for e in graph_edges:
         found_cid = e.get("found_in_chunk")
         if found_cid:
