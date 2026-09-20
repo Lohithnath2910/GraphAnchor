@@ -23,7 +23,7 @@ services:
       bash -c "
       ollama serve &
       sleep 5
-      ollama pull qwen2.5-coder:7b
+      ollama pull llama3.2
       ollama pull snowflake-arctic-embed2:568m
       wait
       "

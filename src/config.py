@@ -1,12 +1,12 @@
 from pathlib import Path
 
 import yaml
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 # Loads configuration parameters for the RAG engine, falling back to defaults if config.yaml is missing.
 
 class AppConfig(BaseModel):
-    llm_model: str
+    llm_model: str = Field(default="llama3.2", description="Ollama model for generation and graph extraction")
     embed_model: str
     db_path: str
     chroma_path: str
