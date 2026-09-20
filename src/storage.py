@@ -114,8 +114,8 @@ def reset_all_data():
     global collection, entities_collection
 
     with db_cursor() as cursor:
-        cursor.execute("DELETE FROM chunks")
         cursor.execute("DELETE FROM edges")
+        cursor.execute("DELETE FROM chunks")
         cursor.execute("DELETE FROM documents")
         
     try:
