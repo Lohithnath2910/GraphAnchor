@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    depends_on:
+      - ollama
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    # A small startup script to pull the models automatically
+    entrypoint: >
+      bash -c "
+      ollama serve &
+      sleep 5
+      ollama pull qwen2.5-coder:7b
+      ollama pull snowflake-arctic-embed2:568m
+      wait
+      "
+
+volumes:
+  ollama_data:
