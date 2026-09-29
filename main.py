@@ -5,6 +5,14 @@ import os
 import re
 import sys
 import uuid
+import spacy
+
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    import subprocess
+    subprocess.run([sys.executable, "-m", "spacy", "download", "en_core_web_sm"], check=True)
+    nlp = spacy.load("en_core_web_sm")
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
@@ -79,10 +87,23 @@ def place_entity(entity_str: str, staged_entities: list[str] | None = None, chun
     if not entity_clean or len(entity_clean) <= 1:
         return "", 0.0
 
-    if entity_clean.lower() in INVALID_ENTITIES:
+    # SpaCy cleanup: remove leading determiners and filter stop words
+    doc = nlp(entity_clean)
+    if len(doc) == 1:
+        token = doc[0]
+        # Ignore pronouns, determiners, conjunctions, etc., but keep acronyms (e.g. WHO)
+        if token.is_stop and not entity_clean.isupper():
+            if token.pos_ in ("PRON", "DET", "AUX", "PART", "SCONJ", "CCONJ", "ADP"):
+                return "", 0.0
+                
+    start_idx = 1 if (len(doc) > 1 and doc[0].pos_ == "DET") else 0
+    cleaned_tokens = [token.text for token in doc[start_idx:]]
+    entity_clean = " ".join(cleaned_tokens).strip()
+
+    if not entity_clean or len(entity_clean) <= 1:
         return "", 0.0
 
-    if entity_clean.lower() in PRONOUNS:
+    if entity_clean.lower() in INVALID_ENTITIES or entity_clean.lower() in PRONOUNS:
         return "", 0.0
 
     entities_col = get_entities_collection()
