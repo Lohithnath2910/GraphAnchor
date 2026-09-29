@@ -2,6 +2,7 @@ import hashlib
 import json
 import logging
 import os
+import re
 import sys
 import uuid
 
@@ -82,15 +83,7 @@ def place_entity(entity_str: str, staged_entities: list[str] | None = None, chun
         return "", 0.0
 
     if entity_clean.lower() in PRONOUNS:
-        if chunk_context:
-            import re
-            words = re.findall(r'\b([A-Z][a-z]+|[a-z]{3,})\b', chunk_context)
-            for w in words:
-                if w.lower() not in INVALID_ENTITIES and w.lower() not in PRONOUNS and w.lower() not in {'most', 'very', 'person', 'good', 'smart', 'grace', 'planet', 'partner', 'project'}:
-                    entity_clean = w
-                    break
-        if entity_clean.lower() in PRONOUNS:
-            return "", 0.0
+        return "", 0.0
 
     entities_col = get_entities_collection()
 
@@ -116,7 +109,7 @@ def place_entity(entity_str: str, staged_entities: list[str] | None = None, chun
                 canonical = search_res['ids'][0][0]
                 return canonical, float(sim)
 
-    entities_col.add(
+    entities_col.upsert(
         ids=[entity_clean],
         embeddings=[emb],
         documents=[entity_clean]
@@ -126,7 +119,7 @@ def place_entity(entity_str: str, staged_entities: list[str] | None = None, chun
     return entity_clean, 1.0
 
 @app.post("/ingest", response_model=IngestResponse)
-async def ingest_document(file: UploadFile = File(...)):
+def ingest_document(file: UploadFile = File(...)):
     # Handles uploading a document, extracting its text, generating graph triples, and storing the data.
     allowed_exts = {".txt", ".md", ".markdown", ".pdf"}
     fname = file.filename or ""
@@ -137,7 +130,7 @@ async def ingest_document(file: UploadFile = File(...)):
             detail=f"Unsupported file format '{file_ext}'. Supported formats: {', '.join(sorted(allowed_exts))}"
         )
 
-    content = await file.read()
+    content = file.file.read()
 
     max_bytes = int(config.max_file_size_mb * 1024 * 1024)
     if len(content) > max_bytes:
@@ -190,7 +183,7 @@ async def ingest_document(file: UploadFile = File(...)):
 
                 chunk_emb = get_embedding(chunk_text_content)
 
-                chunks_col.add(
+                chunks_col.upsert(
                     ids=[chunk_id],
                     embeddings=[chunk_emb],
                     documents=[chunk_text_content],
@@ -401,7 +394,8 @@ def find_query_anchor_entities(query_text: str, query_emb: list[float], max_anch
 
         q_lower = query_text.lower()
         for ent in known_entities:
-            if ent.lower() in q_lower:
+            # Use whole word boundary matching to prevent partial matches like 'he' or 'con'
+            if re.search(rf'\b{re.escape(ent.lower())}\b', q_lower):
                 anchor_scores[ent] = 1.0
     except Exception as e:
         logger.warning(f"Error querying known entities for substring match: {e}")
@@ -418,9 +412,8 @@ def find_query_anchor_entities(query_text: str, query_emb: list[float], max_anch
                 for idx, ent_id in enumerate(entity_res['ids'][0]):
                     dist = entity_res['distances'][0][idx] if entity_res.get('distances') else 0.0
                     sim = 1.0 - dist
-                    if sim >= config.vector_anchor_confidence:
-                        if ent_id not in anchor_scores or sim > anchor_scores[ent_id]:
-                            anchor_scores[ent_id] = float(sim)
+                    if sim >= config.vector_anchor_confidence and (ent_id not in anchor_scores or sim > anchor_scores[ent_id]):
+                        anchor_scores[ent_id] = float(sim)
         except Exception as e:
             logger.warning(f"Error during vector entity query: {e}")
 
@@ -543,8 +536,8 @@ def query_chunks(
                 current_frontier = {a[0] for a in anchor_entities}
 
                 with db_cursor() as cursor:
-                    for depth in range(6):
-                        if not current_frontier or len(traversed_edges_set) >= 100:
+                    for depth in range(2):  # Reduced from 6 to 2 to prevent extreme context drift
+                        if not current_frontier or len(traversed_edges_set) >= 60:
                             break
 
                         next_frontier = set()
@@ -616,8 +609,8 @@ def query_chunks(
             graph_edges=graph_results
         )[:limit]
 
-        # Limit graph edges to top 15 to avoid flooding the LLM context with noise
-        top_graph_edges = sorted(graph_results, key=lambda x: x.get("confidence", 0), reverse=True)[:15]
+        # Limit graph edges to top 25 to provide enough graph context without overwhelming
+        top_graph_edges = sorted(graph_results, key=lambda x: x.get("confidence", 0), reverse=True)[:25]
 
         try:
             answer = generate_answer(

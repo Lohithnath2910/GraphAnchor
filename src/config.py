@@ -16,7 +16,7 @@ class AppConfig(BaseModel):
     max_file_size_mb: float = 5.0
     ollama_max_retries: int = 2
     hybrid_fusion_alpha: float = 0.55
-    vector_anchor_confidence: float = 0.35
+    vector_anchor_confidence: float = 0.75
     graph_edge_base_confidence: float = 0.85
 
 def load_config(path: str = "config.yaml") -> AppConfig:

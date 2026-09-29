@@ -78,6 +78,7 @@ def init_db():
         """)
         cursor.execute("CREATE INDEX IF NOT EXISTS idx_edges_source ON edges(source_entity)")
         cursor.execute("CREATE INDEX IF NOT EXISTS idx_edges_target ON edges(target_entity)")
+        cursor.execute("CREATE INDEX IF NOT EXISTS idx_edges_chunk_id ON edges(chunk_id)")
         cursor.execute("CREATE INDEX IF NOT EXISTS idx_chunks_doc_id ON chunks(doc_id)")
         cursor.execute("CREATE INDEX IF NOT EXISTS idx_documents_hash ON documents(content_hash)")
         
@@ -184,13 +185,12 @@ def delete_document(doc_id: str) -> bool:
 
         entities_to_check = set()
         if chunk_ids:
-            placeholders = ",".join("?" * len(chunk_ids))
-            cursor.execute(f"SELECT source_entity, target_entity FROM edges WHERE chunk_id IN ({placeholders})", chunk_ids)
+            cursor.execute("SELECT source_entity, target_entity FROM edges WHERE chunk_id IN (SELECT chunk_id FROM chunks WHERE doc_id = ?)", (doc_id,))
             for s, t in cursor.fetchall():
                 if s: entities_to_check.add(s)
                 if t: entities_to_check.add(t)
 
-            cursor.execute(f"DELETE FROM edges WHERE chunk_id IN ({placeholders})", chunk_ids)
+            cursor.execute("DELETE FROM edges WHERE chunk_id IN (SELECT chunk_id FROM chunks WHERE doc_id = ?)", (doc_id,))
             cursor.execute("DELETE FROM chunks WHERE doc_id = ?", (doc_id,))
 
         cursor.execute("DELETE FROM documents WHERE doc_id = ?", (doc_id,))

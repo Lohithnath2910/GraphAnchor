@@ -23,3 +23,5 @@ dependencies = [
 [tool.pyright]
 extraPaths = ["."]
 
+[tool.ruff.lint]
+ignore = ["BLE001", "S110", "B008"]

@@ -37,7 +37,9 @@ def extract_graph_from_chunk(text: str) -> GraphExtraction:
         "   - NEVER output 'I', 'me', 'my', or 'we' as entity names.\n"
         "4. Relation Formatting:\n"
         "   - Use concise, meaningful verb phrases (e.g., 'leads', 'specializes_in', 'manufactured_by', 'partner_of', 'located_in', 'reports_to', 'authenticates_with', 'secured_by', 'is').\n"
+        "   - Complex actions or intentions MUST be captured entirely in the relation (e.g. 'plans_to_destroy', 'wants_to_use', 'intends_to_sabotage').\n"
         "   - NEVER output standalone verbs ('is', 'has', 'was') as entity names.\n"
+        "   - Entities MUST be concrete nouns or names, NOT verbs or actions like 'misuse of'.\n"
         "5. Output Schema:\n"
         "   - Return strictly valid JSON containing the list of unique 'entities' and 'relations' matching the requested schema."
     )
@@ -102,12 +104,12 @@ def _build_rag_prompts(
             edge_contexts.append(f"- {src} -> {rel} -> {tgt}")
 
     context_parts = []
-    if text_contexts:
-        passages = "\n\n".join(text_contexts)
-        context_parts.append(f"### Relevant Evidence Passages:\n{passages}")
     if edge_contexts:
         triples = "\n".join(edge_contexts)
         context_parts.append(f"### Knowledge Graph Relationships:\n{triples}")
+    if text_contexts:
+        passages = "\n\n".join(text_contexts)
+        context_parts.append(f"### Relevant Evidence Passages:\n{passages}")
 
     full_context = "\n\n".join(context_parts)
 
