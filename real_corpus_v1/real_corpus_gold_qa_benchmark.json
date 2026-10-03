@@ -1,0 +1,586 @@
+[
+  {
+    "id": 1,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What does the acronym OSEMN stand for in the data science process?",
+    "expected_keywords": [
+      "Obtain",
+      "Scrub",
+      "Explore",
+      "Model",
+      "Interpret"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "01_fds_intro_and_assessment.txt"
+  },
+  {
+    "id": 2,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "How many stages are in the Data Science Process described in this module?",
+    "expected_keywords": [
+      "8 stages"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "02_fds_data_science_context_1.txt"
+  },
+  {
+    "id": 3,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What does CAP stand for in the CAP theorem mentioned for databases?",
+    "expected_keywords": [
+      "Consistency",
+      "Availability",
+      "Partition Tolerance"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "03_fds_data_science_context_2.txt"
+  },
+  {
+    "id": 4,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "In SQL, what does the percent sign wildcard represent in a LIKE pattern?",
+    "expected_keywords": [
+      "zero or more characters"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "04_sql_data_filtering.txt"
+  },
+  {
+    "id": 5,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What are the four operations commonly grouped under the acronym CRUD?",
+    "expected_keywords": [
+      "Create",
+      "Read",
+      "Update",
+      "Delete"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "04_sql_data_filtering.txt"
+  },
+  {
+    "id": 6,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "Who introduced the NoSQL concept, and in what year?",
+    "expected_keywords": [
+      "Strozz",
+      "1998"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "05_nosql_databases.txt"
+  },
+  {
+    "id": 7,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What are the four main types of NoSQL databases listed?",
+    "expected_keywords": [
+      "key-value",
+      "column-oriented",
+      "graph",
+      "document-oriented"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "05_nosql_databases.txt"
+  },
+  {
+    "id": 8,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What is the key difference between RANK() and DENSE_RANK() when there are tied values?",
+    "expected_keywords": [
+      "skips the rank",
+      "does not skip"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "06_sql_window_functions.txt"
+  },
+  {
+    "id": 9,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What are the three types of counter measures listed for vulnerabilities?",
+    "expected_keywords": [
+      "Physical Controls",
+      "Administrative Controls",
+      "Technical Controls"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "07_infosec_vulnerabilities.txt"
+  },
+  {
+    "id": 10,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What exploit did WannaCry use to spread, and which agency originally developed it?",
+    "expected_keywords": [
+      "EternalBlue",
+      "National Security Agency",
+      "Shadow Brokers"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "08_infosec_malware_types.txt"
+  },
+  {
+    "id": 11,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What is the difference between a transient virus and a resident virus?",
+    "expected_keywords": [
+      "Transient Virus",
+      "Resident Virus",
+      "active only while"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "08_infosec_malware_types.txt"
+  },
+  {
+    "id": 12,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "Within how many days must a HIPAA breach affecting 500 or more people be reported to HHS?",
+    "expected_keywords": [
+      "60 days"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "09_infosec_security_standards.txt"
+  },
+  {
+    "id": 13,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What penalty can India's Data Protection Board impose under the DPDPA for failing to take reasonable security safeguards?",
+    "expected_keywords": [
+      "250 crore"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "09_infosec_security_standards.txt"
+  },
+  {
+    "id": 14,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What are the three functions covered by the AAA model used in RADIUS?",
+    "expected_keywords": [
+      "Authentication",
+      "Authorization",
+      "Accounting"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "10_infosec_authentication.txt"
+  },
+  {
+    "id": 15,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "In SAML, what are the two main parties that exchange authentication and authorization data?",
+    "expected_keywords": [
+      "Identity Provider",
+      "Service Provider"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "10_infosec_authentication.txt"
+  },
+  {
+    "id": 16,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What are the four pillars of Attribute-Based Access Control?",
+    "expected_keywords": [
+      "Subject Attributes",
+      "Resource Attributes",
+      "Environment Attributes",
+      "Action Attributes"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "11_infosec_abac.txt"
+  },
+  {
+    "id": 17,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "In CP-ABE, what does the encrypted file hold, and what does the user's key hold?",
+    "expected_keywords": [
+      "holds the policy",
+      "holds the attributes"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "11_infosec_abac.txt"
+  },
+  {
+    "id": 18,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What is the difference between discretionary access control and mandatory access control?",
+    "expected_keywords": [
+      "discretionary access control",
+      "mandatory access control"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "12_infosec_os_security.txt"
+  },
+  {
+    "id": 19,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "Which governments collaborated to create the Common Criteria standard?",
+    "expected_keywords": [
+      "Canada",
+      "France",
+      "Germany",
+      "Netherlands",
+      "United Kingdom",
+      "United States"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "12_infosec_os_security.txt"
+  },
+  {
+    "id": 20,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What three aspects make up information privacy according to this material?",
+    "expected_keywords": [
+      "sensitive data",
+      "affected",
+      "controlled disclosure"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "13_infosec_privacy.txt"
+  },
+  {
+    "id": 21,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What are the three ways individuals can manage their identity to protect privacy?",
+    "expected_keywords": [
+      "Anonymity",
+      "Pseudonymity",
+      "Multiple Identities"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "13_infosec_privacy.txt"
+  },
+  {
+    "id": 22,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What is the difference between Boolean-based and time-based blind SQL injection?",
+    "expected_keywords": [
+      "Boolean-based Blind SQL Injection",
+      "Time-based Blind SQL Injection"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "14_infosec_sql_injection.txt"
+  },
+  {
+    "id": 23,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What technique groups patients with similar demographic and medical data to prevent inference attacks?",
+    "expected_keywords": [
+      "k-anonymization"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "15_infosec_multilevel_security.txt"
+  },
+  {
+    "id": 24,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "How many customers were affected by the Marriott International data breach, and in what year?",
+    "expected_keywords": [
+      "Marriott",
+      "500 million",
+      "2018"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "15_infosec_multilevel_security.txt"
+  },
+  {
+    "id": 25,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What three methods do firewalls use to control traffic?",
+    "expected_keywords": [
+      "Packet filtering",
+      "Proxy service",
+      "Stateful inspection"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "16_infosec_firewall_configuration.txt"
+  },
+  {
+    "id": 26,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What does DMZ refer to in firewall configuration, per the house analogy?",
+    "expected_keywords": [
+      "front yard",
+      "DMZ"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "16_infosec_firewall_configuration.txt"
+  },
+  {
+    "id": 27,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What are the three categories of DLP solution types described?",
+    "expected_keywords": [
+      "Network DLP",
+      "Storage DLP",
+      "Endpoint DLP"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "17_infosec_data_loss_prevention.txt"
+  },
+  {
+    "id": 28,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What are the three primary classes of intrusion detection methodology?",
+    "expected_keywords": [
+      "Signature-based detection",
+      "Anomaly-based detection",
+      "stateful protocol analysis"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "17_infosec_data_loss_prevention.txt"
+  },
+  {
+    "id": 29,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What is the difference between an Inside Local IP Address and an Inside Global IP Address?",
+    "expected_keywords": [
+      "Before translation",
+      "After translation"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "18_infosec_nat_configuration.txt"
+  },
+  {
+    "id": 30,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "In PAT, how are multiple private IP addresses mapped to one public IP address?",
+    "expected_keywords": [
+      "Port Address Translation",
+      "source ports"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "18_infosec_nat_configuration.txt"
+  },
+  {
+    "id": 31,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What is the main drawback of the partitioning approach to multilevel database security?",
+    "expected_keywords": [
+      "elimination of redundancy",
+      "high-level user"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "19_infosec_proposals_multilevel_security.txt"
+  },
+  {
+    "id": 32,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What are the three pieces that make up an integrity lock for a data item?",
+    "expected_keywords": [
+      "sensitivity label",
+      "checksum"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "19_infosec_proposals_multilevel_security.txt"
+  },
+  {
+    "id": 33,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "In KP-ABE, what does the encrypted ciphertext contain, and what does the user's private key contain?",
+    "expected_keywords": [
+      "encrypted data contains a set of attributes",
+      "private key contains the access policy"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "20_infosec_attribute_based_encryption.txt"
+  },
+  {
+    "id": 34,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What cryptographic technique allows computations on encrypted data without decrypting it first?",
+    "expected_keywords": [
+      "Homomorphic Encryption"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "21_infosec_cryptographic_privacy.txt"
+  },
+  {
+    "id": 35,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What does the acronym zk-SNARK stand for?",
+    "expected_keywords": [
+      "Succinct",
+      "Interactive Argument of Knowledge"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "21_infosec_cryptographic_privacy.txt"
+  },
+  {
+    "id": 36,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What is the feminine singular form of the Spanish adjective for Italian nationality?",
+    "expected_keywords": [
+      "italiana"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "22_spanish_nationality.txt"
+  },
+  {
+    "id": 37,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What is the masculine nationality adjective for someone from Germany in Spanish?",
+    "expected_keywords": [
+      "alemán"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "22_spanish_nationality.txt"
+  },
+  {
+    "id": 38,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What is the Spanish word for the number 17?",
+    "expected_keywords": [
+      "Diecisiete"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "23_spanish_numbers.txt"
+  },
+  {
+    "id": 39,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What is the Spanish ordinal number for '5th'?",
+    "expected_keywords": [
+      "Quinto"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "23_spanish_numbers.txt"
+  },
+  {
+    "id": 40,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What are the four Spanish definite articles, by gender and number?",
+    "expected_keywords": [
+      "EL",
+      "LA",
+      "LOS",
+      "LAS"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "24_spanish_articles.txt"
+  },
+  {
+    "id": 41,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What are the four Spanish indefinite articles, by gender and number?",
+    "expected_keywords": [
+      "UN",
+      "UNA",
+      "UNOS",
+      "UNAS"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "24_spanish_articles.txt"
+  },
+  {
+    "id": 42,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "With which three types of people should you generally speak formally, per this material?",
+    "expected_keywords": [
+      "don't know",
+      "older than you",
+      "superior position"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "25_spanish_greetings.txt"
+  },
+  {
+    "id": 43,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What is the 'nosotros/as' conjugation of the verb tener?",
+    "expected_keywords": [
+      "Tenemos"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "26_spanish_tener_verb.txt"
+  },
+  {
+    "id": 44,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What topics does this material cover regarding the Spanish calendar?",
+    "expected_keywords": [
+      "Días",
+      "Meses",
+      "cumpleaños"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "27_spanish_dates_days_months.txt"
+  },
+  {
+    "id": 45,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What are the three uses of the verb estar given in this material?",
+    "expected_keywords": [
+      "Location",
+      "Physical Condition",
+      "Emotion"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "28_spanish_estar_verb.txt"
+  },
+  {
+    "id": 46,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What are the Spanish words for grandfather and grandmother?",
+    "expected_keywords": [
+      "abuelo",
+      "abuela"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "29_spanish_family.txt"
+  },
+  {
+    "id": 47,
+    "category": "single_hop",
+    "confidence": "high",
+    "question": "What is a reflexive action in Spanish grammar, as defined in this material?",
+    "expected_keywords": [
+      "reflexive action",
+      "yourself"
+    ],
+    "forbidden_phrases": [],
+    "source_doc": "30_spanish_reflexive_verbs.txt"
+  }
+]
