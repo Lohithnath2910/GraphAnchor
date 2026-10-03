@@ -1,0 +1,69 @@
+Project Nightshade - Risk Assessment Memo
+
+
+
+Project Nightshade is managed under the Power Electronics sector and is based out of Underhill Facility. The project is led by Meera Kapadia, who is responsible for coordinating day-to-day execution and reporting progress to sector leadership.
+
+
+
+The core team supporting Meera Kapadia on Project Nightshade includes Sienna Walsh, Ingrid Solberg, Noor Siddiqui. Each team member holds responsibility for a distinct work stream, and Meera Kapadia convenes the group on a recurring basis to review open items and dependencies.
+
+
+
+Meera Kapadia and the Project Nightshade team identified a small number of open risks this period. An internal audit covering 2 controls was completed in August without material findings. A 11-day slip against the baseline schedule was logged and accepted. A quality review surfaced 3 minor findings, all since resolved. A summary was circulated to leadership ahead of the April review. 6 open risk items remain on the register, none rated severe. The most significant dependency risk was assessed as low given the project's limited external dependencies.
+
+
+
+A variance of 105% against plan was flagged for finance review in July. 5 onboarding sessions were held ahead of the June ramp-up. Exposure was reassessed at 105% of the prior estimate after mitigation. 11 items from the test plan were closed out with no deviations. A 2-day slip against the baseline schedule was logged and accepted. Stakeholders from adjacent sectors were briefed during the June sync.
+
+
+
+Vendor deliveries for supporting components arrived within 4 days of the June schedule. Documentation was updated in April to reflect the latest approved revision. 6 test cases were re-run in December following a minor spec update. 11 additional contractor hours were allocated for the September period. 12 schedule dependencies were reconfirmed ahead of the February checkpoint. 4 open risk items remain on the register, none rated severe.
+
+
+
+3 test cases were re-run in October following a minor spec update. The October spend report showed utilization at 107% of plan. Documentation was updated in May to reflect the latest approved revision. 9 schedule dependencies were reconfirmed ahead of the May checkpoint. 7 items of feedback from the prior cycle were incorporated into December planning. Site logistics for the November visit were confirmed with 7 open items closed.
+
+
+
+Stakeholders from adjacent sectors were briefed during the February sync. A quality review surfaced 9 minor findings, all since resolved. Vendor deliveries for supporting components arrived within 7 days of the March schedule. Budget utilization held at 94% of the approved quarterly envelope. 5 additional contractor hours were allocated for the August period. 103% of required controls were re-validated during the February audit window.
+
+
+
+No staffing changes were proposed for the cycle beginning February. Equipment calibration was completed ahead of the April checkpoint. A new risk was logged in May and assigned an owner for follow-up. Budget utilization held at 91% of the approved quarterly envelope. 11 test cases were re-run in April following a minor spec update. 5 schedule dependencies were reconfirmed ahead of the January checkpoint.
+
+
+
+An internal audit covering 2 controls was completed in July without material findings. 3 shipments were received and reconciled against the September manifest. A new risk was logged in March and assigned an owner for follow-up. Defect density remained within 88% of the accepted threshold for the period. A 8-point summary was shared with sector leadership in March. The milestone originally targeted for January was re-confirmed with a 4-day buffer.
+
+
+
+6 additional contractor hours were allocated for the February period. 105% of required controls were re-validated during the January audit window. Site logistics for the July visit were confirmed with 4 open items closed. 7 items of feedback from the prior cycle were incorporated into July planning. The risk register was reviewed in August with 8 items closed. Defect density remained within 91% of the accepted threshold for the period.
+
+
+
+The milestone originally targeted for October was re-confirmed with a 6-day buffer. 9 open risk items remain on the register, none rated severe. Budget utilization held at 94% of the approved quarterly envelope. Defect density remained within 107% of the accepted threshold for the period. 107% of required controls were re-validated during the February audit window. 11 additional contractor hours were allocated for the October period.
+
+
+
+2 schedule dependencies were reconfirmed ahead of the August checkpoint. A compliance checklist covering 3 controls was signed off in June. A new risk was logged in April and assigned an owner for follow-up. 7 onboarding sessions were held ahead of the March ramp-up. 4 shipments were received and reconciled against the March manifest. 12 items from the test plan were closed out with no deviations.
+
+
+
+A variance of 103% against plan was flagged for finance review in March. No staffing changes were proposed for the cycle beginning September. A summary was circulated to leadership ahead of the April review. Vendor deliveries for supporting components arrived within 8 days of the June schedule. Exposure was reassessed at 94% of the prior estimate after mitigation. 7 schedule dependencies were reconfirmed ahead of the May checkpoint.
+
+
+
+Site logistics for the January visit were confirmed with 6 open items closed. 11 additional contractor hours were allocated for the April period. A 12-day slip against the baseline schedule was logged and accepted. Defect density remained within 103% of the accepted threshold for the period. The January spend report showed utilization at 105% of plan. A new risk was logged in August and assigned an owner for follow-up.
+
+
+
+The milestone originally targeted for June was re-confirmed with a 2-day buffer. Exposure was reassessed at 103% of the prior estimate after mitigation. Equipment calibration was completed ahead of the May checkpoint. The February spend report showed utilization at 88% of plan. A 11-point summary was shared with sector leadership in April. Defect density remained within 94% of the accepted threshold for the period.
+
+
+
+8 shipments were received and reconciled against the January manifest. 6 additional contractor hours were allocated for the April period. Defect density remained within 97% of the accepted threshold for the period. The February spend report showed utilization at 107% of plan. Exposure was reassessed at 94% of the prior estimate after mitigation. A 6-day slip against the baseline schedule was logged and accepted.
+
+
+
+For questions regarding Project Nightshade, contact Meera Kapadia directly or escalate through the Power Electronics sector management chain.

@@ -1,0 +1,73 @@
+Project Cinderpath - Personnel & Staffing Memo
+
+
+
+Project Cinderpath is managed under the Materials Science sector and is based out of Meridian Works. The project is led by Daniel Osei, who is responsible for coordinating day-to-day execution and reporting progress to sector leadership.
+
+
+
+The core team supporting Daniel Osei on Project Cinderpath includes Caleb Nwosu, Aiko Fujimori, Nadia Farouk. Each team member holds responsibility for a distinct work stream, and Daniel Osei convenes the group on a recurring basis to review open items and dependencies.
+
+
+
+Project Cinderpath has a direct dependency on Project Aurora: deliverables from Project Aurora feed into the Cinderpath workstream, and any schedule slip on Project Aurora is tracked as a risk item for Cinderpath. Daniel Osei maintains a standing coordination channel with the Project Aurora team to monitor this dependency.
+
+
+
+This memo documents current staffing for Project Cinderpath under Daniel Osei. A 3-point summary was shared with sector leadership in October. 11 items from the test plan were closed out with no deviations. No staffing changes were proposed for the cycle beginning June. Vendor deliveries for supporting components arrived within 11 days of the June schedule. No staffing changes are proposed for the upcoming period; Daniel Osei will continue to lead resourcing decisions for the team.
+
+
+
+7 schedule dependencies were reconfirmed ahead of the December checkpoint. 8 shipments were received and reconciled against the July manifest. A quality review surfaced 4 minor findings, all since resolved. Spend tracked 94% against the baseline forecast for the period. A compliance checklist covering 4 controls was signed off in May. A new risk was logged in February and assigned an owner for follow-up.
+
+
+
+Budget utilization held at 92% of the approved quarterly envelope. 4 schedule dependencies were reconfirmed ahead of the August checkpoint. A 9-point summary was shared with sector leadership in July. The risk register was reviewed in July with 4 items closed. 9 additional contractor hours were allocated for the December period. Documentation was updated in July to reflect the latest approved revision.
+
+
+
+12 items of feedback from the prior cycle were incorporated into August planning. Budget utilization held at 92% of the approved quarterly envelope. 3 shipments were received and reconciled against the September manifest. 9 additional contractor hours were allocated for the November period. 11 open risk items remain on the register, none rated severe. Defect density remained within 105% of the accepted threshold for the period.
+
+
+
+A variance of 98% against plan was flagged for finance review in May. The risk register was reviewed in December with 2 items closed. Equipment calibration was completed ahead of the January checkpoint. 4 onboarding sessions were held ahead of the October ramp-up. Stakeholders from adjacent sectors were briefed during the December sync. 9 items from the test plan were closed out with no deviations.
+
+
+
+Defect density remained within 96% of the accepted threshold for the period. 4 additional contractor hours were allocated for the October period. Spend tracked 107% against the baseline forecast for the period. Documentation was updated in August to reflect the latest approved revision. Site logistics for the June visit were confirmed with 2 open items closed. Stakeholders from adjacent sectors were briefed during the March sync.
+
+
+
+107% of required controls were re-validated during the April audit window. Equipment calibration was completed ahead of the February checkpoint. 9 open risk items remain on the register, none rated severe. A 9-point summary was shared with sector leadership in December. A 8-day slip against the baseline schedule was logged and accepted. Defect density remained within 92% of the accepted threshold for the period.
+
+
+
+Budget utilization held at 91% of the approved quarterly envelope. Defect density remained within 98% of the accepted threshold for the period. The risk register was reviewed in May with 6 items closed. Stakeholders from adjacent sectors were briefed during the July sync. 5 shipments were received and reconciled against the December manifest. No staffing changes were proposed for the cycle beginning November.
+
+
+
+3 items from the test plan were closed out with no deviations. An internal audit covering 9 controls was completed in June without material findings. No staffing changes were proposed for the cycle beginning April. Budget utilization held at 88% of the approved quarterly envelope. Stakeholders from adjacent sectors were briefed during the October sync. 3 open risk items remain on the register, none rated severe.
+
+
+
+A quality review surfaced 6 minor findings, all since resolved. 9 open risk items remain on the register, none rated severe. A 7-point summary was shared with sector leadership in May. No staffing changes were proposed for the cycle beginning January. 7 schedule dependencies were reconfirmed ahead of the January checkpoint. A variance of 96% against plan was flagged for finance review in August.
+
+
+
+4 schedule dependencies were reconfirmed ahead of the September checkpoint. Exposure was reassessed at 94% of the prior estimate after mitigation. An internal audit covering 6 controls was completed in February without material findings. 3 additional contractor hours were allocated for the October period. Equipment calibration was completed ahead of the August checkpoint. Spend tracked 107% against the baseline forecast for the period.
+
+
+
+Vendor deliveries for supporting components arrived within 9 days of the August schedule. 3 test cases were re-run in September following a minor spec update. A 8-day slip against the baseline schedule was logged and accepted. 91% of required controls were re-validated during the September audit window. The risk register was reviewed in July with 6 items closed. 3 additional contractor hours were allocated for the June period.
+
+
+
+Stakeholders from adjacent sectors were briefed during the May sync. The August spend report showed utilization at 91% of plan. 9 open risk items remain on the register, none rated severe. A quality review surfaced 2 minor findings, all since resolved. The milestone originally targeted for August was re-confirmed with a 5-day buffer. 11 shipments were received and reconciled against the November manifest.
+
+
+
+Cross-training for 7 team members was completed this period. 3 open risk items remain on the register, none rated severe. 107% of required controls were re-validated during the March audit window. Site logistics for the December visit were confirmed with 2 open items closed. Spend tracked 101% against the baseline forecast for the period. Stakeholders from adjacent sectors were briefed during the January sync.
+
+
+
+For questions regarding Project Cinderpath, contact Daniel Osei directly or escalate through the Materials Science sector management chain.

@@ -1,0 +1,69 @@
+Project Indigo Run - Technical Summary
+
+
+
+Project Indigo Run is managed under the Propulsion Systems sector and is based out of Northfield Campus. The project is led by Noor Siddiqui, who is responsible for coordinating day-to-day execution and reporting progress to sector leadership.
+
+
+
+The core team supporting Noor Siddiqui on Project Indigo Run includes Freya Lindqvist, Arjun Mehta, Lucia Ferreira. Each team member holds responsibility for a distinct work stream, and Noor Siddiqui convenes the group on a recurring basis to review open items and dependencies.
+
+
+
+The Project Indigo Run technical workstream, overseen by Noor Siddiqui, made incremental progress this period. 8 additional contractor hours were allocated for the August period. 4 test cases were re-run in June following a minor spec update. A compliance checklist covering 5 controls was signed off in March. Equipment calibration was completed ahead of the August checkpoint. A 7-day slip against the baseline schedule was logged and accepted. Findings were documented and shared with the Propulsion Systems sector for awareness.
+
+
+
+Defect density remained within 92% of the accepted threshold for the period. A new risk was logged in December and assigned an owner for follow-up. A 5-day slip against the baseline schedule was logged and accepted. A compliance checklist covering 3 controls was signed off in January. Budget utilization held at 105% of the approved quarterly envelope. A 2-point summary was shared with sector leadership in June.
+
+
+
+The risk register was reviewed in March with 2 items closed. Budget utilization held at 91% of the approved quarterly envelope. A 4-point summary was shared with sector leadership in October. 7 additional contractor hours were allocated for the August period. A compliance checklist covering 11 controls was signed off in September. 12 test cases were re-run in March following a minor spec update.
+
+
+
+A 2-day slip against the baseline schedule was logged and accepted. Documentation was updated in January to reflect the latest approved revision. No staffing changes were proposed for the cycle beginning June. A summary was circulated to leadership ahead of the August review. Exposure was reassessed at 88% of the prior estimate after mitigation. Vendor deliveries for supporting components arrived within 3 days of the February schedule.
+
+
+
+A summary was circulated to leadership ahead of the February review. Site logistics for the September visit were confirmed with 7 open items closed. The milestone originally targeted for August was re-confirmed with a 12-day buffer. An internal audit covering 7 controls was completed in October without material findings. Budget utilization held at 98% of the approved quarterly envelope. Exposure was reassessed at 94% of the prior estimate after mitigation.
+
+
+
+A 4-point summary was shared with sector leadership in December. 11 additional contractor hours were allocated for the September period. Vendor deliveries for supporting components arrived within 7 days of the April schedule. The April spend report showed utilization at 103% of plan. 8 items from the test plan were closed out with no deviations. A new risk was logged in August and assigned an owner for follow-up.
+
+
+
+3 items from the test plan were closed out with no deviations. Site logistics for the March visit were confirmed with 9 open items closed. 4 additional contractor hours were allocated for the September period. Documentation was updated in September to reflect the latest approved revision. A summary was circulated to leadership ahead of the March review. A 6-day slip against the baseline schedule was logged and accepted.
+
+
+
+No staffing changes were proposed for the cycle beginning February. 12 test cases were re-run in October following a minor spec update. A new risk was logged in December and assigned an owner for follow-up. Vendor deliveries for supporting components arrived within 2 days of the November schedule. A 6-day slip against the baseline schedule was logged and accepted. Documentation was updated in March to reflect the latest approved revision.
+
+
+
+A compliance checklist covering 2 controls was signed off in March. 7 open risk items remain on the register, none rated severe. 8 test cases were re-run in April following a minor spec update. The milestone originally targeted for June was re-confirmed with a 2-day buffer. Spend tracked 101% against the baseline forecast for the period. Equipment calibration was completed ahead of the February checkpoint.
+
+
+
+3 open risk items remain on the register, none rated severe. The next checkpoint review is scheduled for January, 12 weeks out. Spend tracked 105% against the baseline forecast for the period. Stakeholders from adjacent sectors were briefed during the April sync. Equipment calibration was completed ahead of the July checkpoint. 4 test cases were re-run in October following a minor spec update.
+
+
+
+The milestone originally targeted for June was re-confirmed with a 2-day buffer. 7 shipments were received and reconciled against the July manifest. 101% of required controls were re-validated during the July audit window. Spend tracked 98% against the baseline forecast for the period. Exposure was reassessed at 97% of the prior estimate after mitigation. 6 items of feedback from the prior cycle were incorporated into May planning.
+
+
+
+No staffing changes were proposed for the cycle beginning October. A summary was circulated to leadership ahead of the July review. A variance of 88% against plan was flagged for finance review in November. Exposure was reassessed at 92% of the prior estimate after mitigation. Documentation was updated in March to reflect the latest approved revision. 3 schedule dependencies were reconfirmed ahead of the May checkpoint.
+
+
+
+Defect density remained within 107% of the accepted threshold for the period. A compliance checklist covering 4 controls was signed off in February. The milestone originally targeted for October was re-confirmed with a 9-day buffer. 8 open risk items remain on the register, none rated severe. A summary was circulated to leadership ahead of the November review. 5 shipments were received and reconciled against the April manifest.
+
+
+
+A summary was circulated to leadership ahead of the June review. Site logistics for the May visit were confirmed with 5 open items closed. A 5-day slip against the baseline schedule was logged and accepted. An internal audit covering 11 controls was completed in August without material findings. 7 test cases were re-run in December following a minor spec update. Cross-training for 9 team members was completed this period.
+
+
+
+For questions regarding Project Indigo Run, contact Noor Siddiqui directly or escalate through the Propulsion Systems sector management chain.

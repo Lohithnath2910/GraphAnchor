@@ -1,0 +1,73 @@
+Project Ember - Technical Summary
+
+
+
+Project Ember is managed under the Avionics sector and is based out of Harborview Site. The project is led by Felix Brandt, who is responsible for coordinating day-to-day execution and reporting progress to sector leadership.
+
+
+
+The core team supporting Felix Brandt on Project Ember includes Daniel Osei, Meera Kapadia, Sienna Walsh. Each team member holds responsibility for a distinct work stream, and Felix Brandt convenes the group on a recurring basis to review open items and dependencies.
+
+
+
+Project Ember has a direct dependency on Project Dovetail: deliverables from Project Dovetail feed into the Ember workstream, and any schedule slip on Project Dovetail is tracked as a risk item for Ember. Felix Brandt maintains a standing coordination channel with the Project Dovetail team to monitor this dependency.
+
+
+
+The Project Ember technical workstream, overseen by Felix Brandt, made incremental progress this period. Equipment calibration was completed ahead of the October checkpoint. The next checkpoint review is scheduled for December, 5 weeks out. 9 test cases were re-run in July following a minor spec update. A compliance checklist covering 12 controls was signed off in February. 5 onboarding sessions were held ahead of the October ramp-up. Findings were documented and shared with the Avionics sector for awareness.
+
+
+
+Stakeholders from adjacent sectors were briefed during the October sync. 12 test cases were re-run in November following a minor spec update. A compliance checklist covering 2 controls was signed off in February. Spend tracked 97% against the baseline forecast for the period. The risk register was reviewed in April with 3 items closed. Cross-training for 4 team members was completed this period.
+
+
+
+7 schedule dependencies were reconfirmed ahead of the April checkpoint. Budget utilization held at 98% of the approved quarterly envelope. A quality review surfaced 5 minor findings, all since resolved. Equipment calibration was completed ahead of the October checkpoint. A 8-point summary was shared with sector leadership in June. Cross-training for 5 team members was completed this period.
+
+
+
+An internal audit covering 4 controls was completed in October without material findings. The risk register was reviewed in April with 8 items closed. Budget utilization held at 96% of the approved quarterly envelope. 6 items from the test plan were closed out with no deviations. 11 shipments were received and reconciled against the September manifest. Stakeholders from adjacent sectors were briefed during the February sync.
+
+
+
+A compliance checklist covering 3 controls was signed off in September. A variance of 101% against plan was flagged for finance review in January. Exposure was reassessed at 96% of the prior estimate after mitigation. 12 items from the test plan were closed out with no deviations. 2 additional contractor hours were allocated for the January period. A 7-day slip against the baseline schedule was logged and accepted.
+
+
+
+Equipment calibration was completed ahead of the December checkpoint. The milestone originally targeted for February was re-confirmed with a 2-day buffer. An internal audit covering 3 controls was completed in May without material findings. A variance of 105% against plan was flagged for finance review in May. A summary was circulated to leadership ahead of the August review. 7 items from the test plan were closed out with no deviations.
+
+
+
+9 shipments were received and reconciled against the May manifest. 5 items of feedback from the prior cycle were incorporated into February planning. The risk register was reviewed in June with 3 items closed. Spend tracked 107% against the baseline forecast for the period. The milestone originally targeted for January was re-confirmed with a 9-day buffer. A quality review surfaced 5 minor findings, all since resolved.
+
+
+
+Equipment calibration was completed ahead of the November checkpoint. A 3-day slip against the baseline schedule was logged and accepted. A new risk was logged in August and assigned an owner for follow-up. Spend tracked 98% against the baseline forecast for the period. Defect density remained within 98% of the accepted threshold for the period. Cross-training for 3 team members was completed this period.
+
+
+
+92% of required controls were re-validated during the January audit window. The August spend report showed utilization at 107% of plan. 3 items of feedback from the prior cycle were incorporated into September planning. Vendor deliveries for supporting components arrived within 8 days of the April schedule. A 11-day slip against the baseline schedule was logged and accepted. Cross-training for 9 team members was completed this period.
+
+
+
+8 items of feedback from the prior cycle were incorporated into March planning. A variance of 103% against plan was flagged for finance review in August. 2 shipments were received and reconciled against the November manifest. A new risk was logged in February and assigned an owner for follow-up. 12 additional contractor hours were allocated for the May period. Documentation was updated in February to reflect the latest approved revision.
+
+
+
+6 additional contractor hours were allocated for the August period. A 5-day slip against the baseline schedule was logged and accepted. A compliance checklist covering 6 controls was signed off in December. 4 open risk items remain on the register, none rated severe. A 5-point summary was shared with sector leadership in March. Equipment calibration was completed ahead of the March checkpoint.
+
+
+
+7 test cases were re-run in January following a minor spec update. Documentation was updated in March to reflect the latest approved revision. 7 open risk items remain on the register, none rated severe. The milestone originally targeted for August was re-confirmed with a 5-day buffer. Budget utilization held at 88% of the approved quarterly envelope. Equipment calibration was completed ahead of the September checkpoint.
+
+
+
+Defect density remained within 101% of the accepted threshold for the period. Equipment calibration was completed ahead of the November checkpoint. 7 schedule dependencies were reconfirmed ahead of the August checkpoint. Budget utilization held at 97% of the approved quarterly envelope. Cross-training for 12 team members was completed this period. Stakeholders from adjacent sectors were briefed during the December sync.
+
+
+
+The October spend report showed utilization at 88% of plan. 5 schedule dependencies were reconfirmed ahead of the December checkpoint. 8 open risk items remain on the register, none rated severe. Vendor deliveries for supporting components arrived within 11 days of the August schedule. No staffing changes were proposed for the cycle beginning June. A 8-point summary was shared with sector leadership in May.
+
+
+
+For questions regarding Project Ember, contact Felix Brandt directly or escalate through the Avionics sector management chain.

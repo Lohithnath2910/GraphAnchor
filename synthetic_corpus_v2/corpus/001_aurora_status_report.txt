@@ -1,0 +1,69 @@
+Project Aurora - Monthly Status Report
+
+
+
+Project Aurora is managed under the Propulsion Systems sector and is based out of Northfield Campus. The project is led by Amara Johnson, who is responsible for coordinating day-to-day execution and reporting progress to sector leadership.
+
+
+
+The core team supporting Amara Johnson on Project Aurora includes Hana Kobayashi, Aiko Fujimori, Elena Vasquez. Each team member holds responsibility for a distinct work stream, and Amara Johnson convenes the group on a recurring basis to review open items and dependencies.
+
+
+
+This month, Amara Johnson reported steady progress against the Project Aurora milestone plan. A compliance checklist covering 8 controls was signed off in October. 5 schedule dependencies were reconfirmed ahead of the March checkpoint. 2 test cases were re-run in February following a minor spec update. Site logistics for the November visit were confirmed with 4 open items closed. 3 onboarding sessions were held ahead of the July ramp-up. The sector manager for Propulsion Systems was briefed on overall trajectory and raised no immediate concerns.
+
+
+
+Vendor deliveries for supporting components arrived within 3 days of the November schedule. Cross-training for 7 team members was completed this period. The risk register was reviewed in August with 4 items closed. An internal audit covering 11 controls was completed in March without material findings. 6 items from the test plan were closed out with no deviations. A summary was circulated to leadership ahead of the March review.
+
+
+
+A variance of 96% against plan was flagged for finance review in January. No staffing changes were proposed for the cycle beginning February. 11 test cases were re-run in March following a minor spec update. A new risk was logged in September and assigned an owner for follow-up. Documentation was updated in October to reflect the latest approved revision. 11 shipments were received and reconciled against the December manifest.
+
+
+
+Exposure was reassessed at 91% of the prior estimate after mitigation. Stakeholders from adjacent sectors were briefed during the October sync. A quality review surfaced 5 minor findings, all since resolved. An internal audit covering 2 controls was completed in April without material findings. Vendor deliveries for supporting components arrived within 7 days of the February schedule. A 9-day slip against the baseline schedule was logged and accepted.
+
+
+
+5 test cases were re-run in February following a minor spec update. Stakeholders from adjacent sectors were briefed during the June sync. 9 onboarding sessions were held ahead of the December ramp-up. Vendor deliveries for supporting components arrived within 3 days of the January schedule. Exposure was reassessed at 97% of the prior estimate after mitigation. Spend tracked 94% against the baseline forecast for the period.
+
+
+
+11 items from the test plan were closed out with no deviations. 11 open risk items remain on the register, none rated severe. The milestone originally targeted for July was re-confirmed with a 4-day buffer. 101% of required controls were re-validated during the July audit window. Vendor deliveries for supporting components arrived within 8 days of the January schedule. The May spend report showed utilization at 96% of plan.
+
+
+
+Site logistics for the January visit were confirmed with 5 open items closed. Stakeholders from adjacent sectors were briefed during the January sync. 103% of required controls were re-validated during the March audit window. 3 additional contractor hours were allocated for the March period. 3 open risk items remain on the register, none rated severe. Spend tracked 98% against the baseline forecast for the period.
+
+
+
+The risk register was reviewed in November with 5 items closed. Cross-training for 6 team members was completed this period. Site logistics for the August visit were confirmed with 6 open items closed. A variance of 91% against plan was flagged for finance review in August. Stakeholders from adjacent sectors were briefed during the April sync. The next checkpoint review is scheduled for February, 7 weeks out.
+
+
+
+The risk register was reviewed in January with 11 items closed. Defect density remained within 107% of the accepted threshold for the period. Equipment calibration was completed ahead of the December checkpoint. A 6-day slip against the baseline schedule was logged and accepted. Documentation was updated in November to reflect the latest approved revision. 9 items of feedback from the prior cycle were incorporated into May planning.
+
+
+
+Budget utilization held at 97% of the approved quarterly envelope. A compliance checklist covering 9 controls was signed off in September. A 2-point summary was shared with sector leadership in February. 11 open risk items remain on the register, none rated severe. Defect density remained within 105% of the accepted threshold for the period. 2 shipments were received and reconciled against the May manifest.
+
+
+
+A summary was circulated to leadership ahead of the June review. 4 shipments were received and reconciled against the April manifest. Spend tracked 92% against the baseline forecast for the period. A quality review surfaced 8 minor findings, all since resolved. A 4-day slip against the baseline schedule was logged and accepted. 2 additional contractor hours were allocated for the August period.
+
+
+
+A new risk was logged in July and assigned an owner for follow-up. The next checkpoint review is scheduled for May, 3 weeks out. A compliance checklist covering 11 controls was signed off in July. Defect density remained within 88% of the accepted threshold for the period. No staffing changes were proposed for the cycle beginning January. Budget utilization held at 105% of the approved quarterly envelope.
+
+
+
+A summary was circulated to leadership ahead of the December review. Exposure was reassessed at 88% of the prior estimate after mitigation. No staffing changes were proposed for the cycle beginning February. A compliance checklist covering 7 controls was signed off in November. Budget utilization held at 96% of the approved quarterly envelope. 8 schedule dependencies were reconfirmed ahead of the December checkpoint.
+
+
+
+4 onboarding sessions were held ahead of the October ramp-up. A compliance checklist covering 11 controls was signed off in January. The next checkpoint review is scheduled for July, 5 weeks out. 9 items of feedback from the prior cycle were incorporated into August planning. A new risk was logged in December and assigned an owner for follow-up. A quality review surfaced 3 minor findings, all since resolved.
+
+
+
+For questions regarding Project Aurora, contact Amara Johnson directly or escalate through the Propulsion Systems sector management chain.

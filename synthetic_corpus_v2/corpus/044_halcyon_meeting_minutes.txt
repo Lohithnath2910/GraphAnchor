@@ -1,0 +1,69 @@
+Project Halcyon - Steering Committee Meeting Minutes
+
+
+
+Project Halcyon is managed under the Data Platforms sector and is based out of Redstone Yard. The project is led by Priya Ramaswamy, who is responsible for coordinating day-to-day execution and reporting progress to sector leadership.
+
+
+
+The core team supporting Priya Ramaswamy on Project Halcyon includes Sienna Walsh, Meera Kapadia, Daniel Osei. Each team member holds responsibility for a distinct work stream, and Priya Ramaswamy convenes the group on a recurring basis to review open items and dependencies.
+
+
+
+Attendees: Priya Ramaswamy (chair), Sienna Walsh, Meera Kapadia, Daniel Osei. 97% of required controls were re-validated during the August audit window. A quality review surfaced 2 minor findings, all since resolved. A new risk was logged in May and assigned an owner for follow-up. 7 items of feedback from the prior cycle were incorporated into August planning. 8 onboarding sessions were held ahead of the February ramp-up. Equipment calibration was completed ahead of the September checkpoint. Action items were assigned and will be reviewed at the next session chaired by Priya Ramaswamy.
+
+
+
+Documentation was updated in March to reflect the latest approved revision. Budget utilization held at 91% of the approved quarterly envelope. The risk register was reviewed in September with 2 items closed. Site logistics for the June visit were confirmed with 11 open items closed. 8 items from the test plan were closed out with no deviations. 12 schedule dependencies were reconfirmed ahead of the June checkpoint.
+
+
+
+11 onboarding sessions were held ahead of the January ramp-up. 8 items from the test plan were closed out with no deviations. The March spend report showed utilization at 107% of plan. Documentation was updated in October to reflect the latest approved revision. A 8-point summary was shared with sector leadership in April. The milestone originally targeted for January was re-confirmed with a 6-day buffer.
+
+
+
+A quality review surfaced 11 minor findings, all since resolved. The next checkpoint review is scheduled for February, 2 weeks out. A new risk was logged in December and assigned an owner for follow-up. 5 onboarding sessions were held ahead of the August ramp-up. Site logistics for the February visit were confirmed with 9 open items closed. Stakeholders from adjacent sectors were briefed during the June sync.
+
+
+
+4 items of feedback from the prior cycle were incorporated into November planning. Equipment calibration was completed ahead of the April checkpoint. 9 open risk items remain on the register, none rated severe. Defect density remained within 103% of the accepted threshold for the period. 12 onboarding sessions were held ahead of the May ramp-up. A compliance checklist covering 4 controls was signed off in September.
+
+
+
+11 open risk items remain on the register, none rated severe. 8 shipments were received and reconciled against the October manifest. The next checkpoint review is scheduled for April, 3 weeks out. A summary was circulated to leadership ahead of the November review. An internal audit covering 2 controls was completed in July without material findings. The July spend report showed utilization at 98% of plan.
+
+
+
+Documentation was updated in July to reflect the latest approved revision. Spend tracked 98% against the baseline forecast for the period. Defect density remained within 94% of the accepted threshold for the period. 12 items of feedback from the prior cycle were incorporated into June planning. 3 shipments were received and reconciled against the February manifest. The milestone originally targeted for September was re-confirmed with a 4-day buffer.
+
+
+
+2 shipments were received and reconciled against the March manifest. The risk register was reviewed in November with 7 items closed. Budget utilization held at 88% of the approved quarterly envelope. The next checkpoint review is scheduled for October, 2 weeks out. Stakeholders from adjacent sectors were briefed during the January sync. Documentation was updated in August to reflect the latest approved revision.
+
+
+
+The next checkpoint review is scheduled for August, 3 weeks out. Defect density remained within 92% of the accepted threshold for the period. 5 onboarding sessions were held ahead of the December ramp-up. Equipment calibration was completed ahead of the June checkpoint. Spend tracked 101% against the baseline forecast for the period. 8 items of feedback from the prior cycle were incorporated into July planning.
+
+
+
+Exposure was reassessed at 92% of the prior estimate after mitigation. Vendor deliveries for supporting components arrived within 12 days of the February schedule. A quality review surfaced 9 minor findings, all since resolved. A summary was circulated to leadership ahead of the June review. The next checkpoint review is scheduled for December, 5 weeks out. The February spend report showed utilization at 98% of plan.
+
+
+
+No staffing changes were proposed for the cycle beginning June. Stakeholders from adjacent sectors were briefed during the May sync. 9 schedule dependencies were reconfirmed ahead of the August checkpoint. Exposure was reassessed at 97% of the prior estimate after mitigation. A variance of 98% against plan was flagged for finance review in October. Site logistics for the May visit were confirmed with 4 open items closed.
+
+
+
+Site logistics for the October visit were confirmed with 11 open items closed. The December spend report showed utilization at 96% of plan. A new risk was logged in January and assigned an owner for follow-up. Defect density remained within 97% of the accepted threshold for the period. The next checkpoint review is scheduled for August, 3 weeks out. Documentation was updated in June to reflect the latest approved revision.
+
+
+
+12 additional contractor hours were allocated for the September period. A compliance checklist covering 9 controls was signed off in January. The risk register was reviewed in July with 2 items closed. Vendor deliveries for supporting components arrived within 8 days of the August schedule. A 12-day slip against the baseline schedule was logged and accepted. A 6-point summary was shared with sector leadership in November.
+
+
+
+A variance of 88% against plan was flagged for finance review in April. Vendor deliveries for supporting components arrived within 9 days of the April schedule. 8 schedule dependencies were reconfirmed ahead of the January checkpoint. 11 additional contractor hours were allocated for the September period. 11 test cases were re-run in December following a minor spec update. 2 items of feedback from the prior cycle were incorporated into August planning.
+
+
+
+For questions regarding Project Halcyon, contact Priya Ramaswamy directly or escalate through the Data Platforms sector management chain.

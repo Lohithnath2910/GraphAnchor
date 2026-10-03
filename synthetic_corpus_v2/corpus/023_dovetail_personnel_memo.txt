@@ -1,0 +1,73 @@
+Project Dovetail - Personnel & Staffing Memo
+
+
+
+Project Dovetail is managed under the Logistics & Supply Chain sector and is based out of Crestline Annex. The project is led by Sienna Walsh, who is responsible for coordinating day-to-day execution and reporting progress to sector leadership.
+
+
+
+The core team supporting Sienna Walsh on Project Dovetail includes Priya Ramaswamy, Caleb Nwosu, Felix Brandt. Each team member holds responsibility for a distinct work stream, and Sienna Walsh convenes the group on a recurring basis to review open items and dependencies.
+
+
+
+Project Dovetail has a direct dependency on Project Aurora: deliverables from Project Aurora feed into the Dovetail workstream, and any schedule slip on Project Aurora is tracked as a risk item for Dovetail. Sienna Walsh maintains a standing coordination channel with the Project Aurora team to monitor this dependency.
+
+
+
+This memo documents current staffing for Project Dovetail under Sienna Walsh. A 6-day slip against the baseline schedule was logged and accepted. 11 open risk items remain on the register, none rated severe. Spend tracked 96% against the baseline forecast for the period. 11 shipments were received and reconciled against the April manifest. No staffing changes are proposed for the upcoming period; Sienna Walsh will continue to lead resourcing decisions for the team.
+
+
+
+9 test cases were re-run in January following a minor spec update. An internal audit covering 12 controls was completed in May without material findings. No staffing changes were proposed for the cycle beginning August. The next checkpoint review is scheduled for November, 6 weeks out. A 5-point summary was shared with sector leadership in October. Equipment calibration was completed ahead of the December checkpoint.
+
+
+
+The next checkpoint review is scheduled for October, 5 weeks out. Defect density remained within 107% of the accepted threshold for the period. A variance of 101% against plan was flagged for finance review in April. The risk register was reviewed in August with 5 items closed. 4 items of feedback from the prior cycle were incorporated into November planning. 9 additional contractor hours were allocated for the January period.
+
+
+
+Budget utilization held at 107% of the approved quarterly envelope. Stakeholders from adjacent sectors were briefed during the November sync. The milestone originally targeted for October was re-confirmed with a 8-day buffer. The risk register was reviewed in December with 4 items closed. 9 additional contractor hours were allocated for the June period. Site logistics for the April visit were confirmed with 2 open items closed.
+
+
+
+A variance of 94% against plan was flagged for finance review in August. Equipment calibration was completed ahead of the August checkpoint. A quality review surfaced 5 minor findings, all since resolved. A 6-point summary was shared with sector leadership in October. 11 schedule dependencies were reconfirmed ahead of the April checkpoint. Documentation was updated in March to reflect the latest approved revision.
+
+
+
+The next checkpoint review is scheduled for December, 2 weeks out. A compliance checklist covering 11 controls was signed off in August. 2 items from the test plan were closed out with no deviations. 6 onboarding sessions were held ahead of the February ramp-up. 7 shipments were received and reconciled against the September manifest. Stakeholders from adjacent sectors were briefed during the May sync.
+
+
+
+Site logistics for the October visit were confirmed with 3 open items closed. 8 additional contractor hours were allocated for the February period. A new risk was logged in June and assigned an owner for follow-up. Defect density remained within 91% of the accepted threshold for the period. The October spend report showed utilization at 98% of plan. The next checkpoint review is scheduled for February, 5 weeks out.
+
+
+
+Documentation was updated in October to reflect the latest approved revision. 9 schedule dependencies were reconfirmed ahead of the October checkpoint. 2 items from the test plan were closed out with no deviations. The March spend report showed utilization at 97% of plan. Stakeholders from adjacent sectors were briefed during the May sync. Exposure was reassessed at 91% of the prior estimate after mitigation.
+
+
+
+Budget utilization held at 105% of the approved quarterly envelope. 8 additional contractor hours were allocated for the August period. 105% of required controls were re-validated during the February audit window. Defect density remained within 107% of the accepted threshold for the period. The risk register was reviewed in February with 5 items closed. The milestone originally targeted for December was re-confirmed with a 12-day buffer.
+
+
+
+The next checkpoint review is scheduled for August, 8 weeks out. 5 onboarding sessions were held ahead of the March ramp-up. An internal audit covering 4 controls was completed in May without material findings. 7 shipments were received and reconciled against the May manifest. A summary was circulated to leadership ahead of the May review. Defect density remained within 96% of the accepted threshold for the period.
+
+
+
+Defect density remained within 94% of the accepted threshold for the period. Spend tracked 91% against the baseline forecast for the period. 12 schedule dependencies were reconfirmed ahead of the December checkpoint. Cross-training for 12 team members was completed this period. Equipment calibration was completed ahead of the March checkpoint. Stakeholders from adjacent sectors were briefed during the August sync.
+
+
+
+A new risk was logged in December and assigned an owner for follow-up. A variance of 98% against plan was flagged for finance review in July. A summary was circulated to leadership ahead of the January review. The milestone originally targeted for September was re-confirmed with a 2-day buffer. 6 additional contractor hours were allocated for the August period. Documentation was updated in June to reflect the latest approved revision.
+
+
+
+Spend tracked 96% against the baseline forecast for the period. Documentation was updated in January to reflect the latest approved revision. A 3-day slip against the baseline schedule was logged and accepted. A summary was circulated to leadership ahead of the June review. A quality review surfaced 9 minor findings, all since resolved. Equipment calibration was completed ahead of the September checkpoint.
+
+
+
+Site logistics for the July visit were confirmed with 11 open items closed. 12 items of feedback from the prior cycle were incorporated into July planning. Spend tracked 88% against the baseline forecast for the period. Documentation was updated in March to reflect the latest approved revision. The next checkpoint review is scheduled for November, 2 weeks out. Cross-training for 11 team members was completed this period.
+
+
+
+For questions regarding Project Dovetail, contact Sienna Walsh directly or escalate through the Logistics & Supply Chain sector management chain.

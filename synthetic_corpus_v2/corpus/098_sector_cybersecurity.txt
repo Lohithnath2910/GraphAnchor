@@ -1,0 +1,39 @@
+Cybersecurity - Sector Overview
+
+
+
+The Cybersecurity sector is managed by Bram Van Dijk, who oversees all active projects within the sector and reports cross-project status to executive leadership.
+
+Active projects currently within Cybersecurity include: Basalt, Juniper.
+
+91% of required controls were re-validated during the March audit window. Budget utilization held at 103% of the approved quarterly envelope. Exposure was reassessed at 105% of the prior estimate after mitigation. No staffing changes were proposed for the cycle beginning October. Site logistics for the November visit were confirmed with 2 open items closed. The next checkpoint review is scheduled for May, 11 weeks out.
+
+A 6-point summary was shared with sector leadership in April. Spend tracked 91% against the baseline forecast for the period. 6 open risk items remain on the register, none rated severe. 6 test cases were re-run in July following a minor spec update. A compliance checklist covering 7 controls was signed off in December. Vendor deliveries for supporting components arrived within 2 days of the March schedule.
+
+A variance of 103% against plan was flagged for finance review in January. Defect density remained within 91% of the accepted threshold for the period. Documentation was updated in July to reflect the latest approved revision. 5 items of feedback from the prior cycle were incorporated into July planning. Site logistics for the June visit were confirmed with 2 open items closed. Exposure was reassessed at 97% of the prior estimate after mitigation.
+
+96% of required controls were re-validated during the August audit window. A 4-point summary was shared with sector leadership in February. The August spend report showed utilization at 88% of plan. Vendor deliveries for supporting components arrived within 4 days of the June schedule. A quality review surfaced 5 minor findings, all since resolved. 9 onboarding sessions were held ahead of the November ramp-up.
+
+A 2-point summary was shared with sector leadership in June. 5 open risk items remain on the register, none rated severe. No staffing changes were proposed for the cycle beginning January. A variance of 97% against plan was flagged for finance review in February. 11 shipments were received and reconciled against the April manifest. A 3-day slip against the baseline schedule was logged and accepted.
+
+The risk register was reviewed in July with 2 items closed. A compliance checklist covering 6 controls was signed off in June. A quality review surfaced 12 minor findings, all since resolved. Equipment calibration was completed ahead of the November checkpoint. The January spend report showed utilization at 98% of plan. 4 items of feedback from the prior cycle were incorporated into January planning.
+
+Documentation was updated in October to reflect the latest approved revision. No staffing changes were proposed for the cycle beginning March. A 3-point summary was shared with sector leadership in September. 2 test cases were re-run in December following a minor spec update. 12 open risk items remain on the register, none rated severe. The November spend report showed utilization at 88% of plan.
+
+The milestone originally targeted for January was re-confirmed with a 9-day buffer. 4 additional contractor hours were allocated for the August period. 4 test cases were re-run in September following a minor spec update. Vendor deliveries for supporting components arrived within 11 days of the August schedule. The January spend report showed utilization at 101% of plan. Stakeholders from adjacent sectors were briefed during the August sync.
+
+7 items from the test plan were closed out with no deviations. A 8-point summary was shared with sector leadership in January. Exposure was reassessed at 101% of the prior estimate after mitigation. Cross-training for 7 team members was completed this period. The milestone originally targeted for March was re-confirmed with a 4-day buffer. Budget utilization held at 97% of the approved quarterly envelope.
+
+A summary was circulated to leadership ahead of the January review. Exposure was reassessed at 97% of the prior estimate after mitigation. 11 schedule dependencies were reconfirmed ahead of the July checkpoint. 7 onboarding sessions were held ahead of the September ramp-up. Vendor deliveries for supporting components arrived within 4 days of the December schedule. An internal audit covering 9 controls was completed in May without material findings.
+
+A compliance checklist covering 11 controls was signed off in May. A quality review surfaced 5 minor findings, all since resolved. Exposure was reassessed at 105% of the prior estimate after mitigation. A 4-point summary was shared with sector leadership in June. A 3-day slip against the baseline schedule was logged and accepted. No staffing changes were proposed for the cycle beginning May.
+
+12 shipments were received and reconciled against the February manifest. A 12-point summary was shared with sector leadership in April. No staffing changes were proposed for the cycle beginning November. Budget utilization held at 94% of the approved quarterly envelope. 5 schedule dependencies were reconfirmed ahead of the January checkpoint. The risk register was reviewed in September with 8 items closed.
+
+A quality review surfaced 7 minor findings, all since resolved. 2 onboarding sessions were held ahead of the March ramp-up. 9 items of feedback from the prior cycle were incorporated into May planning. Exposure was reassessed at 103% of the prior estimate after mitigation. Documentation was updated in July to reflect the latest approved revision. Spend tracked 96% against the baseline forecast for the period.
+
+Documentation was updated in November to reflect the latest approved revision. 8 schedule dependencies were reconfirmed ahead of the June checkpoint. 12 additional contractor hours were allocated for the November period. Equipment calibration was completed ahead of the June checkpoint. Stakeholders from adjacent sectors were briefed during the August sync. The February spend report showed utilization at 101% of plan.
+
+A compliance checklist covering 6 controls was signed off in November. Defect density remained within 94% of the accepted threshold for the period. The milestone originally targeted for August was re-confirmed with a 7-day buffer. A variance of 88% against plan was flagged for finance review in March. A 2-point summary was shared with sector leadership in October. Equipment calibration was completed ahead of the December checkpoint.
+
+Bram Van Dijk holds final sign-off authority on resourcing changes across all projects listed above.

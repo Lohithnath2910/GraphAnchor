@@ -1,0 +1,69 @@
+Project Glasswing - Steering Committee Meeting Minutes
+
+
+
+Project Glasswing is managed under the Field Operations sector and is based out of Vantage Park. The project is led by Rohan Deshmukh, who is responsible for coordinating day-to-day execution and reporting progress to sector leadership.
+
+
+
+The core team supporting Rohan Deshmukh on Project Glasswing includes Elena Vasquez, Grace Okonkwo, Freya Lindqvist. Each team member holds responsibility for a distinct work stream, and Rohan Deshmukh convenes the group on a recurring basis to review open items and dependencies.
+
+
+
+Project Glasswing has a direct dependency on Project Cinderpath: deliverables from Project Cinderpath feed into the Glasswing workstream, and any schedule slip on Project Cinderpath is tracked as a risk item for Glasswing. Rohan Deshmukh maintains a standing coordination channel with the Project Cinderpath team to monitor this dependency.
+
+
+
+Attendees: Rohan Deshmukh (chair), Elena Vasquez, Grace Okonkwo, Freya Lindqvist. Documentation was updated in January to reflect the latest approved revision. A new risk was logged in October and assigned an owner for follow-up. No staffing changes were proposed for the cycle beginning September. Budget utilization held at 103% of the approved quarterly envelope. A 4-day slip against the baseline schedule was logged and accepted. Site logistics for the November visit were confirmed with 4 open items closed. Action items were assigned and will be reviewed at the next session chaired by Rohan Deshmukh.
+
+
+
+The risk register was reviewed in May with 8 items closed. 8 shipments were received and reconciled against the August manifest. A 4-point summary was shared with sector leadership in December. The next checkpoint review is scheduled for May, 3 weeks out. A compliance checklist covering 12 controls was signed off in October. Budget utilization held at 88% of the approved quarterly envelope.
+
+
+
+12 test cases were re-run in April following a minor spec update. A new risk was logged in April and assigned an owner for follow-up. The next checkpoint review is scheduled for February, 8 weeks out. A summary was circulated to leadership ahead of the March review. Equipment calibration was completed ahead of the November checkpoint. Budget utilization held at 103% of the approved quarterly envelope.
+
+
+
+3 schedule dependencies were reconfirmed ahead of the September checkpoint. 3 shipments were received and reconciled against the December manifest. 2 items of feedback from the prior cycle were incorporated into July planning. Cross-training for 9 team members was completed this period. A new risk was logged in April and assigned an owner for follow-up. Budget utilization held at 91% of the approved quarterly envelope.
+
+
+
+Stakeholders from adjacent sectors were briefed during the May sync. The next checkpoint review is scheduled for June, 11 weeks out. 107% of required controls were re-validated during the June audit window. 3 open risk items remain on the register, none rated severe. 12 onboarding sessions were held ahead of the August ramp-up. Site logistics for the November visit were confirmed with 8 open items closed.
+
+
+
+12 onboarding sessions were held ahead of the February ramp-up. Budget utilization held at 105% of the approved quarterly envelope. A summary was circulated to leadership ahead of the November review. Exposure was reassessed at 98% of the prior estimate after mitigation. 101% of required controls were re-validated during the September audit window. 8 items from the test plan were closed out with no deviations.
+
+
+
+A variance of 91% against plan was flagged for finance review in July. The milestone originally targeted for June was re-confirmed with a 6-day buffer. Cross-training for 5 team members was completed this period. 7 shipments were received and reconciled against the August manifest. A compliance checklist covering 5 controls was signed off in September. Defect density remained within 98% of the accepted threshold for the period.
+
+
+
+Documentation was updated in February to reflect the latest approved revision. Vendor deliveries for supporting components arrived within 8 days of the June schedule. The July spend report showed utilization at 107% of plan. A quality review surfaced 9 minor findings, all since resolved. Cross-training for 7 team members was completed this period. A new risk was logged in February and assigned an owner for follow-up.
+
+
+
+A new risk was logged in December and assigned an owner for follow-up. 3 additional contractor hours were allocated for the February period. 4 test cases were re-run in December following a minor spec update. Equipment calibration was completed ahead of the July checkpoint. A summary was circulated to leadership ahead of the December review. A compliance checklist covering 12 controls was signed off in February.
+
+
+
+A summary was circulated to leadership ahead of the January review. 5 schedule dependencies were reconfirmed ahead of the April checkpoint. A new risk was logged in March and assigned an owner for follow-up. Budget utilization held at 96% of the approved quarterly envelope. 8 shipments were received and reconciled against the September manifest. A quality review surfaced 4 minor findings, all since resolved.
+
+
+
+Equipment calibration was completed ahead of the June checkpoint. 7 items of feedback from the prior cycle were incorporated into September planning. Cross-training for 4 team members was completed this period. A new risk was logged in March and assigned an owner for follow-up. 9 items from the test plan were closed out with no deviations. A compliance checklist covering 12 controls was signed off in April.
+
+
+
+2 items of feedback from the prior cycle were incorporated into August planning. 101% of required controls were re-validated during the July audit window. Vendor deliveries for supporting components arrived within 2 days of the September schedule. 2 onboarding sessions were held ahead of the June ramp-up. 3 schedule dependencies were reconfirmed ahead of the November checkpoint. The risk register was reviewed in October with 6 items closed.
+
+
+
+No staffing changes were proposed for the cycle beginning November. A 11-point summary was shared with sector leadership in December. A variance of 97% against plan was flagged for finance review in October. 92% of required controls were re-validated during the November audit window. The risk register was reviewed in January with 12 items closed. The next checkpoint review is scheduled for February, 3 weeks out.
+
+
+
+For questions regarding Project Glasswing, contact Rohan Deshmukh directly or escalate through the Field Operations sector management chain.

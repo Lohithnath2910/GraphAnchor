@@ -1,0 +1,69 @@
+Project Monarch - Steering Committee Meeting Minutes
+
+
+
+Project Monarch is managed under the Avionics sector and is based out of Harborview Site. The project is led by Ingrid Solberg, who is responsible for coordinating day-to-day execution and reporting progress to sector leadership.
+
+
+
+The core team supporting Ingrid Solberg on Project Monarch includes Aiko Fujimori, Daniel Osei, Priya Ramaswamy. Each team member holds responsibility for a distinct work stream, and Ingrid Solberg convenes the group on a recurring basis to review open items and dependencies.
+
+
+
+Project Monarch has a direct dependency on Project Juniper: deliverables from Project Juniper feed into the Monarch workstream, and any schedule slip on Project Juniper is tracked as a risk item for Monarch. Ingrid Solberg maintains a standing coordination channel with the Project Juniper team to monitor this dependency.
+
+
+
+Attendees: Ingrid Solberg (chair), Aiko Fujimori, Daniel Osei, Priya Ramaswamy. A 7-point summary was shared with sector leadership in April. 5 schedule dependencies were reconfirmed ahead of the December checkpoint. Site logistics for the October visit were confirmed with 3 open items closed. 5 items from the test plan were closed out with no deviations. An internal audit covering 2 controls was completed in June without material findings. Cross-training for 5 team members was completed this period. Action items were assigned and will be reviewed at the next session chaired by Ingrid Solberg.
+
+
+
+Budget utilization held at 91% of the approved quarterly envelope. Vendor deliveries for supporting components arrived within 3 days of the July schedule. Documentation was updated in January to reflect the latest approved revision. 8 items from the test plan were closed out with no deviations. A new risk was logged in August and assigned an owner for follow-up. Cross-training for 9 team members was completed this period.
+
+
+
+Exposure was reassessed at 91% of the prior estimate after mitigation. The milestone originally targeted for July was re-confirmed with a 12-day buffer. 3 test cases were re-run in May following a minor spec update. A 11-point summary was shared with sector leadership in July. 5 shipments were received and reconciled against the March manifest. An internal audit covering 3 controls was completed in August without material findings.
+
+
+
+A quality review surfaced 4 minor findings, all since resolved. 7 shipments were received and reconciled against the May manifest. A summary was circulated to leadership ahead of the May review. 2 open risk items remain on the register, none rated severe. No staffing changes were proposed for the cycle beginning July. The milestone originally targeted for November was re-confirmed with a 6-day buffer.
+
+
+
+Vendor deliveries for supporting components arrived within 7 days of the May schedule. Documentation was updated in February to reflect the latest approved revision. The December spend report showed utilization at 107% of plan. 5 items from the test plan were closed out with no deviations. 5 items of feedback from the prior cycle were incorporated into July planning. No staffing changes were proposed for the cycle beginning January.
+
+
+
+Spend tracked 91% against the baseline forecast for the period. Stakeholders from adjacent sectors were briefed during the September sync. An internal audit covering 11 controls was completed in November without material findings. No staffing changes were proposed for the cycle beginning February. Equipment calibration was completed ahead of the March checkpoint. 5 items from the test plan were closed out with no deviations.
+
+
+
+8 additional contractor hours were allocated for the July period. A summary was circulated to leadership ahead of the September review. The milestone originally targeted for November was re-confirmed with a 4-day buffer. Exposure was reassessed at 103% of the prior estimate after mitigation. A compliance checklist covering 6 controls was signed off in August. Vendor deliveries for supporting components arrived within 5 days of the February schedule.
+
+
+
+A 12-day slip against the baseline schedule was logged and accepted. The August spend report showed utilization at 94% of plan. Defect density remained within 92% of the accepted threshold for the period. 4 additional contractor hours were allocated for the November period. 105% of required controls were re-validated during the August audit window. A 2-point summary was shared with sector leadership in December.
+
+
+
+The milestone originally targeted for August was re-confirmed with a 9-day buffer. Exposure was reassessed at 92% of the prior estimate after mitigation. Site logistics for the July visit were confirmed with 5 open items closed. 3 items of feedback from the prior cycle were incorporated into December planning. 4 onboarding sessions were held ahead of the August ramp-up. 12 test cases were re-run in March following a minor spec update.
+
+
+
+5 items from the test plan were closed out with no deviations. Exposure was reassessed at 91% of the prior estimate after mitigation. Site logistics for the November visit were confirmed with 11 open items closed. Stakeholders from adjacent sectors were briefed during the October sync. No staffing changes were proposed for the cycle beginning September. An internal audit covering 7 controls was completed in June without material findings.
+
+
+
+98% of required controls were re-validated during the January audit window. A new risk was logged in December and assigned an owner for follow-up. Vendor deliveries for supporting components arrived within 2 days of the February schedule. The next checkpoint review is scheduled for February, 9 weeks out. A 9-point summary was shared with sector leadership in September. No staffing changes were proposed for the cycle beginning March.
+
+
+
+A 3-point summary was shared with sector leadership in May. 2 shipments were received and reconciled against the November manifest. The risk register was reviewed in December with 2 items closed. A quality review surfaced 6 minor findings, all since resolved. Spend tracked 103% against the baseline forecast for the period. 9 onboarding sessions were held ahead of the January ramp-up.
+
+
+
+4 open risk items remain on the register, none rated severe. Stakeholders from adjacent sectors were briefed during the July sync. Budget utilization held at 101% of the approved quarterly envelope. The milestone originally targeted for June was re-confirmed with a 12-day buffer. No staffing changes were proposed for the cycle beginning April. Site logistics for the April visit were confirmed with 12 open items closed.
+
+
+
+For questions regarding Project Monarch, contact Ingrid Solberg directly or escalate through the Avionics sector management chain.

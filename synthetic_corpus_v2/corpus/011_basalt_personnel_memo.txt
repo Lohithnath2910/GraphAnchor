@@ -1,0 +1,73 @@
+Project Basalt - Personnel & Staffing Memo
+
+
+
+Project Basalt is managed under the Cybersecurity sector and is based out of Bay Ridge Lab. The project is led by Elena Vasquez, who is responsible for coordinating day-to-day execution and reporting progress to sector leadership.
+
+
+
+The core team supporting Elena Vasquez on Project Basalt includes Rohan Deshmukh, Omar Haddad, Tomas Vargas. Each team member holds responsibility for a distinct work stream, and Elena Vasquez convenes the group on a recurring basis to review open items and dependencies.
+
+
+
+Project Basalt has a direct dependency on Project Aurora: deliverables from Project Aurora feed into the Basalt workstream, and any schedule slip on Project Aurora is tracked as a risk item for Basalt. Elena Vasquez maintains a standing coordination channel with the Project Aurora team to monitor this dependency.
+
+
+
+This memo documents current staffing for Project Basalt under Elena Vasquez. 88% of required controls were re-validated during the April audit window. A quality review surfaced 2 minor findings, all since resolved. A 7-day slip against the baseline schedule was logged and accepted. Stakeholders from adjacent sectors were briefed during the September sync. No staffing changes are proposed for the upcoming period; Elena Vasquez will continue to lead resourcing decisions for the team.
+
+
+
+Budget utilization held at 98% of the approved quarterly envelope. 6 additional contractor hours were allocated for the August period. Documentation was updated in May to reflect the latest approved revision. A 3-point summary was shared with sector leadership in November. Equipment calibration was completed ahead of the December checkpoint. A new risk was logged in September and assigned an owner for follow-up.
+
+
+
+A 11-day slip against the baseline schedule was logged and accepted. Defect density remained within 98% of the accepted threshold for the period. Budget utilization held at 103% of the approved quarterly envelope. A 5-point summary was shared with sector leadership in January. 3 open risk items remain on the register, none rated severe. 3 onboarding sessions were held ahead of the September ramp-up.
+
+
+
+A 6-day slip against the baseline schedule was logged and accepted. A 3-point summary was shared with sector leadership in March. Vendor deliveries for supporting components arrived within 7 days of the November schedule. A variance of 98% against plan was flagged for finance review in February. 4 items from the test plan were closed out with no deviations. A new risk was logged in August and assigned an owner for follow-up.
+
+
+
+8 additional contractor hours were allocated for the August period. 9 items of feedback from the prior cycle were incorporated into July planning. Spend tracked 91% against the baseline forecast for the period. 3 items from the test plan were closed out with no deviations. 105% of required controls were re-validated during the March audit window. 12 shipments were received and reconciled against the January manifest.
+
+
+
+6 items from the test plan were closed out with no deviations. The risk register was reviewed in December with 11 items closed. Site logistics for the September visit were confirmed with 7 open items closed. Budget utilization held at 98% of the approved quarterly envelope. 8 items of feedback from the prior cycle were incorporated into March planning. The milestone originally targeted for September was re-confirmed with a 4-day buffer.
+
+
+
+A compliance checklist covering 7 controls was signed off in May. Vendor deliveries for supporting components arrived within 5 days of the September schedule. Exposure was reassessed at 98% of the prior estimate after mitigation. 12 schedule dependencies were reconfirmed ahead of the August checkpoint. Budget utilization held at 101% of the approved quarterly envelope. 2 additional contractor hours were allocated for the February period.
+
+
+
+Equipment calibration was completed ahead of the April checkpoint. Exposure was reassessed at 97% of the prior estimate after mitigation. Spend tracked 101% against the baseline forecast for the period. 7 onboarding sessions were held ahead of the December ramp-up. A 3-point summary was shared with sector leadership in November. Documentation was updated in June to reflect the latest approved revision.
+
+
+
+No staffing changes were proposed for the cycle beginning December. 91% of required controls were re-validated during the October audit window. Site logistics for the July visit were confirmed with 3 open items closed. A quality review surfaced 5 minor findings, all since resolved. A variance of 91% against plan was flagged for finance review in January. 9 open risk items remain on the register, none rated severe.
+
+
+
+9 test cases were re-run in September following a minor spec update. A new risk was logged in December and assigned an owner for follow-up. Spend tracked 91% against the baseline forecast for the period. Cross-training for 8 team members was completed this period. A summary was circulated to leadership ahead of the June review. A compliance checklist covering 4 controls was signed off in March.
+
+
+
+Equipment calibration was completed ahead of the April checkpoint. No staffing changes were proposed for the cycle beginning November. 4 items of feedback from the prior cycle were incorporated into December planning. Documentation was updated in December to reflect the latest approved revision. Defect density remained within 91% of the accepted threshold for the period. Exposure was reassessed at 105% of the prior estimate after mitigation.
+
+
+
+Vendor deliveries for supporting components arrived within 3 days of the January schedule. A 2-point summary was shared with sector leadership in November. An internal audit covering 6 controls was completed in March without material findings. Cross-training for 6 team members was completed this period. 5 items from the test plan were closed out with no deviations. The milestone originally targeted for February was re-confirmed with a 9-day buffer.
+
+
+
+The risk register was reviewed in July with 2 items closed. A 7-point summary was shared with sector leadership in September. Vendor deliveries for supporting components arrived within 6 days of the April schedule. 7 onboarding sessions were held ahead of the October ramp-up. Documentation was updated in August to reflect the latest approved revision. Spend tracked 107% against the baseline forecast for the period.
+
+
+
+11 test cases were re-run in May following a minor spec update. A summary was circulated to leadership ahead of the May review. 9 additional contractor hours were allocated for the December period. Spend tracked 88% against the baseline forecast for the period. 12 open risk items remain on the register, none rated severe. Equipment calibration was completed ahead of the September checkpoint.
+
+
+
+For questions regarding Project Basalt, contact Elena Vasquez directly or escalate through the Cybersecurity sector management chain.

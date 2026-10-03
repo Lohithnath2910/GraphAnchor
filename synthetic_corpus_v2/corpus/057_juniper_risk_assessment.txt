@@ -1,0 +1,73 @@
+Project Juniper - Risk Assessment Memo
+
+
+
+Project Juniper is managed under the Cybersecurity sector and is based out of Bay Ridge Lab. The project is led by Aiko Fujimori, who is responsible for coordinating day-to-day execution and reporting progress to sector leadership.
+
+
+
+The core team supporting Aiko Fujimori on Project Juniper includes Viktor Petrov, Ingrid Solberg, Hana Kobayashi. Each team member holds responsibility for a distinct work stream, and Aiko Fujimori convenes the group on a recurring basis to review open items and dependencies.
+
+
+
+Project Juniper has a direct dependency on Project Aurora: deliverables from Project Aurora feed into the Juniper workstream, and any schedule slip on Project Aurora is tracked as a risk item for Juniper. Aiko Fujimori maintains a standing coordination channel with the Project Aurora team to monitor this dependency.
+
+
+
+Aiko Fujimori and the Project Juniper team identified a small number of open risks this period. Defect density remained within 94% of the accepted threshold for the period. Equipment calibration was completed ahead of the April checkpoint. 4 open risk items remain on the register, none rated severe. Cross-training for 4 team members was completed this period. An internal audit covering 6 controls was completed in December without material findings. The most significant dependency risk remains tied to Project Aurora.
+
+
+
+2 items from the test plan were closed out with no deviations. The November spend report showed utilization at 92% of plan. A 2-day slip against the baseline schedule was logged and accepted. 8 additional contractor hours were allocated for the May period. 91% of required controls were re-validated during the November audit window. A 6-point summary was shared with sector leadership in July.
+
+
+
+11 schedule dependencies were reconfirmed ahead of the April checkpoint. 9 onboarding sessions were held ahead of the November ramp-up. Site logistics for the February visit were confirmed with 11 open items closed. Documentation was updated in October to reflect the latest approved revision. 7 items from the test plan were closed out with no deviations. The December spend report showed utilization at 103% of plan.
+
+
+
+No staffing changes were proposed for the cycle beginning August. An internal audit covering 3 controls was completed in March without material findings. Stakeholders from adjacent sectors were briefed during the February sync. 2 schedule dependencies were reconfirmed ahead of the April checkpoint. Equipment calibration was completed ahead of the December checkpoint. 3 open risk items remain on the register, none rated severe.
+
+
+
+Spend tracked 105% against the baseline forecast for the period. Vendor deliveries for supporting components arrived within 12 days of the October schedule. The risk register was reviewed in October with 4 items closed. Defect density remained within 91% of the accepted threshold for the period. Documentation was updated in August to reflect the latest approved revision. 5 onboarding sessions were held ahead of the April ramp-up.
+
+
+
+Documentation was updated in July to reflect the latest approved revision. A 7-day slip against the baseline schedule was logged and accepted. Equipment calibration was completed ahead of the April checkpoint. Spend tracked 88% against the baseline forecast for the period. A quality review surfaced 6 minor findings, all since resolved. A 6-point summary was shared with sector leadership in September.
+
+
+
+A compliance checklist covering 2 controls was signed off in March. 12 additional contractor hours were allocated for the November period. 7 shipments were received and reconciled against the February manifest. 9 items of feedback from the prior cycle were incorporated into August planning. Defect density remained within 105% of the accepted threshold for the period. The March spend report showed utilization at 107% of plan.
+
+
+
+A 7-point summary was shared with sector leadership in March. A new risk was logged in March and assigned an owner for follow-up. The milestone originally targeted for July was re-confirmed with a 3-day buffer. Defect density remained within 103% of the accepted threshold for the period. Documentation was updated in October to reflect the latest approved revision. Site logistics for the May visit were confirmed with 12 open items closed.
+
+
+
+A 7-day slip against the baseline schedule was logged and accepted. The April spend report showed utilization at 94% of plan. 4 test cases were re-run in November following a minor spec update. Exposure was reassessed at 92% of the prior estimate after mitigation. A compliance checklist covering 4 controls was signed off in January. 3 shipments were received and reconciled against the June manifest.
+
+
+
+No staffing changes were proposed for the cycle beginning April. An internal audit covering 6 controls was completed in October without material findings. Site logistics for the November visit were confirmed with 3 open items closed. Budget utilization held at 92% of the approved quarterly envelope. A quality review surfaced 7 minor findings, all since resolved. 3 items of feedback from the prior cycle were incorporated into December planning.
+
+
+
+A 6-point summary was shared with sector leadership in January. 3 additional contractor hours were allocated for the September period. The next checkpoint review is scheduled for September, 11 weeks out. 6 open risk items remain on the register, none rated severe. Site logistics for the January visit were confirmed with 2 open items closed. 12 test cases were re-run in September following a minor spec update.
+
+
+
+A compliance checklist covering 7 controls was signed off in December. Exposure was reassessed at 107% of the prior estimate after mitigation. A 3-point summary was shared with sector leadership in October. 5 onboarding sessions were held ahead of the May ramp-up. Site logistics for the March visit were confirmed with 12 open items closed. The February spend report showed utilization at 92% of plan.
+
+
+
+The risk register was reviewed in May with 12 items closed. A 6-day slip against the baseline schedule was logged and accepted. The December spend report showed utilization at 103% of plan. 9 items from the test plan were closed out with no deviations. A 8-point summary was shared with sector leadership in October. A compliance checklist covering 11 controls was signed off in February.
+
+
+
+5 items from the test plan were closed out with no deviations. 2 onboarding sessions were held ahead of the December ramp-up. A summary was circulated to leadership ahead of the January review. The next checkpoint review is scheduled for September, 4 weeks out. A variance of 94% against plan was flagged for finance review in July. Documentation was updated in June to reflect the latest approved revision.
+
+
+
+For questions regarding Project Juniper, contact Aiko Fujimori directly or escalate through the Cybersecurity sector management chain.
