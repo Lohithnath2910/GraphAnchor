@@ -3,1763 +3,981 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GraphAnchor — Local Hybrid Graph Search</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>GraphAnchor</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23152238'/%3E%3Cpath d='M9 22 16 9l7 13' stroke='%23E9A23B' stroke-width='2.2' fill='none'/%3E%3Ccircle cx='16' cy='9' r='3.2' fill='%23fff'/%3E%3Ccircle cx='9' cy='22' r='3.2' fill='%23fff'/%3E%3Ccircle cx='23' cy='22' r='3.2' fill='%23fff'/%3E%3C/svg%3E">
 <style>
+  @font-face { font-family: "IBM Plex Sans"; font-weight: 400; font-display: swap; src: url("vendor/ibm-plex-sans-latin-400-normal.woff2") format("woff2"); }
+  @font-face { font-family: "IBM Plex Sans"; font-weight: 500; font-display: swap; src: url("vendor/ibm-plex-sans-latin-500-normal.woff2") format("woff2"); }
+  @font-face { font-family: "IBM Plex Sans"; font-weight: 600; font-display: swap; src: url("vendor/ibm-plex-sans-latin-600-normal.woff2") format("woff2"); }
+  @font-face { font-family: "IBM Plex Mono"; font-weight: 400; font-display: swap; src: url("vendor/ibm-plex-mono-latin-400-normal.woff2") format("woff2"); }
+
+  /* Colour carries one meaning everywhere: blue = found by vector search, marigold = found through the graph. */
   :root {
-    --bg: #ffffff;
-    --panel-bg: #fafafa;
-    --border: #e5e5e5;
-    --border-dark: #d4d4d4;
-    --text-main: #111111;
-    --text-muted: #666666;
-    --text-dim: #999999;
-    --accent: #000000;
-    --radius: 6px;
-    --danger: #dc2626;
+    --bg: #EEF1F5; --surface: #FFFFFF; --sunken: #F5F7FA; --line: #D5DBE5; --line-strong: #AEB8C8;
+    --ink: #152238; --muted: #56657D; --on-ink: #FFFFFF;
+    --vec: #2B63C4; --vec-soft: #E3ECFA;
+    --graph: #A66300; --graph-fill: #E9A23B; --graph-soft: #FCEFD6;
+    --bad: #B3261E; --bad-soft: #FBE9E7; --good: #1F7A4D;
+    --radius: 10px;
+    color-scheme: light;
+  }
+  :root[data-theme="dark"] {
+    --bg: #0E1626; --surface: #162136; --sunken: #111B2D; --line: #293751; --line-strong: #44557A;
+    --ink: #E6ECF5; --muted: #98A6BD; --on-ink: #0E1626;
+    --vec: #7FAEF5; --vec-soft: #1B2F52;
+    --graph: #F0B03F; --graph-fill: #F0B03F; --graph-soft: #3A2E14;
+    --bad: #FF8A80; --bad-soft: #3A1F1E; --good: #6FD3A0;
+    color-scheme: dark;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
+  * { box-sizing: border-box; margin: 0; }
+  html { -webkit-text-size-adjust: 100%; }
   body {
-    background: var(--bg);
-    color: var(--text-main);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    line-height: 1.5;
-    font-size: 14px;
-    padding: 36px 20px 80px;
+    background: var(--bg); color: var(--ink);
+    font: 400 14px/1.55 "IBM Plex Sans", system-ui, "Segoe UI", sans-serif;
     -webkit-font-smoothing: antialiased;
   }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  :focus-visible { outline: 2px solid var(--vec); outline-offset: 2px; }
+  [hidden] { display: none !important; }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, Consolas, monospace; font-size: 12px; }
+  .muted { color: var(--muted); }
 
-  .container {
-    max-width: 860px;
-    margin: 0 auto;
+  /* ---------- header ---------- */
+  .top {
+    display: flex; align-items: center; gap: 20px 28px; flex-wrap: wrap;
+    padding: 14px 24px; border-bottom: 1px solid var(--line); background: var(--surface);
   }
+  .brand { font-size: 19px; font-weight: 600; letter-spacing: -0.01em; }
+  .stats { display: flex; gap: 6px 22px; flex-wrap: wrap; margin: 0; padding: 0; list-style: none; color: var(--muted); font-size: 13px; }
+  .stats b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .top-actions { margin-left: auto; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 
-  /* Header */
-  header {
-    margin-bottom: 28px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 16px;
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    min-height: 34px; padding: 0 13px; border-radius: 8px; cursor: pointer; white-space: nowrap;
+    border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); font-weight: 500; text-decoration: none;
   }
+  .btn:hover:not(:disabled) { border-color: var(--ink); }
+  .btn:disabled { opacity: .45; cursor: not-allowed; }
+  .btn.primary { background: var(--ink); border-color: var(--ink); color: var(--on-ink); padding: 0 20px; min-height: 40px; font-weight: 600; }
+  .btn.primary:hover:not(:disabled) { opacity: .88; }
+  .btn.small { min-height: 28px; padding: 0 10px; font-size: 13px; }
+  .btn.danger { color: var(--bad); border-color: var(--bad); }
+  .btn[aria-pressed="true"] { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
 
-  .brand h1 {
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--text-main);
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  /* ---------- layout ---------- */
+  .workbench {
+    display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 20px;
+    padding: 20px 24px 48px; max-width: 1640px; margin: 0 auto; align-items: start;
   }
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+  .left { display: grid; gap: 16px; min-width: 0; }
+  .right { position: sticky; top: 16px; height: calc(100vh - 104px); min-height: 520px; display: flex; flex-direction: column; overflow: hidden; }
+  @media (max-width: 1000px) {
+    .legend .hint { display: none; }
+    .workbench { grid-template-columns: minmax(0, 1fr); padding: 16px; }
+    .right { position: static; height: 620px; }
+    .top { padding: 12px 16px; }
+  }
+  h2 { font-size: 15px; font-weight: 600; }
+  h3 { font-size: 14px; font-weight: 600; }
 
-  .brand-badge {
-    font-size: 11px;
-    font-weight: 500;
-    padding: 1px 6px;
-    border: 1px solid var(--border-dark);
-    border-radius: 3px;
-    color: var(--text-muted);
-    background: #fff;
+  /* ---------- ask ---------- */
+  .ask { padding: 18px; }
+  .ask label.q { display: block; font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+  .ask textarea {
+    display: block; width: 100%; resize: vertical; min-height: 68px; padding: 11px 13px; font-size: 16px; line-height: 1.45;
+    border: 1px solid var(--line-strong); border-radius: 8px; background: var(--sunken);
   }
+  .ask textarea:focus { background: var(--surface); }
+  .examples { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; align-items: center; }
+  .chip {
+    border: 1px solid var(--line); background: var(--sunken); border-radius: 999px; padding: 4px 12px; cursor: pointer; font-size: 13px;
+  }
+  .chip:hover { border-color: var(--ink); }
+  .controls { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: center; margin-top: 16px; }
+  .seg { display: inline-flex; border: 1px solid var(--line-strong); border-radius: 8px; overflow: hidden; }
+  .seg label { padding: 6px 13px; cursor: pointer; font-weight: 500; border-left: 1px solid var(--line-strong); }
+  .seg label:first-of-type { border-left: 0; }
+  .seg input { position: absolute; opacity: 0; pointer-events: none; }
+  .seg input:checked + label { background: var(--ink); color: var(--on-ink); }
+  .seg input:focus-visible + label { outline: 2px solid var(--vec); outline-offset: -2px; }
+  .field { display: inline-flex; align-items: center; gap: 7px; color: var(--muted); font-size: 13px; }
+  .field select { padding: 5px 8px; border: 1px solid var(--line-strong); border-radius: 6px; background: var(--surface); color: var(--ink); }
+  .field input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--ink); }
+  .submit-row { display: flex; gap: 16px; align-items: center; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .mode-help { flex: 1; font-size: 13px; color: var(--muted); }
 
-  .brand p {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-top: 2px;
-  }
+  /* ---------- results ---------- */
+  .intro { padding: 18px; }
+  .intro ul { margin: 10px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+  .intro li { display: flex; gap: 10px; align-items: baseline; }
+  .swatch { flex: none; width: 11px; height: 11px; border-radius: 3px; transform: translateY(1px); }
+  .swatch.vec { background: var(--vec); } .swatch.graph { background: var(--graph-fill); } .swatch.ink { background: var(--ink); }
 
-  .top-controls {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    flex-wrap: wrap;
-  }
+  .answers { display: grid; gap: 16px; }
+  .answers.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (max-width: 640px) { .answers.two { grid-template-columns: minmax(0, 1fr); } }
+  .answer { padding: 16px 18px; border-top: 3px solid var(--line-strong); }
+  .answer.hybrid { border-top-color: var(--graph-fill); }
+  .answer.vector { border-top-color: var(--vec); }
+  .answer header { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+  .answer header .time { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .answer-text { font-size: 16px; line-height: 1.55; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 25px; }
+  .answer-text.waiting { color: var(--muted); font-size: 14px; }
+  .answer-text.streaming::after { content: ""; display: inline-block; width: 7px; height: 16px; margin-left: 2px; background: var(--ink); vertical-align: -2px; animation: blink 1s steps(2) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .answer-text.streaming::after { animation: none; } }
+  .answer footer { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .error { padding: 12px 14px; border-radius: 8px; background: var(--bad-soft); color: var(--bad); border: 1px solid var(--bad); overflow-wrap: anywhere; }
 
-  .api-box {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    border: 1px solid var(--border);
-    padding: 4px 8px;
-    border-radius: var(--radius);
-    background: #fff;
-    color: var(--text-muted);
+  .section { padding: 16px 18px; }
+  .section > h2 { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+  .section > h2 span { font-weight: 400; font-size: 13px; color: var(--muted); }
+  .note { padding: 9px 12px; border-radius: 8px; background: var(--sunken); border: 1px solid var(--line); font-size: 13px; }
+  .steps { margin: 0; padding: 0; list-style: none; counter-reset: step; display: grid; gap: 10px; }
+  .steps li { counter-increment: step; display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 10px; }
+  .steps li::before {
+    content: counter(step); width: 24px; height: 24px; border-radius: 50%; background: var(--ink); color: var(--on-ink);
+    font-size: 12px; font-weight: 600; display: grid; place-items: center;
   }
+  .steps .sq { color: var(--muted); font-size: 13px; overflow-wrap: anywhere; }
+  .steps .sa { font-weight: 500; overflow-wrap: anywhere; }
+  .subhead { margin: 16px 0 8px; font-size: 13px; font-weight: 600; }
+  .chains { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+  .chain { padding: 9px 11px; border: 1px solid var(--line); border-left: 3px solid var(--graph-fill); border-radius: 8px; font-size: 13px; line-height: 1.9; overflow-wrap: anywhere; }
+  .chain .ent { padding: 2px 7px; box-decoration-break: clone; -webkit-box-decoration-break: clone; border-radius: 5px; background: var(--graph-soft); font-weight: 500; }
+  .chain .rel { color: var(--muted); }
+  .chain .src { display: block; color: var(--muted); line-height: 1.4; margin-top: 3px; }
 
-  .api-box input {
-    border: none;
-    outline: none;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--text-main);
-    width: 140px;
-  }
+  .passages { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+  .passage { border: 1px solid var(--line); border-left: 3px solid var(--line-strong); border-radius: 8px; padding: 10px 12px; }
+  .passage.vector { border-left-color: var(--vec); }
+  .passage.graph { border-left-color: var(--graph-fill); }
+  .passage.hybrid { border-left-color: var(--ink); }
+  .passage .meta { display: flex; gap: 6px 10px; flex-wrap: wrap; align-items: center; margin-bottom: 6px; font-size: 13px; color: var(--muted); }
+  .passage .file { color: var(--ink); overflow-wrap: anywhere; }
+  .tag { font-size: 12px; font-weight: 600; padding: 1px 8px; border-radius: 999px; }
+  .tag.vector { background: var(--vec-soft); color: var(--vec); }
+  .tag.graph { background: var(--graph-soft); color: var(--graph); }
+  .tag.hybrid { background: var(--ink); color: var(--on-ink); }
+  .passage p { overflow-wrap: anywhere; white-space: pre-line; }
+  .passage p.clamp { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .linkbtn { border: 0; background: none; padding: 0; margin-top: 4px; color: var(--vec); cursor: pointer; font-size: 13px; font-weight: 500; }
+  .linkbtn:hover { text-decoration: underline; }
 
-  /* Live Stats Bar */
-  .stats-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-    background: var(--panel-bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 10px 16px;
-    margin-bottom: 24px;
-    font-size: 12px;
+  /* ---------- graph ---------- */
+  .g-head { padding: 12px 14px; border-bottom: 1px solid var(--line); display: grid; gap: 10px; }
+  .g-title { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .g-title p { color: var(--muted); font-size: 13px; }
+  .g-tools { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .g-tools input[type="search"] {
+    flex: 1 1 180px; min-width: 0; min-height: 28px; padding: 0 10px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--sunken);
   }
+  .g-stage { position: relative; flex: 1 1 auto; min-height: 0; overflow: hidden; background: var(--sunken); }
+  #cy { position: absolute; inset: 0; overflow: hidden; }
+  .g-msg { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 24px; color: var(--muted); pointer-events: none; }
+  .g-msg span { max-width: 340px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; }
+  .legend { position: absolute; left: 10px; bottom: 10px; display: flex; gap: 6px 14px; flex-wrap: wrap; max-width: calc(100% - 20px); padding: 6px 10px; border-radius: 8px; background: var(--surface); border: 1px solid var(--line); font-size: 12px; color: var(--muted); pointer-events: none; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 5px; border: 1.5px solid var(--line-strong); background: var(--surface); }
+  .legend i.a { background: var(--ink); border-color: var(--ink); }
+  .legend i.e { background: var(--graph-soft); border-color: var(--graph-fill); }
+  .detail { position: absolute; top: 10px; right: 10px; width: min(380px, calc(100% - 20px)); max-height: calc(100% - 64px); overflow: auto;
+    padding: 12px 14px; background: var(--surface); border: 1px solid var(--line-strong); border-radius: 8px; box-shadow: 0 6px 24px rgb(10 16 28 / .18); }
+  .detail header { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 8px; }
+  .detail header h3 { margin-right: auto; overflow-wrap: anywhere; }
+  .facts { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 13px; }
+  .facts li { overflow-wrap: anywhere; }
+  .facts .rel { color: var(--muted); }
+  .facts .src { color: var(--muted); }
 
-  .stat-group {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    color: var(--text-muted);
-  }
-
-  .stat-group span b {
-    color: var(--text-main);
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  /* Cards / Sections */
-  section {
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 20px;
-    margin-bottom: 20px;
-    background: #ffffff;
-  }
-
-  h2 {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-muted);
-    font-weight: 600;
-    margin-bottom: 14px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  /* Form Elements */
-  input[type="text"], input[type="file"] {
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    font-size: 13px;
-    font-family: inherit;
-    background: #ffffff;
-    color: var(--text-main);
-    outline: none;
-    transition: border-color 0.15s ease;
-  }
-
-  input[type="text"]:focus {
-    border-color: var(--text-main);
-  }
-
-  button {
-    cursor: pointer;
-    font-family: inherit;
-    border-radius: var(--radius);
-    transition: all 0.15s ease;
-    user-select: none;
-    white-space: nowrap;
-  }
-
-  button.btn-black {
-    background: #111111;
-    color: #ffffff;
-    border: 1px solid #111111;
-    padding: 8px 16px;
-    font-size: 13px;
-    font-weight: 500;
-  }
-
-  button.btn-black:hover {
-    background: #333333;
-    border-color: #333333;
-  }
-
-  button.btn-subtle {
-    border: 1px solid var(--border);
-    background: #ffffff;
-    color: var(--text-muted);
-    font-size: 11px;
-    padding: 4px 9px;
-  }
-
-  button.btn-subtle:hover {
-    color: var(--text-main);
-    border-color: var(--text-main);
-  }
-
-  button.btn-danger {
-    border: 1px solid #fecaca;
-    background: #fff;
-    color: var(--danger);
-    font-size: 11px;
-    padding: 3px 8px;
-  }
-
-  button.btn-danger:hover {
-    background: #fef2f2;
-    border-color: var(--danger);
-  }
-
-  button:disabled {
-    opacity: 0.35;
-    cursor: not-allowed;
-  }
-
-  /* Layout helpers */
-  .row {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-
-  .prompt-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 8px;
-  }
-
-  .pill {
-    font-size: 11px;
-    padding: 3px 8px;
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    color: var(--text-muted);
-    background: var(--panel-bg);
-    cursor: pointer;
-    user-select: none;
-  }
-
-  .pill:hover {
-    color: var(--text-main);
-    border-color: var(--border-dark);
-  }
-
-  .toggle-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 12px;
-    padding-top: 10px;
-    border-top: 1px solid var(--border);
-  }
-
-  .toggle-label {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    color: var(--text-muted);
-    cursor: pointer;
-    user-select: none;
-  }
-
-  .toggle-label input[type="checkbox"] {
-    accent-color: #000000;
-  }
-
-  /* Status messages */
-  .status {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-top: 8px;
-  }
-
-  .status.error { color: #b91c1c; }
-  .status.success { color: #15803d; }
-
-  /* Answer Card */
-  .answer-card {
-    background: #ffffff;
-    border: 1px solid #111111;
-  }
-
-  #answer-box {
-    font-size: 14px;
-    line-height: 1.65;
-    color: var(--text-main);
-    white-space: pre-wrap;
-    min-height: 24px;
-  }
-
-  #answer-box.muted {
-    color: var(--text-dim);
-  }
-
-  .typing-cursor::after {
-    content: '▋';
-    display: inline-block;
-    vertical-align: middle;
-    color: #111111;
-    animation: blink 0.8s infinite;
-  }
-
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-
-  /* Side-by-side comparison styles */
-  .comparison-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-top: 10px;
-  }
-  @media (max-width: 680px) {
-    .comparison-grid { grid-template-columns: 1fr; }
-  }
-  .comp-column {
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 12px;
-    background: #ffffff;
-  }
-  .comp-column.hybrid {
-    border-color: #111111;
-    background: #fafafa;
-  }
-  .comp-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-    padding-bottom: 6px;
-    border-bottom: 1px solid var(--border);
-  }
-  .comp-header h3 {
-    font-size: 12px;
-    font-weight: 600;
-  }
-  .comp-answer {
-    font-size: 13px;
-    line-height: 1.6;
-    margin-bottom: 10px;
-    padding: 10px;
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    min-height: 50px;
-    color: var(--text-main);
-  }
-  .comp-chunks {
-    font-size: 11px;
-    color: var(--text-muted);
-  }
-  .comp-chunk-item {
-    margin-top: 6px;
-    padding: 6px 8px;
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-  }
-
-  /* Document Management Table */
-  .doc-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 12px;
-    margin-top: 12px;
-  }
-
-  .doc-table th {
-    text-align: left;
-    padding: 6px 8px;
-    border-bottom: 1px solid var(--border-dark);
-    color: var(--text-muted);
-    font-weight: 500;
-    font-size: 11px;
-    text-transform: uppercase;
-  }
-
-  .doc-table td {
-    padding: 8px;
-    border-bottom: 1px solid var(--border);
-    vertical-align: middle;
-  }
-
-  .doc-table tr:last-child td {
-    border-bottom: none;
-  }
-
-  /* Passages / Chunks */
-  .passage-item {
-    border-bottom: 1px solid var(--border);
-    padding: 12px 0;
-  }
-
-  .passage-item:first-child { padding-top: 0; }
-  .passage-item:last-child { border-bottom: none; padding-bottom: 0; }
-
-  .passage-meta {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-bottom: 6px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  .badge {
-    font-size: 10px;
-    padding: 1px 6px;
-    border-radius: 3px;
-    font-weight: 500;
-    border: 1px solid var(--border-dark);
-    background: var(--panel-bg);
-    color: var(--text-main);
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-  }
-
-  .badge.badge-hybrid {
-    background: #111111;
-    color: #ffffff;
-    border-color: #111111;
-  }
-
-  .badge.badge-graph {
-    background: #2563eb;
-    color: #ffffff;
-    border-color: #2563eb;
-  }
-
-  .badge.badge-vector {
-    background: #475569;
-    color: #ffffff;
-    border-color: #475569;
-  }
-
-  .passage-text {
-    font-size: 13px;
-    color: var(--text-main);
-    line-height: 1.5;
-  }
-
-  /* Graph Viewport */
-  #graph-section {
-    margin-bottom: 12px;
-    border: 1px solid var(--border);
-    background: #ffffff;
-    border-radius: var(--radius);
-    overflow: hidden;
-    position: relative;
-    height: 480px;
-    transition: height 0.25s ease;
-    cursor: grab;
-  }
-
-  #graph-section.expanded {
-    height: 680px;
-  }
-
-  #graph-section svg, #graph-section canvas {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-
-  .edge-list {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    max-height: 140px;
-    overflow-y: auto;
-  }
-
-  .edge-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 4px 0;
-    border-bottom: 1px dotted var(--border);
-  }
-
-  .edge-row:last-child { border-bottom: none; }
+  /* ---------- documents dialog ---------- */
+  dialog { width: min(820px, calc(100vw - 32px)); max-height: calc(100vh - 48px); border: 1px solid var(--line); border-radius: 12px; padding: 0; background: var(--surface); color: var(--ink); margin: auto; }
+  dialog::backdrop { background: rgb(10 16 28 / .55); }
+  .d-head { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--surface); }
+  .d-head h2 { margin-right: auto; font-size: 16px; }
+  .d-body { padding: 16px 18px 20px; display: grid; gap: 16px; }
+  .upload { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; padding: 12px; border: 1px dashed var(--line-strong); border-radius: 8px; background: var(--sunken); }
+  .upload input[type="file"] { flex: 1 1 240px; min-width: 0; }
+  .upload-log { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; font-size: 13px; }
+  .upload-log .ok { color: var(--good); } .upload-log .bad { color: var(--bad); }
+  .d-filter { width: 100%; min-height: 34px; padding: 0 10px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--surface); }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--line); }
+  th { font-weight: 600; background: var(--sunken); white-space: nowrap; }
+  tr:last-child td { border-bottom: 0; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.file { overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
-<div class="container">
 
-  <!-- Header -->
-  <header>
-    <div class="brand">
-      <h1>GraphAnchor <span class="brand-badge">Hybrid RAG</span></h1>
-      <p>On-device relational knowledge graph &amp; vector-augmented document engine.</p>
-    </div>
+<header class="top">
+  <div class="brand">GraphAnchor</div>
+  <ul class="stats" id="stats" aria-label="What is indexed">
+    <li><b id="st-docs">–</b> documents</li>
+    <li><b id="st-chunks">–</b> passages</li>
+    <li><b id="st-entities">–</b> entities</li>
+    <li><b id="st-edges">–</b> relations</li>
+    <li id="st-models"></li>
+  </ul>
+  <div class="top-actions">
+    <button class="btn" id="docs-btn" type="button">Documents</button>
+    <a class="btn" href="/docs" target="_blank" rel="noopener">API reference</a>
+    <button class="btn" id="theme-btn" type="button" aria-label="Switch colour theme">Dark</button>
+  </div>
+</header>
 
-    <div class="top-controls">
-      <div class="api-box">
-        <span>API:</span>
-        <input type="text" id="api-base" value="http://localhost:8000" onchange="refreshAll()">
+<main class="workbench">
+  <div class="left">
+
+    <form class="panel ask" id="ask-form">
+      <label class="q" for="q">Ask a question about your documents</label>
+      <textarea id="q" rows="2" placeholder="Type a question, then press Enter" required></textarea>
+      <div class="examples" id="examples" hidden>
+        <span class="muted">Questions that need several documents:</span>
       </div>
-      <button class="btn-subtle" onclick="window.open(apiBase() + '/docs', '_blank')" title="Open FastAPI Swagger Documentation">API Docs ↗</button>
-      <button class="btn-subtle" onclick="refreshAll()" title="Refresh stats, documents, and graph">↻ Refresh</button>
-      <button class="btn-subtle" onclick="resetDatabase()" title="Clear all indexed documents">Reset DB</button>
-    </div>
-  </header>
+      <div class="controls">
+        <div class="seg" role="radiogroup" aria-label="Search mode">
+          <input type="radio" name="mode" id="m-hybrid" value="hybrid" checked><label for="m-hybrid">Hybrid</label>
+          <input type="radio" name="mode" id="m-vector" value="vector"><label for="m-vector">Vector only</label>
+          <input type="radio" name="mode" id="m-compare" value="compare"><label for="m-compare">Compare both</label>
+        </div>
+        <label class="field" title="How many passages vector search returns. Hybrid adds up to 8 more from the graph.">
+          Vector passages
+          <select id="k">
+            <option>1</option><option>2</option><option selected>3</option><option>5</option><option>8</option>
+          </select>
+        </label>
+        <label class="field" id="stream-field" title="Show the answer word by word. A streamed answer is written in one pass without step-by-step reasoning, so it can be less accurate on multi-document questions.">
+          <input type="checkbox" id="stream"> Stream the answer
+        </label>
+      </div>
+      <div class="submit-row">
+        <p class="mode-help" id="mode-help"></p>
+        <button class="btn primary" id="ask-btn" type="submit">Ask</button>
+      </div>
+    </form>
 
-  <!-- Live Stats Bar -->
-  <div class="stats-bar">
-    <div class="stat-group">
-      <span>Indexed Chunks: <b id="stat-chunks">-</b></span>
-      <span>Graph Edges: <b id="stat-edges">-</b></span>
-      <span>Known Entities: <b id="stat-entities">-</b></span>
-      <span>Documents: <b id="stat-docs">-</b></span>
-    </div>
-    <div class="stat-group">
-      <span style="font-size: 11px;">LLM: <b>llama3.2</b></span>
-      <span style="font-size: 11px;">Embeddings: <b>arctic-embed2</b></span>
+    <section class="panel intro" id="intro">
+      <h2>How to read the results</h2>
+      <ul>
+        <li><i class="swatch vec"></i><span><b>Blue</b> marks passages found by vector search: text that is similar to your question.</span></li>
+        <li><i class="swatch graph"></i><span><b>Marigold</b> marks passages found by following relations in the knowledge graph from one document to another.</span></li>
+        <li><i class="swatch ink"></i><span><b>Filled nodes</b> in the graph are the entities your question mentions. The search starts from them.</span></li>
+      </ul>
+    </section>
+
+    <div id="results" hidden>
+      <div class="left">
+        <div class="answers" id="answers" aria-live="polite"></div>
+        <section class="panel section" id="how" hidden>
+          <h2>How it got there <span id="how-for"></span></h2>
+          <div id="how-body"></div>
+        </section>
+        <section class="panel section" id="passages-sec" hidden>
+          <h2>Passages the answer was written from <span id="passages-count"></span></h2>
+          <ol class="passages" id="passages"></ol>
+        </section>
+      </div>
     </div>
   </div>
 
-  <!-- Document Ingest & Management Section -->
-  <section>
-    <h2>
-      <span>Document Ingestion &amp; Management</span>
-      <button class="btn-subtle" onclick="toggleDocPanel()" id="doc-toggle-btn">View Indexed Documents (0)</button>
-    </h2>
-    <div class="row">
-      <div style="flex: 1;">
-        <input type="file" id="file-input" accept=".txt,.md,.markdown,.pdf">
+  <section class="panel right" aria-label="Knowledge graph">
+    <div class="g-head">
+      <div class="g-title">
+        <h2 id="g-title">Knowledge graph</h2>
+        <p id="g-sub"></p>
       </div>
-      <div>
-        <button onclick="uploadFile()" id="upload-btn" class="btn-black">Upload &amp; Extract</button>
-      </div>
-    </div>
-    <div class="status" id="upload-status"></div>
-
-    <div id="doc-list-container" style="display: none; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border);">
-      <div style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px;">
-        Currently Stored Documents
-      </div>
-      <div id="doc-table-wrapper">
-        <p style="color: var(--text-dim); font-size: 12px;">No documents indexed yet.</p>
+      <div class="g-tools">
+        <input type="search" id="g-search" list="entity-list" placeholder="Find an entity" aria-label="Find an entity in the graph" autocomplete="off">
+        <datalist id="entity-list"></datalist>
+        <button class="btn small" id="v-overview" type="button" aria-pressed="true">Overview</button>
+        <button class="btn small" id="v-evidence" type="button" aria-pressed="false" disabled title="Ask a question in Hybrid mode first">Evidence</button>
+        <button class="btn small" id="v-full" type="button" aria-pressed="false">Full graph</button>
+        <button class="btn small" id="g-fit" type="button">Fit</button>
       </div>
     </div>
-  </section>
-
-  <!-- Question & Search Section -->
-  <section>
-    <h2>Ask a question</h2>
-    <input type="text" id="query-input" placeholder="e.g. who is shayla's project partner and what are his traits?">
-    
-    <div class="prompt-pills">
-      <span class="pill" onclick="setQueryAndK('who is lohith', 1)">who is lohith</span>
-      <span class="pill" onclick="setQueryAndK('who is shayla and who is her project partner?', 1)">shayla &amp; partner</span>
-      <span class="pill" onclick="setQueryAndK('who is shayla\'s project partner and what are his traits?', 1)" style="border-color: #111; font-weight: 600;">★ Multi-Hop Test (k=1)</span>
-      <span class="pill" onclick="setQueryAndK('what disorder is caused by Mutation-X9 and how is it suppressed?', 2)">disease &amp; inhibitor</span>
-    </div>
-
-    <div class="toggle-row">
-      <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
-        <label class="toggle-label" title="Enable multi-hop knowledge graph traversal to link cross-document relationships">
-          <input type="checkbox" id="graph-toggle" checked onchange="updateToggleBadge()">
-          <span>Enable Multi-Hop Graph Traversal (Hybrid RAG)</span>
-        </label>
-        <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-muted);">
-          <label for="top-k-input">Top-K Vector:</label>
-          <select id="top-k-input" style="padding: 2px 6px; font-size: 12px; border: 1px solid var(--border); border-radius: var(--radius); background: #fff; outline: none;" title="Number of initial vector chunks to retrieve. Use K=1 or 2 for small corpuses so vector search does not retrieve the entire database upfront!">
-            <option value="1">1 (Micro Test Set)</option>
-            <option value="2" selected>2</option>
-            <option value="3">3</option>
-            <option value="5">5</option>
-          </select>
-        </div>
+    <div class="g-stage">
+      <div id="cy"></div>
+      <div class="g-msg" id="g-msg" hidden><span></span></div>
+      <div class="legend" id="legend">
+        <span><i class="a"></i>In your question</span>
+        <span><i class="e"></i>On an evidence path</span>
+        <span><i></i>Other entity</span>
+        <span class="hint">Click a node for its facts, double-click to explore around it</span>
       </div>
-      <div style="display: flex; gap: 6px; align-items: center;">
-        <button onclick="compareModes()" id="compare-btn" class="btn-subtle" style="font-weight: 600; border-color: #111;" title="Run both Standard Vector RAG and Hybrid Graph RAG side-by-side to compare results">⇄ Compare Modes</button>
-        <button onclick="askQuestion(true)" id="stream-btn" class="btn-subtle" title="Stream generated answer token by token">Stream</button>
-        <button onclick="askQuestion(false)" id="ask-btn" class="btn-black">Ask</button>
-      </div>
+      <div class="detail" id="detail" hidden></div>
     </div>
   </section>
+</main>
 
-  <!-- Side-by-Side Comparison Section (Shown when Compare Modes is clicked) -->
-  <section id="comparison-section" style="display: none; border: 1px solid #111; background: #fff;">
-    <h2>
-      <span>Standard Vector RAG vs. Hybrid Graph RAG Comparison</span>
-      <button class="btn-subtle" onclick="document.getElementById('comparison-section').style.display='none'">✕ Close</button>
-    </h2>
-    <div id="comparison-analysis" style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px; padding: 8px 12px; background: var(--panel-bg); border-radius: var(--radius); border: 1px solid var(--border);"></div>
-    <div class="comparison-grid">
-      <div class="comp-column" id="comp-vector-col">
-        <div class="comp-header">
-          <h3>Standard Vector RAG</h3>
-          <span class="badge badge-vector">Vector Only</span>
-        </div>
-        <div class="comp-answer" id="comp-vector-answer">Loading answer...</div>
-        <div class="comp-chunks">
-          <b>Retrieved Chunks:</b>
-          <div id="comp-vector-chunks"></div>
-        </div>
-      </div>
-      <div class="comp-column hybrid" id="comp-hybrid-col">
-        <div class="comp-header">
-          <h3>Hybrid Graph RAG</h3>
-          <span class="badge badge-hybrid">Multi-Hop Traversal</span>
-        </div>
-        <div class="comp-answer" id="comp-hybrid-answer">Loading answer...</div>
-        <div class="comp-chunks">
-          <b>Fused Passages &amp; Graph Hops:</b>
-          <div id="comp-hybrid-chunks"></div>
-        </div>
-      </div>
+<dialog id="docs-dialog" aria-labelledby="docs-title">
+  <div class="d-head">
+    <h2 id="docs-title">Documents</h2>
+    <button class="btn small" id="docs-close" type="button">Close</button>
+  </div>
+  <div class="d-body">
+    <div>
+      <form class="upload" id="upload-form">
+        <input type="file" id="files" accept=".txt,.md,.markdown,.pdf" multiple required aria-label="Files to add">
+        <button class="btn" id="upload-btn" type="submit">Add to the index</button>
+      </form>
+      <p class="muted" style="margin-top:8px;font-size:13px">Text, Markdown or PDF. Each passage is read by the local model to extract relations, so a long document can take several minutes.</p>
+      <ul class="upload-log" id="upload-log" aria-live="polite"></ul>
     </div>
-  </section>
+    <input class="d-filter" id="doc-filter" type="search" placeholder="Filter by file name" aria-label="Filter documents by file name">
+    <div class="table-wrap"><table>
+      <thead><tr><th>File</th><th class="num">Passages</th><th class="num">Relations</th><th>Added</th><th id="th-del" hidden></th></tr></thead>
+      <tbody id="doc-rows"></tbody>
+    </table></div>
+  </div>
+</dialog>
 
-  <!-- Grounded Answer Card -->
-  <section class="answer-card">
-    <h2>
-      <span style="display: flex; align-items: center; gap: 8px;">
-        <span>Grounded Answer</span>
-        <span id="rag-mode-badge" class="badge badge-hybrid" style="font-size: 10px;">Hybrid Graph RAG</span>
-      </span>
-      <button class="btn-subtle" onclick="copyAnswer()" style="text-transform: none;">Copy</button>
-    </h2>
-    <div id="answer-box" class="muted">Ask a question above to see an evidence-grounded answer here.</div>
-  </section>
-
-  <!-- Knowledge Graph Section -->
-  <section>
-    <h2>
-      <span id="graph-title">Knowledge Graph (Global View)</span>
-      <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
-        <span id="graph-meta" style="font-size: 11px; text-transform: none; font-weight: 400; color: var(--text-muted);"></span>
-        <input type="text" id="graph-search" placeholder="Search node..." oninput="onGraphSearch(this.value)" style="width: 110px; padding: 2px 6px; font-size: 11px; border: 1px solid var(--border); border-radius: var(--radius); outline: none;">
-        <button class="btn-subtle" onclick="fetchGlobalGraph(true)" title="Reset view and display all nodes">Full Graph</button>
-        <button class="btn-subtle" onclick="fitGraphToView()" title="Fit all nodes comfortably in view">Fit to View</button>
-        <button class="btn-subtle" onclick="runSimulation(140)" title="Re-settle node layout">Re-layout</button>
-        <button class="btn-subtle" onclick="toggleCanvasHeight()" id="canvas-expand-btn">⛶ Expand</button>
-      </div>
-    </h2>
-
-    <div id="graph-section">
-      <canvas id="graph-canvas"></canvas>
-      <div id="graph-empty-overlay" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 13px; pointer-events: none;">
-        No graph data available. Upload documents to build the graph.
-      </div>
-      <div style="position: absolute; bottom: 8px; right: 10px; font-size: 10px; color: var(--text-dim); background: rgba(255,255,255,0.9); padding: 3px 8px; border-radius: 3px; border: 1px solid var(--border); pointer-events: none;">
-        Drag nodes &bull; Scroll to zoom &bull; Click node to focus
-      </div>
-    </div>
-    <div class="edge-list" id="edge-list" style="margin-top: 12px;"></div>
-  </section>
-
-  <!-- Retrieved & Ranked Text Passages -->
-  <section>
-    <h2>
-      <span>Retrieved &amp; Fused Passages</span>
-      <span id="passages-meta" style="font-size: 11px; text-transform: none; font-weight: 400; color: var(--text-muted);"></span>
-    </h2>
-    <div id="vector-results">
-      <p style="color: var(--text-dim); font-size: 13px;">No query run yet.</p>
-    </div>
-  </section>
-
-</div>
-
+<script src="vendor/cytoscape.min.js"></script>
 <script>
-// Auto-detect backend if served directly from FastAPI
-if (window.location.protocol.startsWith('http')) {
-  document.getElementById('api-base').value = window.location.origin;
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const fmt = n => Number(n).toLocaleString('en-US');
+const plural = (n, word) => `${fmt(n)} ${word}${n === 1 ? '' : 's'}`;
+const cssVar = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+async function api(path, opts) {
+  let res;
+  try { res = await fetch(path, opts); }
+  catch { throw new Error(`Can't reach the server at ${location.origin}. Check that it is still running.`); }
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(typeof data.detail === 'string' ? data.detail : `The server returned an error (${res.status}).`);
+  return data;
 }
 
-function apiBase() {
-  const val = document.getElementById('api-base').value.trim();
-  return val.replace(/\/$/, '') || window.location.origin;
+/* ---------------- theme ---------------- */
+function setTheme(t) {
+  document.documentElement.dataset.theme = t;
+  $('theme-btn').textContent = t === 'dark' ? 'Light' : 'Dark';
+  if (cy) cy.style(cyStyle());
 }
+$('theme-btn').onclick = () => {
+  const t = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('theme', t);
+  setTheme(t);
+};
 
-function escapeHtml(str) {
-  const div = document.createElement('div');
-  div.textContent = str == null ? '' : String(str);
-  return div.innerHTML;
-}
+/* ---------------- stats and documents ---------------- */
+let docs = [], docName = {}, deletesEnabled = false;
 
-function setQuery(text) {
-  const input = document.getElementById('query-input');
-  input.value = text;
-  input.focus();
-  askQuestion(true);
-}
+// Shown only when the benchmark corpus is the one indexed. Each is a benchmark question that vector search got wrong and
+// hybrid answered correctly in every repeated run (see README, "Questions that show the difference").
+const EXAMPLES = [
+  ['Bank chair, 2 documents', 'Who chairs the bank that financed the Ferrous Bay Offshore Wind farm?'],
+  ['Freight CEO, 2 documents', 'Who is the chief executive of the freight company that carries the isotopes made at Isotope Works?'],
+  ['Deputy director, 2 documents', 'Who is the deputy director of the project led by the former Harbourgate Mutual Bank infrastructure analyst?'],
+  ['Cold chain, 3 documents', 'Who is the deputy director of the cold chain project whose Dunmarrow depot froze out the duplicate seed bank in the brownout?'],
+  ['Light rail, 3 documents', 'Who is the signals chief of the light rail project that suffered fail-safe stops when the timing signal from Cairn Head degraded?'],
+  ['Freight CEO, 4 documents', 'Who is the chief executive of the freight company whose largest customer is the port project directed by a former employee of the bank that financed the Tidewrack array?'],
+];
 
-function setQueryAndK(text, k = null) {
-  const input = document.getElementById('query-input');
-  input.value = text;
-  if (k !== null) {
-    const sel = document.getElementById('top-k-input');
-    if (sel) sel.value = String(k);
-  }
-  input.focus();
-  askQuestion(true);
-}
-
-function updateToggleBadge() {
-  const enableGraph = document.getElementById('graph-toggle').checked;
-  const ragBadge = document.getElementById('rag-mode-badge');
-  if (enableGraph) {
-    ragBadge.className = 'badge badge-hybrid';
-    ragBadge.textContent = 'Hybrid Graph RAG';
-  } else {
-    ragBadge.className = 'badge badge-vector';
-    ragBadge.textContent = 'Standard Vector RAG';
-  }
-}
-
-function refreshAll() {
-  fetchStats();
-  fetchDocuments();
-  fetchGlobalGraph();
-}
-
-// -------------------------------------------------------------
-// Stats & Document Management
-// -------------------------------------------------------------
-async function fetchStats() {
+async function loadStats() {
   try {
-    const res = await fetch(apiBase() + '/graph/stats');
-    if (!res.ok) throw new Error();
-    const data = await res.json();
-    document.getElementById('stat-chunks').textContent = data.chunk_count;
-    document.getElementById('stat-edges').textContent = data.edge_count;
-    document.getElementById('stat-entities').textContent = data.total_entities_known;
-  } catch (err) {
-    document.getElementById('stat-chunks').textContent = '-';
-    document.getElementById('stat-edges').textContent = '-';
-    document.getElementById('stat-entities').textContent = '-';
+    const s = await api('/graph/stats');
+    $('st-docs').textContent = fmt(s.document_count);
+    $('st-chunks').textContent = fmt(s.chunk_count);
+    $('st-entities').textContent = fmt(s.total_entities_known);
+    $('st-edges').textContent = fmt(s.edge_count);
+    $('st-models').textContent = `Local models: ${s.llm_model} and ${s.embed_model}`;
+    deletesEnabled = s.deletes_enabled;
+  } catch (e) {
+    $('st-models').textContent = e.message;
   }
 }
 
-async function fetchDocuments() {
-  const btn = document.getElementById('doc-toggle-btn');
-  const wrapper = document.getElementById('doc-table-wrapper');
-  const statDocs = document.getElementById('stat-docs');
-
+async function loadDocs() {
   try {
-    const res = await fetch(apiBase() + '/documents');
-    if (!res.ok) throw new Error();
-    const data = await res.json();
-    const docs = data.documents || [];
-    statDocs.textContent = docs.length;
-    btn.textContent = `View Indexed Documents (${docs.length})`;
-
-    if (docs.length === 0) {
-      wrapper.innerHTML = '<p style="color: var(--text-dim); font-size: 12px;">No documents indexed yet.</p>';
-      return;
-    }
-
-    let html = `
-      <table class="doc-table">
-        <thead>
-          <tr>
-            <th>Filename</th>
-            <th>Doc ID</th>
-            <th>Chunks</th>
-            <th>Edges</th>
-            <th>Ingested</th>
-            <th style="text-align: right;">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-    `;
-
-    docs.forEach(d => {
-      const shortId = d.doc_id ? d.doc_id.slice(0, 8) + '...' : '-';
-      const created = d.created_at ? d.created_at.split(' ')[0] : '-';
-      html += `
-        <tr>
-          <td><b>${escapeHtml(d.filename || 'untitled')}</b></td>
-          <td style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-muted);">${shortId}</td>
-          <td>${d.chunk_count}</td>
-          <td>${d.edge_count}</td>
-          <td style="color: var(--text-dim); font-size: 11px;">${created}</td>
-          <td style="text-align: right;">
-            <button class="btn-danger" onclick="deleteDocument('${d.doc_id}', '${escapeHtml(d.filename || '')}')">Delete</button>
-          </td>
-        </tr>
-      `;
+    docs = (await api('/documents')).documents || [];
+  } catch (e) {
+    $('doc-rows').innerHTML = `<tr><td colspan="5">${esc(e.message)}</td></tr>`;
+    return;
+  }
+  docName = Object.fromEntries(docs.map(d => [d.doc_id, d.filename]));
+  $('docs-btn').textContent = `Documents (${docs.length})`;
+  $('th-del').hidden = !deletesEnabled;
+  renderDocs();
+  const hasBenchmark = docs.some(d => (d.filename || '').startsWith('01_tidewrack'));
+  const box = $('examples');
+  box.hidden = !hasBenchmark;
+  if (hasBenchmark && box.children.length === 1) {
+    EXAMPLES.forEach(([label, q]) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'chip'; b.textContent = label; b.title = q;
+      b.onclick = () => { $('q').value = q; ask(); };
+      box.appendChild(b);
     });
-
-    html += `</tbody></table>`;
-    wrapper.innerHTML = html;
-  } catch (err) {
-    statDocs.textContent = '-';
-    wrapper.innerHTML = '<p style="color: var(--text-dim); font-size: 12px;">Could not load documents.</p>';
   }
 }
 
-function toggleDocPanel() {
-  const container = document.getElementById('doc-list-container');
-  container.style.display = container.style.display === 'none' ? 'block' : 'none';
-}
-
-async function deleteDocument(docId, filename) {
-  if (!confirm(`Are you sure you want to delete document "${filename || docId}"?\nThis removes its chunks, embeddings, and associated graph edges.`)) {
+function renderDocs() {
+  const f = $('doc-filter').value.trim().toLowerCase();
+  const rows = docs.filter(d => !f || (d.filename || '').toLowerCase().includes(f));
+  if (!docs.length) {
+    $('doc-rows').innerHTML = '<tr><td colspan="5">Nothing is indexed yet. Add a file above to start.</td></tr>';
     return;
   }
-  try {
-    const res = await fetch(apiBase() + '/documents/' + encodeURIComponent(docId), { method: 'DELETE' });
-    const data = await res.json();
-    if (res.ok) {
-      refreshAll();
-    } else {
-      alert('Delete failed: ' + (data.detail || res.status));
-    }
-  } catch (err) {
-    alert('Failed to connect to backend.');
-  }
+  $('doc-rows').innerHTML = rows.map(d => `
+    <tr>
+      <td class="file mono">${esc(d.filename || 'untitled')}</td>
+      <td class="num">${d.chunk_count}</td>
+      <td class="num">${d.edge_count}</td>
+      <td>${esc((d.created_at || '').split(' ')[0])}</td>
+      ${deletesEnabled ? `<td><button class="btn small danger" type="button" data-del="${esc(d.doc_id)}" data-name="${esc(d.filename || d.doc_id)}">Delete</button></td>` : ''}
+    </tr>`).join('') || `<tr><td colspan="5">No file name contains “${esc(f)}”.</td></tr>`;
 }
-
-async function resetDatabase() {
-  if (!confirm('Are you sure you want to permanently clear all documents, chunks, and graph edges from SQLite and ChromaDB?')) {
-    return;
-  }
-  try {
-    const res = await fetch(apiBase() + '/reset?confirm=true', { method: 'DELETE' });
-    const data = await res.json();
-    if (res.ok) {
-      alert(data.message || 'Database reset successfully.');
-      refreshAll();
-      document.getElementById('answer-box').className = 'muted';
-      document.getElementById('answer-box').textContent = 'Ask a question above to see an evidence-grounded answer here.';
-      document.getElementById('vector-results').innerHTML = '<p style="color: var(--text-dim); font-size: 13px;">No query run yet.</p>';
-      document.getElementById('edge-list').innerHTML = '';
-      document.getElementById('upload-status').textContent = '';
-      document.getElementById('graph-meta').textContent = '';
-      document.getElementById('passages-meta').textContent = '';
-    } else {
-      alert('Reset failed: ' + (data.detail || res.status));
-    }
-  } catch (err) {
-    alert('Could not reach backend at ' + apiBase());
-  }
-}
-
-async function uploadFile() {
-  const fileInput = document.getElementById('file-input');
-  const status = document.getElementById('upload-status');
-  const btn = document.getElementById('upload-btn');
-
-  if (!fileInput.files.length) {
-    status.className = 'status error';
-    status.textContent = 'Please choose a .txt, .md, or .pdf file first.';
-    return;
-  }
-
-  const formData = new FormData();
-  formData.append('file', fileInput.files[0]);
-
-  btn.disabled = true;
-  status.className = 'status';
-  status.textContent = 'Extracting entities & building graph... (this may take a few moments)';
-
-  try {
-    const res = await fetch(apiBase() + '/ingest', { method: 'POST', body: formData });
-    const data = await res.json();
-
-    if (!res.ok) {
-      status.className = 'status error';
-      status.textContent = 'Error: ' + (data.detail || res.status);
-      return;
-    }
-
-    status.className = 'status success';
-    if (data.duplicate) {
-      status.textContent = 'Document already indexed earlier (doc_id: ' + data.doc_id.slice(0, 8) + '...).';
-    } else {
-      let msg = 'Indexed successfully! Chunks: ' + data.chunks_processed +
-        ', entities: ' + data.entities_extracted +
-        ', edges: ' + data.edges_added + '.';
-      if (data.extraction_failures) {
-        msg += ' (' + data.extraction_failures + ' extraction warnings).';
-      }
-      status.textContent = msg;
-      fileInput.value = '';
-    }
-    refreshAll();
-  } catch (err) {
-    status.className = 'status error';
-    status.textContent = 'Could not reach backend at ' + apiBase() + '.';
-  } finally {
-    btn.disabled = false;
-  }
-}
-
-// -------------------------------------------------------------
-// Interactive Anti-Collision Knowledge Graph Engine
-// -------------------------------------------------------------
-let graphNodes = [];
-let graphEdges = [];
-let activeAnchors = new Set();
-let activeEdges = new Set();
-let searchedNodeQuery = '';
-let isSimulating = false;
-let draggedNode = null;
-let zoomLevel = 1.0;
-let panOffset = { x: 0, y: 0 };
-let isPanning = false;
-let startPan = { x: 0, y: 0 };
-
-const canvas = document.getElementById('graph-canvas');
-const ctx = canvas.getContext('2d');
-
-function initCanvasSize() {
-  const rect = canvas.getBoundingClientRect();
-  const dpr = window.devicePixelRatio || 1;
-  canvas.width = rect.width * dpr;
-  canvas.height = rect.height * dpr;
-  ctx.resetTransform && ctx.resetTransform();
-  ctx.scale(dpr, dpr);
-}
-
-function toggleCanvasHeight() {
-  const sec = document.getElementById('graph-section');
-  const btn = document.getElementById('canvas-expand-btn');
-  sec.classList.toggle('expanded');
-  btn.textContent = sec.classList.contains('expanded') ? '⛶ Compact' : '⛶ Expand';
-  setTimeout(() => {
-    initCanvasSize();
-    fitGraphToView();
-  }, 260);
-}
-
-window.addEventListener('resize', () => {
-  initCanvasSize();
-  renderGraph();
-});
-
-async function fetchGlobalGraph(resetPositions = false) {
-  try {
-    const res = await fetch(apiBase() + '/graph/all');
-    if (!res.ok) throw new Error();
-    const data = await res.json();
-
-    const overlay = document.getElementById('graph-empty-overlay');
-    const edgeList = document.getElementById('edge-list');
-    const graphTitle = document.getElementById('graph-title');
-    const graphMeta = document.getElementById('graph-meta');
-
-    graphTitle.textContent = 'Knowledge Graph (Global View)';
-    graphMeta.textContent = `(${data.node_count} entities, ${data.edge_count} edges)`;
-
-    if (data.edges.length === 0) {
-      overlay.style.display = 'flex';
-      graphNodes = [];
-      graphEdges = [];
-      edgeList.innerHTML = '';
-      renderGraph();
-      return;
-    }
-
-    overlay.style.display = 'none';
-    activeAnchors.clear();
-    activeEdges.clear();
-
-    setupGraphData(data.nodes, data.edges, resetPositions);
-    renderEdgeList(data.edges);
-  } catch (err) {
-    console.warn('Could not fetch global graph:', err);
-  }
-}
-
-function renderEdgeList(edges) {
-  const edgeList = document.getElementById('edge-list');
-  edgeList.innerHTML = '';
-  edges.forEach((e) => {
-    const row = document.createElement('div');
-    row.className = 'edge-row';
-    const conf = (e.confidence !== null && e.confidence !== undefined) ? Number(e.confidence).toFixed(2) : '1.00';
-    row.innerHTML = `
-      <span><b>${escapeHtml(e.source)}</b> &rarr; <i>${escapeHtml(e.relation)}</i> &rarr; <b>${escapeHtml(e.target)}</b></span>
-      <span style="color: var(--text-dim); font-size: 11px;">conf ${conf}</span>
-    `;
-    edgeList.appendChild(row);
-  });
-}
-
-function setupGraphData(nodesData, edgesData, resetPositions = false) {
-  const rect = canvas.getBoundingClientRect();
-  const cx = rect.width / 2;
-  const cy = rect.height / 2;
-
-  const oldPos = {};
-  graphNodes.forEach(n => { oldPos[n.id] = { x: n.x, y: n.y }; });
-
-  ctx.save();
-  ctx.font = '11px "Inter", sans-serif';
-
-  graphNodes = nodesData.map((n, i) => {
-    const existing = (!resetPositions && oldPos[n.id]) ? oldPos[n.id] : null;
-    const textW = ctx.measureText(n.label || n.id).width;
-    const badgeW = Math.max(textW + 24, 60);
-    const badgeH = 28;
-
-    // Golden-ratio Archimedean spiral layout for initial distribution
-    const angle = i * 2.39996;
-    const radius = 45 + Math.sqrt(i + 1) * 75;
-
-    return {
-      id: n.id,
-      label: n.label || n.id,
-      w: badgeW,
-      h: badgeH,
-      x: existing ? existing.x : cx + radius * Math.cos(angle),
-      y: existing ? existing.y : cy + radius * Math.sin(angle),
-      vx: 0,
-      vy: 0
-    };
-  });
-  ctx.restore();
-
-  // Deduplicate edges: if multiple chunks extract the exact same semantic triple, keep the one with the highest confidence
-  const uniqueEdgesMap = new Map();
-  edgesData.forEach(e => {
-    const key = `${e.source}|||${e.relation}|||${e.target}`;
-    const conf = e.confidence !== undefined && e.confidence !== null ? e.confidence : 1.0;
-    if (!uniqueEdgesMap.has(key) || (uniqueEdgesMap.get(key).confidence || 1.0) < conf) {
-      uniqueEdgesMap.set(key, e);
-    }
-  });
-  const uniqueEdges = Array.from(uniqueEdgesMap.values());
-
-  // Group edges between identical node pairs to assign curvature offsets
-  const pairCounts = {};
-  uniqueEdges.forEach(e => {
-    const pairKey = [e.source, e.target].sort().join('|||');
-    pairCounts[pairKey] = (pairCounts[pairKey] || 0) + 1;
-  });
-
-  const pairIndices = {};
-  graphEdges = uniqueEdges.map(e => {
-    const pairKey = [e.source, e.target].sort().join('|||');
-    const idx = pairIndices[pairKey] || 0;
-    pairIndices[pairKey] = idx + 1;
-    const totalInPair = pairCounts[pairKey] || 1;
-
-    let curveOffset = 0;
-    if (totalInPair > 1) {
-      curveOffset = (idx - (totalInPair - 1) / 2) * 36;
-      if (e.source > e.target) curveOffset *= -1;
-    }
-
-    return {
-      source: e.source,
-      target: e.target,
-      relation: e.relation,
-      confidence: e.confidence,
-      curveOffset: curveOffset
-    };
-  });
-
-  if (resetPositions || !oldPos[nodesData[0]?.id]) {
-    runSimulation(140, true);
-  } else {
-    runSimulation(80, false);
-  }
-}
-
-function runSimulation(steps = 100, autoFit = false) {
-  let count = 0;
-  function step() {
-    simulateStep();
-    renderGraph();
-    count++;
-    if (count < steps || draggedNode) {
-      requestAnimationFrame(step);
-    } else if (autoFit) {
-      fitGraphToView();
-    }
-  }
-  requestAnimationFrame(step);
-}
-
-function simulateStep() {
-  const rect = canvas.getBoundingClientRect();
-  const cx = rect.width / 2;
-  const cy = rect.height / 2;
-
-  const nodeMap = {};
-  graphNodes.forEach(n => { nodeMap[n.id] = n; });
-
-  const numNodes = graphNodes.length;
-
-  // 1. Repulsion force (with wider soft cutoff)
-  const maxRepulseDist = Math.max(380, Math.sqrt(numNodes) * 60);
-  for (let i = 0; i < numNodes; i++) {
-    for (let j = i + 1; j < numNodes; j++) {
-      const n1 = graphNodes[i];
-      const n2 = graphNodes[j];
-      const dx = n2.x - n1.x;
-      const dy = n2.y - n1.y;
-      const dist = Math.sqrt(dx * dx + dy * dy) || 1;
-
-      if (dist < maxRepulseDist) {
-        const force = (160 * 160) / (dist * dist + 100) * 1.6;
-        const fx = (dx / dist) * force;
-        const fy = (dy / dist) * force;
-
-        if (n1 !== draggedNode) { n1.vx -= fx; n1.vy -= fy; }
-        if (n2 !== draggedNode) { n2.vx += fx; n2.vy += fy; }
-      }
-    }
-  }
-
-  // 2. Edge Spring Attraction
-  graphEdges.forEach(e => {
-    const s = nodeMap[e.source];
-    const t = nodeMap[e.target];
-    if (!s || !t) return;
-
-    const dx = t.x - s.x;
-    const dy = t.y - s.y;
-    const dist = Math.sqrt(dx * dx + dy * dy) || 1;
-    const targetDist = 160;
-    const force = (dist - targetDist) * 0.025;
-    const fx = (dx / dist) * force;
-    const fy = (dy / dist) * force;
-
-    if (s !== draggedNode) { s.vx += fx; s.vy += fy; }
-    if (t !== draggedNode) { t.vx -= fx; t.vy -= fy; }
-  });
-
-  // 3. Gentle Adaptive Center Gravity & Damping
-  const centerGravity = Math.max(0.0015, 0.008 / Math.sqrt(Math.max(1, numNodes)));
-  graphNodes.forEach(n => {
-    if (n === draggedNode) return;
-    n.vx += (cx - n.x) * centerGravity;
-    n.vy += (cy - n.y) * centerGravity;
-
-    n.vx *= 0.84;
-    n.vy *= 0.84;
-
-    n.x += n.vx;
-    n.y += n.vy;
-  });
-
-  // 4. Strict Bounding Box (AABB) Non-Overlap Solver (Guarantees zero overlapping badges!)
-  for (let iter = 0; iter < 4; iter++) {
-    for (let i = 0; i < numNodes; i++) {
-      for (let j = i + 1; j < numNodes; j++) {
-        const n1 = graphNodes[i];
-        const n2 = graphNodes[j];
-
-        const minGapX = (n1.w + n2.w) / 2 + 16;
-        const minGapY = (n1.h + n2.h) / 2 + 12;
-
-        const dx = n2.x - n1.x;
-        const dy = n2.y - n1.y;
-        const ox = minGapX - Math.abs(dx);
-        const oy = minGapY - Math.abs(dy);
-
-        if (ox > 0 && oy > 0) {
-          if (ox / minGapX < oy / minGapY) {
-            const shift = (ox / 2) * (dx >= 0 ? 1 : -1);
-            if (n1 !== draggedNode) n1.x -= shift;
-            if (n2 !== draggedNode) n2.x += shift;
-          } else {
-            const shift = (oy / 2) * (dy >= 0 ? 1 : -1);
-            if (n1 !== draggedNode) n1.y -= shift;
-            if (n2 !== draggedNode) n2.y += shift;
-          }
-        }
-      }
-    }
-  }
-}
-
-function fitGraphToView() {
-  if (graphNodes.length === 0) return;
-  const rect = canvas.getBoundingClientRect();
-  const pad = 50;
-
-  let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
-  graphNodes.forEach(n => {
-    const hw = n.w / 2;
-    const hh = n.h / 2;
-    if (n.x - hw < minX) minX = n.x - hw;
-    if (n.x + hw > maxX) maxX = n.x + hw;
-    if (n.y - hh < minY) minY = n.y - hh;
-    if (n.y + hh > maxY) maxY = n.y + hh;
-  });
-
-  const graphW = (maxX - minX) + pad * 2;
-  const graphH = (maxY - minY) + pad * 2;
-
-  const scaleX = rect.width / graphW;
-  const scaleY = rect.height / graphH;
-  zoomLevel = Math.max(0.3, Math.min(1.25, Math.min(scaleX, scaleY)));
-
-  const graphMidX = (minX + maxX) / 2;
-  const graphMidY = (minY + maxY) / 2;
-
-  panOffset.x = (rect.width / 2) - (graphMidX * zoomLevel);
-  panOffset.y = (rect.height / 2) - (graphMidY * zoomLevel);
-
-  renderGraph();
-}
-
-function onGraphSearch(query) {
-  searchedNodeQuery = (query || '').trim().toLowerCase();
-  if (searchedNodeQuery) {
-    const target = graphNodes.find(n => n.label.toLowerCase().includes(searchedNodeQuery));
-    if (target) {
-      const rect = canvas.getBoundingClientRect();
-      panOffset.x = (rect.width / 2) - (target.x * zoomLevel);
-      panOffset.y = (rect.height / 2) - (target.y * zoomLevel);
-    }
-  }
-  renderGraph();
-}
-
-function renderGraph() {
-  const rect = canvas.getBoundingClientRect();
-  ctx.clearRect(0, 0, rect.width, rect.height);
-
-  ctx.save();
-  ctx.translate(panOffset.x, panOffset.y);
-  ctx.scale(zoomLevel, zoomLevel);
-
-  const nodeMap = {};
-  graphNodes.forEach(n => { nodeMap[n.id] = n; });
-
-  const hasActiveQuery = activeAnchors.size > 0;
-  const hasSearch = searchedNodeQuery.length > 0;
-
-  // 1. Draw Edges
-  graphEdges.forEach(e => {
-    const s = nodeMap[e.source];
-    const t = nodeMap[e.target];
-    if (!s || !t) return;
-
-    const isTraversed = activeEdges.has(`${e.source}->${e.target}`) || activeEdges.has(`${e.target}->${e.source}`);
-    const isDimmed = (hasActiveQuery && !isTraversed) || (hasSearch && !e.source.toLowerCase().includes(searchedNodeQuery) && !e.target.toLowerCase().includes(searchedNodeQuery));
-
-    ctx.save();
-    ctx.strokeStyle = isTraversed ? '#111111' : (isDimmed ? '#ececec' : '#cccccc');
-    ctx.lineWidth = isTraversed ? 2.2 : 1.2;
-
-    const dx = t.x - s.x;
-    const dy = t.y - s.y;
-    const dist = Math.sqrt(dx * dx + dy * dy) || 1;
-    const normX = -dy / dist;
-    const normY = dx / dist;
-
-    let ctrlX, ctrlY, midX, midY;
-    if (e.curveOffset && Math.abs(e.curveOffset) > 2) {
-      ctrlX = (s.x + t.x) / 2 + normX * e.curveOffset;
-      ctrlY = (s.y + t.y) / 2 + normY * e.curveOffset;
-      midX = 0.25 * s.x + 0.5 * ctrlX + 0.25 * t.x;
-      midY = 0.25 * s.y + 0.5 * ctrlY + 0.25 * t.y;
-
-      ctx.beginPath();
-      ctx.moveTo(s.x, s.y);
-      ctx.quadraticCurveTo(ctrlX, ctrlY, t.x, t.y);
-      ctx.stroke();
-    } else {
-      ctrlX = (s.x + t.x) / 2;
-      ctrlY = (s.y + t.y) / 2;
-      midX = ctrlX;
-      midY = ctrlY;
-
-      ctx.beginPath();
-      ctx.moveTo(s.x, s.y);
-      ctx.lineTo(t.x, t.y);
-      ctx.stroke();
-    }
-
-    // Directional Arrow
-    const angle = Math.atan2(t.y - (ctrlY || s.y), t.x - (ctrlX || s.x));
-    const arrowDist = 26;
-    const arrowX = t.x - arrowDist * Math.cos(angle);
-    const arrowY = t.y - arrowDist * Math.sin(angle);
-
-    ctx.fillStyle = isTraversed ? '#111111' : (isDimmed ? '#d4d4d4' : '#888888');
-    ctx.beginPath();
-    ctx.moveTo(arrowX, arrowY);
-    ctx.lineTo(arrowX - 8 * Math.cos(angle - Math.PI / 6), arrowY - 8 * Math.sin(angle - Math.PI / 6));
-    ctx.lineTo(arrowX - 8 * Math.cos(angle + Math.PI / 6), arrowY - 8 * Math.sin(angle + Math.PI / 6));
-    ctx.closePath();
-    ctx.fill();
-
-    // Relation Tag Pill
-    if (e.relation) {
-      ctx.font = '10px "JetBrains Mono", monospace';
-      const textWidth = ctx.measureText(e.relation).width;
-      const pillW = textWidth + 12;
-      const pillH = 16;
-
-      ctx.fillStyle = '#ffffff';
-      ctx.strokeStyle = isTraversed ? '#111111' : (isDimmed ? '#eaeaea' : '#d4d4d4');
-      ctx.lineWidth = 1;
-
-      ctx.beginPath();
-      roundRect(ctx, midX - pillW / 2, midY - pillH / 2, pillW, pillH, 4);
-      ctx.fill();
-      ctx.stroke();
-
-      ctx.fillStyle = isTraversed ? '#111111' : (isDimmed ? '#aaaaaa' : '#555555');
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(e.relation, midX, midY + 0.5);
-    }
-    ctx.restore();
-  });
-
-  // 2. Draw Nodes (Badges with strict non-overlap)
-  graphNodes.forEach(n => {
-    const isAnchor = activeAnchors.has(n.id.toLowerCase());
-    const isConnected = !hasActiveQuery || isAnchor || isNodeTraversed(n.id);
-    const isSearchMatch = hasSearch && n.label.toLowerCase().includes(searchedNodeQuery);
-    const isDimmed = (hasActiveQuery && !isConnected) || (hasSearch && !isSearchMatch);
-
-    ctx.save();
-    ctx.font = (isAnchor || isSearchMatch) ? 'bold 12px "Inter", sans-serif' : '11px "Inter", sans-serif';
-
-    const badgeW = n.w;
-    const badgeH = n.h;
-
-    ctx.beginPath();
-    roundRect(ctx, n.x - badgeW / 2, n.y - badgeH / 2, badgeW, badgeH, 6);
-
-    if (isAnchor || isSearchMatch) {
-      ctx.fillStyle = '#111111';
-      ctx.strokeStyle = '#000000';
-      ctx.lineWidth = 2;
-      ctx.shadowColor = 'rgba(0,0,0,0.25)';
-      ctx.shadowBlur = 8;
-    } else {
-      ctx.fillStyle = isDimmed ? '#fafafa' : '#ffffff';
-      ctx.strokeStyle = isConnected ? '#111111' : '#e0e0e0';
-      ctx.lineWidth = isConnected ? 1.5 : 1;
-      ctx.shadowBlur = 0;
-    }
-    ctx.fill();
-    ctx.stroke();
-
-    ctx.fillStyle = (isAnchor || isSearchMatch) ? '#ffffff' : (isDimmed ? '#bbbbbb' : '#111111');
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(n.label, n.x, n.y + 0.5);
-
-    ctx.restore();
-  });
-
-  ctx.restore();
-}
-
-function roundRect(ctx, x, y, width, height, radius) {
-  ctx.moveTo(x + radius, y);
-  ctx.lineTo(x + width - radius, y);
-  ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
-  ctx.lineTo(x + width, y + height - radius);
-  ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
-  ctx.lineTo(x + radius, y + height);
-  ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
-  ctx.lineTo(x, y + radius);
-  ctx.quadraticCurveTo(x, y, x + radius, y);
-}
-
-function isNodeTraversed(id) {
-  const low = id.toLowerCase();
-  for (let pair of activeEdges) {
-    if (pair.toLowerCase().includes(low)) return true;
-  }
-  return false;
-}
-
-// Canvas Mouse Interactions (Dragging & Panning)
-function getCanvasMousePos(e) {
-  const rect = canvas.getBoundingClientRect();
-  const clientX = e.clientX || (e.touches && e.touches[0].clientX);
-  const clientY = e.clientY || (e.touches && e.touches[0].clientY);
-  const rawX = clientX - rect.left;
-  const rawY = clientY - rect.top;
-  return {
-    x: (rawX - panOffset.x) / zoomLevel,
-    y: (rawY - panOffset.y) / zoomLevel
-  };
-}
-
-canvas.addEventListener('mousedown', (e) => {
-  const pos = getCanvasMousePos(e);
-  // Check if clicked inside a node badge
-  for (let n of graphNodes) {
-    if (Math.abs(pos.x - n.x) <= n.w / 2 && Math.abs(pos.y - n.y) <= n.h / 2) {
-      draggedNode = n;
-      runSimulation(60);
-      return;
-    }
-  }
-  isPanning = true;
-  startPan = { x: e.clientX - panOffset.x, y: e.clientY - panOffset.y };
-  canvas.style.cursor = 'grabbing';
-});
-
-window.addEventListener('mousemove', (e) => {
-  if (draggedNode) {
-    const pos = getCanvasMousePos(e);
-    draggedNode.x = pos.x;
-    draggedNode.y = pos.y;
-    draggedNode.vx = 0;
-    draggedNode.vy = 0;
-    renderGraph();
-  } else if (isPanning) {
-    panOffset.x = e.clientX - startPan.x;
-    panOffset.y = e.clientY - startPan.y;
-    renderGraph();
-  }
-});
-
-window.addEventListener('mouseup', () => {
-  draggedNode = null;
-  isPanning = false;
-  canvas.style.cursor = 'grab';
-});
-
-canvas.addEventListener('wheel', (e) => {
+$('doc-filter').oninput = renderDocs;
+$('docs-btn').onclick = () => $('docs-dialog').showModal();
+$('docs-close').onclick = () => $('docs-dialog').close();
+
+// The Delete button only exists when the server was started with GRAPHANCHOR_ALLOW_DELETE=1.
+$('doc-rows').onclick = async e => {
+  const b = e.target.closest('[data-del]');
+  if (!b || !confirm(`Delete “${b.dataset.name}”? Its passages and relations are removed and cannot be restored.`)) return;
+  try { await api('/documents/' + encodeURIComponent(b.dataset.del), { method: 'DELETE' }); }
+  catch (err) { alert(err.message); }
+  refresh();
+};
+
+$('upload-form').onsubmit = async e => {
   e.preventDefault();
-  const zoomFactor = e.deltaY < 0 ? 1.08 : 0.92;
-  const newZoom = Math.max(0.25, Math.min(2.5, zoomLevel * zoomFactor));
-
-  // Zoom towards mouse position
-  const rect = canvas.getBoundingClientRect();
-  const mouseX = e.clientX - rect.left;
-  const mouseY = e.clientY - rect.top;
-
-  panOffset.x = mouseX - (mouseX - panOffset.x) * (newZoom / zoomLevel);
-  panOffset.y = mouseY - (mouseY - panOffset.y) * (newZoom / zoomLevel);
-  zoomLevel = newZoom;
-
-  renderGraph();
-});
-
-// -------------------------------------------------------------
-// Ask Question & Streaming Answer Generation
-// -------------------------------------------------------------
-async function askQuestion(enableStream = false) {
-  const q = document.getElementById('query-input').value.trim();
-  const enableGraph = document.getElementById('graph-toggle').checked;
-  const kVal = document.getElementById('top-k-input')?.value || '2';
-  const btn = document.getElementById('ask-btn');
-  const streamBtn = document.getElementById('stream-btn');
-
-  const answerBox = document.getElementById('answer-box');
-  const vectorList = document.getElementById('vector-results');
-  const graphTitle = document.getElementById('graph-title');
-  const graphMeta = document.getElementById('graph-meta');
-  const passagesMeta = document.getElementById('passages-meta');
-
-  if (!q) return;
-
-  const ragBadge = document.getElementById('rag-mode-badge');
-  if (enableGraph) {
-    ragBadge.className = 'badge badge-hybrid';
-    ragBadge.textContent = 'Hybrid Graph RAG';
-  } else {
-    ragBadge.className = 'badge badge-vector';
-    ragBadge.textContent = 'Standard Vector RAG';
-  }
-
+  const files = [...$('files').files], log = $('upload-log'), btn = $('upload-btn');
   btn.disabled = true;
-  streamBtn.disabled = true;
-  answerBox.className = 'typing-cursor';
-  answerBox.textContent = '';
-  vectorList.innerHTML = '';
-
-  try {
-    // 1. Fetch retrieval & graph traversal data
-    const queryUrl = apiBase() + '/query?q=' + encodeURIComponent(q) +
-      '&k=' + encodeURIComponent(kVal) +
-      '&enable_graph=' + encodeURIComponent(enableGraph);
-    const res = await fetch(queryUrl);
-    const data = await res.json();
-
-    if (!res.ok) {
-      answerBox.className = 'status error';
-      answerBox.textContent = 'Error: ' + (data.detail || res.status);
-      return;
+  for (const file of files) {
+    const li = document.createElement('li');
+    log.prepend(li);
+    const t0 = Date.now();
+    const tick = setInterval(() => { li.textContent = `${file.name}: reading and extracting relations, ${Math.round((Date.now() - t0) / 1000)} s`; }, 1000);
+    li.textContent = `${file.name}: uploading`;
+    try {
+      const body = new FormData();
+      body.append('file', file);
+      const r = await api('/ingest', { method: 'POST', body });
+      li.className = 'ok';
+      li.textContent = r.duplicate
+        ? `${file.name}: already indexed, nothing added`
+        : `${file.name}: added ${plural(r.chunks_processed, 'passage')} and ${plural(r.edges_added, 'relation')}` + (r.extraction_failures ? ` (${r.extraction_failures} passages could not be read for relations)` : '');
+    } catch (err) {
+      li.className = 'bad';
+      li.textContent = `${file.name}: ${err.message}`;
     }
+    clearInterval(tick);
+  }
+  btn.disabled = false;
+  $('files').value = '';
+  refresh();
+};
 
-    // 2. Render Passages (Using Hybrid Ranking Breakdown)
-    const rankedChunks = data.ranking_breakdown || [];
-    const vectorResults = data.vector_search_results || [];
-    const connectedChunks = (data.graph_traversal && data.graph_traversal.connected_chunks) || [];
+/* ---------------- graph ---------------- */
+let cy = null, allEdges = [], adj = new Map(), degree = new Map(), evidence = null, view = 'overview';
+const LABEL_FONT = '"IBM Plex Sans", system-ui, sans-serif';
+const measure = document.createElement('canvas').getContext('2d');
+const cleanRel = r => String(r || '').replace(/_/g, ' ').trim();
+const short = (s, n) => s.length > n ? s.slice(0, n - 1).trimEnd() + '…' : s;
+const fileOfChunk = cid => docName[String(cid || '').replace(/_\d+$/, '')] || '';
 
-    const totalPassages = rankedChunks.length || (vectorResults.length + connectedChunks.length);
-    passagesMeta.textContent = '(' + totalPassages + ' ranked passages at K=' + kVal + ')';
+function cyStyle() {
+  const ink = cssVar('--ink'), surface = cssVar('--surface'), sunken = cssVar('--sunken'), line = cssVar('--line-strong'),
+        muted = cssVar('--muted'), graph = cssVar('--graph-fill'), graphSoft = cssVar('--graph-soft'), vec = cssVar('--vec'), onInk = cssVar('--on-ink');
+  return [
+    { selector: 'node', style: {
+        shape: 'round-rectangle', width: 'data(w)', height: 'data(h)', 'background-color': surface, 'border-width': 1, 'border-color': line,
+        label: 'data(label)', color: ink, 'font-family': LABEL_FONT, 'font-size': 13, 'text-valign': 'center', 'text-halign': 'center',
+        'text-wrap': 'wrap', 'text-max-width': 150, 'overlay-opacity': 0 } },
+    { selector: 'node.hub', style: { 'border-width': 2, 'border-color': ink, 'font-weight': 600 } },
+    { selector: 'node.ev', style: { 'background-color': graphSoft, 'border-color': graph, 'border-width': 2 } },
+    { selector: 'node.anchor', style: { 'background-color': ink, 'border-color': ink, color: onInk, 'font-weight': 600 } },
+    { selector: 'node.dot', style: {
+        shape: 'ellipse', width: 'data(d)', height: 'data(d)', 'background-color': muted, 'border-width': 0, 'font-size': 11,
+        'min-zoomed-font-size': 9, 'text-valign': 'bottom', 'text-margin-y': 3, 'text-wrap': 'none' } },
+    { selector: 'node:selected', style: { 'border-color': vec, 'border-width': 3 } },
+    { selector: 'node.dot:selected', style: { 'background-color': vec } },
+    { selector: 'edge', style: {
+        width: 1.2, 'line-color': line, 'target-arrow-color': line, 'target-arrow-shape': 'triangle', 'arrow-scale': 0.9, 'curve-style': 'bezier',
+        label: 'data(label)', 'font-family': LABEL_FONT, 'font-size': 11, color: muted, 'text-rotation': 'autorotate',
+        'text-background-color': sunken, 'text-background-opacity': 1, 'text-background-padding': 2, 'overlay-opacity': 0 } },
+    { selector: 'edge.ev', style: { 'line-color': graph, 'target-arrow-color': graph, width: 2.2, color: ink } },
+    { selector: 'edge.quiet', style: { label: '' } },
+    { selector: 'edge.thin', style: { 'curve-style': 'haystack', width: 0.6, 'target-arrow-shape': 'none', label: '', opacity: 0.55 } },
+    { selector: 'edge:selected', style: { 'line-color': vec, 'target-arrow-color': vec, width: 2.6, label: 'data(label)', color: ink } },
+  ];
+}
 
-    if (totalPassages === 0) {
-      vectorList.innerHTML = '<p style="color: var(--text-dim); font-size: 13px;">No matching text passages found.</p>';
-    } else {
-      vectorList.innerHTML = '';
+function nodeData(id, cls) {
+  const label = short(id.replace(/_/g, ' '), 46);
+  measure.font = `${cls.includes('hub') || cls.includes('anchor') ? 600 : 400} 13px ${LABEL_FONT}`;
+  const tw = measure.measureText(label).width;
+  const lines = Math.min(4, Math.ceil(tw / 128));
+  return { group: 'nodes', data: { id, label, w: Math.min(tw, 150) + 24, h: lines * 17 + 13, d: 4 + Math.min(14, Math.sqrt(degree.get(id) || 1) * 2) }, classes: cls };
+}
 
-      if (rankedChunks.length > 0) {
-        rankedChunks.forEach((r, idx) => {
-          const item = document.createElement('div');
-          item.className = 'passage-item';
+// Several relations between the same two entities are drawn as one edge; the detail panel lists them all.
+function buildElements(edges, { anchors = new Set(), ev = new Set(), hubs = new Set(), evEdge = () => false, dots = false } = {}) {
+  const pairs = new Map(), nodes = new Set();
+  for (const e of edges) {
+    if (!e.source || !e.target || e.source === e.target) continue;
+    const key = [e.source, e.target].sort().join('|~|');
+    if (!pairs.has(key)) pairs.set(key, []);
+    pairs.get(key).push(e);
+    nodes.add(e.source); nodes.add(e.target);
+  }
+  anchors.forEach(a => { if (dots || nodes.size < 60) nodes.add(a); });
+  const quiet = pairs.size > 34;
+  const els = [...nodes].map(id => nodeData(id, [dots ? 'dot' : '', anchors.has(id) ? 'anchor' : '', ev.has(id) ? 'ev' : '', hubs.has(id) ? 'hub' : ''].join(' ')));
+  let i = 0;
+  for (const list of pairs.values()) {
+    const isEv = list.some(evEdge);
+    const first = list.find(evEdge) || list[0];
+    els.push({ group: 'edges', data: {
+      id: 'e' + i++, source: first.source, target: first.target, rels: list,
+      label: short(cleanRel(first.relation), 22) + (list.length > 1 ? ` +${list.length - 1}` : '') },
+      classes: [dots ? 'thin' : '', isEv ? 'ev' : '', quiet && !isEv ? 'quiet' : ''].join(' ') });
+  }
+  return els;
+}
 
-          let badgeClass = 'badge';
-          let badgeLabel = 'Passage';
-          if (r.source_type === 'hybrid') {
-            badgeClass = 'badge badge-hybrid';
-            badgeLabel = `Hybrid Match #${idx + 1}`;
-          } else if (r.source_type === 'graph') {
-            badgeClass = 'badge badge-graph';
-            badgeLabel = `Graph Hop ${r.hop_distance || 1}`;
-          } else {
-            badgeClass = 'badge badge-vector';
-            badgeLabel = `Vector Match #${idx + 1}`;
-          }
+function draw(els, { title, sub, layout }) {
+  $('g-title').textContent = title;
+  $('g-sub').textContent = sub || '';
+  setDetail(null);
+  gMsg(els.length ? '' : 'There are no relations to draw yet. Add documents to build the graph.');
+  cy.elements().remove();
+  cy.resize();
+  cy.add(els);
+  // Lay out inside a box shaped like the panel, so a wide panel gets a wide graph instead of a tall one.
+  const labelled = cy.edges('.quiet').empty();
+  const scale = Math.max(1, Math.sqrt(cy.nodes().length / (labelled ? 16 : 20)));
+  cy.layout(layout || {
+    name: 'cose', animate: false, randomize: true, nodeDimensionsIncludeLabels: true, padding: 36, componentSpacing: 90,
+    boundingBox: { x1: 0, y1: 0, w: cy.width() * scale, h: cy.height() * scale },
+    idealEdgeLength: () => labelled ? 185 : 150, nodeRepulsion: () => 60000, nodeOverlap: 40, edgeElasticity: () => 60, gravity: 0.25, numIter: 2500,
+  }).run();
+  if (!layout) separate();
+  fit();
+}
 
-          const score = (r.composite_score !== undefined) ? Number(r.composite_score).toFixed(3) : '-';
-          const fname = r.metadata && r.metadata.filename ? r.metadata.filename : '';
+function fit() {
+  cy.fit(undefined, 44);
+  if (cy.zoom() > 1.2) { cy.zoom(1.2); cy.center(); }
+}
 
-          item.innerHTML = `
-            <div class="passage-meta">
-              <span class="${badgeClass}">${badgeLabel}</span>
-              <span>Composite Score: <b>${score}</b></span>
-              ${fname ? `<span>File: <i>${escapeHtml(fname)}</i></span>` : ''}
-              <span style="color: var(--text-dim); font-family: monospace;">[${escapeHtml(r.chunk_id)}]</span>
-            </div>
-            <div class="passage-text">${escapeHtml(r.text)}</div>
-          `;
-          vectorList.appendChild(item);
-        });
-      } else {
-        vectorResults.forEach((r, idx) => {
-          const item = document.createElement('div');
-          item.className = 'passage-item';
-          const dist = (r.distance !== null && r.distance !== undefined) ? Number(r.distance).toFixed(3) : 'n/a';
-          item.innerHTML = `
-            <div class="passage-meta">
-              <span class="badge badge-vector">Vector Match #${idx + 1}</span>
-              <span>cosine dist: ${dist}</span>
-            </div>
-            <div class="passage-text">${escapeHtml(r.text)}</div>
-          `;
-          vectorList.appendChild(item);
-        });
-      }
+// cose keeps nodes apart only roughly; this pushes any two boxes that still touch along the axis where they overlap least.
+// ponytail: O(n^2) per pass, fine for the focused views (under ~80 nodes); the full graph uses dots and skips it.
+function separate() {
+  const nodes = cy.nodes().toArray(), gap = 16;
+  for (let pass = 0; pass < 60; pass++) {
+    let moved = false;
+    for (let i = 0; i < nodes.length; i++) for (let j = i + 1; j < nodes.length; j++) {
+      const a = nodes[i].position(), b = nodes[j].position();
+      const ox = (nodes[i].data('w') + nodes[j].data('w')) / 2 + gap - Math.abs(b.x - a.x);
+      const oy = (nodes[i].data('h') + nodes[j].data('h')) / 2 + gap - Math.abs(b.y - a.y);
+      if (ox <= 0 || oy <= 0) continue;
+      moved = true;
+      if (ox < oy) { const d = ox / 2 * (b.x >= a.x ? 1 : -1); nodes[i].position('x', a.x - d); nodes[j].position('x', b.x + d); }
+      else { const d = oy / 2 * (b.y >= a.y ? 1 : -1); nodes[i].position('y', a.y - d); nodes[j].position('y', b.y + d); }
     }
-
-    // 3. Highlight Query Subgraph
-    const traversal = data.graph_traversal || {};
-    const edges = traversal.edges || [];
-    const meta = traversal.metadata || {};
-
-    activeAnchors.clear();
-    activeEdges.clear();
-
-    if (enableGraph) {
-      const anchorEntities = meta.anchor_entities || (meta.traversed_from_entity ? [meta.traversed_from_entity] : []);
-      anchorEntities.forEach(a => activeAnchors.add(String(a).toLowerCase()));
-      edges.forEach(e => {
-        activeEdges.add(`${e.source}->${e.target}`);
-        activeEdges.add(`${e.target}->${e.source}`);
-      });
-
-      graphTitle.textContent = 'Knowledge Graph (Traversed Path)';
-      graphMeta.textContent = `(${edges.length} edges traversed for query)`;
-      renderEdgeList(edges.length > 0 ? edges : graphEdges);
-    } else {
-      graphTitle.textContent = 'Knowledge Graph (Traversal Disabled in Plain Vector Mode)';
-      graphMeta.textContent = '(Bypassed by toggle)';
-      renderEdgeList([]);
-    }
-    runSimulation(90);
-
-    // 4. Stream or direct answer display
-    if (enableStream) {
-      try {
-        const streamUrl = apiBase() + '/answer/stream?q=' + encodeURIComponent(q) +
-          '&k=' + encodeURIComponent(kVal) +
-          '&enable_graph=' + encodeURIComponent(enableGraph);
-
-        const response = await fetch(streamUrl);
-        const reader = response.body.getReader();
-        const decoder = new TextDecoder();
-        let buffer = '';
-
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          buffer += decoder.decode(value, { stream: true });
-
-          const lines = buffer.split('\n\n');
-          buffer = lines.pop(); // keep partial chunk
-
-          for (const line of lines) {
-            if (line.startsWith('event: token')) {
-              const dataStr = line.split('data: ')[1];
-              if (dataStr) {
-                try {
-                  const token = JSON.parse(dataStr);
-                  answerBox.textContent += token;
-                } catch (e) {}
-              }
-            }
-          }
-        }
-      } catch (streamErr) {
-        if (data.answer) answerBox.textContent = data.answer;
-      }
-    } else {
-      answerBox.textContent = data.answer || 'No answer generated.';
-    }
-
-    answerBox.className = '';
-  } catch (err) {
-    answerBox.className = 'status error';
-    answerBox.textContent = 'Could not reach backend at ' + apiBase();
-  } finally {
-    btn.disabled = false;
-    streamBtn.disabled = false;
+    if (!moved) break;
   }
 }
 
-async function compareModes() {
-  const q = document.getElementById('query-input').value.trim();
-  const kVal = document.getElementById('top-k-input')?.value || '2';
-  const compSec = document.getElementById('comparison-section');
-  const compAnalysis = document.getElementById('comparison-analysis');
-  const compVecAns = document.getElementById('comp-vector-answer');
-  const compVecChunks = document.getElementById('comp-vector-chunks');
-  const compHybAns = document.getElementById('comp-hybrid-answer');
-  const compHybChunks = document.getElementById('comp-hybrid-chunks');
-  const compBtn = document.getElementById('compare-btn');
-
-  if (!q) {
-    alert('Please enter a question to compare modes.');
-    return;
-  }
-
-  compSec.style.display = 'block';
-  compBtn.disabled = true;
-  compAnalysis.textContent = 'Running parallel retrieval (Standard Vector RAG vs Hybrid Graph RAG)...';
-  compVecAns.textContent = 'Generating Standard Vector answer...';
-  compHybAns.textContent = 'Generating Hybrid Graph answer...';
-  compVecChunks.innerHTML = '';
-  compHybChunks.innerHTML = '';
-
-  compSec.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-  try {
-    const [vecRes, hybRes] = await Promise.all([
-      fetch(`${apiBase()}/query?q=${encodeURIComponent(q)}&k=${kVal}&enable_graph=false`).then(r => r.json()),
-      fetch(`${apiBase()}/query?q=${encodeURIComponent(q)}&k=${kVal}&enable_graph=true`).then(r => r.json())
-    ]);
-
-    // Vector Column
-    compVecAns.textContent = vecRes.answer || 'No answer generated.';
-    const vecChunks = vecRes.vector_search_results || [];
-    if (vecChunks.length === 0) {
-      compVecChunks.innerHTML = '<div style="color: var(--text-dim); margin-top: 4px;">No vector chunks found.</div>';
-    } else {
-      compVecChunks.innerHTML = vecChunks.map((c, i) => {
-        const fname = c.metadata?.filename || c.chunk_id;
-        return `<div class="comp-chunk-item">
-          <div style="font-weight: 500; color: var(--text-main); margin-bottom: 2px;">#${i+1} [${escapeHtml(fname)}]</div>
-          <div style="font-size: 11px; color: var(--text-muted);">${escapeHtml(c.text)}</div>
-        </div>`;
-      }).join('');
-    }
-
-    // Hybrid Column
-    compHybAns.textContent = hybRes.answer || 'No answer generated.';
-    const rankedChunks = hybRes.ranking_breakdown || [];
-    const edges = hybRes.graph_traversal?.edges || [];
-    const meta = hybRes.graph_traversal?.metadata || {};
-
-    let hybHtml = '';
-    if (edges.length > 0) {
-      hybHtml += `<div style="margin-bottom: 8px; padding: 6px 8px; background: #e0f2fe; border-radius: 4px; border: 1px solid #bae6fd; font-size: 11px; color: #0369a1;">
-        <b>Traversed ${edges.length} Graph Edge(s):</b><br/>
-        ${edges.map(e => `${escapeHtml(e.source)} &rarr; <i>${escapeHtml(e.relation)}</i> &rarr; ${escapeHtml(e.target)}`).join('<br/>')}
-      </div>`;
-    }
-
-    if (rankedChunks.length === 0) {
-      hybHtml += '<div style="color: var(--text-dim);">No passages found.</div>';
-    } else {
-      hybHtml += rankedChunks.map((c, i) => {
-        const fname = c.metadata?.filename || c.chunk_id;
-        const badge = c.source_type === 'graph' ? '<span class="badge badge-graph">Graph Hop</span>' : (c.source_type === 'hybrid' ? '<span class="badge badge-hybrid">Hybrid</span>' : '<span class="badge badge-vector">Vector</span>');
-        return `<div class="comp-chunk-item">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
-            <span style="font-weight: 500; color: var(--text-main);">#${i+1} [${escapeHtml(fname)}]</span>
-            ${badge}
-          </div>
-          <div style="font-size: 11px; color: var(--text-muted);">${escapeHtml(c.text)}</div>
-        </div>`;
-      }).join('');
-    }
-    compHybChunks.innerHTML = hybHtml;
-
-    // Analysis summary
-    const diffChunks = rankedChunks.length - vecChunks.length;
-    if (diffChunks > 0 || edges.length > 0) {
-      compAnalysis.innerHTML = `<b>Key Multi-Hop Finding:</b> Hybrid RAG traversed <b>${edges.length} knowledge graph edge(s)</b> and pulled in <b>${diffChunks} cross-document passage(s)</b> that Standard Vector RAG (at K=${kVal}) missed! This enabled Hybrid RAG to resolve cross-entity traits and relationships across document boundaries.`;
-    } else {
-      compAnalysis.innerHTML = `At K=${kVal}, vector search already retrieved all candidates in this micro-corpus (${vecChunks.length} chunks). To observe multi-hop separation on a small 3-file corpus, set <b>Top-K = 1</b> or upload documents containing multi-hop chains!`;
-    }
-
-    // Update main canvas with hybrid traversal
-    activeAnchors.clear();
-    activeEdges.clear();
-    const anchorEntities = meta.anchor_entities || (meta.traversed_from_entity ? [meta.traversed_from_entity] : []);
-    anchorEntities.forEach(a => activeAnchors.add(String(a).toLowerCase()));
-    edges.forEach(e => {
-      activeEdges.add(`${e.source}->${e.target}`);
-      activeEdges.add(`${e.target}->${e.source}`);
-    });
-    renderEdgeList(edges.length > 0 ? edges : graphEdges);
-    runSimulation(90);
-
-  } catch (err) {
-    compAnalysis.textContent = 'Error comparing modes: ' + err;
-  } finally {
-    compBtn.disabled = false;
-  }
+function gMsg(text) {
+  $('g-msg').hidden = !text;
+  $('g-msg').firstElementChild.textContent = text;
 }
 
-function copyAnswer() {
-  const answer = document.getElementById('answer-box').textContent;
-  if (!answer || answer.includes('Ask a question above')) return;
-  navigator.clipboard.writeText(answer).then(() => {
-    alert('Answer copied to clipboard!');
+function setView(v) {
+  view = v;
+  for (const k of ['overview', 'evidence', 'full']) $('v-' + k).setAttribute('aria-pressed', String(k === v));
+  $('legend').hidden = v === 'full';
+}
+
+// A name worth showing as a hub: a proper name, not an extraction fragment such as "plant" or "data".
+const isName = n => /[A-Z]/.test(n) && n.split(/\s+/).length <= 5 && !/[()\[\]"]/.test(n);
+
+function showOverview() {
+  setView('overview');
+  const hubs = [...degree.entries()].filter(([n]) => isName(n)).sort((a, b) => b[1] - a[1]).slice(0, 10).map(([n]) => n);
+  const keep = new Set(hubs);
+  for (const h of hubs) {
+    [...new Set(adj.get(h).map(e => e.source === h ? e.target : e.source))]
+      .filter(isName).sort((a, b) => degree.get(b) - degree.get(a)).slice(0, 4).forEach(n => keep.add(n));
+  }
+  const edges = allEdges.filter(e => keep.has(e.source) && keep.has(e.target));
+  draw(buildElements(edges, { hubs: new Set(hubs) }), {
+    title: 'Knowledge graph',
+    sub: allEdges.length ? `The ${hubs.length} most connected entities and their closest neighbours, out of ${fmt(degree.size)} entities` : '',
   });
 }
 
-// Initial setup on page load
-initCanvasSize();
-refreshAll();
+function showAround(name) {
+  if (!adj.has(name)) return;
+  setView('explore');
+  const own = [...adj.get(name)].sort((a, b) => (b.confidence ?? 1) - (a.confidence ?? 1));
+  const shown = own.slice(0, 26);
+  const keep = new Set([name]);
+  shown.forEach(e => { keep.add(e.source); keep.add(e.target); });
+  const cross = allEdges.filter(e => e.source !== name && e.target !== name && keep.has(e.source) && keep.has(e.target)).slice(0, 14);
+  draw(buildElements([...shown, ...cross], { hubs: new Set([name]) }), {
+    title: `Around “${short(name, 40)}”`,
+    sub: own.length > shown.length ? `Showing the ${shown.length} strongest of its ${own.length} relations` : `All ${own.length} of its relations`,
+  });
+  const n = cy.getElementById(name);
+  n.select();
+}
 
-document.getElementById('query-input').addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') askQuestion(false);
-});
+function showFull() {
+  setView('full');
+  gMsg(`Drawing ${fmt(degree.size)} entities…`);
+  setTimeout(() => {
+    draw(buildElements(allEdges, { dots: true }), {
+      title: 'Full graph',
+      sub: `${fmt(degree.size)} entities. Zoom in to read names, click a dot for its facts.`,
+      layout: { name: 'preset', positions: clusterPositions(), padding: 20 },
+    });
+  }, 30);
+}
+
+// Full-graph layout: every entity joins the cluster of its best-connected neighbour, and each cluster is drawn as a
+// spiral disc with that hub in the middle. A force layout of 2,000 nodes took about 40 s in the browser; this is instant.
+function clusterPositions() {
+  const better = (a, b) => degree.get(a) > degree.get(b) || (degree.get(a) === degree.get(b) && a < b);
+  const hubOf = n => {
+    for (let i = 0; i < 30; i++) {
+      let best = n;
+      for (const e of adj.get(n)) { const o = e.source === n ? e.target : e.source; if (better(o, best)) best = o; }
+      if (best === n) break;
+      n = best;
+    }
+    return n;
+  };
+  const groups = new Map();
+  for (const n of degree.keys()) { const h = hubOf(n); if (!groups.has(h)) groups.set(h, []); groups.get(h).push(n); }
+  const GOLDEN = 2.39996, STEP = 15, pos = {};
+  let area = 0;
+  [...groups.values()].sort((a, b) => b.length - a.length).forEach((members, i) => {
+    const r = STEP * Math.sqrt(members.length) + 26;
+    const dist = i ? Math.sqrt(area / Math.PI) + r : 0;
+    area += Math.PI * r * r * 1.25;
+    const cx = dist * Math.cos(i * GOLDEN), cy0 = dist * Math.sin(i * GOLDEN);
+    members.sort((a, b) => degree.get(b) - degree.get(a)).forEach((n, j) => {
+      pos[n] = { x: cx + STEP * Math.sqrt(j) * Math.cos(j * GOLDEN), y: cy0 + STEP * Math.sqrt(j) * Math.sin(j * GOLDEN) };
+    });
+  });
+  return pos;
+}
+
+// Evidence view: the relations extracted from the passages the answer used, plus the chains the server reported.
+function parseChain(line) {
+  const m = line.match(/^(.*?)(?:\s{2}\(evidence in (.*)\))?$/s);
+  const triples = m[1].split(' ; ').map(t => t.match(/^(.*?) -\[(.*)\]-> (.*)$/s)).filter(Boolean).map(t => ({ source: t[1], relation: t[2], target: t[3] }));
+  return { triples, file: m[2] || '' };
+}
+
+function showEvidence() {
+  if (!evidence) return;
+  setView('evidence');
+  const g = evidence.graph_traversal || {}, meta = g.metadata || {};
+  const anchors = new Set(meta.anchor_entities || []);
+  const used = new Set((evidence.ranking_breakdown || []).map(c => c.chunk_id));
+  const chainEdges = (g.paths || []).flatMap(p => parseChain(p).triples);
+  const pairKey = e => [e.source, e.target].sort().join('|~|');
+  const onChain = new Set(chainEdges.map(pairKey));
+  const isChain = e => onChain.has(pairKey(e));
+  const rank = e => (isChain(e) ? 4 : 0) + (anchors.has(e.source) || anchors.has(e.target) ? 2 : 0) + (e.confidence ?? 0);
+  let pool = (g.edges || []).filter(e => isChain(e) || used.has(e.found_in_chunk)).sort((a, b) => rank(b) - rank(a));
+  // Drop stray pairs: keep only relations that connect, directly or through others, to a question entity or a chain.
+  const core = new Set([...anchors, ...chainEdges.flatMap(e => [e.source, e.target])]);
+  for (let grew = core.size > 0; grew;) {
+    grew = false;
+    for (const e of pool) if (core.has(e.source) !== core.has(e.target)) { core.add(e.source); core.add(e.target); grew = true; }
+  }
+  if (core.size) pool = pool.filter(e => core.has(e.source));
+  const seenPairs = new Set(), edges = [];
+  for (const e of [...chainEdges, ...pool]) {
+    const key = pairKey(e);
+    if (!seenPairs.has(key) && seenPairs.size >= 36) continue;
+    seenPairs.add(key);
+    edges.push(e);
+  }
+  const ev = new Set(chainEdges.flatMap(e => [e.source, e.target]));
+  const shownAnchors = new Set([...anchors].filter(a => edges.some(e => e.source === a || e.target === a)));
+  draw(buildElements(edges, { anchors: shownAnchors, ev, evEdge: isChain }), {
+    title: 'Evidence for your question',
+    sub: edges.length
+      ? `${seenPairs.size} relations from the passages the answer used, of ${fmt((g.edges || []).length)} the search walked through`
+      : '',
+  });
+  if (!edges.length) gMsg(meta.message || 'The graph added nothing for this question.');
+}
+
+function factsHtml(list, self) {
+  return list.map(e => `<li>${e.source === self ? `<b>${esc(e.source)}</b>` : esc(e.source)} <span class="rel">${esc(cleanRel(e.relation))}</span> ${e.target === self ? `<b>${esc(e.target)}</b>` : esc(e.target)}${
+    fileOfChunk(e.chunk_id || e.found_in_chunk) ? ` <span class="src mono">${esc(fileOfChunk(e.chunk_id || e.found_in_chunk))}</span>` : ''}</li>`).join('');
+}
+
+function showNodeDetail(name) {
+  const all = [...(adj.get(name) || [])].sort((a, b) => (b.confidence ?? 1) - (a.confidence ?? 1));
+  setDetail(`
+    <header><h3>${esc(name)}</h3>
+      <button class="btn small" type="button" id="d-explore">Explore around it</button>
+      <button class="btn small" type="button" id="d-close">Close</button></header>
+    <ul class="facts">${factsHtml(all.slice(0, 12), name) || '<li class="muted">No stored relations.</li>'}</ul>
+    ${all.length > 12 ? `<p class="muted" style="margin-top:8px;font-size:13px">And ${all.length - 12} more relations.</p>` : ''}`);
+  $('d-explore').onclick = () => showAround(name);
+}
+
+function showEdgeDetail(rels) {
+  setDetail(`
+    <header><h3>${rels.length === 1 ? 'Relation' : `${rels.length} relations between these entities`}</h3>
+      <button class="btn small" type="button" id="d-close">Close</button></header>
+    <ul class="facts">${factsHtml(rels)}</ul>`);
+}
+
+function setDetail(html) {
+  const box = $('detail');
+  box.hidden = !html;
+  if (!html) return;
+  box.innerHTML = html;
+  box.scrollTop = 0;
+  $('d-close').onclick = closeDetail;
+}
+
+function closeDetail() { setDetail(null); cy.elements().unselect(); }
+
+async function loadGraph() {
+  let data;
+  try { data = await api('/graph/all'); }
+  catch (e) { gMsg(e.message); return; }
+  const seen = new Set();
+  allEdges = data.edges.filter(e => {
+    const key = e.source + '|~|' + e.relation + '|~|' + e.target;
+    return e.source && e.target && !seen.has(key) && seen.add(key);
+  });
+  adj = new Map(); degree = new Map();
+  for (const e of allEdges) for (const n of [e.source, e.target]) {
+    if (!adj.has(n)) adj.set(n, []);
+    adj.get(n).push(e);
+    degree.set(n, adj.get(n).length);
+  }
+  $('entity-list').innerHTML = [...degree.keys()].sort((a, b) => a.localeCompare(b)).map(n => `<option value="${esc(n)}">`).join('');
+  showOverview();
+}
+
+function initGraph() {
+  cy = cytoscape({ container: $('cy'), style: cyStyle(), minZoom: 0.08, maxZoom: 3, boxSelectionEnabled: false });
+  cy.on('tap', 'node', e => showNodeDetail(e.target.id()));
+  cy.on('dbltap', 'node', e => showAround(e.target.id()));
+  cy.on('tap', 'edge', e => showEdgeDetail(e.target.data('rels')));
+  cy.on('tap', e => { if (e.target === cy) closeDetail(); });
+  cy.on('mouseover', 'node, edge', () => { $('cy').style.cursor = 'pointer'; });
+  cy.on('mouseout', 'node, edge', () => { $('cy').style.cursor = ''; });
+  $('v-overview').onclick = showOverview;
+  $('v-evidence').onclick = showEvidence;
+  $('v-full').onclick = showFull;
+  $('g-fit').onclick = fit;
+  const find = () => {
+    const v = $('g-search').value.trim();
+    if (!v) return;
+    const low = v.toLowerCase();
+    const hit = adj.has(v) ? v : [...degree.keys()].filter(n => n.toLowerCase().includes(low)).sort((a, b) => degree.get(b) - degree.get(a))[0];
+    if (hit) showAround(hit); else { $('g-sub').textContent = `No entity contains “${v}”.`; }
+  };
+  $('g-search').addEventListener('change', find);
+  $('g-search').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); find(); } });
+}
+
+/* ---------------- asking ---------------- */
+const MODE_HELP = {
+  hybrid: 'Hybrid uses vector search, then follows the knowledge graph to related documents. Questions that chain several facts are answered step by step.',
+  vector: 'Vector only is standard RAG: the passages most similar to the question, and nothing else.',
+  compare: 'Runs the same question both ways so you can see what the graph changes.',
+};
+const MODE_NAME = { hybrid: 'Hybrid: vector search and graph', vector: 'Vector search only' };
+let results = {}, shownMode = 'hybrid', busy = false;
+const mode = () => document.querySelector('input[name="mode"]:checked').value;
+
+function syncMode() {
+  $('mode-help').textContent = MODE_HELP[mode()];
+  const cmp = mode() === 'compare';
+  $('stream').disabled = cmp;
+  $('stream-field').style.opacity = cmp ? .5 : 1;
+}
+document.querySelectorAll('input[name="mode"]').forEach(r => r.onchange = syncMode);
+
+function answerCard(m) {
+  const el = document.createElement('article');
+  el.className = `panel answer ${m}`;
+  el.innerHTML = `
+    <header><h2>${MODE_NAME[m]}</h2><span class="time"></span></header>
+    <div class="answer-text waiting">Waiting…</div>
+    <footer hidden>
+      <button class="btn small" type="button" data-act="copy">Copy answer</button>
+      <button class="btn small" type="button" data-act="show" aria-pressed="false" hidden>Show its evidence</button>
+    </footer>`;
+  el.querySelector('[data-act="copy"]').onclick = async e => {
+    await navigator.clipboard.writeText(el.querySelector('.answer-text').textContent);
+    e.target.textContent = 'Copied';
+    setTimeout(() => { e.target.textContent = 'Copy answer'; }, 1500);
+  };
+  el.querySelector('[data-act="show"]').onclick = () => showDetails(m);
+  return el;
+}
+
+async function runMode(m, card, q, k, stream) {
+  const text = card.querySelector('.answer-text'), time = card.querySelector('.time');
+  const t0 = performance.now();
+  const secs = () => ((performance.now() - t0) / 1000).toFixed(1) + ' s';
+  text.className = 'answer-text waiting';
+  text.textContent = m === 'hybrid' ? 'Searching passages and following the graph…' : 'Searching passages…';
+  const tick = setInterval(() => { time.textContent = secs(); }, 100);
+  const params = `q=${encodeURIComponent(q)}&k=${k}&enable_graph=${m === 'hybrid'}`;
+  try {
+    const data = await api(`/query?${params}${stream ? '&answer=false' : ''}`);
+    results[m] = data;
+    if (stream) {
+      showDetails(m);
+      text.className = 'answer-text streaming';
+      text.textContent = '';
+      const res = await fetch(`/answer/stream?${params}`);
+      if (!res.ok || !res.body) throw new Error(`The answer stream failed (${res.status}).`);
+      const reader = res.body.getReader(), dec = new TextDecoder();
+      let buf = '';
+      for (;;) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buf += dec.decode(value, { stream: true });
+        const events = buf.split('\n\n');
+        buf = events.pop();
+        for (const ev of events) {
+          if (ev.startsWith('event: token')) text.textContent += JSON.parse(ev.slice(ev.indexOf('data: ') + 6));
+        }
+      }
+      data.answer = text.textContent;
+    }
+    text.className = 'answer-text';
+    text.textContent = data.answer || 'The model returned no answer.';
+    card.querySelector('footer').hidden = false;
+  } catch (e) {
+    text.className = 'answer-text';
+    text.innerHTML = `<div class="error">${esc(e.message)}</div>`;
+  }
+  clearInterval(tick);
+  time.textContent = secs();
+}
+
+async function ask() {
+  const q = $('q').value.trim();
+  if (!q || busy) return;
+  busy = true;
+  $('ask-btn').disabled = true;
+  $('ask-btn').textContent = 'Working…';
+  const m = mode(), k = $('k').value, modes = m === 'compare' ? ['vector', 'hybrid'] : [m];
+  results = {};
+  evidence = null;
+  $('v-evidence').disabled = true;
+  $('intro').hidden = true;
+  $('results').hidden = false;
+  $('how').hidden = $('passages-sec').hidden = true;
+  const box = $('answers');
+  box.className = 'answers' + (modes.length > 1 ? ' two' : '');
+  box.innerHTML = '';
+  const cards = Object.fromEntries(modes.map(x => [x, box.appendChild(answerCard(x))]));
+  // Compare runs one after the other so each timing is the mode's own, not time spent queueing for the model.
+  for (const x of modes) {
+    await runMode(x, cards[x], q, k, modes.length === 1 && $('stream').checked);
+    if (results[x]) showDetails(x);
+  }
+  if (modes.length > 1) box.querySelectorAll('[data-act="show"]').forEach(b => { b.hidden = false; });
+  busy = false;
+  $('ask-btn').disabled = false;
+  $('ask-btn').textContent = 'Ask';
+}
+
+function showDetails(m) {
+  const r = results[m];
+  if (!r) return;
+  shownMode = m;
+  document.querySelectorAll('#answers .answer').forEach(c => c.querySelector('[data-act="show"]').setAttribute('aria-pressed', String(c.classList.contains(m))));
+  const compare = Object.keys(results).length > 1 || mode() === 'compare';
+  const g = r.graph_traversal || {}, meta = g.metadata || {};
+
+  // How it got there: route note, reasoning steps, connection chains.
+  let how = '';
+  if (m === 'vector') how += '<p class="note">Vector search only. The knowledge graph was not used.</p>';
+  else if (meta.message) how += `<p class="note">${esc(meta.message)}</p>`;
+  const steps = r.reasoning_steps || [];
+  if (steps.length) {
+    how += `<p class="subhead" style="margin-top:0">The question was split into ${steps.length} steps, each answered in turn</p><ol class="steps">` +
+      steps.map(s => `<li><div><div class="sq">${esc(s.question)}</div><div class="sa">${esc(s.answer)}</div></div></li>`).join('') + '</ol>';
+  }
+  const chains = (g.paths || []).map(parseChain).filter(c => c.triples.length);
+  if (chains.length) {
+    how += `<p class="subhead"${how ? '' : ' style="margin-top:0"'}>Chains of relations that link the documents</p><ul class="chains">` + chains.map(c => `<li class="chain">${
+      c.triples.map(t => `<span class="ent">${esc(t.source)}</span> <span class="rel">${esc(cleanRel(t.relation))}</span> <span class="ent">${esc(t.target)}</span>`).join(' <span class="rel">then</span> ')
+    }${c.file ? `<span class="src">Evidence in <span class="mono">${esc(c.file)}</span></span>` : ''}</li>`).join('') + '</ul>';
+  }
+  $('how').hidden = !how;
+  $('how-body').innerHTML = how;
+  $('how-for').textContent = compare ? `for ${m === 'hybrid' ? 'Hybrid' : 'Vector only'}` : '';
+
+  // Passages.
+  const chunks = r.ranking_breakdown || [];
+  const TAG = { vector: 'Vector search', graph: 'Graph', hybrid: 'Both' };
+  const n = { vector: 0, graph: 0, hybrid: 0 };
+  chunks.forEach(c => n[c.source_type]++);
+  $('passages-sec').hidden = false;
+  $('passages-count').textContent = chunks.length
+    ? [`${n.vector + n.hybrid} from vector search`, n.graph ? `${n.graph} added by the graph` : ''].filter(Boolean).join(', ') + (compare ? ` (${m === 'hybrid' ? 'Hybrid' : 'Vector only'})` : '')
+    : '';
+  $('passages').innerHTML = chunks.map((c, i) => `
+    <li class="passage ${esc(c.source_type)}">
+      <div class="meta">
+        <span class="tag ${esc(c.source_type)}">${TAG[c.source_type] || esc(c.source_type)}</span>
+        <span class="file mono">${esc(c.metadata?.filename || c.chunk_id)}</span>
+        <span title="Relevance used to order the passages, from 0 to 1">relevance ${Number(c.composite_score).toFixed(2)}</span>
+      </div>
+      <p class="clamp" id="p${i}">${esc(c.text)}</p>
+      <button class="linkbtn" type="button" aria-expanded="false" aria-controls="p${i}">Show all</button>
+    </li>`).join('') || '<li class="muted">No passages matched. Add documents first.</li>';
+  document.querySelectorAll('#passages .linkbtn').forEach(b => {
+    const p = b.previousElementSibling;
+    if (p.scrollHeight <= p.clientHeight + 2) { b.remove(); return; }
+    b.onclick = () => {
+      const open = p.classList.toggle('clamp') === false;
+      b.textContent = open ? 'Show less' : 'Show all';
+      b.setAttribute('aria-expanded', String(open));
+    };
+  });
+
+  // Graph: only hybrid results have evidence to draw.
+  if (m === 'hybrid') {
+    evidence = r;
+    $('v-evidence').disabled = false;
+    $('v-evidence').title = '';
+    showEvidence();
+  }
+}
+
+$('ask-form').onsubmit = e => { e.preventDefault(); ask(); };
+$('q').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ask(); } });
+
+/* ---------------- start ---------------- */
+async function refresh() {
+  await loadStats();
+  await loadDocs();
+  await loadGraph();
+}
+setTheme(localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+syncMode();
+initGraph();
+document.fonts.ready.then(refresh);
 </script>
 </body>
 </html>
