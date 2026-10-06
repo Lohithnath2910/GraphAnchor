@@ -1,0 +1,84 @@
+Incident Report: Larkspur Telehealth Network Outage, June 2023
+
+Summary
+
+On 6 June 2023 the Larkspur Telehealth Network lost its connection to thirteen mountain clinics for about seven hours, following a cut to the main trunk cable of the Hollin Fibre Backbone. The outage interrupted a morning of scheduled consultations and tested the network's radio backup links, which could carry voice and low-quality video but not the high-definition video that most consultations require. About 140 consultations were canceled or converted to telephone calls. No patient was harmed. This report was written by the network's director, Dr. Sunniva Eldridge, for the board of the St. Idris Hospital Trust.
+
+The network's dependency on the backbone
+
+Larkspur is a service rather than a physical network. It consists of consultation equipment at 34 clinics, a platform hosted by the St. Idris Hospital Trust, and the data connections that link them. The data connections are bought from the Hollin Fibre Backbone, the region's publicly owned fiber network. Twenty-one of the clinics are close enough to the coast or the main towns to be served by two diverse fiber paths. Thirteen clinics in the mountain communities are served only by the Hollin trunk, with a radio link as a backup.
+
+The radio backup links were specified as a minimum service, designed to support voice calls and basic data. They use shared radio capacity and cannot carry more than about two megabits per second. High-definition video needs about eight. The designers had accepted this limitation, on the grounds that fiber outages would be rare and short.
+
+The morning of 6 June
+
+The first consultations of the day were scheduled for 09:00. The telehealth hub at St. Idris had a full morning: 52 consultations, including diabetes clinics, a dermatology session, and two scheduled tele-stroke assessments for the emergency departments of smaller hospitals. At 09:12 the connection to the thirteen mountain clinics dropped. The monitoring system of the network operations center at the backbone detected the loss and notified the telehealth hub within a minute.
+
+Dr. Kofi Aaltonen, the project's deputy director responsible for the technology, switched the thirteen clinics to their radio links, which were active by 09:20. The links worked, but the video quality was too poor for most clinical purposes. Dr. Mireille Tan, the clinical chief, decided at 09:30 that consultations that needed good images, such as the dermatology session, should be postponed, and that others could continue by telephone with the clinic's nurse relaying the patient's measurements.
+
+The tele-stroke service
+
+The most urgent consultations were the tele-stroke assessments. This service connects the emergency department of a smaller hospital with a neurologist at St. Idris, who sees the patient by video and examines their face, speech, and limb movements before advising on the use of clot-dissolving treatment. Time is critical in stroke, and the neurologist's assessment must be reliable.
+
+At 10:45 a patient with suspected stroke arrived at a hospital served by one of the affected clinics' links. The emergency doctor called the telehealth hub, and the consultant neurologist on duty, Dr. Rashida Tennant, conducted the assessment over the radio link. The video was of low quality and frequently froze, but Tennant was able to assess the patient with the help of the emergency doctor, who described the findings and performed some of the tests that Tennant directed. Tennant concluded that the patient had a stroke and advised treatment, which was given within the target time. Tennant later wrote that the assessment had been much harder than usual, and that she would not have had confidence in the result without the experienced emergency doctor.
+
+Restoration
+
+The backbone's repair crews restored the first fibers at 15:10 and the last at 16:20. The telehealth network's connections returned over the following hour, and by 16:30 all clinics were back on fiber. The afternoon sessions went ahead as planned. The total duration of the outage for the thirteen clinics was about seven hours, of which the period without any usable video was about six.
+
+Effects on patients
+
+Of the 52 consultations planned for the morning, 38 involved the thirteen affected clinics. Of these, 22 were converted to telephone calls and completed, 16 were canceled and rescheduled, and the rest, which were for clinics not affected, went ahead as normal. Over the following two days the cancelled consultations were rescheduled, and the project laid on additional sessions. Altogether about 140 consultations were disrupted over the day, since the afternoon session also had to be reorganized.
+
+A review by Tan of the cases affected found no patient who had come to harm. She noted that two patients had reported distress at the cancellation, and the project's coordinators contacted each of them personally.
+
+Investigation
+
+The cause of the outage was a cable cut by a contractor, as described in the backbone's incident report. Eldridge's own investigation was concerned with the network's response and with its dependency on a single path for the mountain clinics. She found that the radio backup had worked as designed, but that its design was no longer adequate for the services that Larkspur had developed since it was specified in 2019.
+
+She also found that the clinics' coordinators had not been given clear instructions on what to do during an outage. Some had used the radio link for video without realizing that the quality would be poor, and others had waited for instructions from the hub.
+
+Recommendations
+
+Eldridge's report made five recommendations. The radio backup links to the thirteen mountain clinics should be upgraded to a higher capacity, enough for standard-definition video. The backbone should provide a second fiber path to the mountain clinics. Each clinic should have a written outage procedure. The tele-stroke service should have an agreed protocol for assessments over poor links, including the role of the local doctor. And the hub should be able to send a message to all clinics at once.
+
+Actions
+
+The radio upgrade was approved by the hospital trust's board in July 2023 and completed in December. The new links carry up to ten megabits per second, which is sufficient for good-quality video. Aaltonen led the preparation of the outage procedure, which was distributed to all clinics in September, and a simple card was produced for display in each consultation room. Tan, with Tennant, wrote the tele-stroke protocol, which was adopted by the trust's stroke network in November.
+
+The Hollin Fibre Backbone, under Wen Ashdown, agreed to build a second path to the mountain clinics. The Calder Reach Development Board approved the funding in 2024, and the new path, which will go through a neighboring valley, is scheduled for completion in 2025.
+
+Drills
+
+In October 2023 the network held its first full outage drill, in which the fiber links to all thirteen mountain clinics were disconnected for two hours during a working day. The hub and the clinics practiced switching to radio links, converting consultations to telephone calls, and handling a mock tele-stroke case. The drill identified several problems with the clinics' equipment, including two radios that needed new antennas, which were fixed. A second drill, in March 2024, went more smoothly.
+
+Reflections
+
+Eldridge wrote that the incident had shown the value of the network's culture of clinical caution. The decisions made on the morning of 6 June, to postpone consultations that needed good images and to protect the most urgent cases, were made quickly and by clinicians, and she believed they had avoided harm. But she also wrote that the network had come close to relying on luck, since the stroke assessment had succeeded partly because the doctor at the other end was experienced.
+
+The St. Idris Hospital Trust's chief executive, Dr. Marguerite Anand, told the board that the network's resilience was now a clinical safety issue, and asked that it be reported to the board every quarter alongside other safety measures.
+
+
+Annex A: Technical detail and chronology
+
+The clinic equipment. Each Larkspur consultation cart has a 4K camera with a zoom lens, a microphone array, a 24-inch display, and a set of connected instruments: a stethoscope, an otoscope, a blood pressure monitor, an electrocardiograph, and a dermatoscope. The cart's computer encodes the video at between 4 and 8 megabits per second, depending on the quality setting, and transmits it with the instrument data through an encrypted tunnel. At the lowest quality setting the video drops to 1.5 megabits per second and a resolution that is adequate for conversation but not for the examination of skin lesions or the faces of stroke patients.
+
+The radio backup. The original radio backup links were point-to-point microwave links of 2 megabits per second capacity, shared among several clinics on the same hill. Under load the capacity per clinic could be as low as 400 kilobits per second, which is too low for video. The upgrade completed in December 2023 replaced them with links of 100 megabits per second capacity on a licensed frequency band, with dedicated allocations for each clinic.
+
+Chronology. At 09:12 the connection to the thirteen clinics was lost. At 09:13 the hub's network monitor reported the loss to Dr. Aaltonen. At 09:20 the radio links were active at 13 clinics. At 09:30 Dr. Tan decided to postpone consultations that needed good images. At 10:45 the tele-stroke call was received from the emergency department. At 10:58 the neurologist began her assessment. At 11:20 the patient's treatment was started. At 13:05 the radio links' capacity was optimized by pausing non-essential traffic. At 15:10 the first fibers were restored on the backbone, and at 16:30 all clinics were reconnected.
+
+The tele-stroke case. The patient was a 68-year-old woman who had been brought to the emergency department with sudden weakness on one side. The neurologist, Dr. Rashida Tennant, assessed her by video over the radio link. The video froze for several seconds at a time, and Tennant had to rely on the emergency doctor's descriptions of the patient's facial movements and arm strength. She also asked the doctor to read out the results of a scan that had been taken at the hospital. Treatment with a clot-dissolving drug began at 11:20, 72 minutes after the patient arrived, within the target of 90 minutes. The patient recovered well.
+
+Notifications. The hub sent a message to all clinics at 09:35 explaining the outage and instructing them to use the telephone for non-urgent consultations. About half of the clinics did not see the message for more than an hour, because it was sent through the consultation cart's own messaging system, which was not available over the radio link. This led to the recommendation that the hub should be able to send messages by a second channel, and a text message system was introduced in September 2023.
+
+Patient experience. A survey of 62 patients whose consultations were affected found that 81 percent were satisfied with the way the service had handled the disruption. Seven of the patients said they had waited longer than 15 minutes for a call, and four said they had not received any explanation until they arrived at the clinic. Eldridge wrote to each of these patients to apologize.
+
+Consultations lost. Over the whole day, 38 of the planned consultations at the thirteen clinics were affected. Of these, 22 were converted to telephone calls, 16 were rescheduled. In the afternoon, the restoration of the links took place during the second session, which resulted in the delay or conversion of a further 18 consultations at the clinics that had been affected in the morning. Across all clinics, the numbers of canceled consultations was 62 and of converted consultations 78, a total of 140.
+
+The drill in October 2023. The drill disconnected the fiber links to the thirteen clinics from 10:00 to 12:00 on a Tuesday. The hub, Tan's clinical team, and the clinic coordinators followed the new procedure. Of 40 scheduled consultations, 34 were completed, 29 by video over the upgraded radio links and 5 by telephone. The drill's observers noted that the video quality on the radio links was acceptable for most purposes, and that the coordinators had followed the checklists correctly.
+
+Costs. The radio upgrade cost about 1.9 million crowns. The costs of the outage itself were about 45,000 crowns in staff time and rescheduling. The telehealth hub's operating budget was increased by 120,000 crowns a year to maintain the radio links and the text messaging system.
+
+Board reporting. The hospital trust's board established a quarterly "digital resilience" report, which includes the availability of the backbone connections, the number of outages and their durations, the results of drills, and the status of the actions from the June 2023 incident. The first report was received in January 2024.
+
+Collaboration. Eldridge and Ashdown agreed to meet every quarter to review the backbone's resilience and the telehealth network's needs. They also agreed that any planned maintenance of the Hollin trunk would be notified to the hub at least five working days in advance. Ashdown has said that the relationship is one of the most productive that the backbone has with any customer.

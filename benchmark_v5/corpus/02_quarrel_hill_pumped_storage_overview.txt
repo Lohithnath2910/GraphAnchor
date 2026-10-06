@@ -1,0 +1,79 @@
+Quarrel Hill Pumped Storage: Project Overview
+
+Quarrel Hill Pumped Storage is a hydroelectric energy storage facility built inside the hill of the same name, about twenty kilometers inland from Skerrin. It does not generate net energy; instead it works like an enormous rechargeable battery for the regional grid. When electricity is cheap and plentiful, for instance on a windy night, the plant pumps water uphill into a reservoir. When demand rises or generation falls, the water is released back through the same machines, which then run as turbines and feed power into the grid within seconds. The facility entered service in 2019, and it has since become the regional grid's principal tool for smoothing the swings of wind and tidal generation.
+
+Teodora Valkanova has directed Quarrel Hill since 2017, when the main construction contracts were signed. Her deputy is Osric Thandeka, who manages plant operations, and the chief engineer is Henrik Boateng, who is responsible for the underground machinery halls and the tunnels. The plant employs 74 people.
+
+The two reservoirs
+
+The upper reservoir is Ironwater Reservoir, a natural basin on the summit plateau that was enlarged by an earth-and-rock dam eighteen meters high. It holds about 6.2 million cubic meters of water. The lower reservoir is an artificial lake created in a former slate quarry at the foot of the hill, which gives the project its name. The height difference between the two is 340 meters, and the water travels between them through two steel-lined shafts bored through solid rock.
+
+The reuse of the quarry was important to the local community. Quarrel Hill's quarry had been abandoned in the 1970s and had filled with stagnant water; turning it into a working reservoir meant that no new valley had to be flooded, and the scar on the hillside became a managed landscape with footpaths and a viewing platform. The Calder Reach Development Board, which funded the project, regarded the reuse of a derelict site as a major advantage during the approval process.
+
+The underground machinery
+
+The heart of the plant is an underground hall carved out of the rock about 200 meters below the surface, which holds four reversible pump-turbine units. Each unit is rated at 60 megawatts, giving the plant a total capacity of 240 megawatts. When pumping, each unit consumes about 64 megawatts; when generating, it produces 60. The round-trip efficiency of the plant, meaning the share of the pumped energy that comes back as electricity, is approximately 79 percent.
+
+The casings of the four pump-turbines, which are the large spiral steel castings that guide the water through the runner, were manufactured by Ashgill Works, the casting plant of the Brannock Foundry Group. Each casing weighs more than 38 tonnes and had to be transported from the plant to the hillside in sections, then welded and stress-relieved on site. Valkanova has said that the quality of these castings was one of the most important factors in the project's schedule, since a single casting defect underground would have been extremely costly to repair.
+
+Connection to the grid
+
+Quarrel Hill is connected to the network of the Lumen Grid Company through a 132-kilovolt line and a substation at the base of the hill. Lumen's control centre at Mossgate directly instructs the plant when to pump and when to generate, within limits agreed in a long-term operating contract. The plant can switch from standstill to full output in about ninety seconds, and from pumping to generating in about four minutes, which makes it by far the fastest-responding large asset on the regional grid.
+
+Accurate timing is essential to this connection. All synchronous machines on the grid must rotate in step, and the grid operator relies on precisely time-stamped measurements from substations to keep them aligned. Lumen's substations obtain their reference time from an external timing source, and Quarrel Hill's own protection systems are tied to the same signal, a dependency that became important during an incident in 2022 described in a separate report.
+
+Funding
+
+The project was funded by the Calder Reach Development Board, which committed 62 million crowns. The Board justified the expenditure as a way to reduce the cost of integrating renewable energy, since without storage some wind and tidal output would be wasted during periods of low demand. The plant earns revenue through capacity payments from Lumen Grid and through arbitrage, buying power at low prices and selling at high prices. Valkanova reports annually to the Board on both the technical and the financial performance of the plant.
+
+People and organization
+
+Valkanova is an electrical engineer who spent the first part of her career in grid operations and is known for her insistence on rehearsed procedures. Under her direction the plant staff perform a full black-start drill every year, in which the plant is isolated from the grid and must restart itself from its own batteries and diesel generators. The drills are observed by engineers from the grid operator and from the Board's audit office.
+
+Operations are organized in three shifts, and each shift has a shift engineer, two operators, and a mechanical technician. A small team of civil engineers monitors the dams, tunnels, and slopes using a network of sensors that measure movement down to a tenth of a millimeter. Every three months an independent inspector visits to check the condition of the dam and the shafts. The plant also employs two full-time ecologists who monitor the quarry lake and the Ironwater Reservoir, where a breeding population of great crested grebes has become a local attraction.
+
+Environmental and community aspects
+
+Because pumped storage moves large volumes of water, the environmental permit sets strict limits on how quickly the level of each reservoir may rise and fall. Rapid changes can strand fish and flood the nests of waterbirds. The plant's control system therefore ramps its pumping and generating gradually near the extremes of the reservoir levels, and the permit requires that the level of the lower lake never falls below the point at which the spawning gravel at its edge would be exposed.
+
+The project built a visitor centre on the hilltop, which is open on weekends and receives about eleven thousand visitors a year. Guided tours descend a service tunnel to a viewing gallery overlooking the machinery hall. The visitor centre also hosts an annual lecture series on energy, which is organized jointly with the Marrow Institute of Applied Science.
+
+Limits and future plans
+
+The main limitation of Quarrel Hill is its storage duration. At full output the plant can generate for about eight hours before the upper reservoir is exhausted. For the longer lulls that sometimes occur in wind output, the grid still needs other sources. Valkanova has proposed a second, smaller upper reservoir that would extend the storage duration to twelve hours, but the proposal is awaiting environmental assessment.
+
+In the meantime, the plant's contribution is already substantial. In a typical year it absorbs about 700 gigawatt-hours of surplus electricity and returns around 550 gigawatt-hours at times of higher demand, reducing the need for gas-fired peaking plants and lowering carbon emissions in the Calder Reach by an estimated 120,000 tonnes a year.
+
+Construction history
+
+Construction of Quarrel Hill took just over three years, beginning in the spring of 2016 and finishing with the commissioning of the fourth unit in 2019. The most difficult part of the work was the excavation of the underground machinery hall, a cavern 90 meters long, 24 meters wide, and 38 meters high. Tunnelling crews worked in two shifts for fourteen months, using drilling and blasting in the harder sections and a roadheader machine in the softer ones. The rock was monitored continuously during the excavation, and in two places the crew had to install additional rock bolts and a thicker layer of sprayed concrete after sensors showed unexpected movement.
+
+The two vertical shafts that carry water between the reservoirs were bored with a raise-boring machine from the bottom upward, a method that avoids the need for workers to descend into the shaft. The shafts were then lined with welded steel plate that had been fabricated at a yard near Mossgate. Valkanova recalls that the arrival of the first pump-turbine casing at the site, on a specially built low-loader that took six hours to climb the access road, was the moment when the project felt real to the local community.
+
+Procurement
+
+The big machines of the plant came from several suppliers. The pump-turbine runners, which are the rotating parts inside the casings, were made by an overseas manufacturer and shipped in through the port at Dunmarrow. The motor-generators were supplied by a second overseas company, and the control system by a third. Only the casings and the large steel valves were manufactured locally, by Ashgill Works. Valkanova has noted that the local content of the project was a little over thirty percent by value, which met the target set by the Calder Reach Development Board.
+
+Operations and the grid
+
+On a typical day the plant pumps for six to eight hours during the night and early morning, then generates for two to four hours in the late afternoon and evening, when the demand on the grid reaches its peak. The exact schedule is set each day by the control centre of the Lumen Grid Company, based on forecasts of wind and tidal output and on the price of electricity. Because Tidewrack's tidal output is predictable but shifts in time from day to day, Lumen's dispatchers often schedule Quarrel Hill's pumping to coincide with the strongest tidal peaks.
+
+In addition to energy storage, the plant provides several services that keep the grid stable. It can supply reactive power, which supports the voltage on the grid, and it provides "inertia," the stored rotational energy that resists sudden changes in grid frequency. As wind and tidal generation, which have little inertia of their own, have grown, these services have become increasingly valuable, and Lumen Grid pays the plant a separate fee for them.
+
+Safety and emergency planning
+
+The dam at Ironwater Reservoir is classified as a high-consequence structure, since a failure would affect villages in the valley below. It is therefore inspected daily by plant staff, quarterly by an independent panel, and every five years by an international review board. An emergency plan, rehearsed annually with the regional emergency services, defines evacuation routes and warning sirens for the villages downstream. Valkanova insists that every new member of staff walk the dam crest on their first day, so that they understand what the structure is protecting.
+
+Workforce and skills
+
+The plant employs 74 people, including 22 operators, 18 mechanical and electrical technicians, 9 civil and geotechnical engineers, and a team of administrative and commercial staff. Roughly half of the staff were recruited from within the Calder Reach, and the project has run a scholarship for local students of engineering since 2017. Osric Thandeka, the deputy director, leads a training program in which each technician spends six months in each of the main departments, and Henrik Boateng supervises the apprentices who work on the underground machinery.
+
+Financial performance
+
+Quarrel Hill's revenue in a typical year is about 14 million crowns, of which roughly two thirds come from capacity and ancillary-service payments and the rest from arbitrage. Operating costs are about 6 million crowns, leaving a surplus that is used to repay the Development Board's contribution over a period of thirty years. Valkanova has said that the plant's value to the grid is higher than the revenue figures suggest, because it avoids the construction of gas-fired peaking capacity that would otherwise be needed.
+
+Stakeholders and neighbors
+
+The villages around Quarrel Hill were consulted extensively before construction. Residents were concerned about construction traffic, blasting noise, and the safety of the dam. The project responded by routing heavy vehicles along a dedicated haul road, limiting blasting to daytime hours, and publishing the results of the dam monitoring on a public notice board in each village. A community liaison officer, Ingeborg Maddox, holds a monthly surgery in the village hall, and the project funds a small grant program for local clubs and societies. Although a few residents remain skeptical, the number of complaints has fallen each year since the plant entered service.
+
+Quarrel Hill also hosts school visits and an annual open weekend, during which visitors may ride the service tunnel train and see the machinery hall. The open weekend in 2023 attracted more than two thousand people, and the project's staff volunteer as guides.

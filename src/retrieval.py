@@ -10,12 +10,14 @@ except ImportError:
 
 logger = logging.getLogger("graphanchor")
 
+_embed_client = ollama.Client(timeout=60)
+
 def get_embedding(text: str) -> list[float]:
     # Retrieves vector embeddings using the configured Ollama model, with automatic retries for transient failures.
     last_err = None
     for attempt in range(config.ollama_max_retries + 1):
         try:
-            response = ollama.embeddings(
+            response = _embed_client.embeddings(
                 model=config.embed_model,
                 prompt=text
             )

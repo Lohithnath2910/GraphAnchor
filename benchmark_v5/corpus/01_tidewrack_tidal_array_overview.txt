@@ -1,0 +1,81 @@
+Tidewrack Tidal Array: Project Overview
+
+The Tidewrack Tidal Array is a marine renewable energy project in Skerrin Sound, the narrow tidal channel that separates the town of Skerrin from the low islands to its east. It is the largest tidal generating installation in the Calder Reach and one of the few in the region that sells electricity commercially rather than running as a demonstration. The array began delivering power in 2020 and has operated continuously, apart from planned maintenance and one unplanned reduction in 2023, ever since.
+
+Dr. Bjorn Halvorsen has led the Tidewrack project since 2018, two years before the first turbine was lowered into the water. Halvorsen reports to a project board made up of representatives of the lender, the electricity buyer, and the research partner. His deputy is Marit Sorensen, who manages day-to-day offshore operations, and the chief engineer is Lazar Okonkwo, who is responsible for the turbines, the seabed foundations, and the subsea cables.
+
+Why Skerrin Sound
+
+The Sound was chosen because of its extraordinary tidal flow. Twice a day the sea funnels through a channel barely two kilometers wide, and in the middle of the channel the water reaches speeds of more than three meters per second at spring tides. Because water is about eight hundred times denser than air, a modest rotor in that flow can generate as much power as a much larger wind turbine. The seabed in the central channel is also firm: a layer of compacted gravel over bedrock, which allows gravity-based foundations rather than driven piles, reducing both cost and the disturbance to marine life.
+
+The tides in the Sound are also entirely predictable. Engineers can calculate the output of the array years in advance, which is a valuable property for a grid operator that must balance supply and demand every minute. The Lumen Grid Company, which buys the electricity, has said that the predictability of Tidewrack is the main reason it was willing to sign a long-term purchase agreement at a fixed price.
+
+The installation
+
+The array consists of 24 horizontal-axis turbines, each rated at 1.8 megawatts, giving a combined capacity of about 43 megawatts. The turbines are arranged in four rows of six, spaced so that the wake of each machine has largely dissipated before reaching the next. Each turbine has a two-bladed rotor 18 meters in diameter, mounted on a steel nacelle that sits on a concrete foundation weighing about 400 tonnes. The rotor hub, the heavy central casting to which the blades attach, is the most critical single component, because it carries the full hydrodynamic load of the turbine.
+
+All 24 rotor hubs were manufactured at Ashgill Works, the casting plant operated by the Brannock Foundry Group. The hubs are made from a spheroidal graphite iron chosen for its resistance to fatigue, and each is machined to a tolerance of a fraction of a millimeter before being shipped to the assembly yard at Skerrin harbor. The decision to buy the hubs from Ashgill Works rather than from an overseas foundry was made deliberately, since short delivery lines mean that a failed hub can be replaced in weeks instead of months.
+
+Power from the turbines is collected on the seabed by a network of armored cables and brought ashore at a landing point on the Skerrin side of the Sound. From there a buried cable runs eleven kilometers to a substation owned by the Lumen Grid Company, where the electricity is stepped up and fed into the regional network. A second, shorter cable supplies the Cinder Lake battery recycling works directly, under an arrangement that gives Cinder Lake a stable electricity price and gives Tidewrack a guaranteed local customer that is not exposed to wholesale price swings.
+
+Financing and ownership
+
+The construction of Tidewrack was financed by the Harbourgate Mutual Bank, which provided a loan of 44 million crowns. The loan was structured over eighteen years, with repayments tied to the electricity the array delivers. Harbourgate also required an independent technical review before approving the loan, and it continues to receive quarterly performance reports. Emeka Lindqvist, the bank's chief risk officer, has visited the installation twice and has described it in internal papers as a model of how a predictable renewable asset should look to a lender.
+
+The project company that owns the array is a limited company whose shareholders include a municipal investment fund from Skerrin, a pension fund, and a small employee ownership scheme through which about forty staff hold shares. Halvorsen has argued that the employee scheme is one of the reasons staff turnover has been below four percent a year.
+
+Research partnership
+
+Tidewrack has a formal research agreement with the Marrow Institute of Applied Science. The Institute's marine team monitors the impact of the array on the Sound, including fish movements, seabed scouring, and the noise produced by the turbines. Observers on board a small survey vessel record seals and porpoises near the array every week, and underwater microphones on the seabed log noise continuously. The results are published each year, and so far the data show that harbor seals continue to use the Sound at roughly the same rate as before the installation.
+
+Halvorsen himself completed his doctorate at the Institute, where his supervisor was Professor Ottoline Brandvik, the Institute's director. He says that the habit of insisting on measurement before making claims, which he learned from her, is built into the way Tidewrack reports its performance.
+
+Operations and maintenance
+
+Maintenance of an underwater turbine is far harder than that of a wind turbine, because work can only be carried out during the short windows at slack tide, when the current falls close to zero. A typical maintenance window lasts about forty minutes. To make the most of such windows, Tidewrack's turbines are designed so that the nacelle can be raised to the surface as a single unit, using a purpose-built lifting frame operated from a catamaran. Once on deck, technicians can inspect the gearbox, the generator, and the seals in comfortable conditions, and a spare nacelle can be fitted in the meantime so that the turbine is back in the water within a day.
+
+The project employs 58 people, of whom 31 work offshore or in the harbor workshop and the rest in monitoring, finance, and administration. The operations base is a converted fish-processing shed on the Skerrin quayside, which houses the control room, a stores area, and a small training room. The control room is staffed around the clock and watches the condition of every turbine through vibration, temperature, and oil-pressure sensors. Alarms are ranked by urgency, and an on-call engineer can be at the quay within twenty minutes.
+
+Safety and environmental management
+
+Safety rules at Tidewrack are strict because offshore work in fast water is dangerous. No diver is ever permitted to enter the water when the current exceeds half a meter per second, and all vessel work is planned around a published tide table. Each year the project runs two full emergency drills, one of which simulates a man-overboard situation during a maintenance window, and the results are reviewed by the project board.
+
+The environmental permit under which the array operates requires an annual report to the Calder Reach Development Board, covering noise, sediment movement, and wildlife observations. The permit also requires the project to stop any turbine within sixty seconds if a marine mammal is detected inside a defined exclusion zone around it. The detection system uses sonar and has triggered only a handful of shutdowns since 2020, none of which lasted more than a few minutes.
+
+Community relations
+
+The people of Skerrin were divided about Tidewrack when it was first proposed, because the Sound is used by fishing boats and by a small ferry service to the islands. Halvorsen spent much of 2018 and 2019 meeting the fishing cooperative, the ferry operators, and the harbor board. The final design leaves a navigation channel along the northern edge of the Sound that is kept entirely clear of turbines, and the project funds a small annual grant for the fishing cooperative's safety equipment. Opposition faded as the array's neighbors discovered that it was quiet, invisible from the shore at most states of the tide, and a source of local jobs.
+
+Tidewrack also runs a modest education program. Each year about six hundred schoolchildren visit the Skerrin quayside to see the lifting frame, the nacelle workshop, and a cutaway model of a turbine, and the project offers two apprenticeships annually in marine engineering. Most apprentices have stayed on in the project after qualifying.
+
+Outlook
+
+The project's long-term plan is to add a second phase of twelve turbines in the deeper western channel, subject to seabed surveys and a new financing agreement. Halvorsen has said that the second phase will not proceed unless the array can demonstrate stable hub and seal performance over several consecutive years, a condition that reflects lessons learned from the equipment problems of 2023, described in a separate incident report. For now, Tidewrack remains the most reliable single source of predictable renewable power in the Calder Reach, delivering around 118 gigawatt-hours of electricity in a typical year.
+
+Procurement and the supply chain
+
+Building a tidal array depends on a long chain of specialist suppliers, and Tidewrack's procurement policy favors suppliers close to the Calder Reach whenever the quality is comparable. The rotor hubs come from Ashgill Works, as described above. The two-bladed rotors themselves are laminated in carbon-glass composite by a small boatyard in Skerrin, and the nacelle housings are fabricated from marine-grade steel by a yard further along the coast. The subsea cables were supplied by Norrby Subsea, a cable manufacturer based outside the region, and were laid by a specialist vessel over a period of five weeks in the spring of 2019. Lazar Okonkwo has said that the cable installation was the most nerve-racking part of the construction, because a single mistake during burial in the gravel could have meant weeks of repairs.
+
+Spare parts are held in a purpose-built store on the Skerrin quayside. The store carries a complete spare nacelle, two spare rotors, a set of spare seals for every turbine, and a stock of connectors for the subsea cables. The policy of holding a spare nacelle was one of the conditions set by the lender during the loan negotiations, and it has repeatedly proved its worth: a failed nacelle can be exchanged for the spare within a day, and the failed unit is then repaired on land at leisure.
+
+Performance record
+
+In its first full year of operation the array delivered 112 gigawatt-hours, which was slightly below the forecast because of a delay in commissioning the last four turbines. In its second full year the output rose to 121 gigawatt-hours, and the availability of the turbines, the share of time they were ready to generate, reached 96 percent. These figures were reviewed independently by the research partner and were found to be consistent with the project's published data.
+
+The array has a capacity factor of about 31 percent, which is high for a renewable installation and is largely a consequence of the strong, regular tidal flow. Unlike wind generation, Tidewrack's output follows a published pattern of two peaks a day, shifting about fifty minutes later each day with the tide. Lumen Grid's dispatchers consult the project's forecast each morning when planning the day's generation mix, and they have said that the forecast has proved accurate to within two percent over successive years.
+
+Governance
+
+The project board meets every two months and has seven members: Halvorsen, representatives of the lender and of the grid company, the chair of the municipal investment fund, an independent engineer, an academic from the research partner, and a representative of the employee shareholders. The board approves the annual budget, reviews the maintenance schedule, and receives a confidential report from the risk register. Philippa Osterhout, the chair of the Harbourgate Mutual Bank, attended one meeting in 2021 and left, according to the minutes, "reassured by the quality of the data on screen."
+
+Organization and roles
+
+Tidewrack's organization chart has five departments. Offshore operations, under Marit Sorensen, runs the vessels, the lifting frame, and the dive team. Engineering, under Lazar Okonkwo, covers turbine reliability, the subsea network, and condition monitoring. The environment team, which is small and works closely with the research partner, runs the permit compliance program. Finance and commercial staff handle the power purchase agreement and the loan. A health and safety manager reports directly to Halvorsen rather than through the departments, a structure that the project adopted after reviewing the practices of offshore oil and gas operators.
+
+Training and culture
+
+New staff spend their first two weeks rotating through every department, including a day on the vessel at a spring tide. Halvorsen began the practice because he wanted accountants and engineers to understand each other's problems. Many staff report that the experience changed the way they work. The project also holds a short staff meeting every morning at the quay at seven o'clock, where the previous night's alarms and the day's tide times are reviewed on a single whiteboard.
+
+Looking ahead
+
+In addition to the proposed second phase, Tidewrack is studying whether the nacelle design could be adapted for use in other tidal channels. The project has had informal inquiries from developers elsewhere, but Halvorsen has said that the priority is to prove reliability in Skerrin Sound first. The project board has set a target of 98 percent availability by the end of its fifth year, a figure that would match the best performance seen in comparable installations anywhere.

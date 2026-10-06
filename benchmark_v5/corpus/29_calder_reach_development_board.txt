@@ -1,0 +1,96 @@
+Institution Profile: The Calder Reach Development Board
+
+The Calder Reach Development Board is the regional public body responsible for planning, funding, and overseeing the infrastructure and scientific research of the Calder Reach, the coastal region around the town of Skerrin. It was founded in 1996, when four older agencies for ports, water, roads, and economic development were merged into a single authority. Its headquarters is in Skerrin, in a former customs house on the harbor, and it employs about 520 people. Hester Vandermeer has chaired the Board since 2016.
+
+Mandate and powers
+
+The Board has three main functions. It is a funder: it commits public money, raised through a regional levy and grants from the national government, to major projects that serve the whole region. It is a regulator: it licenses certain activities, sets standards for infrastructure safety, and appoints independent panels to review the safety cases of large projects. And it is an owner: for a few assets, such as the Beacon Hill Flood Barrier and the Hollin Fibre Backbone, the Board owns the facility itself and appoints a director to run it.
+
+The Board does not usually operate the projects it funds. Instead it creates a project organization with its own director, who reports to a steering board on which the Development Board has a seat. The Board's role is to hold the director accountable for delivering the project on time and within budget, to ensure that the project meets the standards for safety and environmental management, and to review its performance annually.
+
+Projects funded by the Board
+
+The Board's largest commitment is the Gantry Line light rail project, for which it has committed 140 million crowns. It funded the Beacon Hill Flood Barrier with 97 million crowns, the Quarrel Hill Pumped Storage plant with 62 million, the Hollin Fibre Backbone with 55 million, the Wetmoor Water Reuse project with 38 million, the Lodestar Timing Station with 21 million, and the Larkspur Telehealth Network with 18 million. It makes a smaller contribution to the operating costs of several projects, and it provides the core grant that covers about 70 percent of the budget of the Marrow Institute of Applied Science.
+
+The Board did not fund the Tidewrack Tidal Array, the Dunmarrow Port Automation project, or the Ferrous Bay Offshore Wind farm, all of which were financed by the Harbourgate Mutual Bank, although it gave planning and environmental consents for each. Nor did it fund Seedvault North, which is paid for through seed sales and the Institute's budget, or the Cinder Lake Battery Recycling works, which was financed by a project company with support from the Institute. The Board's support for the Isotope Works at the St. Idris Hospital Trust was limited to a contribution toward the shielded building, and Merrow Cold Chain was established as a joint project with the hospital trust.
+
+The Audit Office
+
+An important part of the Board is its Audit Office, which examines the performance and safety of the projects it funds and investigates serious incidents. Lucan Obuya has headed the Audit Office since 2019. The office has a staff of 21, including engineers, accountants, and specialists in industrial control systems, and it reports directly to the chair and the Board.
+
+The Audit Office led the investigation of the crane collision at Dunmarrow Port in August 2022, and the review of the loss of synchronization at the Quarrel Hill plant in the same month. It also produced a summary of the three connected incidents of that week, which led to the regional dependency review of 2023. For technical investigations in which it wants an independent engineering opinion, the Office commissions the audit team of the Marrow Institute of Applied Science, led by Dr. Kasper Idowu.
+
+The regional dependency review
+
+The most significant piece of work carried out by the Audit Office in recent years is the regional dependency review, completed in 2023. It mapped the links between the region's major infrastructure projects, including electricity, timing, communications, transport, and logistics, and found that the region's infrastructure was more tightly coupled than anyone had realized. The review concluded that eleven of fourteen major projects depended directly or indirectly on the Lodestar Timing Station, and that nine depended on the electricity network of the Lumen Grid Company.
+
+The review identified three single points of failure of regional significance: the Lodestar Timing Station, the Ferrous Bay export cable, and the Hollin Fibre Backbone's trunk through Hollin Pass. It recommended that the Board fund backups for all three, and that every project should maintain a list of its dependencies and test its own resilience each year. After the Ferrous Bay brownout in November 2023, the review's interim findings were updated, and the Board has since approved funding for studies of a second export cable, a second timing site, and a second path through the mountains.
+
+Governance
+
+The Board has eleven members: the chair, three representatives of the regional councils, two representatives of the national government, a representative of business, a representative of the research community, a representative of trade unions, and two independent members with technical backgrounds. It meets monthly, and its committees on transport, energy, water, and technology meet more often. The meetings are open to the public except for items that involve commercial confidentiality.
+
+Vandermeer, who chairs the Board, was previously a civil engineer and the director of a regional ports agency. She has often said that the Board's job is to ask awkward questions early, so that they do not have to be asked in an inquiry later. She holds a quarterly public forum at which any resident can question the Board's decisions, and she answers written questions in a bulletin published on the Board's web page.
+
+Budget and finances
+
+The Board's annual budget is about 410 million crowns, of which about 60 percent is spent on capital projects, 25 percent on operating grants, and 15 percent on its own administration and regulatory work. The Board has a policy of keeping a reserve of ten percent of its annual budget to deal with emergencies. After the incidents of 2022 and 2023, it established a resilience fund of 12 million crowns to pay for urgent upgrades to the region's infrastructure.
+
+The Board raises money in three ways: a levy on regional property owners, which provides about 55 percent of the total, grants from the national government, which provide 35 percent, and fees and charges, which provide the remainder. It is audited each year by an external firm, and its accounts are published.
+
+Relations with other organizations
+
+The Board works closely with several organizations. It has a long-standing agreement with the Marrow Institute of Applied Science, which provides independent technical advice and audits. It has relationships with the Harbourgate Mutual Bank, which finances projects that the Board has endorsed but not funded, and with the Lumen Grid Company, which operates the region's electricity network. It sits on the board of the St. Idris Hospital Trust and has a standing agreement with Strand & Keel Shipping on the use of the region's rail network.
+
+The Board also coordinates with the Brannock Foundry Group and the Verdant Seeds Cooperative, which are among the largest private organizations in the region. The Board's procurement policy gives preference to local suppliers, provided they meet quality standards, and this has made the Brannock Foundry Group a major supplier to several Board-funded projects. The Board's audit office noted in 2023 that this concentration of supply carries a risk, and recommended that the Board encourage suppliers to improve traceability.
+
+Recent policy developments
+
+In 2023 and 2024 the Board adopted three new policies. The first is a requirement that every major project must submit a "dependency statement" describing what it depends on and what depends on it. The second is a rule that any project with an external timing dependency must hold a local backup clock. The third is a requirement for large contractors working near critical infrastructure to obtain a permit. These policies were drafted by the Audit Office and approved by the Board after consultation with the project directors.
+
+Public engagement
+
+The Board publishes an annual report that includes a summary of every serious incident in the region's infrastructure and the lessons learned. It also runs an annual open day at its headquarters, where project directors present their work to the public. In 2024 the open day attracted about 3,000 visitors. The Board has also established a young engineers program, which sponsors 40 students a year to study engineering and places them in internships in the region's projects.
+
+Looking ahead
+
+The Board's strategic plan for the next decade includes the completion of the Gantry Line, a second timing site, a second export cable for the Ferrous Bay wind farm, and a third depot for the Merrow Cold Chain. It also aims to expand the Hollin Fibre Backbone to the islands east of Skerrin and to build a regional hydrogen pilot. Vandermeer has said that the Board's priority for the coming years is to make the region's infrastructure not only larger but more resilient, so that the failure of one part does not become the failure of many.
+
+
+Annex: Timeline of the Board's decisions, 2016 to 2024
+
+2016. Hester Vandermeer became chair in January. In March the Board approved the Quarrel Hill Pumped Storage project with a commitment of 62 million crowns, after a review showed that the region's growing wind and tidal generation needed storage. In October it commissioned the review of the Beacon estuary's flood defenses that led to the Beacon Hill Flood Barrier, and in the same year it decided to build a publicly owned fiber backbone, later named after Hollin Pass.
+
+2017. The Board approved the Hollin Fibre Backbone with a budget of 55 million crowns and appointed Wen Ashdown to lead it. It also approved the Beacon Hill barrier's design after a competition judged by a panel that included the Dunmarrow harbor master. The Board's technology office began the feasibility study that became the Lodestar Timing Station.
+
+2018. The Board approved the Gantry Line light rail project with a commitment of 140 million crowns and appointed Idris Kowalczyk as its director. It approved the Beacon Hill barrier's budget of 97 million crowns and appointed Ingrid Solheim, and it approved the Lodestar Timing Station with a budget of 21 million crowns. In the autumn it approved a grant of 18 million crowns for the Larkspur Telehealth Network.
+
+2019. Lucan Obuya became head of the Audit Office. The Board appointed Dr. Anneliese Prowse to lead Lodestar and Dr. Naledi Mokoena to lead the Wetmoor Water Reuse project, for which it had committed 38 million crowns. It also gave planning consent for the Ferrous Bay Offshore Wind farm and for the Dunmarrow Port Automation project, both of which were financed privately.
+
+2020. The Board gave consent for the Merrow Cold Chain project as a joint venture with the St. Idris Hospital Trust. The Hollin Fibre Backbone was declared operational in March. During the pandemic the Board established an emergency fund of 8 million crowns for essential services, which was used mainly to keep the telehealth network and the cold chain operating.
+
+2021. The Beacon Hill Flood Barrier entered service in June. The Board established a requirement that every major project must carry out an annual safety review, and approved a revised framework for appointing independent safety assessors. It also began the Cinder Lake planning process in cooperation with the Marrow Institute of Applied Science.
+
+2022. The year of the first major incidents. In April the Wetmoor Water Reuse project suffered a membrane fouling and the Board asked the Marrow Institute to investigate. In August the week of linked events at Lodestar, the Gantry Line, Dunmarrow Port, and Quarrel Hill led to the Audit Office's reports, published in October. The Board adopted a requirement for backup clocks in November.
+
+2023. The Board published the regional dependency review in the spring. It established a resilience fund of 12 million crowns, and adopted the dependency statement requirement. In June a cable cut at Hollin Pass interrupted the Larkspur network, and in November the Ferrous Bay export cable fault caused a regional brownout. The Board held an extraordinary meeting on 17 November to review the brownout, at which Vandermeer asked the Audit Office to widen its dependency review.
+
+2024. In January the Beacon Hill barrier closed falsely for eleven hours, and the Board asked the Marrow Institute's audit team to investigate. In the spring the Board approved in principle the funding of a second export cable for Ferrous Bay, a second timing site for Lodestar, and a second path for the Hollin Fibre Backbone to the mountain clinics. In the autumn it adopted a contractor permit rule for work near critical infrastructure.
+
+Key staff of the Board
+
+The Board's chief executive is Margit Sandoval, who manages the day-to-day operations of the Board's 520 staff. The director of finance is Ingolf Thackeray, and the director of planning is Chidi Fontaine. The head of the transport office is Roxanne Dufresne, and the head of the technology office, which led the early work on Lodestar and the Hollin Fibre Backbone, is Parminder Voss. The Audit Office's lead engineer for control systems is Elsbeth Ranganathan, who took part in the Dunmarrow crane collision investigation.
+
+Standing committees
+
+The Board's committee on energy is chaired by one of the regional council representatives, Fergus Mulholland, and meets monthly to review the electricity projects and the work of the Lumen Grid Company. The committee on technology, chaired by the research representative, Dr. Odalys Reinhardt, reviews the Lodestar Timing Station, the Hollin Fibre Backbone, and the Larkspur Telehealth Network. The committee on transport reviews the Gantry Line and the Dunmarrow Port. A joint committee with the St. Idris Hospital Trust oversees the Merrow Cold Chain.
+
+How the Board audits projects
+
+The Audit Office follows a standard method. For each major project, it reviews the safety case and the risk register every two years, and visits the project at least once a year. For incidents, it appoints a lead investigator within 24 hours and publishes a preliminary statement within a week. Final reports are published within ninety days. Where an incident involves technical questions on which an independent engineering opinion is needed, the Office asks the Marrow Institute's audit team to carry out a parallel investigation, and the two reports are published together.
+
+Obuya has said that the principle is that every serious incident must produce a published report, because the region is too small to afford to learn the same lesson twice. He keeps a card on his desk with five questions that his investigators ask in every case: what happened, why did it happen, why was it not prevented, who else could be affected, and what will be different.
+
+Public information
+
+The Board publishes on its web page a register of all serious incidents since 2019, with the date, the project, the cause, and the corrective measures. In 2024 the register held 31 entries. It also publishes the minutes of its meetings, the annual accounts, and the dependency map, though the detailed technical annexes of the map are restricted to project directors.

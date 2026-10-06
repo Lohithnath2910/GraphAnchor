@@ -1,0 +1,88 @@
+Seedvault North: Project Overview
+
+Seedvault North is a crop-breeding and seed-conservation project hosted by the Marrow Institute of Applied Science on its campus at Corran Heights, in the hills north of Skerrin. Its mission is to develop cereal varieties that thrive in the Calder Reach's changing climate and to preserve the genetic diversity of the region's traditional crops. The project began in 2017 and has since released a widely adopted drought-tolerant wheat variety.
+
+Dr. Priya Raghunathan has led Seedvault North since its founding. Her deputy is Olumide Hartigan, who manages the breeding program, and the field manager is Beatrix Nakamura, who runs the experimental plots on the Corran Heights terraces. The project employs 41 people, including nine doctoral students.
+
+Background
+
+The climate of the Calder Reach has changed noticeably over the past three decades. Summers are drier, spring frosts arrive later but with sharper effect, and rainfall comes in fewer, heavier events. Wheat, the region's principal cereal, has suffered in these conditions, and farmers have repeatedly lost part of their harvest to drought. The Verdant Seeds Cooperative, which represents about 1,400 farming families, approached the Institute in 2016 to ask whether a new variety could be bred to cope with the new conditions.
+
+The Institute agreed, and Raghunathan, who had recently finished her doctorate in plant genetics there, was asked to lead the program. She studied under Professor Ottoline Brandvik, the Institute's director, and she credits Brandvik with encouraging her to take on a project that would take at least a decade to bear fruit.
+
+The breeding program
+
+Seedvault North's breeding method combines conventional crossing with modern genetic analysis. The team began by collecting 340 traditional wheat lines from farms across the region, many of which had been grown for generations and had never been formally studied. They sequenced the genomes of all 340 lines, measured their performance under controlled drought in greenhouses, and identified several genes associated with deep rooting and with the efficient use of water.
+
+The best lines were then crossed with each other in a series of generations, and the offspring were evaluated each year in field trials. The team uses a technique called marker-assisted selection, which lets them check for the desired genes in a seedling's leaf tissue within days, rather than waiting a full season to see how the plant performs. This has cut the time to develop a new variety from around fifteen years to about eight.
+
+Brindlewheat-3
+
+The project's first major release, in 2022, was a wheat variety called Brindlewheat-3. In field trials across the region it produced an average of 21 percent more grain than the standard variety in dry years, and it matched the standard variety in wet years. Its deep roots allow it to draw water from lower soil layers during dry spells, and it has good resistance to a common rust disease.
+
+About a third of the region's wheat farmers had adopted Brindlewheat-3 within two years of its release. The Verdant Seeds Cooperative multiplies and distributes the seed, and the revenue from seed sales funds a large share of the project's budget. The rest of the funding comes from the Institute's core grant.
+
+Field trials at Corran Heights
+
+The experimental plots lie on a series of south-facing terraces just below the Institute's campus. The terraces were built in the nineteenth century for vineyards and have deep, well-drained soil that is typical of the region's better farmland. Nakamura's team plants about sixty plots each autumn and records weather, soil moisture, and yield through the season. Some plots are covered with rain shelters so that the plants experience controlled drought, and an automatic weather station records conditions every ten minutes.
+
+Beyond Corran Heights, the project runs satellite trials on eleven partner farms in different parts of the region, so that new lines can be tested on a range of soils and microclimates. The farmers receive free seed and a share of the harvest in return for hosting the trials and keeping careful records.
+
+The seed bank
+
+In addition to breeding, Seedvault North maintains a conservation seed bank. The bank stores about 2,800 samples of cereal varieties in sealed packets at minus eighteen degrees Celsius, together with duplicates at a second site. The purpose is to ensure that the genetic diversity of the region's traditional crops is not lost, and that breeders will always have access to it. The cold store is critical: a failure that allows the temperature to rise could destroy samples that cannot be replaced. For this reason the bank's duplicate stock is held at the Dunmarrow depot of the Merrow Cold Chain project, which provides refrigerated storage under a service agreement.
+
+Staff and organization
+
+The project's staff is organized in four teams: breeding, under Hartigan; field trials, under Nakamura; genetics and laboratory work; and the seed bank. Raghunathan holds a weekly seminar at which any member of the team, including the doctoral students, presents a problem or a result. She says that the seminar is the main reason that the project's work has remained honest, since the students are free to challenge anything she says.
+
+Raghunathan is also a member of the Verdant Seeds Cooperative's technical committee, where she explains the project's results to the farmers. She is particularly proud of a program in which about thirty farmers each year spend a week at the Institute, working alongside the researchers.
+
+Relationship with the Cooperative
+
+The relationship with the Verdant Seeds Cooperative is central to the project. The Cooperative's chair, Imogen Fairbairn, has described Seedvault North as "the best investment our members ever made." The Cooperative provides land for trials, helps with the distribution of the seed, and gives the researchers direct feedback from farmers. The arrangement is governed by a written agreement that sets out how the revenue from seed sales is shared between the Cooperative and the Institute.
+
+Challenges
+
+The main challenge is the long time needed to develop a variety, which makes it hard to respond quickly to changing conditions. Raghunathan is working with the Institute's modelers to predict which traits will be most valuable in thirty years, but the uncertainty is large. A second challenge is the fragility of the seed bank, which depends on continuous cold storage and therefore on reliable electricity.
+
+Future plans
+
+The next target is a barley variety resistant to a fungal disease that is spreading in the wetter fields of the region, with trials planned for 2026. The project is also studying whether Brindlewheat-3's rooting traits can be transferred to oats. Raghunathan says that her ambition is to leave behind a program that will outlast her, with a seed bank that is secure and a team of breeders who understand both the genetics and the farmers they work for.
+
+
+Operating history, year by year
+
+2016. The Verdant Seeds Cooperative approached the Marrow Institute of Applied Science in the autumn of 2016 to ask for help in breeding a wheat variety better suited to the region's drier summers. The Cooperative's chair, Imogen Fairbairn, brought with her records of the harvests of the previous fifteen years, which showed that the number of seasons with serious drought losses had doubled. Professor Ottoline Brandvik, the Institute's director, agreed to host a program, and asked Priya Raghunathan, who was finishing her doctorate under her supervision, whether she would lead it.
+
+2017. Seedvault North was established in the spring. Raghunathan recruited her first team of six, including Olumide Hartigan, a plant breeder who had worked for a commercial seed company, and Beatrix Nakamura, an agronomist from a farm advisory service. During the summer they collected 340 traditional wheat lines from farms across the region, visiting more than two hundred farms and recording the farmers' knowledge of each line. The collection was catalogued and the first seed packets were placed in cold storage at the Institute.
+
+2018. All 340 lines were sequenced during the winter, in a joint effort with the Institute's genomics laboratory. The greenhouse drought experiments ran from spring to autumn, and the results identified 24 lines with unusually deep roots. The first field plots were laid out on the Corran Heights terraces in the autumn, and the field team learned that the old vineyard terraces drained faster than expected and needed an irrigation system for establishing the seedlings.
+
+2019. The first crosses were made in the spring, producing about 1,200 families of seedlings. The team applied marker-assisted selection to their seedlings for the first time and discarded about 80 percent of them within weeks, saving a full season of field work. The Cooperative provided additional land for trials in three valleys, and the project signed its first agreement with partner farms.
+
+2020. During the first months of the pandemic, travel was restricted and the field team was split into two groups that worked on alternate days, a pattern that Nakamura continued afterward because it improved the quality of the records. The second generation of crosses was grown, and the first lines with consistent yields in dry conditions emerged. The seed bank passed 2,000 samples.
+
+2021. The project began multi-site trials on eleven partner farms. The lines that performed best across all sites were advanced to a final selection stage, and in the autumn the team chose the three most promising candidates. Raghunathan's team also developed a rapid test that could check seedlings for a rust resistance gene within three days, and the method was published in a plant science journal.
+
+2022. After a season of official variety trials, the candidate designated line 3 was registered and named Brindlewheat-3. The release was announced at the Cooperative's annual meeting in November, and the first seed lots were sold to members the same month. Fairbairn described the day as one of the proudest in the Cooperative's history. The revenue from the first sales was about 1.3 million crowns.
+
+2023. Adoption of Brindlewheat-3 was faster than expected, and about a third of the region's wheat farmers had planted it by the end of the year. In the autumn the project's duplicate seed bank, which was held at the Dunmarrow depot of the Merrow Cold Chain project, was affected by a cold store failure that destroyed about 31 percent of the breeding lines stored there. The incident is described in a separate report. The project's main collection at the Institute was unaffected, and the team began rebuilding the lost lines from the remaining stock.
+
+2024. The recovery of the lost breeding lines was largely complete by the summer, at a cost of about 640,000 crowns and a delay of eight months in the barley program. Raghunathan negotiated with the Merrow Cold Chain project a revised agreement under which the duplicate stock is divided between the Dunmarrow and Mossgate depots, so that no single failure can affect more than half of it. The project also began trials of the first barley lines.
+
+Figures
+
+Over its first seven years the project produced 38 scientific papers, trained eleven doctoral students, and generated about 4.9 million crowns in seed sales. The seed bank grew to 2,800 samples. The project's annual budget in 2023 was about 3.6 million crowns, of which about 1.9 million came from seed sales and the remainder from the Institute.
+
+The team
+
+Hartigan manages the breeding program and the data on all crosses. Nakamura supervises the field team, which includes eight seasonal workers hired each spring and autumn. The laboratory staff include three technicians who run the genetic marker tests. Raghunathan teaches a graduate course on plant breeding at the Institute and supervises four of the doctoral students directly. She also encourages the students to spend time on partner farms, where, she says, they learn the practical limits of their ideas.
+
+Collaboration
+
+Beyond the Cooperative, the project collaborates with the Wetmoor Water Reuse project, which supplies reclaimed water for an irrigation trial on the Corran Heights terraces, comparing the performance of Brindlewheat-3 under river water and reclaimed water. The first results, from the 2023 season, suggested no difference in yield or grain quality. The project also shares weather data with the Beacon Hill Flood Barrier, whose sea-level modelers use the long records from the terraces.
+
+Lessons
+
+Raghunathan says that the most important lesson of the project's first seven years is that a seed bank is only as secure as its weakest dependency. Before 2023 she had assumed that two copies of the collection in two locations were enough. The Dunmarrow incident taught her that the copies also need independent power, independent cooling, and independent management. The revised storage agreement reflects this lesson.

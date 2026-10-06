@@ -1,0 +1,84 @@
+Incident Report: Isotope Works Production Loss During the November 2023 Brownout
+
+Summary
+
+On 14 November 2023 the Isotope Works facility at the St. Idris Hospital Trust lost a full production run of medical isotopes when the regional electricity network suffered a brownout. The cyclotron's beam was disrupted by the voltage collapse, and the facility's backup generator could keep the cooling and ventilation systems running but could not restore the beam in time to complete the day's run. About 190 patient doses were lost, and the hospitals that had been waiting for them had to postpone or reschedule scans. This report was written by the facility's director, Dr. Tobias Ndlovu, for the board of the hospital trust.
+
+The brownout
+
+The brownout was the result of a storm that struck the western coast of the Calder Reach on the afternoon of 14 November. The storm damaged the export cable of the Ferrous Bay Offshore Wind farm where it comes ashore, and the 240-megawatt wind farm was disconnected from the grid at 15:08. Because the farm was supplying about a third of the region's electricity at the time, the Lumen Grid Company's network lost a large part of its generation within a second, and the voltage and frequency fell sharply. Lumen's automatic protection shed load in several parts of the region to prevent a wider collapse, and the supply was unstable for about six hours.
+
+Isotope Works holds a priority supply contract with Lumen Grid, which means that it is among the last customers to be disconnected during load shedding and among the first to be reconnected. In this case the facility was not disconnected, but the voltage at its supply point sagged by more than twenty percent for about three seconds, and for several hours afterward it fluctuated.
+
+Effect on the cyclotron
+
+The cyclotron's beam is held stable by a set of magnets and radiofrequency systems whose power supplies are sensitive to voltage disturbances. The voltage dip at 15:08 caused the beam to trip. Under normal conditions an operator could restart it in about twenty minutes, but the fluctuating supply that followed repeatedly tripped the beam again each time it was restored. By 17:30 the production team, led by Dr. Linnea Ofori, who is the deputy director, concluded that the beam could not be held stable in the existing supply conditions.
+
+The day's production run, which had been in progress when the brownout began, was incomplete. The target had been irradiated for only a third of the planned time, and the activity achieved was too low to meet the dose requirements of the hospitals that were waiting. Ndlovu decided at 17:45 to abandon the run and to ensure that no time was wasted trying to complete it.
+
+The backup generator
+
+When the voltage fell, the facility's diesel backup generator started automatically and took over the cooling system for the cyclotron and the ventilation of the hot cells, both of which must be kept running to prevent damage and the escape of radioactivity. The generator performed as designed throughout the event, and ran for about two days in total, since the supply remained unreliable until the Lumen Grid had restored the wind farm's connection and rebalanced its network.
+
+The generator is not designed to run the beam itself, because the beam's power supplies require a very stable voltage that a diesel set cannot provide. This limitation had been recognized when the facility was designed, and was accepted on the grounds that the grid supply would be exceptionally reliable. Dr. Vikram Szabo, the head of radiochemistry, noted that the event had exposed the weakness of this assumption.
+
+Impact on patients and hospitals
+
+The lost run was one of three scheduled for that week for a particular imaging isotope. About 190 doses, enough for scans at nine hospitals the following morning, could not be produced. Ofori's team telephoned the hospitals to warn them, and the nuclear medicine departments rearranged their schedules. Some patients had their scans postponed by two days, and 41 patients who were at an advanced stage of treatment had their scans moved to a neighboring region's supplier, at extra cost.
+
+The hospital trust's chief executive, Dr. Marguerite Anand, said that the event had been a reminder of the costs of dependence on a single power supply. She asked Ndlovu for a full review of the facility's resilience.
+
+Investigation and findings
+
+Ndlovu's review was supported by an engineer from the Lumen Grid Company and an electrical consultant. They analyzed the voltage records at the facility's supply point and found that the sag of 14 November had been the largest in the facility's history but not far outside the range that the grid operator regarded as normal during a major disturbance. They also found that the beam's power supplies had less tolerance for voltage dips than the manufacturer's data sheet suggested.
+
+The review identified three weaknesses. The beam had no protection against short voltage dips. There was no way to restart it automatically after a dip, so an operator had to intervene each time. And the facility had no means of continuing a run through a short interruption, because the generator could not support the beam.
+
+Recommendations
+
+The review recommended that the facility install a battery-based uninterruptible power supply for the beam's power supplies, capable of bridging dips of up to ten seconds. It recommended that the beam control software be modified to allow a faster, automated restart. It also recommended that the facility should schedule its most critical production runs in periods when the grid is less likely to be disturbed, and that it should hold a small stock of its most important isotope in the hospital's shielded store, if the half-life allowed.
+
+Actions
+
+The board approved the purchase of the battery system in December 2023. It was installed in the spring of 2024 and tested in May. The battery system can bridge a dip of up to fifteen seconds, and it protects the beam from the fluctuations that follow a grid disturbance. Szabo's team modified the restart software, reducing the time to restore a tripped beam to about six minutes.
+
+In March 2024, Ofori led an exercise in which the facility simulated a three-day grid outage. The exercise showed that the facility could continue to operate the cyclotron on battery power and the generator in combination for about four hours, and that the longer-term limits were the availability of fuel and the operators' fatigue. The lessons were written into the contingency plan.
+
+Relationship with the grid operator
+
+After the incident Ndlovu met Anselm Rask, the chief executive of Lumen Grid, to discuss the priority supply arrangement. Rask confirmed that the facility had received the priority treatment described in the contract, and explained that the severity of the event had been beyond the grid's design standard. The two agreed to hold an annual joint exercise and to share more detailed warnings of anticipated disturbances. Lumen Grid also agreed to give Isotope Works a direct telephone line to its control center.
+
+Broader lessons
+
+The incident was one of several effects of the brownout, which also disrupted the Merrow Cold Chain's Dunmarrow depot and reduced output at the Wetmoor Water Reuse project. Ndlovu has noted that these projects had separately concluded that they depended on the grid, but none had expected that a single cable fault at a wind farm could disrupt them all. The Calder Reach Development Board's audit office, which collected the reports, asked the region's critical users of electricity to review their ride-through capability.
+
+Ndlovu's own conclusion was that the facility's priority status had given a false sense of security. Priority reconnection helps after a disconnection, but it does nothing for a voltage sag, and the sensitivity of the cyclotron meant that the quality of the supply mattered as much as its availability. He has proposed that the contract be revised to include a specification of voltage quality, a point that is now under discussion.
+
+Costs
+
+The lost run had a direct cost of about 76,000 crowns in lost sales and extra delivery costs. The additional costs of the supplier in the neighboring region and of the rescheduled scans came to about 52,000 crowns. The battery system cost 1.15 million crowns, and the software changes about 60,000 crowns. The board accepted these costs as an investment in reliability and set aside a contingency fund for future events.
+
+
+Annex A: Technical detail and chronology
+
+The cyclotron's power supplies. The cyclotron uses a main magnet drawing about 90 kilowatts, a radiofrequency system with a power amplifier that draws about 60 kilowatts, and an ion source and a set of steering magnets with smaller supplies. The radiofrequency system is the most sensitive: its oscillator must keep a frequency of 72 megahertz to within a few parts per million, and a voltage dip of more than ten percent for more than a few cycles can cause the amplifier to trip. The magnet supplies, which are regulated electronically, can tolerate dips of up to fifteen percent for about a hundred milliseconds.
+
+The voltage record. A power quality recorder at the facility's supply point logged the voltage at 5,000 samples a second. It showed the voltage falling to 77 percent of nominal at 15:08:14, recovering to 91 percent by 15:08:17, and then oscillating between 88 and 104 percent for the next five hours and forty minutes, with eleven further dips below 90 percent of duration longer than half a second.
+
+Chronology. At 15:08:14 the beam tripped. At 15:09 the generator started and took over the cooling and ventilation loads within 12 seconds. At 15:30 the operators restored the beam for the first time. At 15:52 it tripped again on a dip. By 17:30 the beam had been restored five times and had tripped five times. At 17:45 Ndlovu ordered the run to be abandoned. At 18:00 the target was transferred to a decay storage cell. From 18:30 to 21:00 the team tested the beam periodically, but it could not be sustained. The main supply stabilized at 21:10, and the beam was restored at 21:40 and held. The next production run was carried out the following morning.
+
+The generator. The diesel set is rated at 600 kilovolt-amperes, and carried a load of about 210 kilowatts during the event: the cooling plant of the cyclotron, the extract fans of the hot cells and the cyclotron vault, the lighting and safety systems, and the control computers. It consumed about 1,350 liters of fuel over the roughly two days that the facility chose to stay on it. The facility had 6,000 liters in its tank and a refill contract with a fuel supplier.
+
+Why stay on the generator. After the grid supply returned, Ndlovu decided to keep the facility on the generator for some time rather than reconnect, because Lumen Grid had warned that further disturbances were possible as it rebalanced its network. The facility reconnected at 08:00 on 16 November, after the grid operator confirmed that the supply was stable.
+
+Patients affected. The 190 lost doses were of fluorine-18 tracer for positron emission tomography, used for the staging of cancers. They would have served about nine hospitals. Of the patients who were scheduled to be scanned the next morning, 41 had treatment decisions that depended on the result, and these patients were scanned at a facility in a neighboring region at extra cost, arranged by the hospital trust's nuclear medicine department with the help of Strand & Keel Shipping, which carried the isotopes by an express courier. The remaining patients were scanned two days later.
+
+The uninterruptible supply. The battery system installed in 2024 comprises a bank of lithium iron phosphate batteries rated at 500 kilowatt-hours and a double-conversion inverter. It supplies the cyclotron's radiofrequency amplifier and magnet supplies directly, isolating them from the grid, and can carry them for about forty minutes. It was manufactured overseas and installed by a contractor with the help of the facility's electrical engineers. In tests in May 2024, a simulated voltage collapse of the grid caused no disturbance to the beam.
+
+The restart software. Szabo's team and the cyclotron's manufacturer rewrote the beam restart sequence so that after a trip, the system automatically retunes the ion source and the radiofrequency system in about six minutes. Before the change, an operator had to repeat each step by hand, and the process took about twenty minutes. The change also means that the beam can be restarted at night without a specialist present.
+
+Grid operator's review. Lumen Grid carried out its own review of the event and concluded that the voltage disturbances experienced by Isotope Works were within the limits defined in its supply code. It agreed to establish a list of "voltage-sensitive" customers and to warn them, where possible, of an imminent disturbance. Anselm Rask told Ndlovu that Isotope Works would be the first on the list.
+
+Insurance and costs. The facility's insurance did not cover the loss, because the policy excluded grid supply disturbances. The trust's board decided to bear the loss and asked the finance department to negotiate a policy that covers such events. A new policy, with a deductible of 25,000 crowns, was agreed in 2024 at an annual premium of about 38,000 crowns.
+
+Staff morale and learning. Ofori told the board that the team's response to the event had been calm and professional, and that the decision to abandon the run, which was difficult, had been supported by the whole shift. She also said that the team had learned that the failure had not been a technical surprise: the manufacturer had mentioned the sensitivity of the amplifier in the commissioning documents, but the warning had not been carried into the facility's operating risk register.

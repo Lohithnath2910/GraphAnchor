@@ -1,0 +1,88 @@
+Hollin Fibre Backbone: Project Overview
+
+The Hollin Fibre Backbone is the Calder Reach's regional optical-fiber network, a publicly owned telecommunications spine that links the region's major towns, ports, hospitals, and infrastructure sites. It is named after Hollin Pass, the high mountain pass through which its main trunk cable runs, and it was built between 2017 and 2020. The backbone now carries data traffic for the regional government, the hospital trust, the research institute, and several infrastructure operators, together with the high-precision timing signal produced by the Lodestar Timing Station.
+
+Wen Ashdown has led the project since 2017. Her deputy is Dmitri Falk, who manages the engineering and construction teams, and the network chief is Ngozi Valera, who runs the network operations center. The project employs 88 people.
+
+Why a publicly owned backbone
+
+Before the backbone was built, the Calder Reach's rural communities and many of its public institutions depended on the networks of private telecommunications companies, which concentrated their investment in the towns where customers were most numerous. The mountain areas were poorly served and the region had few diverse routes: a single cable cut could isolate a whole valley. The Calder Reach Development Board decided to build its own fibre spine, funded by the Board with 55 million crowns, so that vital public services would have a reliable and independent communications network.
+
+The route
+
+The backbone consists of two main routes, one along the coast and one inland, which together form a loop of about 410 kilometers. A third route, the Hollin trunk, runs from Skerrin over the mountains through Hollin Pass to the inland towns. The cables are laid mostly in ducts buried in road verges and railway corridors, and in several places they use existing infrastructure. The most unusual section runs through the access tunnels of the Quarrel Hill Pumped Storage plant, which the project was permitted to use after agreeing to pay for their fireproofing. This saved about eleven kilometers of difficult excavation.
+
+At the main nodes, in Skerrin, Mossgate, Dunmarrow, and Wetmoor, the backbone has equipment rooms with routers, switches, and optical amplifiers, which are powered by batteries and generators. Each node connects to at least two routes, so that a break in any single cable leaves traffic able to flow the other way around the loop.
+
+The network
+
+The network is built on wavelength-division multiplexing, a technique that sends many independent signals down a single fiber by using different colors of light. A single fiber pair can carry 96 channels, each with a capacity of 100 gigabits per second. Customers rent whole wavelengths or smaller slices of capacity, and some pay for dedicated "dark fiber" that they can light with their own equipment.
+
+A special feature of the network is its support for time and frequency distribution. The Lodestar Timing Station sends its reference signal over a dedicated wavelength, and the network's equipment is designed so that the delay in each direction is nearly identical, allowing customers to calculate the exact time at their site. The backbone is therefore a key link in the timing chain used by the Gantry Line light rail project, the Dunmarrow Port Automation project, and the Lumen Grid Company.
+
+Customers
+
+The backbone's customers include the Calder Reach Development Board itself, which uses it to connect its offices and its monitoring systems. The St. Idris Hospital Trust uses it to link its hospitals and clinics and to carry the video and data of the Larkspur Telehealth Network. The Marrow Institute of Applied Science uses it to exchange large datasets with partner institutions. Infrastructure operators use it for remote monitoring and control, including the Quarrel Hill Pumped Storage plant, whose tunnels carry part of the cable. Several private telecommunications companies also lease capacity, which provides a useful income stream.
+
+Resilience and security
+
+Resilience is the project's guiding principle. Every important customer is connected by at least two physically separate paths, and the network operations center monitors the optical power on every fiber so that a degradation can be spotted before a break occurs. The network's equipment is protected by physical security and by strict access control, and the control network is isolated from the public internet. Valera's team conducts a full failover test of every route each year, in which a route is deliberately taken out of service and the network's response is observed.
+
+In spite of these precautions, no network is immune from accidental damage. Cable cuts by excavation are the most common cause of network outages worldwide, and the backbone has marked its route with warning tape and posts, and operates a call-before-you-dig service. Ashdown acknowledges that contractors working near the cable, especially at river crossings, remain the largest single risk. This risk was realized in 2023, as described in a separate incident report.
+
+Staff and organization
+
+The project's departments are engineering, network operations, customer services, and finance. Falk's engineering team handles new construction and repairs, while Valera's operations center works in three shifts and manages faults. Ashdown, a telecommunications engineer, started her career at a national carrier and joined the Calder Reach Development Board's technology office before being asked to lead the backbone project. She is known for taking staff on field visits to the cable route, so that engineers who normally work in an office can see the conditions in the mountains.
+
+Maintenance
+
+Maintenance teams carry out regular patrols of the cable route and inspect the equipment rooms every month. Repairs of cable cuts are done by splicing crews who can restore a cut cable within about six hours in most conditions. The project holds a stock of spare cable and splicing equipment at three depots along the route.
+
+Financial position
+
+The backbone earns revenue from customers and from the Development Board's operating grant. In its fourth year it covered about 64 percent of its operating cost from lease income, and the Board has set a goal of 80 percent within three years. The largest cost items are staff, the lease of space in equipment rooms, and the electricity used by the optical equipment.
+
+Future development
+
+The next phase of the project, subject to funding, will extend the backbone to the islands east of Skerrin using a submarine cable, and will add a third route through the south of the region. Ashdown is also studying the use of the backbone's duct network for additional purposes such as environmental sensors. Another priority is better protection at points where the cable crosses rivers and estuaries, a lesson from the 2023 incident.
+
+
+Operating history, year by year
+
+2016. The Calder Reach Development Board received a report from its technology office showing that more than a third of the region's public buildings, including schools, clinics, and council offices, depended on a single commercial provider for their data connections, and that the provider's network in the mountain areas had no backup route. The Board decided to build a publicly owned backbone, and asked the technology office to prepare a plan.
+
+2017. Wen Ashdown, who led the technology office's network team, was appointed to run the project. She recruited Dmitri Falk, a civil engineer with experience of laying cables in difficult terrain, and Ngozi Valera, a network engineer from a telecommunications company. The Board approved a budget of 55 million crowns, and the route survey was carried out over the summer. The most difficult part of the route was Hollin Pass, where the cable had to be laid through a rock cutting beside the road.
+
+2018. Construction began with the coastal route. Over the year crews laid 148 kilometers of duct and cable, completed the equipment rooms at Skerrin and Mossgate, and lit the first fibers in December. The inland route was started in the autumn, and the agreement to use the access tunnels at Quarrel Hill was signed with the Quarrel Hill Pumped Storage project after the backbone agreed to pay for their fireproofing.
+
+2019. The inland route and the Hollin trunk were completed, and the loop was closed at Wetmoor in September. The network operations center, in Skerrin, opened in October. The St. Idris Hospital Trust became the first major customer, connecting its main hospital and eleven clinics, and the Larkspur Telehealth Network began operating over the backbone.
+
+2020. The backbone was declared fully operational in March. In the same year the Lodestar Timing Station was connected and started to distribute its timing signal over a dedicated wavelength, with the Gantry Line as the first user. Valera's team conducted the first annual failover test in October, closing the coastal route for twelve hours, and the network behaved as designed, with all traffic shifting to the inland route within fifty milliseconds.
+
+2021. The network added customers rapidly: the Dunmarrow Port Automation project, the Lumen Grid Company, and the Marrow Institute of Applied Science all signed up. Lease income reached 18 million crowns for the first time. A second wavelength was lit on the main trunk to increase capacity, and a link was built to a neighboring region's network, giving the Calder Reach a second route to the outside world.
+
+2022. The network carried a growing share of the region's critical traffic. In the summer a flood damaged a node at Wetmoor, but the network continued to work through the alternative routes, and the node was restored in two days. In August, the network supported the Lodestar Timing Station's outage by delivering the station's quality indicator within seconds to all of its customers, a function that was praised in the incident review.
+
+2023. In June a dredging contractor working on the Beacon Hill estuary severed the cable at Hollin Pass crossing a river, cutting off several customers, including the Larkspur Telehealth Network. The outage lasted seven hours and is described in a separate incident report. After it, Ashdown ordered a program to inspect and reinforce all river and estuary crossings on the route.
+
+2024. By the middle of the year the crossings program was 70 percent complete. The Board approved the extension to the islands east of Skerrin, to be built with a submarine cable, and the design work began. Falk also introduced a new rule requiring contractors who work within fifty meters of the cable route to hold a permit, which is issued only after a briefing from the project's engineers.
+
+Operational statistics
+
+Between 2020 and 2024 the backbone's network availability averaged 99.98 percent, measured at the level of customer connections. The mean time to repair a cable cut was 5.8 hours. The network carried an average of 9.3 terabits per second at its busiest points in 2023. The project handled around 190 faults a year, most of them minor equipment issues that did not affect customers.
+
+Customers
+
+By the end of 2023 the backbone served 61 customers, including government bodies, hospitals, schools, research institutions, infrastructure operators, and private telecommunications companies. The Calder Reach Development Board and the St. Idris Hospital Trust together accounted for about 41 percent of lease income. Customers rate the reliability of the service highly in annual surveys, and the most frequent request is for additional diverse routes.
+
+Staff and development
+
+The team of 88 includes engineers, technicians, splicing crews, and a customer services team. Valera runs a training program for new network engineers that includes a week of fieldwork with a splicing crew. Ashdown has also set up an exchange with the Lodestar Timing Station, under which engineers from each project spend two weeks with the other.
+
+Procurement
+
+The optical fiber was supplied by an overseas manufacturer, and the transmission equipment by a second overseas company. The ducts were made locally from recycled plastic. The route markers and cable warning tape were produced by a small manufacturer in Mossgate. Ashdown has said that the most important procurement decision was to buy a large stock of spare cable at the beginning, which has reduced repair times.
+
+Public benefit
+
+Because the backbone is publicly owned, the Board has used it to bring broadband to villages that private operators had not served. In 2022 and 2023 the project connected nineteen mountain villages through a program funded by the Board, and it provides wholesale capacity to small local internet providers at a regulated price. The change has made it possible for residents of those villages to work from home and for their children to use online learning.

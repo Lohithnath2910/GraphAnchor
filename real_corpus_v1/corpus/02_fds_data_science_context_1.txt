@@ -1,0 +1,74 @@
+Foundations of Data Science: Data Science Context (Part 1)
+
+BCSE206L - Foundations of Data Science Module 1 DATA SCIENCE CONTEXT
+
+Context Need for Data Science What is Data Science Data Science Process Business Intelligence & Data Science Prerequisites for a Data Scientist Tools & Skills
+
+What is the need for the data Science ?
+
+Need for Data Science We Have More Data Than Ever, Yet Most Goes Unused The fundamental problem data science was created to solve
+
+Every device, smartphone, vehicle, sensor, payment terminal, generates data continuously Most organizations store this data but lack the tools or expertise to analyze it scientifically Without analysis: no forecasting, no pattern discovery, no better decisions Data science is the discipline that converts raw data into insight, and insight into action < 1% 2.5 Quintillion bytes of data created every single day worldwide of all data ever generated has been analyzed of the world's data was created in the last two years alone
+
+Need for Data Science Taming Data Chaos: Flips massive, messy data into organized, usable insights. Smart Decisions: Replaces guesswork and "gut feelings" with concrete, data-backed evidence. Predicting Trends: Forecasts future outcomes, from market shifts to customer behavior. Hyper-Personalization: Powers the recommendation engines behind platforms like Netflix and Amazon. Automation: Drives AI and machine learning to automate complex, repetitive tasks.
+
+What is Data Science? "Data science is an interdisciplinary field that uses scientific methods, algorithms, and systems to extract actionable knowledge from structured and unstructured data. "
+
+Data Science is Multidisciplinary
+
+Data Science Process Without a structured process, data projects tend to jump straight to modeling without verifying the right question is being asked, or without checking data quality, leading to technically sound models that solve the wrong problem.
+
+The Data Science Process, 8 Stages End-to-End A structured lifecycle that converts a business problem into a deployed solution
+
+Data Science Process
+
+Data Science Process Stage 1, Business Objective Every data science project starts by precisely defining the problem to be solved, in business or research terms, not technical terms.
+
+Stage 2, Data Requirement Once the objective is clear, identify what data is actually needed to answer it . Isolate exactly which features, temporal boundaries, and metadata schemas are strictly mandatory to address the business problem.
+
+Data Science Process Stage 3, Data Collection Gather identified data from source systems (ERP, web scraping, IoT, files) Real-world data is rarely clean, rarely in one place, rarely in the right format
+
+Stage 4, Exploratory Data Analysis (EDA) Clean: handle nulls, duplicates, outliers, encoding errors Profile: understand distributions, column types, value ranges EDA can completely reshape or redirect the problem definition
+
+Data Science Process Stage 5, Modeling Choose an algorithm based on the problem type (classification, regression, clustering) Train the model on prepared data; tune hyperparameters for best performance
+
+Stage 6, Evaluation Test the model on held-out data it has never seen, avoids overfitting Metrics: accuracy, precision, recall, F1-score, RMSE depending on problem type Ask: does the output actually answer the original business objective?
+
+Data Science Process Stage 7, Deployment & Monitoring Embed the model in a live application, dashboard, or automated pipeline Monitor performance continuously, real-world data drifts over time. A model that was 92% accurate in testing can degrade silently in production
+
+Data Science Vs Business Intelligence Business Intelligence Business intelligence(BI) is a set of technologies, applications, and processes that are used by enterprises for business data analysis. It is used for the conversion of raw data into meaningful information which is thus used for business decision-making and profitable actions.
+
+Data Science Vs Business Intelligence
+
+Data Science Vs Business Intelligence
+
+Data Science Vs Business Intelligence Required Key Skills :
+
+Data Science Vs Business Intelligence COMMON TOOLS :
+
+Data Science Vs Business Intelligence BI and Data Science, Not Competitors, But Collaborators BI handles day-to-day operational reporting, 'What were yesterday's sales by region?' Data Science is brought in for harder, forward-looking questions, 'Which customers are likely to churn next month?' Data Science teams often consume data from BI-maintained data warehouses as one of their input sources BI skills (SQL, dashboards) are a useful foundation before learning Data Science
+
+Prerequisites for a Data Scientist A Data Scientist must find patterns within the data. Before he/she can find the patterns, he/she must organize the data in a standard format. Here is how a Data Scientist works: Ask the right questions. Explore and collect data. Extract the data. Clean the data. Find and replace missing values.
+
+Prerequisites for a Data Scientist Normalize data . Analyze data, find patterns and make future predictions. Represent the result. There are three essential things required to be a data scientist: Curiosity. Common sense Communication skills
+
+Prerequisites for a Data Scientist Curiosity: The ability to ask the right question The entire downstream pipeline depends on problem framing at the start. Ask: What would prove or disprove my assumption? A wrong question, even followed by correct analysis, leads to a useless answer (the most expensive mistake in data science) Curiosity is what drives you to question data that 'looks fine' instead of assuming it is
+
+Prerequisites for a Data Scientist Common Sense Handle incomplete reality creatively Real data is almost never complete, clean, or exactly what was requested Common sense lets you make reasonable, defensible assumptions when data has gaps Recognize when a result 'looks wrong' even if the code ran without errors Prevents building technically perfect models that solve the wrong thing
+
+Prerequisites for a Data Scientist Communication Translate findings into decisions Technical brilliance with poor communication = zero business impact Decision-makers need plain language, not p-values and loss curves. Visualization, storytelling, and stakeholder empathy are communication skills. Often the difference between a data scientist and an influential data scientist
+
+Prerequisites for a Data Scientist Normal Person Data Scientist
+
+The Data Science Technology Stack A layered view of platforms, languages, and tools used in industry and this course Cloud / ML Services: AWS Redshift · Microsoft Azure ML Studio · Google Cloud ML Visualization: Tableau · IBM Cognos Analytics · Python Matplotlib/Seaborn · R ggplot2 Machine Learning: Scikit-learn · Apache Spark MLlib · TensorFlow · Apache Mahout Big Data Platforms: Hadoop (HDFS) · Apache Spark · Hive IDEs: Jupyter Notebook · RStudio · Spyder · VS Code Databases: SQL / RDBMS (MySQL, PostgreSQL, Oracle) · NoSQL (MongoDB, Cassandra) Languages: Python · R · MATLAB · GNU Octave · SQL Tools and Skills Needed
+
+Tools and Skills Needed Programming Languages Python and R are the dominant languages in data science, alongside MATLAB and GNU Octave for more mathematically-oriented work. Statistics and Mathematics Statistics and probability form the conceptual foundation underneath every data science technique, a data scientist must understand these well enough to correctly formulate a problem before reaching for any tool or library.
+
+Tools and Skills Needed Databases and Data Handling SQL: essential for querying structured ETL (Extract, Transform, Load): the skill of pulling data out of source systems, reshaping it, and loading it . NoSQL: needed when handling unstructured or semi-structured data . Big Data Platforms Big data plaforms is suited to storing and processing very large volumes of both structured and unstructured data across clusters of machines.
+
+Tools and Skills Needed Development Environments The interactive environment for data science work, allowing code, output, and narrative explanation Visualization Tools Visualization tool for building interactive dashboards and visual reports Cloud and Machine Learning Services Cloud-based ML platforms allow data science workloads to be run without managing physical infrastructure, and are increasingly standard in industry settings.
+
+Tools and Skills Needed Python & R, The Two Core Languages of Data Science Python
+Simple, readable syntax, easiest entry point for beginners. Largest ecosystem of data science libraries (NumPy, pandas, scikit-learn, Matplotlib, TensorFlow). Used for the full pipeline: data cleaning, modeling, deployment, and web integration. Most in-demand language for data science job roles globally. Covered in Module 5 of this course. Designed specifically for statistical computing and data analysis. Excellent built-in statistical functions; strong for research and academic work. Powerful visualization via ggplot2 library. Preferred in fields like biostatistics, social sciences, and research. RStudio IDE makes it beginner-friendly for statistical tasks.
+
+SUMMARY : What You Should Know After This Module Need: Data science exists because organizations generate more data than they can analyze, it closes the gap between storing data and acting on it Definition: Data Science = Statistics + Programming + Domain Knowledge, applied to extract actionable knowledge from structured and unstructured data Process: 7 stages, in order: Business Objective, Data Requirement, Collection, EDA, Modeling, Evaluation, and Deployment and Monitoring BI vs DS: BI = descriptive, structured data, historical. Data Science = predictive, structured + unstructured, forward-looking, both work together Prerequisites: Curiosity (right question), Common Sense (handle incomplete data), Communication (drive decisions), with technical skills built on top Tools: Python / R, Statistics & Math, SQL / NoSQL, Hadoop / Spark, Jupyter, Tableau, Cloud ML, a layered, interconnected technology stack

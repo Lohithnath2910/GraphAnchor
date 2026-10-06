@@ -1,0 +1,88 @@
+Merrow Cold Chain: Project Overview
+
+Merrow Cold Chain is a temperature-controlled storage and transport network for the Calder Reach's vaccines, medicines, seed stocks, and perishable foods. It runs two large refrigerated depots, one at Dunmarrow Port and one at Mossgate, and a fleet of insulated railway wagons and road vehicles that connect them to hospitals, pharmacies, farms, and food processors. The project began operating in 2020 and has grown into an essential service for the health system and the region's agriculture.
+
+Dr. Farouk Haidari has directed Merrow Cold Chain since 2020. His deputy is Annika Rojas, who manages the depots and the logistics, and the refrigeration chief is Cosmo Bhatt, who leads the engineering team responsible for the cold stores and refrigeration plants. The project employs 119 people.
+
+The need
+
+Many of the products on which modern health care and farming depend must be kept within a narrow temperature range. Most vaccines must stay between two and eight degrees Celsius, some must be frozen at minus seventy, and a few biological medicines are ruined by a single excursion outside their range. Seed banks must be held at minus eighteen to preserve their viability, and fresh produce loses value rapidly if the cold chain is broken. Before Merrow was created, the Calder Reach relied on a patchwork of small stores run by hospitals and wholesalers, with no regional standard for monitoring and no capacity to absorb a failure at any one of them.
+
+The depots
+
+The Dunmarrow depot is the larger of the two. It occupies a purpose-built warehouse of 18,000 square meters beside the container terminal, and contains eleven separate temperature zones, ranging from a deep-freeze hall at minus seventy to chilled rooms for fresh produce at four degrees. The Mossgate depot, which holds mostly pharmaceuticals and seed samples, is smaller and is located beside the railway yard so that it can load wagons directly.
+
+Each depot has its own refrigeration plant, with redundant compressors, and a monitoring system that records the temperature in every room every thirty seconds. If any reading moves outside its limits, an alarm alerts the duty team and, for the most sensitive zones, triggers an automatic transfer of the stock to a standby room. Bhatt's team tests the standby arrangements every month.
+
+Power
+
+Refrigeration plants consume large amounts of electricity, and a loss of power can quickly threaten the stored goods. Both depots are supplied by the Lumen Grid Company through dual connections, and each has a large diesel generator and a bank of batteries that can carry the critical loads. The generators are designed to start within fifteen seconds of a power failure. The project's contingency plan sets out in detail how each room's contents are to be protected during a prolonged outage, including the order in which rooms are to be shut down if fuel runs low.
+
+Transport
+
+Merrow's refrigerated wagons are operated under contract by Strand & Keel Shipping, which provides the locomotives and the train crews. Each wagon has its own refrigeration unit and an electronic data logger that transmits the temperature to the control room. Strand & Keel's dispatchers coordinate the movements of the wagons with the ordinary freight timetable, and for urgent vaccine shipments a dedicated paths can be reserved. The road fleet, which handles last-mile delivery, is run directly by Merrow.
+
+Customers
+
+Three groups of customers account for most of the project's business. The St. Idris Hospital Trust uses the depots for its vaccines and biological medicines, and relies on the project to deliver them to its clinics and to the Larkspur Telehealth Network's remote sites. The Verdant Seeds Cooperative uses the Dunmarrow depot to store seed and to hold harvested produce for export. The Seedvault North breeding project keeps duplicate samples of its seed bank in a dedicated zone at Dunmarrow, a service for which it pays an annual fee.
+
+Haidari has said that the project's most significant strength is trust. A pharmacist at a rural clinic needs to know that a vaccine delivered in the morning has been kept cold since the day it left the manufacturer, and Merrow provides a complete, auditable record of every consignment.
+
+Quality and compliance
+
+The depots are licensed by the medicines regulator and are inspected twice a year. Staff follow rigorous procedures for receiving, storing, and dispatching products, and every consignment is traced using barcodes and electronic temperature records. The project has an internal audit team, led by a quality manager, and every employee completes an annual training course on the handling of temperature-sensitive goods.
+
+Technology
+
+The project's data platform integrates the readings from the depots' sensors, the wagon loggers, and the vehicles' tracking devices. Software analyzes the data to predict which shipments are at risk, and alerts the operations team if a wagon is delayed or a refrigeration unit shows signs of failing. Rojas's logistics team uses the platform to plan routes and to decide where to hold stocks of vaccines in anticipation of seasonal demand.
+
+People and culture
+
+Haidari trained as a pharmacist and then worked in hospital supply chains before moving to Merrow. He has a reputation for obsessive attention to detail. Each Monday he reviews the previous week's temperature excursions with the depot managers, however minor, and he insists that every excursion is investigated and recorded, even if no product was affected. His team calls this the "Monday list," and he says it is the habit that has done most to build the project's record of reliability.
+
+Financial position
+
+Merrow earns its revenue from storage and transport fees paid by its customers, and in its third year it covered about 88 percent of its operating costs. The remainder was provided by a contribution from the St. Idris Hospital Trust under a service agreement. Haidari is confident that the project will cover its costs fully by its fifth year, as it takes on more customers.
+
+Risks
+
+The project's main risk is its dependence on reliable electricity. Although each depot has backup generators and batteries, they are designed for outages measured in hours rather than days. A second concern is the concentration of stock at the Dunmarrow depot, which holds the majority of the region's vaccine reserve. Haidari has proposed to the Calder Reach Development Board that a third depot be built inland, to provide geographic redundancy, and the proposal is under consideration following an event in 2023 described in a separate incident report.
+
+
+Operating history, year by year
+
+2019. The case for a regional cold chain was made after an audit of vaccine storage in the Calder Reach's clinics found that about one vaccine consignment in nine had been exposed to temperatures outside the permitted range at some point between the manufacturer and the patient. The audit, commissioned by the St. Idris Hospital Trust, recommended a central, professionally managed network. The Calder Reach Development Board and the Trust agreed to establish Merrow Cold Chain as a joint project, and an advertisement for a director was placed in the autumn.
+
+2020. Dr. Farouk Haidari was appointed in March, having worked in hospital pharmacy supply chains for fifteen years. He recruited Annika Rojas, a logistics manager from a pharmaceutical wholesaler, as deputy, and Cosmo Bhatt, a refrigeration engineer, as refrigeration chief. The first depot, at Mossgate beside the railway yard, was built in a converted warehouse and opened in October. Its first customers were the St. Idris Hospital Trust and four pharmacy chains.
+
+2021. Construction of the larger depot at Dunmarrow began in January and was completed in September. It was designed with eleven temperature zones and a deep-freeze hall, and it opened with the Verdant Seeds Cooperative and the Seedvault North project as its first anchor customers. The data platform was launched at the same time, giving customers a dashboard that shows the temperature history of every consignment.
+
+2022. The project took delivery of its refrigerated wagons, which are operated by Strand & Keel Shipping. A road fleet of 24 refrigerated vans was purchased for last-mile deliveries. During the summer the project passed its first inspection by the medicines regulator with no major findings, and it began to handle ultra-cold vaccines for a program of booster doses. By the end of the year it was serving 190 customers.
+
+2023. In November a brownout on the regional electricity network caused the failure of a compressor system at the Dunmarrow depot, and a number of stored consignments came under threat, including the duplicate seed bank of the Seedvault North project and a batch of vaccines. The event is described in a separate incident report. Haidari ordered a review of the depot's power arrangements and of the response procedures, and the review's recommendations were adopted within three months.
+
+2024. The project upgraded the backup systems at both depots, adding a second diesel generator at Dunmarrow and a larger battery bank at both sites. It also negotiated a revised arrangement with Seedvault North to split the duplicate seed stock between the two depots. A proposal for a third depot, inland near Corran Heights, was submitted to the Development Board, which asked for a more detailed business case.
+
+Volumes and results
+
+By 2023 the project was handling about 4,300 consignments a month. Temperature excursions, defined as any recorded reading outside the permitted range, fell from 4.1 percent of consignments in the first year to 0.6 percent in 2023, excluding the November event. Revenue was about 21 million crowns, covering 88 percent of the operating cost. The remainder was contributed by the St. Idris Hospital Trust under its service agreement.
+
+Systems and quality
+
+The depots' refrigeration plants are monitored around the clock by a control room in Dunmarrow. Bhatt's team carries out preventive maintenance every month, and the compressors are replaced after fixed running hours rather than waiting for failures. The quality manager, Henrietta Loewen, runs a program of internal audits and a quarterly review with the medicines regulator.
+
+Customers and relationships
+
+The St. Idris Hospital Trust remains the largest customer, accounting for about 46 percent of revenue. Among its needs is the delivery of vaccines to the remote clinics of the Larkspur Telehealth Network, a service that Merrow provides with insulated vans and a monthly rail shipment to the islands. The Verdant Seeds Cooperative accounts for about 22 percent, mostly for the storage of harvested seed and produce. Seedvault North pays a smaller fee for its secure zone, which holds the duplicates of its seed bank.
+
+Staff
+
+The project employs 119 people, of whom 34 are refrigeration and electrical technicians, 29 work in warehouse operations, 21 are drivers, 15 are in data and quality, and the rest in management and administration. Rojas has introduced a "second pair of eyes" rule under which every release of a pharmaceutical consignment must be checked by two staff, and the rule has reduced dispatch errors to almost zero. Haidari holds his "Monday list" review of temperature excursions with the depot managers every week.
+
+Sustainability
+
+Refrigeration is energy-intensive, so the project has taken measures to improve efficiency: heat recovery from the compressors warms the offices, LED lighting with motion sensors is used in the stores, and the Mossgate depot has installed rooftop solar panels that supply about 12 percent of its needs. The vehicles in the road fleet are being replaced with electric models as they come due.
+
+Lessons from the first years
+
+The central lesson, according to Haidari, is that a cold chain is a chain of dependencies: it depends on electricity, on transport, on data, and on people, and each can fail. The project has therefore tried to ensure that each dependency has a backup, and that every backup is tested. He has said that the November event showed that the backups, though adequate for most outages, were not adequate for a long one, a weakness that the project is now addressing.

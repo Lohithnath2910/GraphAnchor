@@ -1,0 +1,78 @@
+Incident Report: Loss of Seed Bank Duplicates, November 2023
+
+Summary
+
+On 14 November 2023 a failure of the refrigeration plant at the Dunmarrow depot of the Merrow Cold Chain project destroyed about 31 percent of the breeding lines held in the duplicate seed bank of the Seedvault North project. The failure was triggered by a brownout on the regional electricity grid. The seed bank's main collection, held at the Marrow Institute of Applied Science, was not affected, and the lost lines were rebuilt during 2024 from the stock that remained. This report was prepared by Dr. Priya Raghunathan, the leader of Seedvault North, for the Institute and for the Verdant Seeds Cooperative.
+
+The duplicate seed bank
+
+Seedvault North maintains a conservation seed bank of about 2,800 samples of cereal varieties, traditional lines, and breeding materials. The samples are held at minus eighteen degrees Celsius in sealed packets. To protect against the loss of the main collection by fire or equipment failure, the project holds a duplicate set in a separate location. Since 2021 the duplicate has been kept in a dedicated zone at the Dunmarrow depot of the Merrow Cold Chain, whose director, Dr. Farouk Haidari, agreed to provide secure storage under a service contract.
+
+The zone at Dunmarrow was a freezer room with its own refrigeration unit, connected to the depot's main power supply. In the contract, Merrow guaranteed that the room would stay below minus fifteen degrees, and undertook to alert Seedvault North immediately if the temperature rose above minus twelve.
+
+What happened
+
+The incident was one of several effects of the electricity brownout of 14 November 2023, which was caused by the loss of an offshore wind farm's export cable during a storm. At about 15:10 the regional grid's voltage fell sharply as the Lumen Grid Company shed load to compensate for the loss of generation. The voltage dip lasted several seconds and was followed by a period of unstable supply for about six hours.
+
+At the Dunmarrow depot, the voltage dip caused the main compressors of the freezer room to trip on protective relays. The depot's diesel generators started as designed, but the compressors, which were designed to restart automatically when power returned, did not do so. A fault in the restart sequence, which had not been exposed in routine tests, left the freezer room's compressors locked out. The depot's monitoring system recorded the rising temperature and raised an alarm, but the alarm was sent to a duty officer who was at that time occupied by an unrelated problem at another part of the depot.
+
+The temperature in the seed zone rose slowly, because the room was well insulated, and reached minus ten degrees by about 21:00. At 22:40 a night supervisor noticed the alarm on the screen and called the refrigeration chief, Cosmo Bhatt. Bhatt reset the compressors manually, and the temperature began to fall at about 23:30. But the room had spent more than eight hours above minus twelve degrees, reaching a peak of minus four degrees.
+
+The damage
+
+Seeds that are stored dry and cold can survive for decades, but warming accelerates their deterioration, and a period of several hours at above-freezing temperatures can reduce their ability to germinate. Raghunathan's laboratory tested samples from every packet in the zone over the following six weeks. The tests showed that most of the traditional lines, which had been dried to a very low moisture content, had survived the excursion, but that many of the breeding lines, which had been stored at a slightly higher moisture content, had lost a significant part of their viability.
+
+In total, 31 percent of the breeding lines in the duplicate bank were judged to be no longer viable. Most of them were lines that were also held in the main collection at the Institute, so the loss was recoverable, but 14 lines, which had been transferred to Dunmarrow after the main collection's last inventory, existed nowhere else.
+
+Response
+
+Raghunathan was informed of the event at 06:00 the next morning, after Haidari had completed his own review. She went immediately to Dunmarrow and, with the depot staff, moved the surviving packets into the depot's backup room, which was operating normally. She notified the Marrow Institute's director, Professor Ottoline Brandvik, and the chair of the Verdant Seeds Cooperative, Imogen Fairbairn.
+
+The Seedvault North team spent the next two months testing the surviving samples and planning the recovery. For the 14 lines that existed only at Dunmarrow, the team sought help from partner farmers, who had grown some of them in trials and had retained small amounts of seed. Eleven of the 14 were recovered in this way; three were lost permanently.
+
+Investigation
+
+Haidari asked an external refrigeration consultant to investigate the failure at the depot, and Raghunathan reviewed the report on behalf of the project. The investigation found three causes: the fault in the compressor restart sequence, the failure of the alarm to reach a person able to act on it, and the lack of an automatic transfer of the seed zone's contents to the backup room. The depot's monthly tests had always been carried out with normal grid voltage and had never simulated a voltage dip followed by a restart.
+
+Recommendations and actions
+
+The consultant recommended that the restart sequence be corrected and tested with voltage dips. Alarms for critical zones should be sent to two people and should escalate automatically if not acknowledged within five minutes. Seed zones should have a separate power supply from a dedicated battery. The contract between the two projects should also be revised so that the duplicate stock is divided between two depots.
+
+Haidari accepted all of these recommendations, and the project installed a dedicated battery bank for the seed zone in January 2024. The revised contract, signed in April 2024, divides the duplicate bank between the Dunmarrow and Mossgate depots, so that no single failure can affect more than half of it.
+
+Recovery of the seed bank
+
+The rebuilding of the 31 percent of breeding lines took until the summer of 2024 and cost about 640,000 crowns. It delayed the barley program by eight months, because the team had to divert field plots and staff to regrow the lines. Olumide Hartigan, the breeding manager, coordinated the work, and Beatrix Nakamura, the field manager, provided additional plots on the Corran Heights terraces.
+
+The Verdant Seeds Cooperative contributed 120,000 crowns toward the cost, and many of its members volunteered to grow lines on their own farms. Fairbairn said that the incident had reminded the members how much they depended on the project, and strengthened their support for it.
+
+Lessons
+
+Raghunathan wrote that the lesson was that redundancy needs to be genuine. Two copies of a seed bank in two places would seem to be a safe arrangement, but the second copy had a hidden dependency on the same electricity grid and the same type of equipment as the first. She recommended that all seed banks in the region be reviewed for similar dependencies. Brandvik, who supervised Raghunathan's doctorate and has directed the Institute since 2013, supported the recommendation and asked the Institute's audit team to carry out the review, a task given to Dr. Kasper Idowu.
+
+The brownout and the other consequences
+
+The brownout of 14 November also affected the Isotope Works, which lost a production run, and several other users. These events are described in separate reports. The Calder Reach Development Board, which received all the reports, observed that the November storm had revealed how much of the region's critical activity depended on the continuous operation of a single power cable.
+
+
+Annex A: Technical detail and chronology
+
+How seeds are stored. Seed viability depends mainly on moisture content and temperature. Seeds dried to about five percent moisture and kept at minus eighteen degrees Celsius can remain viable for decades. The traditional lines in the Seedvault North bank had been dried to four to five percent. The breeding lines, which had been produced in recent seasons, were at about seven percent because they had been dried quickly in a field laboratory to meet a deadline. At a higher moisture content, the seeds are more sensitive to temperature excursions because tiny ice crystals can form and damage the cells when they refreeze.
+
+Tests. Viability was measured by germination tests, in which 50 seeds from each packet were sown on moist paper and counted after ten days. Samples with germination below 85 percent were classed as no longer viable for conservation purposes. Of the 412 breeding lines in the Dunmarrow duplicate, 128 fell below the threshold, which is 31 percent. Of the 1,640 traditional lines in the zone, 37 fell below the threshold, 2.3 percent.
+
+The temperature record. The data logger in the seed zone recorded the temperature every minute. It showed minus eighteen degrees until 15:12, a slow rise to minus fourteen by 18:00, minus twelve by 19:10, minus ten by 21:00, a peak of minus four degrees at 23:05, and a fall back to minus seventeen by 03:30. The period above minus twelve lasted 8 hours and 20 minutes.
+
+Why the alarm failed. The alarm was configured to send an email and a text message to the on-duty officer's console when any zone rose above minus fifteen degrees. The message was sent at 17:05, but the officer, who was dealing with a train delivery of goods that had been delayed by the brownout, did not look at the console for more than five hours. The depot had no rule that the officer must not be assigned other work, and the alarm did not escalate. The depot's quality manager, Henrietta Loewen, learned of the alarm only at 20:30, and went to deal with the vaccine consignment first, which she judged to be more urgent.
+
+Recovery. Of the 128 lost breeding lines, 114 also existed in the main collection at the Marrow Institute and were regrown in the 2024 season. For the 14 lines held only at Dunmarrow, the project contacted twenty partner farms. Eleven were recovered from seed that the farmers had kept. Three, designated BW-211, BW-217, and BW-230, could not be recovered, and the project estimated that losing them cost about two years of breeding progress on one drought tolerance trait.
+
+Costs. The recovery required 640,000 crowns, of which 410,000 was for the regrowth of lines, 130,000 for extra laboratory work, and 100,000 for extra labor on the partner farms. The Verdant Seeds Cooperative contributed 120,000 crowns, and the Marrow Institute's core budget covered the rest. Merrow Cold Chain, under its contract, paid the project a refund of the year's storage fee and compensated it for 150,000 crowns of the costs, but the contract limited its liability.
+
+Institute review of seed banks. At the request of Professor Brandvik, Dr. Kasper Idowu reviewed the storage arrangements for the Institute's other collections, including those of a native plant seed bank and a microbial culture collection. The review, completed in March 2024, found that two of the three collections had a similar hidden dependency on a single power supply, and made recommendations for independent backup power, remote monitoring, and the dispersal of duplicate stocks.
+
+Seedvault North's changes. Beyond the revised storage agreement, Raghunathan's team changed the way breeding lines are dried, standardizing the moisture content at five percent. They also introduced an inventory of the main collection every six months, so that all lines held elsewhere are accounted for in the main store. A new rule requires that every transfer of lines to the duplicate store be checked by two people.
+
+Effect on the barley program. The barley program's schedule slipped by eight months, because the plots and staff had to be diverted to regrow lines. The first barley trials, originally planned for 2025, were moved to 2026. Raghunathan told the Cooperative that the delay was regrettable but that the quality of the work had not been compromised.
+
+Follow-up. In the autumn of 2024 the Cooperative's technical committee reviewed the recovery and concluded that the project had managed the incident well and that the new arrangements were sound. Fairbairn proposed that the Cooperative fund a second cold store at Corran Heights, which would provide an independent third site, and the proposal is being studied.

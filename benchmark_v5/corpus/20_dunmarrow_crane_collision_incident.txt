@@ -1,0 +1,74 @@
+Incident Report: Crane Collision at Dunmarrow Port, August 2022
+
+Summary
+
+At 02:20 on Wednesday 17 August 2022 two automated container cranes at the Dunmarrow Port Automation project collided while loading a ship at the main quay. No one was injured, since the quay is cleared of staff during automated night operations, but one crane's boom was bent, the other lost a spreader, and a stack of containers was crushed. The cost of the damage was 2.9 million crowns. The investigation was led by Lucan Obuya, the head of the Calder Reach Development Board's audit office, and concluded that the collision was caused by timing drift originating at the Lodestar Timing Station, combined with an absence of independent collision protection in the cranes' control design.
+
+The system and its assumptions
+
+The port's eight automated cranes move along the quay on rails, and a central scheduling system plans their movements so that two cranes never occupy the same part of the quay at the same time. Each crane reports its position every ten milliseconds, with a time stamp, and the scheduling system uses the stamps to place every crane in a common frame. The time reference comes from the Lodestar Timing Station at Cairn Head.
+
+The project's lead, Cormac Adebayo, and the control room chief, Stellan Marsh, had designed the safety logic around the assumption that the timing signal would always be accurate. Each crane had a basic safety controller that would stop it if a person entered its working area, but the controllers did not cover crane-to-crane collisions, which were considered to be the scheduling system's responsibility. The designers had decided that independent crane-to-crane sensors would add cost and complexity without a corresponding benefit.
+
+The night of 16 to 17 August
+
+Late on 14 August lightning had damaged antenna 3 at Lodestar, and the quality of the timing signal had started to degrade. The signal arrived at the port with a drift of about 7 microseconds a day, which meant that by the night of the 16th it was about 20 microseconds off. In itself this would be tolerable, but the port's two main crane controllers took their time from different fiber paths, and their drifts were slightly different.
+
+At 01:50 on 17 August, cranes 3 and 4 were assigned adjacent lanes along the hull of the ship Thessaly Star, which was being loaded with containers. The scheduling system calculated that the booms would pass each other with a clearance of seven meters. The actual positions, however, were off by more than six meters, because each crane's controller had computed its position with a slightly different time offset. The real clearance was close to zero.
+
+At 02:20 the two booms touched. The control room operators, who were watching on cameras, saw the problem about four seconds before the contact and pressed the emergency stop, but the heavy booms could not be stopped in time. Crane 3's boom bent upward, and crane 4's spreader, the frame that grips containers, was torn off and fell on a stack of containers on the quay.
+
+The control room's reaction
+
+Marsh, who was in the control room, immediately halted all the cranes and called Adebayo. The control room's logs showed that the system's own time-quality monitor had reported an anomaly in the timing signal at 20:10 the previous evening, but the monitor was set to a threshold that was too wide and the warning was filed in a log that nobody was watching. The duty desk at Lodestar, which worked through its customers in alphabetical order, had not yet reached Dunmarrow.
+
+Investigation
+
+Adebayo asked the Calder Reach Development Board's audit office to carry out an independent investigation. Lucan Obuya led a team of four, including a specialist in industrial control systems. They collected the control system's logs, the cranes' position records, and the video from the quay cameras, and interviewed the operators and engineers.
+
+The investigators were able to reconstruct the cranes' positions as the system perceived them and as they actually were. By comparing the position logs with an independent measurement taken from a laser scanner on crane 3, they showed that the discrepancy had grown steadily during the night, from less than one meter at midnight to more than six meters at the time of the collision. They also showed that the discrepancy was the result of the timing difference, and not of a fault in the cranes' sensors or mechanics.
+
+Obuya then traced the origin of the timing drift. The port's reference time came from the Lodestar Timing Station through the Hollin Fibre Backbone. The station had lost the use of one of its antennas to lightning on 14 August. The investigators contacted Dr. Anneliese Prowse, who confirmed the timeline and provided the station's data.
+
+Findings
+
+The audit office's report identified four causes. The immediate cause was the divergence of the two crane controllers' clocks, each of which was driven by the degraded timing signal. The second was the lack of an independent crane-to-crane collision protection. The third was the failure to act on the time-quality warning, which had been generated but not noticed. The fourth was the slow notification from Lodestar's duty desk.
+
+The report commented that the scheduling system's design had been competent in its own terms but was fragile: it relied on a single assumption, the accuracy of the timing signal, and the failure of that assumption had caused a physical accident. Obuya wrote that this kind of single point of failure is typical of highly automated systems, and that independent protection layers should be provided wherever a failure could injure people or damage equipment.
+
+Recommendations and actions
+
+The report made seven recommendations. The project should install independent collision sensors on every crane, using radar or laser measurements of the distance to the nearest neighbor. The scheduling system should raise an alarm and slow the cranes when the timing quality falls. The monitor's threshold should be tightened and its warnings displayed prominently. The project should adopt a slow mode in which cranes run at reduced speed using only their own sensors if timing is lost. Regular drills for timing loss should be held with Lodestar. The project should keep a local backup clock at the port. And the control room's logs should be reviewed by a named person each shift.
+
+Adebayo accepted all recommendations. The collision sensors were fitted to all eight cranes by the end of October 2022, and the slow mode was trialed in November 2023 and adopted in 2024. The damaged cranes were repaired by the manufacturer and returned to service by mid-October, and the insurers paid most of the repair costs. Wilhelmina Odhiambo, the deputy director, organized the re-training of the control room staff.
+
+Financial and reputational effects
+
+The damage cost 2.9 million crowns, of which the insurers paid about 2.2 million. The loss of operations lasted nine days for the two cranes and a few hours for the others. The Harbourgate Mutual Bank, which financed the project, asked for a copy of the investigation report. Its chief risk officer, Emeka Lindqvist, accepted the findings and did not seek to change the loan terms.
+
+The incident also affected Dunmarrow Port's relations with shipping lines. Two lines asked for assurances about the reliability of the automated terminal, and Adebayo gave a presentation on the corrective measures at the next shipping lines meeting. Strand & Keel Shipping, whose trains serve the port, said it would continue to rely on the terminal, and its chief executive, Ravindra Kallenbach, praised the openness of the report.
+
+Wider lessons
+
+Obuya's report was published in October 2022 alongside the reports on the other two incidents of that week. In its introduction, he noted that the incidents had a common root but were investigated by different teams, and that the Board should create a mechanism for investigating the combined effect of a single fault on several systems. This recommendation led to the regional dependency review of 2023. Adebayo has said that of all the changes the project made, the one he values most is the habit of asking, in every design review, "what do we do if this signal is wrong?"
+
+
+Annex A: Technical detail and chronology
+
+Crane structure and the damage. The cranes at the main quay are rail-mounted gantry cranes with a span of 36 meters and a trolley that moves along a boom 52 meters long. Each crane weighs about 640 tonnes. On the night of the collision cranes 3 and 4 were working adjacent bays on the ship's deck. The boom of crane 3 was bent about 1.4 meters upward at its outer third, a deformation that required the replacement of two sections. Crane 4's spreader, a frame weighing eleven tonnes, was torn from its hoist ropes and fell about nine meters onto a stack of three containers, which were crushed. The ropes were later replaced.
+
+How the system computed positions. Each crane's position was measured by an absolute encoder on its drive wheels and by a laser scanner that read reflective markers along the rails. The controller combined the two measurements into an estimate of the crane's position and sent it, with a time stamp, to the scheduling system. The scheduling system predicted each crane's position over the next two seconds, using the time stamps to compensate for the delay in the measurements. If the time stamps were wrong, the predicted positions would be wrong in proportion to the crane's speed.
+
+Why drift mattered. The cranes moved along the quay at about 3 meters per second. A timing error of 2 milliseconds, at that speed, produces a position error of 6 millimeters. The errors in this case were much larger, because the two crane controllers had accumulated different offsets of about two seconds in their internal clocks. The investigators found that the controllers disciplined their internal clocks to the incoming time signal at a slow rate, so that a sudden change in the signal was absorbed gradually, which meant that a persistent drift in the signal translated into a growing divergence between controllers that took their time from different network paths.
+
+Chronology. At 20:10 on 16 August the time-quality monitor logged a warning. At 23:30 the shift changed and the new control room staff were not told of the warning. At 01:50 on 17 August cranes 3 and 4 were assigned to bays 14 and 15 on the Thessaly Star. At 02:16 crane 3 began a long traverse toward bay 15 while crane 4 was lowering a container. At 02:19:56 a control room operator, Prakash Nwosu, noticed on the overhead camera that the two booms were converging, and pressed the emergency stop at 02:20:03. The booms touched at 02:20:07.
+
+Cost breakdown. The repair of crane 3's boom cost about 1.35 million crowns, crane 4's spreader and ropes about 0.62 million, and the crushed containers and their contents about 0.48 million. The remaining 0.45 million was the cost of the salvage operation, the inspection of the other six cranes, and the investigation. The insurers' payment of about 2.2 million crowns covered most of the equipment costs and left the project to meet the deductible and the lost operating time.
+
+Operational impact. The two damaged cranes were out of service for nine days. The remaining six cranes were inspected and returned to service within 24 hours. The terminal's throughput for the week fell by about 22 percent, and the average time containers spent in the yard rose to 33 hours. Two ships were diverted to a neighboring port.
+
+Shipping lines and customers. Strand & Keel Shipping reduced its train schedule to the port for three days to match the lower throughput, and its chief executive, Ravindra Kallenbach, said that the company's contract with the port allowed this. The shipping lines' association wrote to the port company to ask for a full report, which was provided in October 2022.
+
+Corrective measures in detail. The independent collision sensors installed in October 2022 are millimeter-wave radar units mounted on each crane's boom end, which measure the distance to the nearest object in the direction of travel. They are connected to a safety controller that stops the crane if the distance falls below a threshold that depends on speed, regardless of the scheduling system's instructions. They were tested by Stellan Marsh's team with a dummy target, and were found to stop a crane from its full speed within 4 meters. The slow mode, introduced after trials, reduces speed to 0.5 meters per second and allows the crane to rely on its radars and its laser scanner alone.
+
+Independent assessor's review. The safety assessor appointed under the terms of the Harbourgate Mutual Bank loan reviewed the investigation report in November 2022. The assessor concluded that the corrective measures were adequate and recommended that the project report each quarter on near misses, a practice that continues.

@@ -1,0 +1,88 @@
+Incident Report: Merrow Cold Chain Dunmarrow Depot Compressor Lockout, November 2023
+
+Summary
+
+During the electricity brownout of 14 November 2023, the main refrigeration compressors at the Dunmarrow depot of the Merrow Cold Chain project tripped off and failed to restart. Seven of the depot's eleven temperature zones warmed up over a period of between five and nine hours before the compressors were restored. Several customers' consignments were put at risk, and some were lost, including the duplicate seed bank of the Seedvault North project. A consignment of vaccines was saved by an emergency transfer. This report was written by the project's director, Dr. Farouk Haidari, and reviewed by the St. Idris Hospital Trust and the medicines regulator.
+
+The depot's cooling and power systems
+
+The Dunmarrow depot is a warehouse of 18,000 square meters with eleven temperature zones, from a deep-freeze hall at minus seventy degrees to chilled rooms at four degrees. Each group of rooms is cooled by a central refrigeration plant with several compressors. The depot is supplied with electricity by the Lumen Grid Company through two separate connections, and has two diesel generators and a battery bank. In the event of a power failure, the generators are designed to start within fifteen seconds and take over the load.
+
+The refrigeration chief, Cosmo Bhatt, carried out a test of the generators and the compressor restart sequence every month, by simulating a loss of mains power. The tests had always passed.
+
+The brownout
+
+The brownout of 14 November was caused by the loss of the Ferrous Bay Offshore Wind farm's export cable during a storm. At 15:08 the voltage of the regional grid collapsed, and the Lumen Grid Company shed load across the region to stabilize the system. For the following six hours, the voltage fluctuated around its nominal value.
+
+At the depot, the first voltage dip caused the protective relays of the compressors to trip. This is a normal protective response: a compressor's motor can be damaged if it is run at low voltage. The generators started within fourteen seconds, and the depot's controls moved the loads onto them, as designed. The compressors were then supposed to restart automatically in sequence, a few seconds apart, to avoid an overload of the generators.
+
+The restart fault
+
+The compressors of the main plant did not restart. The investigation found that the restart sequence had a flaw that had not been revealed by the monthly tests. When the compressors tripped on a voltage dip, the control system recorded each trip as a protection fault, and the programming required a person to acknowledge the fault locally before the compressor could be restarted. In the monthly tests the power was cut cleanly, the compressors were switched off by the controls rather than tripped by protection, and no fault was recorded.
+
+As a consequence, the compressors remained locked out for as long as nobody acknowledged the fault. The depot's monitoring system raised an alarm when the temperatures began to climb, but the alarm was sent to the on-duty officer's console, and at that moment the officer was dealing with an unrelated problem: the supply of a different customer's goods, which had arrived by train.
+
+The temperature excursion
+
+The seven affected zones warmed at different speeds depending on their size and insulation. The smaller rooms, including the zone that held the Seedvault North duplicate seed bank, reached minus ten degrees within about six hours. The larger chilled rooms and the deep-freeze hall warmed more slowly and were mostly within range for the first four hours.
+
+At about 22:40 a night supervisor noticed the alarm banner and called Bhatt, who arrived at the depot at 23:10 and acknowledged the compressor faults. The compressors restarted at 23:30, and temperatures began to fall. By 02:00 all zones were back within range, though several consignments had spent hours outside their permitted limits.
+
+The vaccine consignment
+
+One of the zones held a consignment of ultra-cold vaccines belonging to the St. Idris Hospital Trust, which required a temperature below minus sixty degrees. The deep-freeze hall's own temperature rose to minus 51 degrees at its peak, and the depot's quality manager, Henrietta Loewen, noticed at 20:30 that the consignment was in danger, since the vaccine's data sheet allowed only a limited time above minus sixty. She did not wait for the compressors. She organized the emergency transfer of the consignment to a mobile freezer unit, which was loaded onto a truck and taken to the St. Idris hospital's own ultra-cold store, arriving at 21:50. The consignment's recorded temperature stayed within the permitted excursion, and the trust's pharmacists confirmed that the vaccines were safe to use.
+
+Losses
+
+The depot's customers lost goods worth about 1.6 million crowns, mostly food products and some pharmaceutical samples. The largest loss in scientific terms was the duplicate seed bank of Seedvault North, about 31 percent of whose breeding lines were no longer viable after the temperature excursion. This is described in a separate report. The depot's own costs were about 210,000 crowns for the investigation and repairs.
+
+Haidari reported the incident to the medicines regulator, which has authority over the storage of pharmaceuticals. The regulator reviewed the report and the response, and accepted that no pharmaceutical product that had gone outside its limits had been released to patients.
+
+Investigation
+
+Haidari commissioned an external refrigeration consultant to investigate. The consultant reviewed the depot's control programs, the alarm logs, and the monthly test records. The consultant's report made four main findings. The compressors' restart logic required local acknowledgement of protection faults, which was inappropriate for a facility that must restart without human intervention. The monthly tests did not replicate a protection trip. The alarm system did not escalate. And there was no automatic transfer of sensitive stock to a backup room.
+
+Corrective actions
+
+Bhatt's team rewrote the restart logic so that compressors restart automatically after a protection trip caused by a voltage dip, after a short delay. The monthly test was changed to include a simulated voltage dip. Alarms for critical zones are now sent to two people at once and escalate to the director if not acknowledged within five minutes. A dedicated battery bank was installed for the seed zone, and the sensitive stock is now moved into a backup room automatically when a temperature limit is exceeded.
+
+Rojas, the deputy director, introduced a protocol under which one member of the depot's team is named every shift as the person responsible for watching the critical alarms, with no other duties. The depot also added a second generator at Dunmarrow, which was commissioned in March 2024.
+
+Relations with customers
+
+Haidari wrote to every customer within 48 hours of the incident, explaining what had happened and offering a full account. The St. Idris Hospital Trust, which was the largest customer, said that it appreciated both the quality of the emergency response and the candor of the report. The Verdant Seeds Cooperative, whose stored seed had also been affected, asked for the depot's performance targets to be written into its contract.
+
+Raghunathan, the director of Seedvault North, agreed with Haidari that the duplicate stock should be divided between the Dunmarrow depot and the Mossgate depot, so that no single failure could affect more than half of it. Haidari has also proposed to the Calder Reach Development Board that a third depot be built inland, to provide geographic redundancy.
+
+Lessons
+
+Haidari said that the most important lesson was about testing: the depot's monthly tests had given the team confidence for two years, but they had not tested the scenario that actually occurred. He now asks his team to prepare, each quarter, a list of the ways in which their tests differ from reality, and to address the three most important differences.
+
+Relationship to the regional picture
+
+The brownout that caused the compressor lockout affected several other facilities. The Calder Reach Development Board's audit office concluded that the depot's problem was typical of many in the region: facilities that had backup power but had not tested their reaction to the specific conditions of a voltage collapse. The office recommended that all critical facilities in the region test their ride-through capability, and Haidari offered to share the depot's revised test procedure with other operators.
+
+
+Annex A: Technical detail and chronology
+
+The refrigeration plant. The Dunmarrow depot's refrigeration uses ammonia as the refrigerant, in two central plants. Plant A serves the deep-freeze hall and four freezer rooms at minus 18 degrees, using eight screw compressors. Plant B serves the chilled rooms at plus 2 to plus 8 degrees, using five compressors. Ammonia is circulated through evaporators in each room, and heat is rejected through evaporative condensers on the roof. The whole system is controlled by a programmable controller with a redundant partner and a supervisory system in the control room.
+
+The restart logic. Each compressor motor is protected by a relay that trips on undervoltage. After a trip, the controller marks the compressor as faulted. In the original programming, a fault marked "protection trip" had to be reset by a person at the local panel or on the supervisory screen, to prevent a compressor from restarting automatically after a mechanical fault. The programming did not distinguish a trip caused by a short voltage dip from one caused by a genuine fault.
+
+The test. The depot's monthly test simulated a mains failure by opening the main incomer breaker. This caused a clean loss of voltage, which the controller recognized as a mains failure, and it initiated the planned sequence: the compressors were stopped by the controller, the generators started, and the compressors restarted. The compressors were not tripped by their own protection relays in this test, because the controller de-energized them before the voltage collapsed.
+
+Chronology. At 15:08:14 the voltage dipped to 77 percent for three seconds. At 15:08:15 the undervoltage relays of all thirteen compressors operated. At 15:08:28 the generators were connected and the supply was restored. At 15:08:30 the controller held the compressors in the faulted state. At 15:12 the first temperature alarm of the day occurred, a high-temperature warning for the deep-freeze hall. At 17:05 alarms for six more rooms followed. At 20:30 Henrietta Loewen realized that the vaccines were at risk. At 21:50 the vaccine consignment arrived at the hospital. At 22:40 the night supervisor noticed the alarm banner, and Cosmo Bhatt was called. At 23:10 Bhatt arrived and reset the faults. At 23:30 the compressors restarted. At 02:00 all rooms were within limits.
+
+Temperature peaks. The deep-freeze hall peaked at minus 51 degrees at 22:50 (limit minus 60). The freezer rooms at minus 18 reached between minus 9 and minus 4 degrees, depending on the room. The chilled rooms peaked at between 9 and 13 degrees. The seed zone was one of the freezer rooms and reached minus 4 degrees.
+
+Losses by customer. Food products worth about 0.9 million crowns were discarded as unsafe. Pharmaceutical samples and diagnostic reagents worth about 0.4 million crowns were also lost. Seed samples of the Verdant Seeds Cooperative worth about 0.3 million crowns were affected, and the duplicate seed bank of Seedvault North suffered the loss described elsewhere. Of the vaccines held in the depot, only the one consignment was at risk, and it was saved.
+
+The vaccine transfer in detail. Loewen's decision to move the consignment was based on the manufacturer's stability data, which allowed a total of 12 hours between minus 50 and minus 60 degrees. By 20:30 the consignment had been above minus 60 for about four hours, and the hall was still warming. She ordered a mobile ultra-cold unit, kept at the depot for the purpose, to be loaded with the consignment's 48 boxes. The transfer took 35 minutes, and the truck reached the hospital at 21:50. The St. Idris Hospital Trust's pharmacists reviewed the temperature logs and released the vaccines for use.
+
+The consultant's report. The external refrigeration consultant, Dagmar Winterbourne, visited the depot on 20 November and spent a week on the investigation. She made twelve recommendations in total, including the four that were accepted at once. Others included a review of every protection setting in the plant, a separate battery for the controllers, and the periodic testing of generators under load for several hours.
+
+Costs of the improvements. The rewriting and testing of the restart logic cost about 85,000 crowns. The seed zone's battery bank cost 140,000 crowns. The second generator at Dunmarrow, commissioned in March 2024, cost 460,000 crowns. The training program and the new alarm escalation system cost about 70,000 crowns. Haidari presented the costs to the project's board, which approved them in December 2023.
+
+Regulatory follow-up. The medicines regulator conducted a for-cause inspection of the depot in January 2024. It reviewed the incident report and the temperature records, and checked that all affected consignments had been quarantined and assessed. The inspectors found no breach of the license conditions. They commended the decision to move the vaccines and recommended that the practice of preparing emergency transfers be written into the depot's procedures, which was done.
+
+Customers' reaction. The Verdant Seeds Cooperative and the hospital trust each asked for a copy of the consultant's report. The St. Idris Hospital Trust's chief executive, Dr. Marguerite Anand, wrote that the trust was satisfied by the action taken, and its contract with Merrow was renewed for five years in the spring of 2024.

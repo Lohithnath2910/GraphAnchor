@@ -4,7 +4,9 @@ import logging
 import os
 import re
 import sys
+import time
 import uuid
+import numpy as np
 import spacy
 
 try:
@@ -193,56 +195,65 @@ def ingest_document(file: UploadFile = File(...)):
     chunks_col = get_chunks_collection()
     entities_col = get_entities_collection()
 
+    chunks_data = []
+    edges_data = []
+
     try:
+        for i, chunk_text_content in enumerate(chunks):
+            chunk_id = f"{doc_id}_{i}"
+            logger.info(f"[{fname}] chunk {i + 1}/{len(chunks)}")
+
+            chunk_emb = get_embedding(chunk_text_content)
+
+            chunks_col.upsert(
+                ids=[chunk_id],
+                embeddings=[chunk_emb],
+                documents=[chunk_text_content],
+                metadatas=[{"chunk_id": chunk_id, "doc_id": doc_id, "filename": fname}]
+            )
+            staged_chunk_ids.append(chunk_id)
+
+            chunks_data.append((chunk_id, doc_id, chunk_text_content))
+
+            try:
+                extraction = extract_graph_from_chunk(chunk_text_content)
+            except Exception as e:
+                logger.error(f"Extraction failed for chunk {chunk_id}: {e}")
+                extraction_failures += 1
+                continue
+
+            total_entities += len(extraction.entities)
+
+            for rel in extraction.relations:
+                src_raw = rel.entity.strip()
+                tgt_raw = rel.target_entity.strip()
+
+                src_canonical, src_conf = place_entity(src_raw, staged_entities=staged_entity_ids, chunk_context=chunk_text_content)
+                tgt_canonical, tgt_conf = place_entity(tgt_raw, staged_entities=staged_entity_ids, chunk_context=chunk_text_content)
+
+                if not src_canonical or not tgt_canonical or src_canonical.lower() == tgt_canonical.lower():
+                    continue
+
+                edge_conf = min(src_conf, tgt_conf)
+
+                edges_data.append((src_canonical, rel.relation, tgt_canonical, chunk_id, edge_conf))
+                total_edges += 1
+
         with db_cursor() as cursor:
             cursor.execute(
                 "INSERT INTO documents (doc_id, content_hash, filename) VALUES (?, ?, ?)",
                 (doc_id, content_hash, file.filename)
             )
-            for i, chunk_text_content in enumerate(chunks):
-                chunk_id = f"{doc_id}_{i}"
-
-                chunk_emb = get_embedding(chunk_text_content)
-
-                chunks_col.upsert(
-                    ids=[chunk_id],
-                    embeddings=[chunk_emb],
-                    documents=[chunk_text_content],
-                    metadatas=[{"chunk_id": chunk_id, "doc_id": doc_id, "filename": fname}]
-                )
-                staged_chunk_ids.append(chunk_id)
-
+            for c_data in chunks_data:
                 cursor.execute(
                     "INSERT INTO chunks (chunk_id, doc_id, text) VALUES (?, ?, ?)",
-                    (chunk_id, doc_id, chunk_text_content)
+                    c_data
                 )
-
-                try:
-                    extraction = extract_graph_from_chunk(chunk_text_content)
-                except Exception as e:
-                    logger.error(f"Extraction failed for chunk {chunk_id}: {e}")
-                    extraction_failures += 1
-                    continue
-
-                total_entities += len(extraction.entities)
-
-                for rel in extraction.relations:
-                    src_raw = rel.entity.strip()
-                    tgt_raw = rel.target_entity.strip()
-
-                    src_canonical, src_conf = place_entity(src_raw, staged_entities=staged_entity_ids, chunk_context=chunk_text_content)
-                    tgt_canonical, tgt_conf = place_entity(tgt_raw, staged_entities=staged_entity_ids, chunk_context=chunk_text_content)
-
-                    if not src_canonical or not tgt_canonical or src_canonical.lower() == tgt_canonical.lower():
-                        continue
-
-                    edge_conf = min(src_conf, tgt_conf)
-
-                    cursor.execute("""
-                        INSERT INTO edges (source_entity, relation, target_entity, chunk_id, confidence)
-                        VALUES (?, ?, ?, ?, ?)
-                    """, (src_canonical, rel.relation, tgt_canonical, chunk_id, edge_conf))
-                    total_edges += 1
+            for e_data in edges_data:
+                cursor.execute("""
+                    INSERT INTO edges (source_entity, relation, target_entity, chunk_id, confidence)
+                    VALUES (?, ?, ?, ?, ?)
+                """, e_data)
 
     except Exception as e:
         logger.error(f"Ingest failed for doc {doc_id}: {e}. Rolling back staged ChromaDB entries.")
@@ -400,8 +411,43 @@ def get_entire_graph():
         logger.error(f"Failed to fetch full graph: {e}")
         raise HTTPException(status_code=500, detail="Failed to fetch entire graph.")
 
+# Words too common to identify an entity on their own ("farm", "port", "Institute" ...). An entity made only
+# of these words is never used as a graph entry point, and they are ignored when matching longer names.
+GENERIC_TOKENS = {
+    "project", "plant", "farm", "institute", "port", "station", "authority", "company", "facility", "team",
+    "system", "ground", "bank", "office", "quay", "valley", "wind", "rail", "signaling", "automation",
+    "hardware", "foundry", "lab", "site", "works", "depot", "freight", "industries", "safety", "dr", "prof",
+    "professor", "mr", "mrs", "ms",
+}
+
+MAX_GRAPH_CHUNKS = 8  # most extra chunks graph traversal may add to the vector top-k
+MAX_GRAPH_CANDIDATES = 80  # traversal chunks considered before keeping the MAX_GRAPH_CHUNKS most relevant
+
+def rank_graph_candidates(candidate_ids: list[str], query_emb: list[float], chunks_col, limit: int) -> list[tuple[str, float | None]]:
+    # Keeps the `limit` traversal chunks most similar to the question (cosine similarity on the stored chunk
+    # embeddings), instead of the first ones the traversal happened to reach. Falls back to traversal order
+    # (similarity None) if the embeddings cannot be read, so retrieval never breaks.
+    if len(candidate_ids) <= 1:
+        return [(cid, None) for cid in candidate_ids]
+    try:
+        got = chunks_col.get(ids=candidate_ids, include=["embeddings"])
+        ids = list(got["ids"])
+        embs = np.asarray(got["embeddings"], dtype=np.float32)
+        q = np.asarray(query_emb, dtype=np.float32)
+        sims = (embs @ q) / ((np.linalg.norm(embs, axis=1) * np.linalg.norm(q)) + 1e-9)
+        order = sorted(range(len(ids)), key=lambda i: (-float(sims[i]), candidate_ids.index(ids[i])))
+        return [(ids[i], float(sims[i])) for i in order[:limit]]
+    except Exception as e:
+        logger.warning(f"Graph chunk ranking by similarity failed, using traversal order: {e}")
+        return [(cid, None) for cid in candidate_ids[:limit]]
+
+def _distinctive_tokens(text: str) -> set[str]:
+    # Capitalised, non-generic words of an entity name ('Corvane battery recycling project' -> {'corvane'}).
+    words = re.findall(r"[A-Za-z0-9\-]+", text.replace("'s", ""))
+    return {w.lower() for w in words if w[0].isupper() and len(w) >= 3 and w.lower() not in GENERIC_TOKENS}
+
 def find_query_anchor_entities(query_text: str, query_emb: list[float], max_anchors: int = 3) -> list[tuple[str, float]]:
-    # Identifies starting graph entities using exact token matching and vector similarity.
+    # Identifies starting graph entities using exact name matching, distinctive-word matching and vector similarity.
     anchor_scores: dict[str, float] = {}
 
     try:
@@ -414,10 +460,18 @@ def find_query_anchor_entities(query_text: str, query_emb: list[float], max_anch
             known_entities = [row[0] for row in cursor.fetchall() if row[0]]
 
         q_lower = query_text.lower()
+        q_tokens = set(re.findall(r"[a-z0-9\-]+", q_lower.replace("'s", "")))
         for ent in known_entities:
-            # Use whole word boundary matching to prevent partial matches like 'he' or 'con'
+            ent_tokens = _distinctive_tokens(ent)
+            if not ent_tokens or len(ent.split()) > 6:
+                continue  # purely generic entity ('farm', 'port') or a run-on sentence fragment
+            # Whole-phrase match (prevents partial matches like 'he' or 'con')
             if re.search(rf'\b{re.escape(ent.lower())}\b', q_lower):
                 anchor_scores[ent] = 1.0
+            # Tolerant match: every proper-noun word of the entity is in the question, so 'Corvane battery
+            # recycling project' is found by 'Corvane' and 'Dr. Ines Varga' by 'Ines Varga'. Shorter names rank first.
+            elif ent_tokens <= q_tokens:
+                anchor_scores[ent] = 0.9 - 0.01 * len(ent.split())
     except Exception as e:
         logger.warning(f"Error querying known entities for substring match: {e}")
 
@@ -492,7 +546,9 @@ def rank_and_fuse_chunks(
             fused[cid]["source_type"] = "hybrid"
             fused[cid]["hop_distance"] = hop
         else:
-            composite = graph_score * 0.9
+            # Blend structural evidence (edge confidence and hop distance) with similarity to the question.
+            sim = g.get("similarity")
+            composite = graph_score * 0.9 if sim is None else 0.9 * (0.5 * graph_score + 0.5 * max(0.0, sim))
             fused[cid] = {
                 "chunk_id": cid,
                 "text": g.get("text", ""),
@@ -513,7 +569,11 @@ def query_chunks(
     k: int = Query(3, ge=1, le=20),
     enable_graph: bool = Query(True, description="Toggle graph traversal augmentation")
 ):
-    # Executes hybrid search combining vector retrieval and graph traversal to generate an answer.
+    return _run_query(q, k, enable_graph)
+
+def _run_query(q: str, k: int, enable_graph: bool, generate: bool = True):
+    # Executes hybrid search combining vector retrieval and graph traversal; generates an answer unless generate=False.
+    t0 = time.perf_counter()
     try:
         emb = get_embedding(q)
     except Exception as e:
@@ -522,6 +582,7 @@ def query_chunks(
 
     try:
         chunks_col = get_chunks_collection()
+        logger.info("query: vector search start")  # if a request ever stalls, the last log line shows which stage
         res = chunks_col.query(
             query_embeddings=[emb],
             n_results=k
@@ -557,13 +618,13 @@ def query_chunks(
                 current_frontier = {a[0] for a in anchor_entities}
 
                 with db_cursor() as cursor:
-                    for depth in range(2):  # Reduced from 6 to 2 to prevent extreme context drift
-                        if not current_frontier or len(traversed_edges_set) >= 60:
+                    for depth in range(4):  # 4 hops reaches four-link chains; chunks are ranked by similarity and capped below to limit drift
+                        if not current_frontier or len(traversed_edges_set) >= 150:
                             break
 
                         next_frontier = set()
                         for node in current_frontier:
-                            if len(traversed_edges_set) >= 100:
+                            if len(traversed_edges_set) >= 200:
                                 break
                             
                             if node in visited_nodes:
@@ -575,11 +636,11 @@ def query_chunks(
                                 FROM edges
                                 WHERE source_entity = ? OR target_entity = ?
                                 ORDER BY confidence DESC
-                                LIMIT 5
+                                LIMIT 10
                             """, (node, node))
 
                             for row in cursor.fetchall():
-                                if len(traversed_edges_set) >= 100:
+                                if len(traversed_edges_set) >= 200:
                                     break
                                 
                                 edge_key = (row[0], row[1], row[2])
@@ -610,7 +671,18 @@ def query_chunks(
             else:
                 graph_metadata = {"message": "No relevant entities found in graph for this query."}
 
-            needed_chunk_ids = list(traversed_chunk_ids - retrieved_chunk_ids)
+            # Chunks the graph can add: every chunk the traversal touched (nearest hop first, graph_results is in
+            # breadth-first order), then only the MAX_GRAPH_CHUNKS most similar to the question are kept so the
+            # answer prompt stays within the model's context window and carries the most relevant graph evidence.
+            candidate_ids = []
+            for e in graph_results:
+                cid = e.get("found_in_chunk")
+                if cid and cid not in retrieved_chunk_ids and cid not in candidate_ids:
+                    candidate_ids.append(cid)
+            candidate_ids = candidate_ids[:MAX_GRAPH_CANDIDATES]
+            ranked_graph = rank_graph_candidates(candidate_ids, emb, chunks_col, MAX_GRAPH_CHUNKS)
+            needed_chunk_ids = [cid for cid, _ in ranked_graph]
+            similarity_by_id = {cid: sim for cid, sim in ranked_graph}
             if needed_chunk_ids:
                 with db_cursor() as cursor:
                     placeholders = ",".join("?" * len(needed_chunk_ids))
@@ -618,7 +690,8 @@ def query_chunks(
                     for row in cursor.fetchall():
                         connected_chunks.append({
                             "chunk_id": row[0],
-                            "text": row[1]
+                            "text": row[1],
+                            "similarity": similarity_by_id.get(row[0])
                         })
         else:
             graph_metadata = {"message": "Graph traversal is disabled."}
@@ -633,15 +706,18 @@ def query_chunks(
         # Limit graph edges to top 25 to provide enough graph context without overwhelming
         top_graph_edges = sorted(graph_results, key=lambda x: x.get("confidence", 0), reverse=True)[:25]
 
-        try:
-            answer = generate_answer(
-                query=q,
-                vector_chunks=ranked_chunks,
-                graph_edges=top_graph_edges
-            )
-        except Exception as gen_err:
-            logger.error(f"Answer generation failed: {gen_err}")
-            answer = "Error generating answer from LLM. Please check Ollama connection."
+        logger.info(f"query: retrieval done in {time.perf_counter() - t0:.1f}s ({len(ranked_chunks)} chunks)")
+        answer = ""
+        if generate:
+            try:
+                answer = generate_answer(
+                    query=q,
+                    vector_chunks=ranked_chunks,
+                    graph_edges=top_graph_edges
+                )
+            except Exception as gen_err:
+                logger.error(f"Answer generation failed: {gen_err}")
+                answer = "Error generating answer from LLM. Please check Ollama connection."
 
     except HTTPException:
         raise
@@ -693,8 +769,8 @@ def get_answer_stream_endpoint(
     enable_graph: bool = Query(True, description="Toggle graph traversal")
 ):
     # Server-Sent Events (SSE) endpoint streaming grounded answer tokens in real time.
-    full_result = query_chunks(q=q, k=k, enable_graph=enable_graph)
-    
+    full_result = _run_query(q, k, enable_graph, generate=False)  # the answer is streamed below, not generated twice
+
     # query_chunks already applies the chunk limit to ranking_breakdown, 
     # but we also need to apply the edge limit for the stream_answer call.
     ranked_chunks = full_result.get("ranking_breakdown", [])

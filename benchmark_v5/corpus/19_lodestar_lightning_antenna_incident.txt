@@ -1,0 +1,84 @@
+Incident Report: Lightning Damage to Lodestar Antenna 3, August 2022
+
+Summary
+
+At about 23:15 on Sunday 14 August 2022, a lightning strike during a thunderstorm damaged antenna 3 at the Lodestar Timing Station on Cairn Head. The azimuth bearing of the dish was cracked and the antenna had to be taken out of service. For five days the station delivered a timing signal of reduced accuracy to its customers. The degraded signal contributed to three separate incidents in the region during the week: a series of fail-safe stops on the Gantry Line light rail network, a collision between two automated cranes at Dunmarrow Port, and the tripping of the Quarrel Hill Pumped Storage plant. This report was written by the station's director, Dr. Anneliese Prowse, for the Calder Reach Development Board.
+
+The station and its design philosophy
+
+Lodestar has three antennas, each tracking a different group of satellites. The control software compares the three readings and excludes any that disagrees. The designers had accepted that an antenna might fail from time to time, and had specified that the loss of one antenna should not interrupt service. The design was successful in a narrow sense: the station continued to produce a time signal throughout the five days. But the signal was less accurate, and the design did not anticipate the effect that this would have on customers.
+
+The station is exposed to the weather on a high headland. All three antennas are protected by lightning rods, and the electronics are protected by surge arresters and an earthing grid buried in the rock. The system had been inspected after every thunderstorm since opening, and had suffered only minor damage in three years.
+
+The storm
+
+The thunderstorm moved in from the sea at about 22:30 on 14 August. The weather observatory, which shares the Cairn Head site, recorded 61 lightning strikes within five kilometers of the antennas in the following hour. At 23:15 a strike hit the lightning rod on the pedestal of antenna 3, and a very large current passed down the pedestal's earthing conductor. A smaller current entered the antenna's drive motors through their cables, in spite of the surge arresters.
+
+The station's duty operator, Ronja Eklund's colleague Mattias Lindahl, saw an alarm on antenna 3's drive. The antenna's azimuth motor was straining against its bearing, which had cracked under the combined effect of the electrical surge and the mechanical shock. The antenna's control software shut the drive down after four minutes. Lindahl called Eklund, who is the operations chief, and Eklund called Prowse.
+
+Station response
+
+Prowse drove to the station overnight and arrived at about 01:30. By then the software had excluded antenna 3 from the timing solution, and the signal's quality indicator had been set to "degraded." The team confirmed that antennas 1 and 2 were healthy and that the clocks were unaffected. The station's system was working as intended, though with only two antennas, its ability to detect an error in the satellite data was reduced, and the time signal had begun to drift slowly.
+
+At 07:30, Prowse's deputy, Jun-seo Baek, calculated that the drift would reach about 40 microseconds by Wednesday if nothing was done, and that the antenna could not be repaired without a new bearing. The station's spare bearing was fitted to antenna 3 on the following day, but when the engineers tried to rotate the dish they found that the mounting frame, which had also been damaged by the strike, was distorted, and the dish would not move smoothly.
+
+Repair
+
+Prowse placed an urgent order with Ashgill Works, the casting plant of the Brannock Foundry Group, which had made the bearings and the mounting frames. The plant's manager, Yusra Demir, agreed to give the order top priority, and her team cast and machined a new bearing and a replacement mounting ring over the weekend, an operation that normally takes three weeks. The parts were delivered by road to Cairn Head on the afternoon of Thursday 18 August, and the station's engineers and two technicians from Ashgill Works fitted them overnight.
+
+Antenna 3 returned to service at 05:30 on Friday 19 August, and the timing signal returned to full accuracy by the following afternoon. The total period of degraded signal was five days.
+
+Warnings to customers
+
+The station had two ways of informing customers: a quality indicator broadcast with the signal and a telephone call from the duty desk. The indicator was set to "degraded" at 23:30 on 14 August, but only a few customers had connected it to their alarms. The telephone calls were made by the duty desk on Monday morning, but the duty desk worked through the customer list in alphabetical order, so that the Dunmarrow Port Automation project, which was near the end of the list, was not called until after the crane collision of Tuesday night.
+
+Prowse acknowledged in her report that the warning procedure had been inadequate. She had assumed that the quality indicator would be enough, and she had not checked whether the customers were using it.
+
+Consequences elsewhere
+
+The effects of the degraded signal were as follows. On Monday 15 August the Gantry Line's central system brought all trains on the equipped network to a stop for about four hours. On the night of Tuesday 16 August, two cranes at the Dunmarrow Port Automation project collided, causing damage of 2.9 million crowns. On Wednesday 17 August the Quarrel Hill Pumped Storage plant tripped off the grid for three hours. Each of these incidents has been investigated separately.
+
+Lodestar's own timing data showed that the signal had drifted at an average of 7 microseconds per day, which the engineers had not considered large. The three customers' systems had been designed with much tighter tolerances than the station's own specification.
+
+Findings
+
+The report recorded that the lightning protection worked as designed for the main structure but was inadequate for the drive cables of the antennas. The surge arresters had been selected for the typical strike currents on the headland, but the strike of 14 August was in the top one percent of observed currents. The report also found that the spare parts policy of one bearing was inadequate and that the quality indicator was not sufficient on its own.
+
+Actions
+
+Prowse's report proposed and the Board approved six measures. The station would hold two spare bearings and a spare mounting ring in its store. The surge protection on all antenna drive cables would be upgraded. The duty desk would telephone all customers simultaneously, using an automated system, at the first sign of degradation. A mandatory quarterly test of customers' alarm connections would be introduced. The station would be connected to a second timing source for cross-checking. And the station would provide customers with a standard guide on how to build a safe fallback for a loss of timing.
+
+The surge protection upgrade, costing 280,000 crowns, was completed in October 2022. The automated notification system was installed in September. The first quarterly test, in November, found that two customers still had not connected the quality indicator, and Prowse wrote to their directors personally.
+
+Regional response
+
+After the three incidents of the week, the Board's audit office, led by Lucan Obuya, carried out a review of all of them. Its summary report, published in October 2022, recommended that all projects in the region that depend on external timing should hold local backup clocks, and that the Board should commission a regional map of infrastructure dependencies. The Board accepted both recommendations.
+
+Hester Vandermeer, the chair of the Board, made a statement in which she praised the quality of the incident reports but warned that the Calder Reach should not allow its infrastructure to depend too heavily on a single station. The Board allocated funds for a feasibility study of a second timing site.
+
+Reflections
+
+Prowse said that the episode changed the way she thought about the station's purpose. Before 2022 she had seen Lodestar as a technical facility whose job was to produce a good time signal. Afterward she came to see it as a service whose customers needed to know when it was not working well. She now spends about a quarter of her time on customer engagement, which she regards as at least as important as the technical work.
+
+Baek, who worked with the Ashgill Works technicians during the night of the repair, added that the experience had shown how a regional supply chain can respond in an emergency. The plant's willingness to work through a weekend had saved at least two weeks, and the personal relationships between the station's engineers and the plant's staff had made it possible.
+
+
+Annex A: Technical detail and chronology
+
+The antenna structure. Each Lodestar antenna is a parabolic dish 4.5 meters in diameter, mounted on an elevation-over-azimuth positioner. The azimuth bearing is a four-point-contact ball bearing ring, 1.1 meters in diameter, which carries the weight of the dish and its mount, about 2.8 tonnes, and allows it to rotate. It is driven by two electric motors through a pinion that meshes with teeth cut in the outer ring. The bearing rings and the mounting flange were made at Ashgill Works from forged steel.
+
+Damage assessment. Examination of antenna 3 after the strike showed that a large current had passed through the pedestal and the bearing, arcing across the ball races. The arcs had pitted several of the balls and the race surfaces, and the thermal shock had cracked the inner ring in two places. The mounting flange was distorted by about 1.5 millimeters, enough to bind the dish when the bearing was replaced. The drive motors' windings were damaged by the induced surge, and had to be replaced.
+
+Lightning data. The weather observatory's strike log showed that the strike at 23:15 had a peak current of about 190 kiloamperes, measured by a network of detectors. Only about one strike in a hundred in the region exceeds 150 kiloamperes. The pedestal's earthing conductor had been designed for 100 kiloamperes, in accordance with the standard in force when the station was built, and the investigation noted that the standard had since been revised.
+
+Chronology. At 23:15 the strike occurred. At 23:19 the drive's overcurrent protection tripped. At 23:30 the control software completed the exclusion of antenna 3 and set the quality indicator to degraded. At 01:30 Prowse arrived. At 07:30 Baek reported the projected drift. On Monday 15 August, the duty desk telephoned customers between 08:00 and 11:30. On Tuesday 16 August, the spare bearing was fitted but the dish bound against the distorted flange. On Wednesday 17 August, Ashgill Works began casting a replacement flange and a new bearing set. On Thursday 18 August at 15:00 the parts arrived at Cairn Head, and fitting began. On Friday 19 August at 05:30 antenna 3 was returned to service, and the signal was back to full accuracy by 15:00.
+
+Drift measurements. The station's logs show that the time offset relative to the national reference grew from 2 nanoseconds before the strike to 14 microseconds by Monday evening, 28 microseconds by Tuesday evening, and 41 microseconds by Wednesday evening. After the repair, it fell back to 4 nanoseconds within twenty hours. Prowse concluded that the drift was caused by a bias in the solution when only two antennas were used, because one of the satellite groups tracked only by antenna 3 was lost.
+
+Costs. The repair cost about 520,000 crowns, including the replacement bearing set, the mounting flange, the drive motors, and the overtime of the Ashgill Works team. The surge protection upgrade cost a further 280,000 crowns. The station's own staff spent an estimated 900 hours on the incident and its aftermath. The consequential costs to customers were far larger: the three incidents of the week together cost more than 3.4 million crowns.
+
+Ashgill Works' role. The plant's manager, Yusra Demir, told the investigators that she had agreed to the rush order because the station's director had explained what was at stake. The plant's team cast the replacement flange from a pattern that had been kept from the original order, and the bearing rings were machined from forged blanks that the plant held in stock. Demir said that her team worked 38 hours over the weekend. The Lodestar Timing Station subsequently signed a maintenance agreement with the plant that gives it priority for emergency orders.
+
+Customer notification. After the incident, Prowse replaced the telephone-based procedure with an automated system that sends a message and a telephone call to every customer simultaneously within two minutes of the quality indicator changing. The system was tested in October 2022, when a deliberate degradation was announced to all customers in advance, and the average time for a customer to acknowledge the message was four minutes.
+
+Follow-up. The Board's audit office reviewed Lodestar's actions in the autumn of 2023 and concluded that all the measures from the incident had been implemented, and that the station had also begun a program to measure the effect of its signal on each customer's system. In 2024 the Board approved preliminary funds for the design of a fourth antenna and a second timing site.

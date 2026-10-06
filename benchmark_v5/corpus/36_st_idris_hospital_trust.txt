@@ -1,0 +1,98 @@
+Institution Profile: The St. Idris Hospital Trust
+
+The St. Idris Hospital Trust is the public body that runs the Calder Reach's hospitals and a network of clinics and community health services. It was established in 1994 as a successor to the old municipal hospital board, and it takes its name from the main hospital, St. Idris, on the northern edge of Skerrin. The trust employs about 5,300 people and serves a population of around 430,000. Dr. Marguerite Anand has been its chief executive since 2018.
+
+Services
+
+The trust operates the main hospital at St. Idris, with 640 beds, two smaller district hospitals at Mossgate and Wetmoor, and 34 clinics in rural and island communities. It provides emergency care, surgery, cancer treatment, maternity services, mental health care, and rehabilitation. The St. Idris hospital is the region's only trauma center and its only provider of radiotherapy and nuclear medicine.
+
+Innovation and infrastructure
+
+Under Anand, the trust has taken a leading role in the region's technical infrastructure. It owns the Isotope Works facility, which produces short-lived medical isotopes on the St. Idris campus, and it hosts the Larkspur Telehealth Network, which connects specialists to patients in remote clinics. It is a joint sponsor of the Merrow Cold Chain project, with the Calder Reach Development Board, and it is the largest customer of all three.
+
+The Isotope Works and nuclear medicine
+
+The Isotope Works was proposed after a supply failure in 2015 left the region's hospitals unable to perform certain scans for nine days. Anand, who was at that time the trust's medical director, led the proposal. The facility began production in 2018, and it now supplies about 380 doses a week. The trust uses isotopes from the facility for positron emission tomography scans, heart imaging, and a targeted therapy for prostate cancer, and it supplies other hospitals in the region and beyond. In November 2023 the facility lost a production run during a regional brownout, an experience that led the trust's board to approve a battery system to protect the cyclotron from voltage disturbances.
+
+The Larkspur Telehealth Network
+
+The trust's telehealth service, led by Dr. Sunniva Eldridge, has provided about 140,000 consultations since 2019. It allows patients in remote areas to see a specialist at the main hospital without traveling. The service runs over the Hollin Fibre Backbone, and it was disrupted for seven hours in June 2023 when a contractor cut the backbone's cable at Hollin Pass. The trust's board responded by asking for the network's resilience to be reported every quarter, as a clinical safety measure.
+
+The cold chain
+
+The trust's vaccines, biological medicines, and laboratory samples depend on the Merrow Cold Chain. The trust accounts for about 46 percent of the project's revenue. In the November 2023 incident at the Dunmarrow depot, a consignment of the trust's ultra-cold vaccines was rescued by an emergency transfer to the hospital's own store. The trust has since renewed its contract with Merrow for five years, and it has asked the project to maintain a documented plan for moving sensitive stock in an emergency.
+
+Governance and finances
+
+The trust is governed by a board of twelve, including the chair, Professor Lucinda Aberdeen, Anand as chief executive, non-executive directors with clinical and financial experience, and representatives of the Calder Reach Development Board and the regional councils. Its annual budget is about 610 million crowns, most of which comes from the regional health budget. It also earns income from the sale of isotopes and from research contracts.
+
+Clinical quality
+
+The trust is regulated by the national health inspectorate, which rated it "good" overall at its last inspection in 2023, and "outstanding" for its cancer services. It publishes data on waiting times, infection rates, and patient outcomes. Its biggest challenge is the waiting time for elective surgery, which averaged 19 weeks in 2023, above the national target.
+
+Research and education
+
+The trust works with the Marrow Institute of Applied Science and the regional university on research in medical physics, digital health, and cancer. It is a teaching hospital, training about 280 medical students and 190 nursing students at any time. The Institute's physicists contribute to the isotope facility's work, and the Institute's image analysis group is helping the telehealth network to develop an automated tool for screening retinal images.
+
+Digital health
+
+The trust has invested in an integrated electronic patient record, which is accessible to clinicians at the hospital, the district hospitals, and the clinics. It is also developing a patient portal that gives patients access to their records and appointments. Anand has made digital resilience one of the trust's strategic priorities, and the trust's board receives a quarterly report on the availability of the digital systems and the connections on which they depend.
+
+Staffing and wellbeing
+
+The trust has a persistent shortage of nurses and radiographers, and it recruits many staff from outside the region. It has built 120 apartments for key workers in Skerrin and operates a nursery for staff children. Anand has also introduced a "no blame" reporting system, which encourages staff to report errors and near misses without fear of discipline.
+
+Emergency planning
+
+As the region's only trauma center, the trust is the focus of the emergency plan for major incidents. The plan covers mass casualty events, power failures, and the loss of digital systems. After the events of 2022 and 2023, the trust revised its planning for infrastructure failures. It now maintains a list of its critical dependencies, which include the electricity supply, the data connections, the cold chain, and the isotope supply, and it tests its response to the loss of each in an annual exercise.
+
+Community and partnerships
+
+The trust runs a community outreach program that offers health checks in the villages of the mountain valleys, using a mobile clinic. It also partners with the Verdant Seeds Cooperative to provide health screening for farmers. Its charity, the St. Idris Foundation, raises about 3 million crowns a year for equipment and patient comforts.
+
+Plans
+
+The trust's strategy for the next five years includes a second cyclotron for the Isotope Works, an expansion of the telehealth network to 20 more clinics, and the construction of a new cancer center at St. Idris. It has also asked the Development Board to support a third depot for the Merrow Cold Chain inland, so that the region's vaccine reserve is not held in a single location. Anand has said that the trust's responsibility is not only to treat patients but to make sure the systems that treat them are resilient.
+
+
+Annex: Departments, programs, and the trust's dependencies
+
+Clinical departments
+
+The trust's clinical services are organized in six divisions. The division of cancer services, led by Professor Isidora Whitfield, includes medical and clinical oncology, radiotherapy, nuclear medicine, and the cancer center that is planned for construction. The division of emergency and acute care, led by Dr. Callum Redfern, runs the emergency department at St. Idris, the trauma unit, and the tele-stroke service in cooperation with the Larkspur Telehealth Network. The division of surgery, the division of women's and children's health, the division of mental health, and the division of community and rural services complete the structure.
+
+Nuclear medicine
+
+The nuclear medicine department at St. Idris performs about 14,000 scans a year, most of which depend on isotopes from the Isotope Works. The department's head, Dr. Gwendolen Abara, works with the facility's production manager, Dr. Linnea Ofori, to plan the weekly schedule. The department is also the trust's partner in research on the therapeutic isotope used for prostate cancer, for which the trust treated 118 patients in 2023.
+
+When the Isotope Works lost a production run in the brownout of November 2023, it was Dr. Abara's department that had to reschedule the scans of 190 planned patients. She told the board that the department had a plan for a short delay but not for a loss of two days, and the department has since added a "degraded mode" procedure that prioritizes patients by clinical urgency.
+
+The Larkspur Telehealth Network and the trust
+
+The telehealth service is led by Dr. Sunniva Eldridge, who reports to Anand through the director of strategy, Dr. Valentina Kowalski-Mensah. The service's outage in June 2023 was reviewed by the trust's patient safety committee, which concluded that no patient had been harmed but that the network's resilience should be reported to the board every quarter. The committee also asked the Hollin Fibre Backbone to give the trust notice of planned maintenance.
+
+Merrow Cold Chain and the vaccine reserve
+
+The trust's vaccine reserve, held at the Dunmarrow depot, is the region's main stockpile. It includes ultra-cold vaccines, which must be kept below minus sixty degrees, and routine vaccines held at refrigerator temperature. In November 2023, a consignment of ultra-cold vaccines was rescued from the depot after the failure of the refrigeration, thanks to a decision by the depot's quality manager, Henrietta Loewen, to move it to a mobile freezer unit. The trust's chief pharmacist, Dr. Barnaby Lindholm, confirmed that the vaccines were safe to use.
+
+The trust has asked Merrow to carry out a quarterly test of the transfer of sensitive stock, and has itself maintained a mobile ultra-cold unit at the hospital so that it can respond to a similar event.
+
+Infrastructure dependencies
+
+After the events of 2022 and 2023, the trust prepared a map of its critical dependencies. It found that the hospital depended on the regional electricity supply, on the fibre backbone for its digital systems and telehealth, on the cold chain for its vaccines, on the isotope facility for its scans, and on Strand & Keel Shipping for the transport of specialist cargo. Each of these had suffered a serious interruption in the previous two years, and the board asked for a mitigation plan for each.
+
+The plan includes a second battery system at the hospital, a second fiber route from the main hospital to the district hospital at Mossgate, an agreement with a neighboring region to supply isotopes in an emergency, and a commitment to hold at least ten days of critical medicines on site. The cost of the plan, about 4.6 million crowns over three years, was approved by the board in 2024.
+
+Research and teaching
+
+The trust is a partner in a regional research center on digital health, which it runs with the Marrow Institute of Applied Science. One of its projects is a study of the effect of remote monitoring on admissions for heart failure, led by Dr. Mireille Tan, the clinical chief of the Larkspur Telehealth Network. Another is a study of the safety of automated cancer imaging analysis.
+
+The trust's medical school affiliation brings about 280 medical students and 190 nursing students each year. The trust runs a training program for medical physicists, in cooperation with the Isotope Works, and about twelve physicists complete it each year. Anand has said that training the next generation of staff is the trust's most important contribution to the region's resilience.
+
+Governance and quality
+
+The trust's board meets monthly. It has committees for audit, quality and safety, finance, and strategy. In 2023 the quality and safety committee introduced a quarterly "digital and infrastructure resilience" report, which includes the availability of the backbone connections, the number and duration of outages, the results of exercises, and the status of actions from past incidents. The first report was received in January 2024.
+
+Charity and the community
+
+The St. Idris Foundation raised about 3 million crowns in 2023, of which 1.2 million paid for a second ultrasound machine for the rural clinics, and 0.8 million for a patient transport scheme in the mountains. The trust's volunteer program has about 600 volunteers, who help in the hospital, accompany patients, and run a book trolley on the wards.

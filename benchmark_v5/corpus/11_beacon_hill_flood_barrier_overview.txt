@@ -1,0 +1,94 @@
+Beacon Hill Flood Barrier: Project Overview
+
+The Beacon Hill Flood Barrier is a movable storm-surge barrier across the Beacon estuary, on the southern coast of the Calder Reach, a few kilometers east of Dunmarrow. It protects some 14,000 homes and the Dunmarrow Port from tidal flooding, and it replaces an old earth embankment that had been overtopped twice in living memory. The barrier was completed in 2021 and consists of six steel gates that can be closed within thirty minutes when a storm surge is forecast.
+
+Ingrid Solheim has led the project since 2018. Her deputy is Dariusz Imani, who manages the operation and maintenance of the gates, and the hydraulics chief is Pilar Wanjiru, who is responsible for the machinery that moves them. The project employs 68 people.
+
+The flood risk
+
+The Beacon estuary is exposed to storm surges, in which strong onshore winds and low atmospheric pressure combine with a high tide to raise the sea level several meters above its normal height. In 1987 a surge flooded the lower streets of the town of Beacon Hill, and in 2007 another came within a few centimeters of doing so. Climate change is raising sea levels and is expected to make such surges more frequent, so the Calder Reach Development Board commissioned a major flood defense in the late 2010s. The Board funded the project with 97 million crowns, making it one of the largest investments in the region.
+
+The gates
+
+The barrier consists of six rotating sector gates, each 38 meters wide and about 14 meters high. In normal conditions the gates rest in recesses in the riverbed, allowing ships to pass freely. When a surge threatens, each gate rotates upward through a quarter circle into the closed position, blocking the estuary. Each gate weighs about 620 tonnes and is moved by a pair of large hydraulic cylinders.
+
+The gates are steel box structures, fabricated from large steel castings and plates. The main pivot castings, the huge bearing blocks around which each gate rotates, were manufactured at Ashgill Works, the casting plant of the Brannock Foundry Group. These were among the largest castings the plant had produced, with each pivot block weighing nearly 26 tonnes, and the project required a specially qualified casting process with extensive inspection.
+
+Control and sensors
+
+The gates are controlled by a central system housed in the control building on the east bank. The system receives forecasts from the national weather service and readings from a network of sea level gauges, current meters, and wave buoys along the estuary and out to sea. The sensor network was designed and supplied by the Marrow Institute of Applied Science, whose coastal engineers also calibrated the models that decide when to close the barrier.
+
+A closure decision is never taken by the computer alone. The control system issues alerts and recommendations, but the decision is taken by a duty officer, who confirms the closure after reviewing the data. For routine tests and for real closures, the control system also coordinates with the Dunmarrow Port, so that ships are warned and given time to clear the estuary before the gates close.
+
+Timing and synchronization
+
+The control system relies on accurate time to correlate the readings from its many sensors and to coordinate the movement of the six gates, which must close in a precisely choreographed sequence. The system takes its reference time from the Lodestar Timing Station, to which the project was connected during a control system upgrade completed in early 2023. Before that, the system used its own local clocks, which the project's engineers had found to drift by a few milliseconds over a long storm.
+
+The upgrade also introduced a second, independent set of clocks at the barrier, and a monitor that compares the two against each other and against the Lodestar signal. The change was recommended by engineers from the Gantry Line, who had advised the project on control system design.
+
+Operation
+
+On average, the barrier is closed three to five times a year for real surges, and about twelve times for tests and training. Each closure is preceded by a decision meeting that is held remotely with the duty officer, the hydraulics chief, and a representative of Dunmarrow Port. Closures usually last between four and eight hours, covering the high tide and the surge.
+
+Maintenance of the gates is demanding because they spend most of their time under seawater. Divers inspect the pivots, seals, and sills every six months, and each gate is lifted out of the water for a full overhaul once every ten years. The hydraulic system, which is the most complex part of the machinery, is tested monthly, and each of the cylinders is exercised through its full stroke.
+
+Environmental considerations
+
+The estuary is an important habitat for wading birds and fish, so the barrier was designed so that, when open, it interferes as little as possible with the natural flow of water. The gates sit flush in the riverbed, and the sills are shaped to avoid scouring. A fish pass has been built alongside the barrier, and the Marrow Institute monitors the movement of migrating salmon and eels through the estuary.
+
+Community
+
+Because the barrier protects the homes of many local people, the project has made community engagement a priority. Solheim holds a public meeting twice a year to explain how the barrier works and to report on tests and closures. The project's visitor centre, on the west bank, shows a model of the barrier and a film about the surge of 1987, and receives about nine thousand visitors a year.
+
+Staff
+
+The project's team is organized in operations, maintenance, hydraulics, control systems, and environment. Solheim is a coastal engineer who previously worked on flood defenses in several countries and says that every barrier she has seen has taught her the same lesson: that the greatest risk is not the structure but the assumption that it will behave exactly as designed. For this reason the project runs a full-scale test closure every quarter, with all staff assigned to their emergency roles.
+
+Funding and governance
+
+The Calder Reach Development Board owns the barrier and appoints a safety panel to review its operation each year. The panel includes an independent flood engineer, a representative of the Dunmarrow Port, and a member of the Board's audit office. The project's operating costs of about 5.8 million crowns a year are met by a levy on properties in the protected area.
+
+Looking ahead
+
+The barrier was designed for a rise in sea level of 0.8 meters. Solheim is studying options for raising the gates' sills and strengthening the embankments to cope with a larger rise later in the century. A separate study is looking at how closures should be coordinated with other infrastructure, in light of an incident in 2024 described in a separate report.
+
+
+Operating history, year by year
+
+2016. After a storm surge in the winter of 2015 to 2016 brought the sea within a few centimeters of the top of the old embankment, the Calder Reach Development Board commissioned a review of the estuary's flood defenses. The review concluded that the embankment could not be economically raised and that a movable barrier was the best option, because it would leave the estuary open for shipping and for the migration of fish. The Board committed in principle to fund the project.
+
+2017. The Marrow Institute of Applied Science produced a detailed hydrodynamic model of the estuary, and used it to test different barrier layouts against a range of surge scenarios. The modelers found that a six-gate barrier could reduce the water level upstream of the barrier by more than two meters in a once-in-a-hundred-years surge. The design competition was held in the autumn, and the winning concept was selected by a panel that included the Dunmarrow harbor master.
+
+2018. Ingrid Solheim, a coastal engineer who had worked on flood barriers in several other countries, was appointed to lead the project in April. She recruited Dariusz Imani, a civil engineer specializing in marine structures, as deputy, and Pilar Wanjiru, a hydraulic engineer, as the hydraulics chief. The Board approved the project budget of 97 million crowns in the summer, and the main contracts were awarded in the autumn. The pivot castings were ordered from Ashgill Works.
+
+2019. Construction began with the excavation of the foundation pits in a temporary cofferdam. The work took place in the summer months, to avoid the winter storms and the migration of salmon. In November a surge of moderate size tested the cofferdam, which held, but Solheim ordered additional pumping capacity as a precaution. The first of the pivot castings was delivered from Ashgill Works in December, after an extensive inspection that included ultrasonic scans and a witnessed pressure test.
+
+2020. The six gates were fabricated at a shipyard along the coast and floated to the site in sections. The hydraulic machinery was installed in the machinery rooms on the east bank, and the control building was completed. Commissioning tests began in the autumn with slow-speed movements of each gate in turn, and engineers found that two of the hydraulic cylinders needed adjusted seals.
+
+2021. Full commissioning was completed in the spring, with a test closure of all six gates on a calm day in April. The barrier entered service in June, and the Board held an opening ceremony in September. During the autumn the operations team practiced the closure procedure with the Dunmarrow Port and carried out a joint exercise with the emergency services.
+
+2022. The barrier was closed for its first real surge in January, when a storm brought the water in the estuary to 1.9 meters above its normal high-tide level. The closure held back about 1.4 meters of water, and no flooding occurred upstream. A second closure took place in November. In both cases, the closure was completed within the planned time of 30 minutes, and the Dunmarrow Port delayed the departures of only two vessels.
+
+2023. In the first months of the year, the project completed the upgrade of its control system. The upgrade installed a second set of independent clocks, connected the system to the Lodestar Timing Station, and replaced the old operator consoles. Engineers from the Gantry Line, who had advised on the design, helped to test the new system. The project also added a new set of wave buoys in the approaches to the estuary, supplied by the Marrow Institute. The barrier was closed four times during the year for real surges.
+
+2024. In January the barrier closed spuriously for eleven hours following a sensor fault. The closure disrupted shipping at Dunmarrow Port and is described in a separate incident report. The Board asked the Institute's audit team, led by Dr. Kasper Idowu, to review the control system. The review made recommendations on the use of redundant sensors, and Solheim began implementing them in the spring.
+
+Operating statistics
+
+Between 2021 and 2024 the barrier was closed 14 times for real surges and 46 times for tests and training. The average time to close all six gates was 27 minutes. Availability, defined as the proportion of time the barrier was ready to close on demand, was 99.4 percent. The annual cost of operation and maintenance is about 5.8 million crowns.
+
+Inspection and maintenance regime
+
+Divers inspect the underwater parts of the barrier every six months, concentrating on the pivots, the seals, and the sills. Each gate is lifted out of the water once a decade for a full overhaul, and the first overhaul, of gate 4, is planned for 2028. The hydraulic system is overhauled in a rolling program, in which one of the six gate machines is stripped and rebuilt each year. Wanjiru keeps a detailed history of every component, and her records have been used to predict the replacement dates of seals and valves.
+
+Partners and stakeholders
+
+The barrier's key partners are the Dunmarrow Port, which receives warnings of closures, the national weather service, which provides forecasts, and the Marrow Institute of Applied Science, which provides sensors and modelling. The Calder Reach Development Board, as owner, appoints the safety panel. Solheim has also created a stakeholder forum that includes local councils, the port, the fishing associations, and environmental groups, which meets twice a year.
+
+Public engagement
+
+The project's visitor centre has become one of the region's popular attractions, in part because visitors can watch a gate test from a viewing platform. School groups come year-round, and the project has produced an educational kit on flood risk for local schools. Solheim regularly gives talks at community halls in the towns that benefit from the barrier, and she says that the most common question she is asked is whether it will protect them from the next big surge. Her standard reply is that it will, provided that everything works as designed, which is why the project tests it every quarter.
+
+Climate adaptation planning
+
+The Institute's latest projections suggest that by 2070 the sea level in the region could be up to 0.9 meters higher than today. The barrier was designed for 0.8 meters, so a program of adaptation measures will be needed by mid-century. Solheim's team has begun to identify these measures, which include raising the gate sills, strengthening the embankments, and adding a seventh gate, and has asked the Board to set aside funds in the long-term investment plan.

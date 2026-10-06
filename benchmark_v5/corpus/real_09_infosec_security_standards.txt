@@ -1,0 +1,101 @@
+Information Security: Security Standards and ISMS
+
+Security Standards
+
+Information Security Management System It is a structured framework of policies, processes, and procedures designed to protect an organization's sensitive information
+
+Key Components Risk Assessment: Identifying, analysing, and evaluating potential threats to information security. Policy Development: Creating and implementing policies and procedures that guide information security practices. Control Implementation: Putting in place security controls like access controls, encryption, and firewalls. Monitoring and Review: Regularly monitoring the effectiveness of security controls and conducting internal audits. Continuous Improvement: Regularly reviewing and updating the ISMS to address new threats and changing business needs
+
+Information Security Policy An Information Security Policy (ISP) is a high-level document that outlines an organization's overall approach to information security. It sets the tone and provides a framework for all security-related activities within the organization
+
+Sample Information Security Policy
+
+Information Security Standard An Information Security Standard is a set of guidelines, rules, or specifications that define best practices for protecting information assets within an organization. These standards provide a framework for organizations to implement and manage their Information Security Management System (ISMS)
+
+Key Characteristics of Information Security Standards: Consensus-based: Developed through collaboration and agreement among experts, industry stakeholders, and regulatory bodies. Globally Recognized: Many standards are internationally recognized, ensuring consistency and comparability across different organizations and regions. Continuously Evolving: Standards are regularly reviewed and updated to address emerging threats and technologies
+
+Prominent Information Security Standards: ISO/IEC 27001: The most widely recognized international standard for ISMS. It provides a framework for establishing, implementing, maintaining, and continually improving an organization's information security management system. NIST Cybersecurity Framework: Developed by the National Institute of Standards and Technology (NIST) in the United States, it provides a voluntary set of cybersecurity standards, guidelines, and best practices to manage cybersecurity risk. PCI DSS (Payment Card Industry Data Security Standard): A set of requirements designed to ensure the security of credit card data. HIPAA (Health Insurance Portability and Accountability Act): A US law that sets the standard for protecting sensitive patient health information. GDPR (General Data Protection Regulation): A regulation in EU law on data protection and privacy.
+
+ISO/IEC 27001 ISO/IEC 27001 (International Organization for Standardization / International Electrotechnical Commission 27001) is the international standard for information security management. ISO 27001 sets out a framework for all organisations to establish, implement, operate, monitor, review, maintain and continually improve an ISMS (information security management system). Certification to the ISO 27001 standard is recognised worldwide as proof that your organisation's information security management is aligned with best practice.
+
+Key Guidelines of ISO/IEC 27001 Scope, Applicability, Terms, and Definitions: Clearly define the scope of the ISMS, including the boundaries and limitations. Ensure understanding of terminology and definitions used within the standard.
+
+Key Guidelines of ISO/IEC 27001
+Information Security Policy: Establish a formal information security policy that outlines the organization's commitment to information security and sets the tone for the ISMS.
+
+Key Guidelines of ISO/IEC 27001
+Organizational Context: Understand the internal and external factors that can affect the ISMS, such as organizational culture, legal requirements, and threat landscape.
+
+Key Guidelines of ISO/IEC 27001
+Leadership: Secure commitment and support from top management, ensuring they are actively involved in the ISMS.
+
+Key Guidelines of ISO/IEC 27001
+Planning: Establish information security objectives aligned with the overall business objectives. Develop, document, and implement plans to achieve these objectives.
+
+Key Guidelines of ISO/IEC 27001
+Operation Implement and maintain the operational controls necessary to manage and protect information assets. This includes: Access control Physical and environmental security Information systems management Communication and operational support Business continuity management.
+
+Key Guidelines of ISO/IEC 27001
+Performance Evaluation Monitor, measure, analyse, and evaluate the ISMS to ensure its effectiveness. This includes:
+
+Internal audits Management reviews Incident management
+
+Key Guidelines of ISO/IEC 27001
+Improvement Continuously improve the ISMS based on the results of monitoring, measurement, analysis, and evaluation. This includes Corrective actions Preventive actions.
+
+Key Guidelines of ISO/IEC 27001
+Nonconformity and Remedial Actions: Establish processes to address nonconformities with the ISMS and implement remedial actions to prevent recurrence.
+
+ISO/IEC 27001 - Annex A ISO/IEC 27001 includes Annex A, which provides a comprehensive list of security controls that organizations can consider implementing. These controls are categorized into 14 control objectives and cover a wide range of security areas, such as: Information security policies Organizational security Human resource security Physical and environmental security Communication and operational management Access control Information systems acquisition, development, and maintenance Information security aspects of business continuity management Compliance
+
+GDPR (General Data Protection Regulation) The General Data Protection Regulation (GDPR) is a comprehensive data protection law in the European Union (EU) and the European Economic Area (EEA).
+
+Key Principles: Lawfulness, fairness, and transparency: Data processing must have a legal basis, be fair to the individual, and be transparent. Purpose limitation: Data should only be collected for specified, explicit, and legitimate purposes and not further processed in a manner incompatible with those purposes. Data minimization: Only the data necessary for the specific purposes should be collected and processed. Accuracy: Data should be accurate and, where necessary, kept up-to-date. Storage limitation: Data should not be stored for longer than is necessary for the purposes for which it was collected.
+
+Key Principles: Integrity and confidentiality: Data should be processed in a manner that ensures appropriate security, including protection against unauthorized or unlawful processing and accidental loss, destruction or damage. Accountability: The data controller is responsible for and can demonstrate compliance with the GDPR.
+
+Key Rights of Individuals: Right of access: Individuals have the right to obtain confirmation of whether or not personal data concerning them is being processed, and, where that is the case, access to the personal data and certain information about its processing. Right to rectification: Individuals have the right to obtain the rectification of inaccurate personal data concerning them. Right to erasure ("right to be forgotten"): Individuals have the right to obtain the erasure of personal data concerning them without undue delay in certain circumstances.
+
+Key Rights of Individuals: Right to data portability: Individuals have the right to receive their personal data in a structured, commonly used, and machine-readable format and have the right to transmit that data to another controller. Right to object: Individuals have the right to object, on grounds relating to their particular situation, at any time to processing of personal data concerning them. Rights in relation to automated decision-making and profiling: Individuals have the right not to be subject to a decision based solely on automated processing, including profiling, which produces legal effects concerning them or similarly significantly affects them.
+
+Key Rights of Individuals: Right to restriction of processing: Individuals have the right to obtain restriction of processing of their personal data in certain circumstances.
+
+HIPAA Standard -Health Insurance Portability and Accountability Act Its primary goal is to ensure that a patient's medical data,known as Protected Health Information (PHI),cannot be disclosed without their explicit consent or knowledge, while still allowing the necessary flow of health information needed to provide high-quality healthcare. HIPAA applies to "Covered Entities" (hospitals, clinics, insurance companies) and their "Business Associates" (IT providers, billing companies).
+
+The Privacy Rule Patient Rights: It guarantees patients the right to access their own medical records, request corrections, and receive a report of exactly who their information has been shared with. Minimum Necessary Standard: Healthcare providers must make a reasonable effort to only use, disclose, or request the minimum amount of PHI needed to accomplish the intended purpose. Consent: Providers generally need written authorization from the patient to share PHI for reasons outside of standard treatment, payment, or healthcare operations.
+
+The Security Rule.
+
+The Breach Notification Rule Individual Notice: Organizations must notify affected individuals without unreasonable delay, and no later than 60 days following the discovery of the breach. Government Notice: The Secretary of Health and Human Services (HHS) must be notified. If the breach affects fewer than 500 people, it can be reported annually. If it affects 500 or more, it must be reported within 60 days. Media Notice: For breaches affecting more than 500 residents of a State or jurisdiction, local media outlets must also be notified.
+
+The Omnibus Rule (2013) Its most critical function was extending HIPAA compliance directly to Business Associates. Before this rule, only direct healthcare providers and insurers were strictly held to HIPAA standards. Now, third-party contractors (like cloud hosting services, legal counsel, or marketing firms handling patient data) are held legally accountable for breaches and compliance.
+
+The Enforcement Rule It outlines the procedures for investigations, hearings, and the financial penalties for violating HIPAA regulations.
+
+PCI DSS PCI DSS (Payment Card Industry Data Security Standard) is a globally recognized information security framework designed to protect credit and debit card transactions against data theft and fraud The standard is managed by the PCI Security Standards Council (PCI SSC), which was founded by major card brands including Visa, Mastercard, American Express, Discover, and JCB.
+
+Who Does it Apply to ? PCI DSS compliance is mandatory for any organization that stores, processes, or transmits cardholder data. This includes merchants, payment gateways, processors, and third-party service providers, regardless of the size or transaction volume of the business
+
+The 12 Core Clauses (Requirements)
+
+The 12 Core Clauses (Requirements)
+
+The 12 Core Clauses (Requirements)
+
+The 12 Core Clauses (Requirements)
+
+The 12 Core Clauses (Requirements)
+
+Digital Personal Data Protection Act 2023 (DPDPA) India recently enacted the Digital Personal Data Protection Act 2023 (DPDPA), which aims to safeguard the privacy of individuals in the digital age. While inspired by GDPR, it has its own unique characteristics:
+
+Key Focus Focus on Individual Rights Accountability Data Protection Authority
+
+Organizations must adhere to strict guidelines: Security Safeguards: They must implement reasonable security measures to prevent data breaches. Children's Data: Strict rules apply to individuals under 18. Fiduciaries must obtain verifiable parental consent and are prohibited from engaging in tracking, behavioral monitoring, or targeted advertising directed at children. Breach Notification: In the event of a breach, Fiduciaries must notify the Data Protection Board and affected individuals "without delay," followed by a detailed report within 72 hours
+
+Enforcement and Penalty If a Data Fiduciary fails to take reasonable security safeguards resulting in a data breach, the DPB can impose penalties of up to ₹250 crore (approximately US$30 million).
+
+Current Status: The DPDPA was enacted in August 2023. Phase 1 (Active Now - Since Nov 2025): The Data Protection Board of India was established, and its core processes were set up. This means the regulatory body is now actively operating. Phase 2 (Deadline: November 13, 2026): By this date, the registration and processes for "Consent Managers" (intermediaries that help users manage their data consent) must be fully implemented. Phase 3 (Deadline: May 13, 2027): This is the final and most critical deadline. By this date, all substantive compliance obligations,such as notice requirements, security protocols, breach notifications, and protecting the rights of individuals,must be fully met by organizations (Data Fiduciaries)
+
+What happens when you deviate Equifax: Faced a $700 million settlement with the Federal Trade Commission (FTC) for its massive 2017 data breach, which exposed the personal information of millions of consumers. Yahoo!: Paid a $35 million fine to the FTC for its failure to adequately protect user data from a massive data breach in 2013. Uber: Fined $148 million by the FTC for its failure to notify users about a 2016 data breach that affected 57 million users.
+
+What happens when you deviate Meta (Facebook): Fined €265 million by the Irish Data Protection Commission (DPC) for violations of the GDPR, including issues with how user data was processed for advertising purposes. Amazon: Fined €746 million by the Luxembourg data protection authority for violations of the GDPR, specifically regarding the processing of user data for targeted advertising. Google: Fined €90 million by the French data protection authority (CNIL) for violations of the GDPR related to the transparency and control users had over their data.

@@ -1,0 +1,72 @@
+Profile: Cormac Adebayo
+
+Cormac Adebayo is a finance and operations specialist who directs the Dunmarrow Port Automation project. He has led the project since 2020 and oversaw the introduction of eight automated container cranes at the Calder Reach's only deep-water port. He is unusual among the region's project directors in having begun his career in banking, and he is known for combining a lender's caution with an operator's impatience.
+
+Early life and education
+
+Adebayo was born in Dunmarrow, the son of a ship's engineer and a nurse. He grew up within sight of the port's cranes and remembers lying in bed at night listening to the sound of containers being dropped onto trucks. He studied economics and then took a master's degree in infrastructure finance at a university abroad, which he says gave him a vocabulary for something he had understood since childhood: that a port is a machine for turning time into money.
+
+Career at the Harbourgate Mutual Bank
+
+In 2014 Adebayo joined the Harbourgate Mutual Bank in Skerrin as an analyst in its infrastructure and project finance division. He worked there until 2020, and in those six years he reviewed loans to energy projects, transport schemes, and industrial plants. He learned to read technical designs for flaws that would turn into financial losses, and to ask engineers questions that they sometimes found uncomfortable.
+
+His most important assignment was the due diligence for the bank's loan to the Dunmarrow Port Automation project, then at the planning stage. He spent most of 2018 and 2019 analyzing the port's operations, visiting automated terminals in other countries, and building a financial model. His report recommended a loan of 58 million crowns with several conditions, including the appointment of an independent safety assessor. The bank's chief risk officer, Emeka Lindqvist, approved the loan in the spring of 2019.
+
+The move to the project
+
+During the due diligence Adebayo grew increasingly interested in the technical side of the project. He spent weeks with the port's engineers and became convinced that the project would succeed or fail on the quality of its management rather than its technology. When the port company advertised for a director in 2020, he applied, to the surprise of his employer. Philippa Osterhout, the bank's chair, later described his departure as both a loss and a compliment, and the bank adopted a rule excluding staff who move to a borrower from oversight of that borrower for two years.
+
+He was appointed in February 2020 and set out to recruit a management team. He chose Wilhelmina Odhiambo, an operations manager with experience of a container terminal in another region, as his deputy, and Stellan Marsh, a control systems engineer, to run the control room. He also reached out to the Gantry Line light rail project, whose scheduling method he had come across in the course of his due diligence, and invited its engineers to Dunmarrow to help adapt it for the cranes.
+
+Delivering the automation
+
+The first automated crane went into service in March 2021, and by July 2022 all eight were operating. Throughput increased from about 380,000 containers a year to about 590,000, and the time that a container spends in the yard fell from 41 hours to 26. Adebayo gives much of the credit to the retraining program, which gave the port's crane drivers a choice of new roles. About seventy percent chose to stay, and he says that the willingness of the drivers to take part made the technical changes possible.
+
+He also negotiated the project's relationship with the port's largest customer, Strand & Keel Shipping. Its chief executive, Ravindra Kallenbach, has said that the port is now the most predictable part of his network, and that Adebayo's willingness to share data had made it possible for the company to plan its trains with confidence.
+
+The 2022 crane collision
+
+On the night of 16 to 17 August 2022, two of the cranes collided when a degraded timing signal from the Lodestar Timing Station caused their controllers to disagree on their positions. Adebayo was telephoned by his control room chief at 02:30 and arrived at the port within twenty minutes. By the time he reached the quay, the cranes had been stopped and the area cordoned off.
+
+He asked the Calder Reach Development Board's audit office to investigate, and he cooperated fully with its head, Lucan Obuya. The investigation found that the project's design had assumed that the timing signal would always be accurate and had no independent protection against crane-to-crane collisions. Adebayo accepted all of Obuya's seven recommendations. He has said that the incident was the moment when the project grew up, and that of all the changes made afterward, the one he values most is the habit of asking in every design review, "what do we do if this signal is wrong?"
+
+He also felt the personal weight of the incident. Before the project began, he had told the bank's credit committee that the main risks were financial and operational, not safety-related. He says that he thinks about that statement often, and that it has made him more humble about what a financial model can capture.
+
+Management style
+
+Adebayo is meticulous. He keeps a large whiteboard in his office that shows every crane move planned for the next 48 hours, and he can often tell, at a glance, when something is wrong. He holds a monthly meeting with the shipping lines, at which he presents the port's performance, including its failures, and takes questions. He is also known for insisting that his control room staff take a short break every two hours, a rule that he introduced after reading a study of fatigue among remote operators.
+
+His staff describe him as demanding but generous with credit. Odhiambo recalls that when the port reached its highest annual throughput in 2023, he refused to speak at the celebration and instead asked each crane supervisor to say a few words.
+
+Relationships
+
+Adebayo has retained close ties with his former employer. He meets the bank's risk team each quarter to explain the port's performance, and he says that having been on the other side of the table helps him to anticipate the questions. He is on friendly terms with the directors of the Gantry Line, whose scheduling method his project uses, and of the Lodestar Timing Station, whose signal his cranes depend on. He has agreed with Dr. Anneliese Prowse on a joint drill each year in which the signal is degraded.
+
+Personal life
+
+Adebayo lives in the harbor district of Dunmarrow with his wife, who teaches at a primary school, and their daughter. He is a keen cyclist and sometimes rides around the port on weekends, inspecting the quay from the public road. He is also a trustee of the Dunmarrow lifeboat station.
+
+Views on the future
+
+Adebayo hopes to add two more cranes and an automated stacking yard by 2027, subject to a new financing agreement with the bank, which would raise capacity to about 750,000 containers a year. He also wants the port to work more closely with the Beacon Hill Flood Barrier, since the closure of the barrier in January 2024 held several ships at Dunmarrow for eleven hours. He has proposed a pilot to exchange data between the two control rooms and a joint exercise, which took place in the summer of 2024. He says that the port's future depends on how well it can understand the other systems on which it relies, and that the best protection is a habit of asking uncomfortable questions.
+
+
+Annex: Career timeline and colleagues' recollections
+
+Timeline. 2012: completes a master's degree in infrastructure finance. 2014: joins the Harbourgate Mutual Bank as an infrastructure analyst. 2018 to 2019: leads the due diligence on the Dunmarrow Port Automation loan. Spring 2019: the loan of 58 million crowns is approved. February 2020: leaves the bank to become director of the Dunmarrow Port Automation project. March 2021: the first automated crane enters service. July 2022: all eight cranes are operating. 17 August 2022: two cranes collide. October 2022: collision sensors are fitted to all cranes. 2023: the port handles 590,000 containers. 2024: the slow mode for timing loss is adopted permanently.
+
+What colleagues say. Wilhelmina Odhiambo, the deputy director, says that Adebayo's greatest quality as a manager is that he reads every contract he signs. "He found a clause in the cranes' maintenance agreement that would have made us pay for repairs we caused ourselves, and he had it removed," she says. "A bank analyst's habit, but it saved us a lot of money."
+
+Stellan Marsh, the control room chief, recalls that on the night of the collision Adebayo arrived at the port in a coat over his pajamas, and that the first thing he did was to ask the operators whether they were all right. "He did not ask about the cranes until he had spoken to every person on the shift," Marsh says. Cormac's former colleagues at the bank say that they were not surprised by this. Emeka Lindqvist, the bank's chief risk officer, says that Adebayo was the best analyst he ever trained and the only one who ever told him that a loan was too small.
+
+Shipping lines and customers. Ravindra Kallenbach of Strand & Keel Shipping says that Adebayo is the first port manager who has shown him the scheduling system's source of error rates on a screen, unprompted. A representative of one of the shipping lines said at a quarterly meeting that Adebayo's willingness to report the port's own mistakes had made it easier to trust its successes.
+
+The whiteboard. The large whiteboard in Adebayo's office shows the next 48 hours of crane moves in the form of a grid, with each ship in a different color. Each morning he stands in front of it for ten minutes before the day begins, and rubs out any move that does not make sense. He says that the whiteboard is an old-fashioned tool but that it makes him see the whole quay at once, which no screen does. His staff say that he has found errors in the scheduling system's output this way on at least a dozen occasions.
+
+The retraining program. The program that was negotiated with the dockworkers' union offered drivers three options: becoming remote crane supervisors, becoming maintenance technicians, or becoming yard coordinators. Seventy-four drivers chose new roles in 2021, and about seventy percent of those affected overall stayed with the port. The union's representative, Ignatius Bakker, has said that the program was the fairest he had seen in thirty years, and that Adebayo had kept every promise he made.
+
+On the lessons of the collision. Adebayo's report to the bank after the collision contained a section on what he got wrong. He wrote that in the planning stages he had treated safety as an item on a checklist, and that he had not asked the engineers to demonstrate what would happen if the timing signal failed. "I was a banker," he wrote, "and bankers look for risks that can be priced. This risk could not be priced, so I did not look hard enough." The bank's board used the passage in its training for new analysts.
+
+Beacon Hill closure. After the Beacon Hill barrier's false closure in January 2024 held seven ships at Dunmarrow, Adebayo met Ingrid Solheim, who leads the barrier project, and proposed that their control rooms share data. The pilot, agreed in the spring, has the barrier's control system send an advance notice to the port when it issues an alert, giving the port time to hold ships before the gates close.
+
+Advice. He tells new managers that a port is a system for managing waiting, and that the quickest way to cut waiting is to find out who is waiting for what. He also tells them to take every audit seriously, because the auditor is the one person who is paid to find what you have missed.

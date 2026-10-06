@@ -1,0 +1,82 @@
+Lodestar Timing Station: Project Overview
+
+The Lodestar Timing Station is a precise-time and positioning facility on the headland of Cairn Head, a windswept hill on the northern coast of the Calder Reach. Its purpose is to receive signals from navigation satellites, refine them into a highly stable time reference, and distribute that reference to infrastructure operators across the region. Lodestar opened in 2019 and has since become a quiet but critical piece of the region's infrastructure: several of the largest projects in the Calder Reach depend on its signal to keep their own systems synchronized.
+
+Dr. Anneliese Prowse has directed Lodestar since 2019, and was involved in its design from the start. Her deputy is Jun-seo Baek, who is responsible for the receiving equipment and the atomic clocks, and the operations chief is Ronja Eklund, who runs the control room and the maintenance team. The station employs 16 people, four of whom live on site in rooms above the control building because of the remote location.
+
+The case for a regional timing source
+
+Modern infrastructure increasingly needs time that is accurate to microseconds. A moving-block railway needs it to compare the position reports of different trains. An automated container terminal needs it to coordinate the movements of cranes. An electricity grid needs it to measure the phase of voltage at different substations and to detect faults. In the past, such users relied on commercial satellite timing receivers fitted at each site. This is inexpensive, but it has several weaknesses: the receivers can be jammed or spoofed, their accuracy varies with the weather and with the position of the satellites, and a fault is hard to detect because each site has no independent reference against which to compare.
+
+The Calder Reach Development Board, which funded Lodestar with 21 million crowns, concluded that a single, carefully engineered regional source would be both cheaper in total and more resilient than dozens of separate receivers. Lodestar monitors the signals from several satellite constellations, cross-checks them against a bank of atomic clocks, and publishes its result as a clean, authenticated time signal. A user connected to Lodestar can also tell immediately if the signal is degraded, because the station broadcasts a continuous quality indicator.
+
+The antennas
+
+The station has three large dish antennas, numbered one to three, mounted on concrete pedestals on the headland about a hundred meters apart. Each antenna tracks a different group of satellites. The control software compares the three independent readings, and if one disagrees with the others it is flagged and automatically excluded from the calculation. The design means that the loss of one antenna should not interrupt the service, although the accuracy of the signal is reduced until the antenna is restored.
+
+Each antenna rotates on a large azimuth bearing, a heavy steel ring that allows the dish to turn smoothly through a full circle. The bearings were machined at Ashgill Works, the casting plant of the Brannock Foundry Group, which had also cast the mounting frames for the antennas. The station keeps a spare bearing in a store beside the control building, though the incident of 2022, described in a separate report, showed that one spare was not enough.
+
+The clock room
+
+At the heart of the station is a temperature-controlled clock room that houses four cesium atomic clocks and two hydrogen masers. The room is built as a building within a building, on an isolated concrete slab, so that vibration from the wind and the sea cannot disturb the clocks. The temperature is held constant to within a tenth of a degree, and the room has its own battery supply and a diesel generator that can run it for 72 hours. Baek's team compares the clocks continuously and weights their readings according to their recent stability, so that a clock that begins to drift is gradually given less influence.
+
+Distribution
+
+Lodestar sends its time signal to customers over optical fiber. The fiber links are carried on the Hollin Fibre Backbone, the regional telecommunications network, using a dedicated wavelength that is reserved for timing. A technique called two-way time transfer allows each customer to measure and cancel the delay in the fiber, so that the time received at the customer's site matches the time in the clock room to within a few nanoseconds.
+
+The customers
+
+Three customers use the signal today. The Gantry Line light rail project uses it to timestamp train positions across the network. The Dunmarrow Port Automation project uses it to synchronize its automated container cranes. The Lumen Grid Company uses it at its substations to measure phase angles and to synchronize protection relays. The Beacon Hill Flood Barrier became a fourth customer in early 2023, when it completed an upgrade of its control system. Each customer pays an annual subscription that covers part of the operating costs, and the rest of the budget is provided by the Calder Reach Development Board.
+
+Prowse has made a point of treating the customers as partners. Each quarter the station holds a users' meeting at which the customers' engineers can review the station's performance, raise concerns, and discuss planned changes. She has said that this dialogue is vital because the customers know the real consequences of a timing error far better than the station does.
+
+Staff and culture
+
+Prowse is an electronics engineer who began her career in radio astronomy before moving to railway signaling. Before joining Lodestar she worked for three years on the design of the signaling system for the Gantry Line, which gave her an unusually clear picture of what a timing user needs. At Lodestar she has built a culture that values careful procedure: every change to the station's software or hardware is reviewed by two engineers and logged in a permanent record, and no one changes a clock setting without a second person present.
+
+The staff is organized in three teams: the timing team, under Baek, which maintains the clocks and the receivers; the operations team, under Eklund, which runs the control room around the clock; and a small engineering and software team. A site manager, Gideon Lund, looks after the buildings, the power systems, and the access road.
+
+The site and its challenges
+
+Cairn Head is a harsh place to run an electronic facility. The headland is exposed to Atlantic gales, salt spray, and frequent thunderstorms. All the electronics are protected by lightning rods, surge protectors, and an earthing grid buried in the rock. The access road is single-track and sometimes closed by snow in winter, so the station keeps a week of food, fuel, and supplies in reserve. A small weather observatory on the same headland shares the site's power and network, and its staff keep a log of every lightning strike within five kilometers of the antennas.
+
+Security and integrity
+
+Because timing signals can be jammed or spoofed, Lodestar takes security seriously. The receivers are programmed to reject signals that fail integrity checks, and the station monitors the radio spectrum around the site for interference. Any alarm of this kind is investigated immediately, and the customers are notified. The station's network is isolated from the public internet, and access to the control room is limited to named staff.
+
+Plans for the future
+
+Prowse's plan for the next five years includes the construction of a fourth antenna, which would allow the station to tolerate a longer outage of any single dish, and the installation of a backup clock site at a second location inland, so that the failure of the whole Cairn Head site would not leave customers without a reference. The Development Board has indicated that it will consider the funding of both once the lessons of the 2022 incident have been fully absorbed. Prowse has also begun to discuss with the customers a standard for how they should behave when the signal is degraded, so that they have their own backup timing sources and do not rely entirely on Lodestar.
+
+
+Operating history, year by year
+
+2018. The Calder Reach Development Board approved the Lodestar project in the spring of 2018, after a feasibility study that compared the cost of a regional timing source with the cost of installing separate receivers at each infrastructure site. The study found that a regional source would pay for itself within six years if just three large customers subscribed. A shortlist of three headland sites was drawn up, and Cairn Head was selected because its rock foundation, its clear horizon in every direction, and its distance from sources of radio interference were better than the alternatives. The Board allocated 21 million crowns, and the geotechnical survey of the headland was completed before the end of the year.
+
+2019. Construction began in March. The clock room, which had to be finished first because the clocks needed several months to settle, was completed in July. The three antenna pedestals were poured in August, and the antennas themselves were lifted into place by a floating crane that was brought round the coast for two days of good weather. Dr. Anneliese Prowse was appointed director in the spring and recruited her first team: Jun-seo Baek, a physicist who had worked on atomic clocks at a university laboratory, joined as deputy in June, and the site manager, Gideon Lund, joined in September. The first valid time signal was produced in November, and the station entered a six-month trial period during which no customer relied on it.
+
+2020. Ronja Eklund joined as operations chief and organized the first twenty-four-hour shift rota. The Gantry Line light rail project became the first customer in March, connecting its first twelve kilometers of equipped track to the signal. During the trial period the station had measured its own accuracy against a national reference, and the results showed that the time at Cairn Head was within three nanoseconds of the reference. The users' forum met for the first time in October, and a standing agenda was agreed: reliability statistics, planned changes, and a review of every alarm.
+
+2021. The Dunmarrow Port Automation project was connected in May, shortly before its first automated crane entered service. The Lumen Grid Company followed in September, starting with four substations at which it installed timing receivers connected to the Hollin Fibre Backbone. By the end of the year Lodestar was serving three customers and had recorded a continuous availability of 99.97 percent over twelve months. Prowse presented the station's first annual report to the Development Board, which approved a modest increase in the operating budget to cover the extra staff needed for twenty-four-hour support.
+
+2022. The station reached 16 employees, and its customers had grown to include fourteen Lumen Grid substations. In August a lightning strike damaged antenna 3 and left the timing signal degraded for five days. The incident had consequences for the Gantry Line, for Dunmarrow Port, and for the Quarrel Hill Pumped Storage plant, and it is described in a separate report. The station replaced the damaged bearing, rebuilt its lightning protection, and began to hold two spare bearings in its store instead of one. It also started to send a quality indicator that customers' control rooms could use to detect a degraded signal directly, instead of relying on a telephone call from the duty desk.
+
+2023. The Beacon Hill Flood Barrier completed its control system upgrade in the early part of the year and became the fourth customer. The station introduced a monthly "degradation drill" in which Eklund's team deliberately reduced the quality of the signal for a few minutes while the customers' engineers watched how their systems reacted. The first drill, in March, revealed that one customer's equipment ignored the quality indicator entirely, and the problem was corrected within a week. The Board's audit office reviewed the station's procedures in the autumn and found that the post-incident changes had been implemented fully.
+
+2024. The Board gave preliminary approval for a fourth antenna and a backup clock site inland, subject to detailed costing. Prowse commissioned a design study that concluded that a second site at a hilltop near Wetmoor, about thirty kilometers from Cairn Head, would provide the best independence from local weather and local faults. The study estimated a cost of 9.5 million crowns for the second site and 3.1 million for the extra antenna. Baek also began a program to test an alternative source of time, based on a terrestrial radio signal, which would not depend on satellites at all and could serve as a last-resort backup.
+
+Performance figures
+
+Over its first five years the station's availability averaged 99.9 percent, counting the days of degraded accuracy in 2022 as partial outages. The typical time error at the customer interface was under 20 nanoseconds. The station's annual operating cost was about 3.4 million crowns, of which roughly 1.1 million was covered by customer subscriptions. The most expensive recurring items were the staff, the electricity for the clock room, and the maintenance of the antennas, whose bearings and drive motors must be inspected twice a year.
+
+Staff and training
+
+Prowse insists that every new member of the team spend a week with each customer before starting regular duties. Baek spent his first week at the Gantry Line's test track, and Eklund spent hers in the control room at the port. The purpose, Prowse says, is to ensure that her staff understand what the customers do with the signal, and why a few nanoseconds matter to them. The station also hosts two student placements each year from the Marrow Institute of Applied Science, and three of the people who completed placements have since joined its staff.
+
+Community and visitors
+
+The station's neighbors are a handful of farmers and the staff of the weather observatory. Prowse has kept good relations with them by briefing them before any work that might cause noise or traffic on the single-track road. The station is not open to the public, but every autumn the Board organizes a visit for local councillors and school groups, and Prowse describes the clock room through a glass wall.
+
+Relations with the supplier of the mechanical parts
+
+The antennas' mechanical components, including the bearings and mounting frames, have been supplied since the start by Ashgill Works, a relationship that Prowse describes as close and practical. The plant's engineers visited Cairn Head twice during construction to check the fit of the parts, and since 2022 they have held a yearly review with the station's staff to examine the condition of the bearings and plan replacements before they fail. Yusra Demir, the manager of Ashgill Works, has said that the station is one of the most demanding customers the plant serves, because the tolerances are fine and the cost of a failure is high.

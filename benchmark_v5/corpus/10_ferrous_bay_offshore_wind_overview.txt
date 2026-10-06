@@ -1,0 +1,96 @@
+Ferrous Bay Offshore Wind: Project Overview
+
+Ferrous Bay Offshore Wind is the largest renewable energy project in the Calder Reach. Its 48 turbines stand in shallow water in Ferrous Bay, a wide bay on the western coast, between six and fourteen kilometers from the shore. The wind farm was completed in 2022 and has a capacity of 240 megawatts, enough to supply roughly a third of the region's electricity in a typical year.
+
+Callum Pryor has led the project since 2019. His deputy is Saoirse Valdez, who manages the commissioning and operation of the turbines, and the head of marine operations is Gustav Nilsen, who runs the fleet of crew transfer vessels and the offshore logistics. The project employs 112 people, most of them based at the operations base at Dunmarrow Port.
+
+The site
+
+Ferrous Bay was chosen after a six-year assessment of the Calder Reach's coastal waters. The bay offers consistent wind, with an average speed of nine meters per second at hub height, and a sandy seabed with water depths of 18 to 32 meters, which is suitable for monopile foundations. It is also well away from the main shipping lanes and from the most sensitive seabird colonies. The site's name comes from the reddish iron-stained rocks that line the bay's shore.
+
+The assessment included two years of wind measurement on a floating laser device, a seabed survey by the Marrow Institute of Applied Science, and a program of bird and mammal observations. The environmental assessment concluded that the wind farm would have a modest impact on wildlife if construction was avoided during the seabird breeding season, a condition built into the construction schedule.
+
+The turbines
+
+The 48 turbines are each rated at 5 megawatts, with rotors 126 meters in diameter. Each turbine stands on a steel monopile driven into the seabed, topped by a transition piece, a tower, a nacelle, and three blades. The rotor blades are a critical component: each is 61 meters long and is made of glass-fiber and carbon composites. The blades were produced at Corran Mill, the composites and polymers plant of the Brannock Foundry Group, which built a dedicated blade production line for the project. Producing 144 blades, plus spares, took about fourteen months.
+
+Pryor has said that using a local blade manufacturer was one of the project's best decisions. It reduced transport costs, shortened delivery times, and made it possible for the project's engineers to visit the factory frequently during production to inspect the quality of the laminates.
+
+Port logistics
+
+The turbines and foundations were assembled and shipped from Dunmarrow Port, whose quayside was used as a staging area during construction. Components arrived by road and sea, were assembled on the quay, and were loaded onto a specialized installation vessel. During operation, the project's maintenance vessels and spare parts store remain at Dunmarrow, and the operations base is leased from the port company. The project's presence has been a significant source of business for the port.
+
+Grid connection
+
+The wind farm is connected to the shore by a single 220-kilovolt export cable that runs along the seabed for 27 kilometers to a landing point at the Ferrous headland, and then underground to a substation operated by the Lumen Grid Company. The cable is the project's lifeline: all of the electricity generated passes through it, and Lumen Grid's network depends on it to supply about a third of the region's power. The cable has a fiber-optic core that carries monitoring and control data, and a second cable, planned for a later phase, will provide redundancy.
+
+Financing
+
+The project was financed by the Harbourgate Mutual Bank, which provided a loan of 120 million crowns, the largest in the bank's history. The loan is secured on the project's revenue, which comes from a long-term power purchase agreement with the Lumen Grid Company. Emeka Lindqvist, Harbourgate's chief risk officer, required the project to carry business interruption insurance and to have a spare export cable in storage, a condition that was later modified because of the cable's size.
+
+Operations and maintenance
+
+Wind turbines at sea require constant maintenance. The project's technicians travel to the turbines in fast crew transfer vessels, stepping from the vessel onto a boarding ladder on the foundation. A condition monitoring system tracks the vibration, temperature, and oil quality of every gearbox and bearing, and flags components that need attention before they fail. Planned maintenance is concentrated in the calmer summer months, and Nilsen's team uses weather forecasts to schedule vessel trips for periods when waves are below about one and a half meters.
+
+Each turbine undergoes a full service once a year. A typical service takes two technicians a day and includes checking the blades for lightning damage, erosion, and cracks. A drone fleet is also used to inspect blades without climbing, and the footage is analyzed by software that identifies defects.
+
+Production
+
+In 2023, its first full year of operation, the wind farm generated 790 gigawatt-hours of electricity, which was 94 percent of the figure in the project's forecast. The capacity factor was about 38 percent. The shortfall was mostly due to a fault in 2023 in the export cable described in a separate incident report.
+
+Environmental management
+
+During operation, the project monitors seabirds with radar and cameras, and has agreed to shut down turbines if migrating geese pass through the site in poor visibility. Underwater noise from the turbines is recorded by hydrophones, and the data are shared with the Marrow Institute of Applied Science. The project funds a seal-monitoring program, and a fishing compensation fund pays local boats for access restrictions in the immediate vicinity of the turbines.
+
+People and culture
+
+Pryor was an offshore wind site manager before joining the project. He insists that the safety culture of the project should be better than that of the industry he came from, and every employee has the right to stop any job if they believe it to be unsafe. Valdez holds a weekly "lessons learned" session in which any incident or near miss, however small, is examined, and the notes are shared with the other offshore wind projects in the region.
+
+Community benefit
+
+The project pays an annual community benefit payment to the towns along the western coast, which funds projects such as a new lifeboat station, a swimming pool, and scholarships. About 40 percent of the operating base's staff were recruited locally.
+
+Outlook
+
+Pryor and his team are studying a second phase of 30 turbines further offshore, subject to financing and permits. They are also studying how to reduce the project's dependency on a single export cable. The experience of the 2023 incident has strengthened the argument for a second cable, and the project has begun discussions with the Calder Reach Development Board and the Lumen Grid Company about how to fund it.
+
+
+Operating history, year by year
+
+2016. The Calder Reach Development Board and the Lumen Grid Company began a joint study of the region's offshore wind potential. A floating laser measurement buoy was moored in Ferrous Bay in the spring and collected two years of data. The study's first report, published in December, identified three candidate sites and recommended Ferrous Bay as the most promising, on account of its steady winds, its moderate water depth, and its proximity to the Dunmarrow Port, which could serve as a construction base.
+
+2017. The Marrow Institute of Applied Science carried out the seabed and environmental surveys during the summer. The geophysical survey found a thick layer of firm sand across most of the bay, with a few areas of rock that were excluded from the layout. Bird surveys showed that the main seabird colonies were on the northern cliffs, away from the likely turbine area, and that the bay was used by migrating geese in October and November.
+
+2018. The environmental assessment was completed and the planning consent was granted in September, with conditions on construction timing and noise. The Harbourgate Mutual Bank began due diligence for the project loan. The project company was formed, with the Lumen Grid Company and a municipal pension fund as shareholders.
+
+2019. Callum Pryor, an experienced offshore wind site manager, was appointed to lead the project in March. He recruited Saoirse Valdez as deputy and Gustav Nilsen, a former ship's officer, to head marine operations. The loan of 120 million crowns was signed in July, and the contracts for the turbines, foundations, and the export cable were awarded in the autumn. The Brannock Foundry Group's Corran Mill was selected to produce the blades, and began to build a dedicated production line.
+
+2020. Despite pandemic disruption, the first foundations were manufactured and the blade production line started in the summer. The Dunmarrow Port Automation project, which was about to begin operations, agreed to give the wind farm a part of the quayside for the assembly of turbines. The first monopile was driven in Ferrous Bay in October, in a calm spell that lasted just long enough.
+
+2021. Between April and November, 48 monopiles and transition pieces were installed, working to a timetable that avoided the seabird breeding season. The export cable was laid in the summer over six weeks by a cable-laying vessel, which buried it beneath the seabed along most of its length. The first blade set left Corran Mill in the autumn.
+
+2022. The turbines were erected between March and August by a jack-up installation vessel operating from Dunmarrow. The first turbine produced electricity in May, and the final one was commissioned in September. The wind farm reached full capacity of 240 megawatts in October. The official opening in November was attended by the chair of the Calder Reach Development Board, Hester Vandermeer, who described the project as the most important single step the region had taken toward its renewable energy target.
+
+2023. In its first full year, Ferrous Bay generated 790 gigawatt-hours. In November a severe storm damaged the export cable at the shoreline, where it emerges from the seabed, and the wind farm was disconnected from the grid. The resulting loss of supply caused a brownout across part of the region, which is described in a separate incident report. The cable was repaired in six weeks, and the turbines meanwhile stood idle, losing about 38 gigawatt-hours of production.
+
+2024. The cable repair was followed by a program to reinforce the shoreline section with a rock berm and a protective sleeve. The project also secured the Development Board's agreement in principle to fund a second export cable, using a different route, and ordered the first stage of the necessary surveys. The wind farm's output for the year was 826 gigawatt-hours, an increase of 4.6 percent on 2023.
+
+Key figures
+
+In its first two full years the wind farm's availability averaged 95 percent, and the turbines achieved a capacity factor of 38 percent. The revenue in 2023 was about 52 million crowns, from which the project paid its loan instalment, its operating costs, and its dividend to shareholders. Operating costs were about 19 million crowns a year, of which around a third was the cost of maintenance vessels and helicopter support.
+
+Operations team
+
+Valdez leads a team of 64 technicians, who work in rotating shifts of two weeks offshore and two weeks onshore, accommodated on a service vessel that can stay in the bay for up to ten days. Nilsen runs a fleet of five crew transfer vessels and manages the project's marine coordination center at Dunmarrow, which tracks all vessels in the bay by radar. Pryor himself spends about one day a week on the water, and says that no dashboard can replace the sight of a turbine from a boat deck.
+
+Supply chain
+
+The project's most important supplier is Corran Mill, which continues to provide spare blades and repair services. A team from Corran Mill is permanently stationed at the Dunmarrow base to repair minor blade damage on site, which saves long delays. The gearboxes and generators came from overseas manufacturers, with whom the project has framework contracts for spare parts. Pryor has said that he regards the local blade production as a competitive advantage, since leading-edge erosion is the most frequent cause of lost generation.
+
+Environmental findings
+
+Monitoring has shown that the turbines have not had a measurable effect on the local seal population, and that bird collisions have been rare, with only three recorded in two years. The structures have become artificial reefs, and divers have recorded dense growths of mussels and the presence of fish species that were not previously common in the bay. The Marrow Institute publishes an annual environmental report, and the findings have been used in the planning of the second phase.
+
+Relations with the fishing community
+
+Local fishing boats are allowed to fish between the rows of turbines, though not within fifty meters of any foundation. The project has established a liaison group with the fishing associations, and a compensation fund pays boats that lose fishing grounds. In 2023 the fund paid out 410,000 crowns. Pryor says that the relationship has been good, partly because the project employs several former fishermen as crew on its vessels.

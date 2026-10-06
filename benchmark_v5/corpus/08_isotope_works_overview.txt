@@ -1,0 +1,90 @@
+Isotope Works: Project Overview
+
+Isotope Works is a facility that produces short-lived radioactive isotopes for medical imaging and cancer treatment. It is housed in a purpose-built, heavily shielded building on the campus of the St. Idris Hospital Trust, on the northern edge of Skerrin, and it began producing in 2018. The project supplies hospitals across the Calder Reach and several in neighboring regions, delivering about 380 patient doses every week.
+
+Dr. Tobias Ndlovu has directed Isotope Works since it opened. His deputy is Dr. Linnea Ofori, who is responsible for production, and the head of radiochemistry is Dr. Vikram Szabo, who leads the team that purifies and packages the isotopes. The project employs 52 people, including 14 radiochemists and 9 radiation protection specialists.
+
+What medical isotopes are
+
+Medical isotopes are unstable atoms that give off radiation as they decay. In nuclear medicine, a small quantity is attached to a chemical that the body takes up in a specific organ or tumor, and a scanner then detects the radiation to produce an image. Some isotopes are used in higher doses to destroy cancer cells. The most useful isotopes decay quickly, with half-lives of minutes to a few days, so that the patient's exposure is limited. The price of this convenience is that the isotopes cannot be stockpiled: each batch must be produced shortly before it is used, and delivered quickly.
+
+For many years the Calder Reach's hospitals relied on isotopes imported from distant reactors. Supplies were sometimes disrupted by shutdowns, strikes, and flight cancellations, and a missed delivery could mean that scheduled patients had to be sent home. The hospital trust built Isotope Works to put production close to the patients.
+
+The cyclotron
+
+The core of the facility is a cyclotron, a particle accelerator about the size of a small room, housed in a concrete vault with walls two meters thick. The cyclotron accelerates protons to high energy and directs them at a target of stable material, converting a tiny fraction of its atoms into radioactive isotopes. After irradiation, the target is moved by remote control into a shielded laboratory, called a hot cell, where chemists purify the isotope behind lead glass using manipulators.
+
+The finished isotope is dispensed into small, shielded containers, tested for purity and activity, and labeled for shipment. The whole process from the end of irradiation to the dispatch of the container takes about three hours. The facility operates five days a week, with production runs scheduled in the early morning so that doses reach hospitals the same day.
+
+Power requirements
+
+The cyclotron is very sensitive to the quality of its electricity supply. Even a brief interruption or voltage dip can disturb the beam, and the machine then needs a lengthy procedure to restore the beam to a stable state, so that a short outage can cost an entire production run. For this reason, Isotope Works holds a priority supply contract with the Lumen Grid Company, which guarantees that the facility is among the first to be reconnected after a fault. The facility is also fitted with a large diesel backup generator, which can power the cyclotron's cooling system and the ventilation of the hot cells for up to three days, although it cannot run the beam itself.
+
+The head of radiochemistry, Szabo, likes to say that the facility's real product is not isotopes but reliability, since a hospital waiting for a dose cannot wait for an excuse. For that reason the backup generator is tested every month, and the facility keeps a detailed contingency plan for a loss of the grid.
+
+Logistics and delivery
+
+Deliveries are carried out by Strand & Keel Shipping, using temperature-controlled vehicles and a dedicated courier team. Containers go by road to hospitals within about two hours' drive, and by rail and sea from the Dunmarrow Port to hospitals farther away. Because the isotopes decay quickly, each shipment is planned to the minute: Strand & Keel's dispatchers track every container with a GPS tag and warn the receiving hospital if a delay is expected. Ndlovu says that the company's tracking system allows his planners to predict the arrival of each container within ten minutes.
+
+For doses that must travel by air, containers are driven to a regional airfield, and the isotope's activity is calculated to account for the expected decay in transit. The production team therefore prepares a slightly higher activity for distant destinations.
+
+Radiation safety
+
+Because the facility handles radioactive material, safety is paramount. Every staff member wears a personal dosimeter, and the readings are reviewed monthly. The hot cells and the cyclotron vault are monitored by radiation detectors linked to alarm systems, and the ventilation of the building is designed so that air always flows from clean areas to potentially contaminated ones, through filters. All radioactive waste, which decays quickly, is stored on site until it is safe to dispose of through the normal hospital waste route.
+
+The facility is licensed and inspected by the national radiation protection authority, which visits annually. Since opening, there have been no reportable exposure incidents. Ofori attributes this record to the team's habit of rehearsing every unusual procedure on a dummy target before attempting it with real material.
+
+Clinical use
+
+The isotopes produced at the facility are used in several kinds of scan. The most common is a positron emission tomography scan, used to detect cancer and to monitor its response to treatment. Other isotopes are used to assess the blood flow in the heart and to look for infection in bones. In recent years the facility has also started to produce an isotope used in targeted therapy for a form of prostate cancer, which the St. Idris Hospital Trust now offers to patients from across the region.
+
+Relationship with the hospital trust
+
+Isotope Works is owned by the St. Idris Hospital Trust, whose chief executive, Dr. Marguerite Anand, regards it as one of the trust's strategic assets. The trust provides the building, the nuclear medicine physicians who advise on the clinical requirements, and some of the project's funding. The rest of the revenue comes from the sale of doses to other hospitals. The facility also supports the trust's telehealth program, which allows specialists to review scans remotely.
+
+Research and development
+
+The facility cooperates with the Marrow Institute of Applied Science, whose physicists help to develop new isotope production methods. A joint project is testing a technique for making an imaging isotope with a longer half-life, which would make it easier to deliver to distant hospitals. Szabo's radiochemistry team also runs an apprentice program, taking four graduate students each year.
+
+Plans for the future
+
+Ndlovu hopes to install a second cyclotron by 2027, which would double output and provide redundancy so that a failure of one machine would not stop production. The expansion is subject to approval by the hospital trust's board and the grant of a new license. He also wants to improve the facility's resilience to power disruptions, a priority that was sharpened by an interruption in 2023 described in a separate incident report.
+
+
+Operating history, year by year
+
+2015. The idea for Isotope Works came from a supply failure. In the winter of 2015 a shutdown at a distant reactor halted the supply of a widely used imaging isotope, and for nine days the hospitals of the Calder Reach could not perform some types of scan. Dr. Marguerite Anand, then the trust's medical director, proposed that the St. Idris Hospital Trust should produce its own isotopes, and the board asked a working group to examine the options. The working group's report recommended a small cyclotron facility on the hospital campus.
+
+2016. The board approved the project and appointed Dr. Tobias Ndlovu, a nuclear medicine physicist who had worked at a national laboratory, to lead the design. He assembled a small team and traveled to four existing cyclotron facilities to learn from their experience. The most important lesson, according to his report, was that the utilities supply would determine the reliability of the whole facility. The Calder Reach Development Board supported the project with a contribution toward the shielded building.
+
+2017. Construction of the shielded building took the whole year. The cyclotron vault, with walls two meters thick, was poured in a single continuous operation lasting thirty hours. The cyclotron was delivered by sea in the autumn and installed through a removable section of the roof. Dr. Linnea Ofori joined as production manager, and Dr. Vikram Szabo as head of radiochemistry.
+
+2018. The facility was commissioned in the spring and produced its first batch of an imaging isotope in May. The regulator licensed it for production in June, after a series of test runs and an inspection, and it began regular deliveries to hospitals in July. By the end of the year it was producing about 200 doses a week and had signed contracts with six hospitals.
+
+2019. The facility doubled its output and began to supply hospitals in the neighboring region. It also started producing a second isotope, used for heart imaging. Strand & Keel Shipping became the facility's main logistics partner, replacing a patchwork of couriers, and its tracking system was integrated with the facility's dispatch software in September.
+
+2020. During the pandemic the facility remained open throughout, with staff organized into separate teams that did not meet. Demand for some scans fell sharply during the first months, but demand for isotopes used in cancer care remained steady, and by the autumn output had recovered. The facility also helped to move supplies of vaccines, by lending its shielded delivery vehicles to the Merrow Cold Chain project for a short period.
+
+2021. The facility added a hot cell for the production of a therapeutic isotope, which is used in a targeted treatment for prostate cancer. The first patients were treated at the St. Idris Hospital in the spring. Ndlovu's team worked with the Marrow Institute of Applied Science on the purification chemistry, which had to reach a high standard of purity.
+
+2022. Output reached 380 doses a week, and the facility signed contracts with 15 hospitals. A review by the regulator found that its radiation protection arrangements were exemplary. The facility also began a program to train hospital physicists, with courses held on site every spring.
+
+2023. In November the facility lost a production run when the regional grid suffered a brownout following a fault in a submarine cable serving an offshore wind farm. The cyclotron's cooling system was kept running by the backup generator for two days. The incident is described in a separate report. Ndlovu commissioned a review of the facility's power arrangements, and the board approved the purchase of a larger battery system.
+
+2024. The new battery system, which can bridge the gap between a grid failure and the start of the generator and protect the beam from voltage dips, was installed in the spring. The facility also completed the design of a second cyclotron vault, which is awaiting approval and licensing. Ofori led an exercise in which the facility simulated a three-day grid outage, and the lessons were written into the contingency plan.
+
+Output and finance
+
+Over its first six years the facility produced more than 85,000 patient doses. Its annual operating cost is about 9.2 million crowns, and revenue from dose sales covers about 82 percent of it, with the hospital trust making up the difference. Ndlovu has said that the true measure of the facility's value is the number of scans that have not had to be cancelled, which the trust estimates at several thousand.
+
+People
+
+The staff includes physicists, chemists, engineers, radiation protection specialists, and logistics coordinators. Szabo's radiochemistry team of 14 works in shifts, and an on-call rota covers evenings and weekends. Ofori runs a weekly meeting at which the production schedule for the following week is agreed with the hospitals' nuclear medicine departments. Ndlovu insists that every new member of the staff spend a day with a nuclear medicine technologist at the hospital, so that they understand how the isotope is used.
+
+Regulation and inspections
+
+The facility holds licenses for the possession of radioactive material, for the operation of the cyclotron, and for the transport of radioactive packages. The national radiation protection authority inspects it each year, and the Calder Reach Development Board's audit office reviews its emergency plans. In four inspections between 2019 and 2023, the authority raised only three minor observations, all of them corrected within a month.
+
+Education and outreach
+
+The facility runs a school visit program, which brings about 300 students a year, and an annual public lecture about nuclear medicine. Szabo has trained apprentices from the local technical college, and several of them are now permanent staff. Ndlovu also contributes to an international working group on the resilience of isotope supply chains, which he says has given the facility valuable ideas.

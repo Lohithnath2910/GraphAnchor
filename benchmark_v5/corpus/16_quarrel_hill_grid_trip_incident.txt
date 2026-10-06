@@ -1,0 +1,74 @@
+Incident Report: Quarrel Hill Loss of Synchronization, August 2022
+
+Summary
+
+At 14:05 on 17 August 2022 the Quarrel Hill Pumped Storage plant tripped off the regional grid and shut down for three hours. The trip was caused by a loss of synchronization between the plant's protection systems and the grid operator's measurements, which in turn resulted from a degraded timing signal. The incident was one of three connected events that occurred in the Calder Reach during the week of 14 August 2022, all traced to damage at the Lodestar Timing Station. This report was prepared by the Calder Reach Development Board's audit office as part of its review of the week's events.
+
+Background
+
+A pumped storage plant is tightly coupled to the electricity grid. When it is generating, its machines must rotate in exact synchronism with the grid, and when it is pumping, its motors must be controlled so that they draw power smoothly. The plant's protection systems constantly compare the voltage and current at the plant's connection point with the readings at the substations around it, and trip the plant if they disagree beyond a set limit. These comparisons depend on accurate time stamps.
+
+Quarrel Hill's measurement units obtain their reference time from the Lumen Grid Company's network, which in turn takes time from the Lodestar Timing Station at Cairn Head via the Hollin Fibre Backbone. Teodora Valkanova, the director of Quarrel Hill, had been aware of this dependency, but the plant's safety case treated the time reference as continuously available, and its protection settings did not allow for a drift.
+
+Events of the week
+
+The incident has to be understood as part of a chain. At about 23:15 on Sunday 14 August 2022, lightning struck antenna 3 at the Lodestar Timing Station, cracking its azimuth bearing. The station's software excluded the damaged antenna, but the accuracy of the timing signal was reduced and began to drift slowly. On Monday morning the Gantry Line light rail system experienced timing problems that forced a series of fail-safe stops. On the night of Tuesday 16 August, two automated cranes collided at Dunmarrow Port. These events are described in separate reports. The Quarrel Hill trip on Wednesday 17 August was the third.
+
+Timeline on 17 August
+
+By the afternoon of 17 August, the drift of the timing signal had accumulated to about 40 microseconds relative to the true time. The substations around Quarrel Hill were drifting by differing amounts, because they received their signals over different fiber routes with slightly different characteristics. At 14:05 the plant's protection system compared the readings from its own connection point with those from the Mossgate substation and found a phase discrepancy that exceeded its trip threshold. It interpreted the discrepancy as a fault on the line, and opened the main breaker.
+
+At the time of the trip, the plant was generating at 180 megawatts, three of its four units being on line. The sudden loss of this generation caused a brief dip in grid frequency, which was corrected within four seconds by Lumen Grid's reserve generators. No customers lost power. The plant's four pump-turbine units stopped automatically, and the plant's shift engineer, Henrik Boateng, who is the chief engineer, took control.
+
+Restart
+
+Boateng's team could not at first tell why the protection system had tripped, since there was no evidence of an electrical fault on the line. After forty minutes the control center at Mossgate, operated by the Lumen Grid Company, reported that its timing monitors were showing a degraded signal quality, and a call to Lodestar's duty desk confirmed that the station had been operating with reduced accuracy since Sunday night. Valkanova ordered the plant to remain offline until the timing quality could be assured. A local reference clock was connected to the protection systems, and the plant restarted at 17:10, three hours after the trip.
+
+Investigation
+
+The audit office's investigation was led by its head, Lucan Obuya, and carried out by a team of three engineers. They reviewed the plant's protection logs, interviewed the operators, and analyzed the data from Lodestar and from Lumen Grid. Their findings were consistent with the narrative above. They also found that the plant's protection settings had been chosen on the assumption that the time reference would be accurate to within ten microseconds, and that no alarm existed to warn the operators when the timing quality fell below this level.
+
+Lumen Grid's records showed that its own control system had displayed a warning about the timing quality, but that the warning had been shown only as a small icon on a secondary screen, and was missed by the operators during a busy period. The investigators noted that the Lodestar Timing Station had begun, after an earlier test, to broadcast a quality indicator, but that few of its customers had connected the indicator to alarms.
+
+Impact
+
+The immediate economic impact was small. The plant lost about three hours of operation, which cost an estimated 38,000 crowns in lost revenue. The more serious point was the revelation that three major infrastructure systems had failed on account of a single, common fault. Obuya's report observed that the plant's trip was harmless on this occasion because the grid had ample reserve, but that a similar trip on a day with lower reserves could have forced load shedding.
+
+Recommendations
+
+The audit office made five recommendations to Quarrel Hill and to its partners. The plant should connect the timing quality indicator to a prominent alarm in its control room. Its protection systems should be fitted with a local backup clock that can maintain the required accuracy for at least eight hours. The safety case should be rewritten to record the plant's dependency on external time. The plant and the Lumen Grid Company should conduct a joint drill every year in which the timing signal is deliberately degraded. Finally, the plant's trip settings should be reviewed to discriminate better between a genuine fault and a timing error.
+
+Actions taken
+
+Valkanova accepted all the recommendations. The backup clock, a rubidium oscillator, was installed in October 2022 at a cost of 410,000 crowns. The alarm was added in September, and the first joint drill with Lumen Grid was held in November. During the drill the timing signal was degraded for ten minutes, and the plant's protection system correctly remained on line, relying on its local clock.
+
+Anselm Rask, the chief executive of Lumen Grid, wrote to Valkanova to thank her for the cooperation, and announced that Lumen Grid would fit local clocks at all of its major substations. Teodora Valkanova, who had earlier served as a deputy head of system operations at Lumen Grid, said that she knew how easy it was for an alarm icon to be overlooked in a busy control room, and that the lesson applied to both organizations.
+
+Lessons
+
+The review of the week's events concluded that the infrastructure of the Calder Reach had developed a hidden single point of failure. Each project had considered its own dependency on timing and judged it acceptable, but nobody had examined the combined effect of one fault on many systems. The Board asked its audit office to carry out a regional dependency review in 2023, which produced a map of the main links between the region's infrastructure projects and a list of those that needed independent backups.
+
+Related reports
+
+The Lodestar Timing Station's own account of the lightning strike, the Gantry Line's account of the service disruption, and the investigation of the Dunmarrow crane collision were all published within the following three months. Together they form the set of documents on which the Board's later resilience policy is based. The Marrow Institute of Applied Science, whose audit team investigated the Gantry Line event, provided a technical note on the propagation of the timing error between systems.
+
+
+Annex A: Technical detail and chronology
+
+Protection settings. The Quarrel Hill plant's line protection uses phasor measurement units that report the magnitude and phase angle of voltage at the plant's connection point 50 times per second, each report time-stamped. The protection compares these with reports from the Mossgate substation, 14 kilometers away. In normal operation the phase difference between the two points is a few degrees. The protection trips the plant if the difference exceeds 12 degrees for more than 100 milliseconds. A timing error of 40 microseconds corresponds to about 0.7 degrees at 50 hertz, which is small, but the substations' errors were different and the discrepancy at the moment of the trip also included a genuine, small load swing.
+
+Why the plant tripped when others did not. The investigators found that the plant's protection was more sensitive than that of most of Lumen Grid's substations, because its settings had been chosen by the plant's designers to be conservative for a facility that contains very large rotating machines. Valkanova's team had adopted settings in 2019 that were recommended by the manufacturer and reviewed by Lumen Grid, but neither organization had examined what would happen if the clocks drifted.
+
+Chronology. At 13:58 the plant was generating 180 megawatts. At 14:04:51 a load swing of 6 megawatts on the grid, which would normally have been harmless, caused a momentary phase change at the plant. At 14:05:02 the protection computed a phase difference of 12.4 degrees against the Mossgate reading, in part because of the timing offset between the two measurement units. At 14:05:02.2 the breaker opened. At 14:05:06 the pump-turbine units' guide vanes closed. Grid frequency fell from 50.00 to 49.86 hertz and recovered within four seconds.
+
+Restart. The plant's restart procedure after a protection trip requires the shift engineer to check the cause, to confirm that the line is healthy, and to obtain permission from Lumen Grid's control center. These steps took 55 minutes. Valkanova then decided to hold the plant offline while the timing question was resolved, a further 125 minutes. The units were synchronized with the grid in sequence starting at 17:10, and full output was reached at 17:42.
+
+Local clock installation. The rubidium oscillator installed in October 2022 can hold the time to within one microsecond per hour. It is disciplined by the external signal when that signal is healthy, and holds its own time when the signal's quality indicator falls. The unit has an independent battery and was tested by disconnecting the external signal for eight hours in a trial in January 2023.
+
+Costs. The incident cost about 38,000 crowns in lost revenue. The recommended measures cost about 410,000 crowns for the clock, 65,000 crowns for the alarm and display changes, and about 90,000 crowns of engineering time for the protection settings review. The audit office's investigation cost the Board about 120,000 crowns.
+
+Observations by the grid operator. The control center at Mossgate noted that during the incident the signal from Lodestar was available to it as degraded, and that its system had classified the substation timing as "marginal." It had not generated an alarm because the marginal condition was a normal occurrence on cloudy days. Lumen Grid's control engineer on duty, Bernadette Ochoa, told the investigators that she had seen the warning icon but regarded it as routine, and that this was the lesson she would carry forward.
+
+Regional dependency review. As a result of this and the other incidents of the week, the audit office produced in 2023 a map of 31 dependencies between the region's infrastructure projects. The map showed that eleven of the region's fourteen major projects depended directly or indirectly on the Lodestar Timing Station, and that nine depended on the electricity supplied through the Lumen Grid Company's network. Obuya wrote that such a concentration of dependence was not in itself a fault, but needed to be recognized and managed.
+
+Follow-up. In May 2023 the audit office checked the plant's implementation of its recommendations. The backup clock, the alarm, and the revised safety case were in place. The annual joint drill with Lumen Grid had been carried out in November 2022 and was scheduled again for November 2023. Obuya reported that Valkanova had implemented all measures ahead of schedule, and that her team had added a further check, a monthly review of the quality indicator logs, which the audit had not required.

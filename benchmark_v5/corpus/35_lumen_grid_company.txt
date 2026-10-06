@@ -1,0 +1,102 @@
+Company Profile: The Lumen Grid Company
+
+The Lumen Grid Company owns and operates the electricity transmission and distribution network of the Calder Reach. It was created in 1998 when the region's electricity supply was separated from a national utility, and it is now owned by a consortium of the regional councils and a pension fund. Its headquarters are in Skerrin, and its control centre is in Mossgate. The company employs about 640 people. Anselm Rask has been its chief executive since 2014.
+
+The network
+
+The network consists of about 1,900 kilometers of overhead lines and underground cables, 94 substations, and a control system that balances supply and demand every second. It carries about 3,700 gigawatt-hours of electricity a year to about 210,000 customers. The company does not generate electricity itself, but buys it from generators under long-term contracts and sells it through the retail suppliers that serve households and businesses.
+
+Sources of electricity
+
+The region's electricity has changed dramatically in the past decade. A large part of it now comes from renewable sources. The Ferrous Bay Offshore Wind farm, with a capacity of 240 megawatts, supplies about a third of the region's electricity in a typical year. The Tidewrack Tidal Array contributes about 118 gigawatt-hours, with the advantage that its output is predictable. The Quarrel Hill Pumped Storage plant, with a capacity of 240 megawatts, stores surplus electricity and returns it at times of peak demand, and it also provides services that stabilize the grid. The rest comes from smaller wind and solar plants and from an interconnector to the national grid.
+
+Customers with special needs
+
+Lumen supplies power to several customers that have especially high requirements. The Isotope Works facility at the St. Idris Hospital Trust has a priority supply contract: it is among the last to be disconnected during load shedding and among the first to be reconnected. The Merrow Cold Chain depots are supplied through dual connections, with an emphasis on continuity. The Wetmoor Water Reuse project buys under an interruptible tariff, which means it agrees to reduce its consumption for short periods if the grid is under stress, in return for a lower price.
+
+The Cinder Lake Battery Recycling works is supplied directly by the Tidewrack Tidal Array through a dedicated cable, with a backup connection to Lumen's network. Several other industrial customers, including the Vossle River paper mill and the Brannock Foundry Group's plants, buy under conventional contracts.
+
+Time and synchronization
+
+A modern electricity grid depends on accurate time. Lumen's substations measure the phase of the voltage at each point in the network, and the measurements are compared to detect faults and to control the flow of power. The measurements are only meaningful if they are time-stamped to within a few microseconds. Lumen therefore takes its reference time from the Lodestar Timing Station, which distributes it over the Hollin Fibre Backbone to 14 of its major substations. The company installed local clocks at all its major substations after the incident of August 2022.
+
+The control centre
+
+The control centre at Mossgate is staffed around the clock by a team of dispatchers, who watch the state of the network on a wall of screens. Their job is to keep the frequency of the grid within a narrow band around 50 hertz, to prevent lines from being overloaded, and to restore supply quickly after a fault. The centre has a backup site in Skerrin, which can take over within minutes, and a training simulator in which dispatchers rehearse emergencies.
+
+The events of August and November
+
+The company was involved in the major incidents of 2022 and 2023. In August 2022, a degraded timing signal from the Lodestar Timing Station caused the Quarrel Hill Pumped Storage plant to trip off the grid for three hours. The control centre had displayed a warning about the timing quality, but it was shown only as a small icon on a secondary screen and was missed. In response, Lumen made the warning prominent, fitted local clocks, and agreed to hold a joint drill each year with the plant.
+
+In November 2023, the export cable of the Ferrous Bay Offshore Wind farm failed during a storm, removing a third of the region's generation within a second. The control centre shed about 160 megawatts of demand to prevent a collapse of frequency, and the voltage was unstable for six hours. The brownout caused disruption at the Isotope Works, the Merrow Cold Chain, and the Wetmoor Water Reuse project, among others. Rask described the event as beyond the design standard but accepted that the company should reduce the consequences of such a failure. The company has since increased its reserve of fast-acting generation, agreed to a voltage-quality specification for sensitive customers, and established a list of customers who are to be warned of an imminent disturbance.
+
+Safety and reliability record
+
+Before 2022 the company's reliability record was among the best in the country, with an average of fewer than 40 minutes of interruption per customer per year. In 2023, the figure rose to 71 minutes because of the November event. The company aims to return to below 45 minutes within three years. It publishes its performance in an annual report and holds a quarterly forum with its largest customers.
+
+Investment
+
+Lumen invests about 52 million crowns a year in its network. Its largest planned investment is a new substation at Ferrous headland and a second connection for the offshore wind farm, which will be built if the second export cable is approved. The company is also installing a modern distribution control system that will allow it to restore supply faster after faults.
+
+Relationships
+
+The company works closely with the Calder Reach Development Board, which sets the standards for the safety and reliability of the grid. It has long-term contracts with the Harbourgate Mutual Bank's borrowers, including the Tidewrack and Ferrous Bay projects, and it exchanges data with the Marrow Institute of Applied Science on grid stability. Rask has said that the company's greatest dependency is on information: it must know what its customers need and what its suppliers will deliver, in real time.
+
+People and culture
+
+The company has a reputation for a rigorous engineering culture. New dispatchers undergo eighteen months of training before taking sole responsibility for a shift. Rask encourages the staff to report near misses and publishes a monthly summary. He also holds an annual "worst day" exercise in which senior managers have to deal with a simulated major failure, with no warning.
+
+Environmental commitments
+
+The company aims to support the region's goal of generating 90 percent of its electricity from renewable sources by 2030. This requires further investment in storage and flexible demand, and Lumen is working with customers such as the Wetmoor Water Reuse project, whose interruptible tariff offers the grid some flexibility. The company is also planning to use batteries at key substations to provide fast reserve.
+
+Community and customers
+
+The company runs a program for vulnerable customers, who receive priority in restoration and advance warnings of planned outages. It also manages a fund for energy efficiency, which pays for insulation and heat pumps in low-income households. Rask regards these programs as part of the company's public responsibility, alongside its engineering duties.
+
+Outlook
+
+Rask's priorities for the next five years are the reinforcement of the network against storms, the improvement of the way the company communicates with large customers about disturbances, and the integration of more renewable generation. He says that the lesson of the past two years is that a grid is not only a set of wires but also a set of promises, and that each promise should be tested against the worst day.
+
+
+Annex: The network in numbers, and people at Lumen Grid
+
+Key figures
+
+The network carries a peak demand of about 640 megawatts in winter and a minimum of about 210 megawatts on summer nights. The region's installed generating capacity, including the Ferrous Bay wind farm at 240 megawatts, the Quarrel Hill plant at 240 megawatts, the Tidewrack array at 43 megawatts, and smaller sources, is about 710 megawatts. The interconnector to the national grid has a capacity of 200 megawatts. Network losses average 5.4 percent. The network has 94 substations, of which 14 receive time from the Lodestar Timing Station.
+
+Key staff
+
+The chief operating officer is Henrietta Sundquist, who oversees the control centre and the field operations. The director of system operations is Bertrand Okwuosa, who took up the post in 2016 when the previous deputy head of operations, Teodora Valkanova, left to lead Quarrel Hill. The head of planning is Dr. Annelise Karlsson, and the head of customer relations is Zacharias Pemberton. The control engineer on duty during the Quarrel Hill trip of August 2022 was Bernadette Ochoa.
+
+The control centre in practice
+
+The control centre has twelve dispatcher positions, of which four are staffed at night. A typical shift begins with a briefing on the weather forecast, planned work, the output forecast from the generators, and any known risks. The dispatchers use a screen that shows the frequency of the grid, the flows on the main lines, and the state of every substation. Alarms are prioritized, and the dispatchers are trained to respond to each category with a defined procedure.
+
+During the Ferrous Bay brownout of November 2023, the control centre handled more than 1,100 alarms in the first ten minutes. The senior dispatcher on duty, Cornelius Ibekwe, took the decision at 15:08:14 to shed load automatically, which the system did within seconds. He later told the review that the training simulator had prepared him for the sequence of alarms, but not for the number of calls from customers.
+
+Voltage-sensitive customers
+
+After the November event, Lumen Grid established a register of "voltage-sensitive" customers who are to be warned of an imminent disturbance. The first customer on the list was Isotope Works, followed by the Merrow Cold Chain's depots and the Wetmoor Water Reuse project. By the end of 2024 the register held 23 customers. For each, the company records the equipment that is sensitive to a dip, the tolerance of that equipment, and the person to be called.
+
+The company also introduced a standard for the voltage quality to be delivered to registered customers, and a charge for those who want a higher standard. The first contract with a higher standard, signed with Isotope Works in 2024, guarantees that voltage dips below 85 percent will not occur more than twice a year, and requires Lumen to install a power quality monitor at the customer's supply point.
+
+Relations with generators
+
+The company's three largest suppliers are the Ferrous Bay wind farm, the Tidewrack array, and the Quarrel Hill plant, which it pays for storage and balancing services. The company has long-term power purchase agreements with the first two. It also has a contract with the national grid for imports and exports. In the first weeks after the Ferrous Bay cable fault, the company purchased extra power from the national grid at a cost of about 1.8 million crowns.
+
+Planning for a second cable
+
+Lumen's planners have worked with the Ferrous Bay project team on the landing site for a second export cable, and on a new substation at the Ferrous headland. The company's study suggests that the second cable would reduce the risk of a regional brownout by about 80 percent, and would allow the region to export more electricity. The cost of the substation, about 14 million crowns, would be met by the company, and the cable itself by the project, supported by the Development Board.
+
+The company and the Board
+
+The company is regulated by the Development Board, which sets targets for reliability and publishes the company's performance. In 2023 the company missed its reliability target for the first time in eleven years, and the Board's committee on energy asked Rask to explain. Rask told the committee that the target had been missed because of a single event and that the company was taking measures to prevent a recurrence. The committee accepted the explanation, but asked for a progress report each quarter.
+
+Staff development
+
+The company recruits about 30 young engineers a year, most of them graduates of the Marrow Institute of Applied Science's master's program. Each new engineer spends their first year rotating through the control centre, a substation team, and a customer service team. The company also has an exchange program with the Quarrel Hill plant, in which engineers spend three months at the plant to understand how storage interacts with the grid.
+
+Environmental and community aspects
+
+The company has replaced about 90 kilometers of overhead lines with underground cables in sensitive areas since 2018, and it has installed bird diverters on lines that cross migratory routes. Its tree-trimming program has been criticized by some residents, and the company has agreed to consult communities earlier. It supports an annual "energy week" in schools, in which children visit the control centre and see how the grid is managed.

@@ -1,0 +1,70 @@
+Profile: Dr. Naledi Mokoena
+
+Dr. Naledi Mokoena is a water process engineer and the director of the Wetmoor Water Reuse project. She has led Wetmoor Works since 2019, and she is widely regarded as the region's leading authority on membrane treatment. She spent the first seven years of her career in the region as a researcher at the Marrow Institute of Applied Science, and she says that she still thinks like a researcher: she wants to know why.
+
+Early life and education
+
+Mokoena was born in a city on the edge of a desert, where water was delivered by tanker to the poorer districts. She remembers the day, when she was seven, that her mother filled a bucket from a tanker and made her carry it home without spilling a drop. She says that she has never since wasted water without remembering the weight of that bucket.
+
+She studied chemical engineering at a university in her home country and completed a master's degree in water treatment. In 2010 she won a place on a doctoral program at the Marrow Institute of Applied Science, where she studied the fouling of reverse-osmosis membranes by organic matter in wastewater. She completed her doctorate in 2014 and stayed on as a researcher.
+
+Career at the Institute
+
+From 2011 until 2018 Mokoena worked as a researcher at the Institute, in its department of energy and materials. She led a small team studying membrane fouling and cleaning, and she designed a pilot plant that was used to test membranes from several manufacturers on real wastewater. The pilot plant, which she calls her proudest piece of engineering, was later moved to Wetmoor Works, where it still serves as the test line for new membranes.
+
+Her research made her known across the region's water industry. She published fourteen papers, advised the regional water regulator on standards for reclaimed water, and was an early advocate for the Wetmoor project. When the Calder Reach Development Board decided to build the plant, it asked the Institute to recommend a director, and Mokoena was appointed in 2019.
+
+Building Wetmoor
+
+Mokoena's first task was the design of the plant. She chose a configuration of membrane bioreactors followed by ultrafiltration and reverse osmosis, because it was compact and produced very consistent water quality. She selected the reverse-osmosis modules from Corran Mill, the polymer plant of the Brannock Foundry Group, partly because the modules carried a chlorine-resistant coating that would allow regular cleaning, and partly because the mill was close enough for its engineers to visit. She hired Casimir Eze, an experienced plant operator, as her deputy, and Dr. Ebba Ruud, a chemist from a pharmaceutical laboratory, to head the plant's laboratory.
+
+The plant opened in 2021 and had a good first year. Its customers, which included a paper mill, two food processors, a power station, and about 1,800 hectares of farmland belonging to members of the Verdant Seeds Cooperative, were pleased with the quality and consistency of the water. By its third year it was recovering 71 percent of its operating cost from sales.
+
+The 2022 membrane fouling
+
+In April 2022 the plant suffered its worst crisis when fouling spread through seven of its ten treatment trains and the plant had to shut down for twelve days. Mokoena had noticed in the first days that the usual chlorine cleaning was making matters worse, and she says that the hardest decision she has ever made was to agree with Eze that the plant should be stopped, with customers waiting for water and the regulator asking questions.
+
+She asked her former colleagues at the Institute for an independent investigation, and the team led by Dr. Kasper Idowu found that the modules in question came from a batch, C-31, whose coating had been under-cured because of a faulty oven controller at Corran Mill. Mokoena was angry, she says, but also relieved: the problem was not in the design of her plant. She worked with Corran Mill's manager, Tomasz Rivera, on the corrective measures and invited her own staff to witness the first batch made under the new procedure.
+
+She also changed her plant's practices. She now requests the cure data for every batch of membranes before they are installed, keeps a reserve of modules from different batches so that a single batch problem cannot affect a large part of the plant, and has stopped using chlorine cleaning when a rapid rise in pressure drop is seen, until the cause is understood. She says that the incident showed her the value of independent expertise, because the Institute's findings were accepted by all parties.
+
+Management style
+
+Mokoena is a teacher at heart. She holds a Thursday lunch in the staff canteen, which is run as a cooperative, with whichever team is on shift, and she uses it to ask questions about the process. She runs a three-year operator training program in partnership with a local technical college, and about two thirds of the plant's operators began as trainees. Her staff describe her as demanding about detail and generous with explanations.
+
+She encourages a culture of curiosity. When an operator noticed that a pump's vibration had changed slightly, she asked the whole team to spend an afternoon finding out why, and the investigation led to the discovery of a misaligned coupling that would otherwise have failed within months. She says that she would rather have a hundred false alarms than one missed signal.
+
+Relationships
+
+She remains close to the Institute, whose researchers use the plant's pilot line and who help to analyze its data. She also works with Dr. Priya Raghunathan of Seedvault North, whose breeding trials on Corran Heights use reclaimed water supplied by the plant. She buys electricity from the Lumen Grid Company, with an interruptible tariff, and she is a participant in the Development Board's discussions on a second reuse plant.
+
+Her relations with the Brannock Foundry Group have been complex. She continues to buy membranes from Corran Mill, and she says that the mill's response after the incident was exemplary, but she remains wary and insists on seeing the data. The group's chief executive, Sigrid Tavares, visited the plant in 2023 and was shown the evidence of the cure data that the plant now requires.
+
+Personal life
+
+Mokoena lives in Wetmoor with her husband, an architect, and their twin daughters. She is a keen long-distance runner and has completed the regional marathon five times. She grows vegetables in her garden using reclaimed water, which she says is a form of long-term product testing.
+
+Views on the future
+
+Mokoena believes that water reuse will become a normal part of every region's water supply within a generation, and she wants Wetmoor to be a model. She has prepared, at the Board's request, a business case for a second plant in the east of the region that would double the region's reuse capacity. She says that any expansion should wait until Wetmoor has demonstrated stable membrane performance over a full replacement cycle, and that she would rather build slowly and reliably than quickly and brilliantly.
+
+
+Annex: Career timeline and colleagues' recollections
+
+Timeline. 2010: begins doctoral research at the Marrow Institute of Applied Science on membrane fouling. 2011 to 2018: works as a researcher in the Institute's department of energy and materials. 2014: completes her doctorate. 2016: designs the pilot plant that later moves to Wetmoor Works. 2019: appointed director of the Wetmoor Water Reuse project. 2021: Wetmoor Works begins operating. 4 April 2022: shuts the plant after membrane fouling spreads. 16 April 2022: restarts with replacement modules. 2023: the plant recovers 71 percent of its operating costs from sales. 2024: prepares a business case for a second plant.
+
+What colleagues say. Casimir Eze, the deputy director, says that Mokoena is the only director he has known who answers a question about the plant by drawing the process on a napkin. Dr. Ebba Ruud, the head of the laboratory, remembers that when the fouling began, Mokoena came to the laboratory at midnight, put on a lab coat, and spent an hour looking at samples through the microscope beside her. "She said that she did not want to be told what it was," Ruud says. "She wanted to see it."
+
+At the Institute, her former colleague Dr. Rutendo Halliday, who now leads the membrane group, says that Mokoena left behind a set of experimental protocols that are still followed. Tomasz Rivera, the manager of Corran Mill, says that after the C-31 incident she was the toughest customer he had ever had and the fairest. "She asked for every piece of data," he says, "and when we gave it to her, she thanked us and then asked for more."
+
+The decision to shut down. On 4 April 2022 Mokoena and Eze looked at the data from seven trains and agreed that the plant should be stopped. The decision was difficult because the paper mill and food processors depended on the water, and because the plant had never been shut down for more than a day. Mokoena has said that what made it possible was a rule she had introduced in 2021: any operator, supervisor, or director could order a shutdown if they had a reasonable doubt about water quality, and no one would be asked to justify it until the plant was safe. The rule was based on a practice at the airline industry's safety culture, which she had read about.
+
+The pilot line. The pilot line at Wetmoor is a miniature version of the full plant, with two reverse-osmosis modules instead of 360. Mokoena designed it in 2016 while at the Institute, and it was moved to Wetmoor in 2020. It is used to test new membranes, cleaning chemistries, and operating strategies on real wastewater. During the investigation of the 2022 fouling, the pilot line was used to reproduce the failure: when a C-31 module was run with chlorine cleaning, it fouled in four days.
+
+Customers. The paper mill's technical director, Magnus Kjellberg, says that during the shutdown Mokoena called him every morning at 07:00 with a status report, even when the report was only that nothing had changed. The mill's switch to river water cost about 90,000 crowns. "I have been a customer of many water suppliers," he says. "She is the first who treated me like a partner in the problem."
+
+Relationships with suppliers. After the incident, Mokoena established a regular review with Corran Mill, held every quarter, at which the mill presents the cure data for the batches delivered. She also negotiated a contract clause that allows Wetmoor to send its own inspectors to the mill with 24 hours' notice. The group's chief executive, Sigrid Tavares, visited Wetmoor in 2023, and Mokoena showed her the plant's record of cure data for every batch since the incident.
+
+Training. The three-year operator training program that Mokoena started in 2021 has enrolled 24 trainees. Each trainee builds, as a final project, a small piece of equipment for the plant. One trainee designed a rack for storing spare membrane modules that reduced handling damage, and it is now in use.
+
+Advice. She tells the plant's staff that water does not lie: it carries the evidence of everything that has happened to it. She also says that a good water engineer is a good detective, and that the best clues are in the places where nobody thought to look.

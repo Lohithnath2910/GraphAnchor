@@ -1,0 +1,70 @@
+Incident Report: Wetmoor Membrane Fouling, April 2022
+
+Summary
+
+In April 2022 the Wetmoor Water Reuse project suffered a serious interruption when fouling spread through the reverse-osmosis membranes at Wetmoor Works. Seven of the ten treatment trains were affected, and the plant was shut down for twelve days between 4 and 16 April. The cause was traced to a defect in the surface coating of a batch of membrane modules, designated C-31, made at Corran Mill, the polymer plant of the Brannock Foundry Group. An independent investigation was led by Dr. Kasper Idowu of the Marrow Institute of Applied Science. The incident led the group's bank to impose new conditions on a loan and led to changes in the way membrane modules are made and tested.
+
+Background
+
+Wetmoor's reverse-osmosis hall contains 360 spiral-wound membrane modules in ten parallel trains. Every module has a thin polymer coating that is meant to resist chlorine, the disinfectant used to clean the membranes. The modules were delivered in several batches in 2020 and 2021 by Corran Mill, and the plant had operated without serious problems since it opened in 2021. At the time of the incident, about 40 percent of the installed modules came from batch C-31, which had been delivered in the autumn of 2021 to replace early modules that failed during commissioning.
+
+The director of Wetmoor Works, Dr. Naledi Mokoena, and the head of the laboratory, Dr. Ebba Ruud, had established a monitoring regime in which the pressure drop across each train was recorded every minute, and the quality of the permeate was sampled hourly. The regime was designed to catch any decline in membrane performance early.
+
+Timeline
+
+On the morning of 1 April the monitoring system recorded a slight rise in the pressure drop across train 3. The operators began a standard cleaning cycle with chlorine, as the operating procedure prescribed. The pressure drop fell briefly, but then rose more sharply than before. Over the next three days, trains 1, 2, 4, 5, 6, and 8 showed the same behavior, and each time chlorine cleaning made matters worse. On 4 April, the deputy director, Casimir Eze, concluded that the cleaning was itself damaging the membranes, and ordered a shutdown of the plant. Customers, including the paper mill and the food processors, were told to switch to river water for the duration.
+
+Dr. Ruud's laboratory examined samples from the affected modules under a microscope and found that the membrane surfaces were covered with a sticky layer that did not resemble biological or mineral fouling. The layer was later identified as degraded polymer, a breakdown product of the coating. The pattern pointed to a problem with the coating itself, and Mokoena asked the Marrow Institute for an independent investigation.
+
+Investigation
+
+Dr. Kasper Idowu led a team of three from the Institute. They spent two weeks at Wetmoor Works and a further week at Corran Mill. At Wetmoor, they removed 20 modules from the affected trains and 6 from the unaffected trains for testing. At Corran Mill, they reviewed the batch records, inspected the coating line, and interviewed the staff, including the plant manager, Tomasz Rivera.
+
+The laboratory tests showed that all the failed modules came from batch C-31. The coating of these modules had a lower degree of cross-linking than specified, which made it vulnerable to chlorine. Modules from other batches, which had the correct cross-linking, were unaffected even when exposed to the same cleaning cycles.
+
+At Corran Mill, Idowu's team found the reason for the low cross-linking. The coating is cured in an oven at a controlled temperature. During the production of batch C-31 a faulty temperature controller had allowed the oven to run about eleven degrees below the specified cure temperature for a period of several days. The deviation was recorded in the oven's data log, but the plant's procedures did not require the operators to review the log before releasing a batch, and the sampling test used for batch release, which measured the coating thickness but not its cross-linking, did not detect the problem.
+
+Impact
+
+The plant was out of service for twelve days. Wetmoor's customers switched to river water, which cost them extra and drew on the river's limited summer flow. The paper mill reported additional costs of about 90,000 crowns. The project's lost revenue was about 310,000 crowns, and the cost of replacing 140 membrane modules, which was paid by the Brannock Foundry Group under the warranty, was about 1.1 million crowns.
+
+Mokoena had to report the incident to the regional water regulator, which required a plan for preventing a recurrence before the plant could resume deliveries to the food processors. The regulator was satisfied by a program of additional testing of the product water and allowed the restart on 16 April.
+
+Recommendations
+
+The Marrow Institute's report made six recommendations. Corran Mill should install a redundant temperature sensor and an automatic alarm on the curing oven. The batch release procedure should include a chemical test of the degree of cross-linking. The plant's operators should review the oven log for every batch. The customers should receive batch certificates that include the cure data. Wetmoor should keep a reserve of modules from different batches so that a single batch problem cannot affect a large part of the plant. Finally, the plant should stop its chlorine cleaning regime when a rapid rise in pressure drop is observed, until the cause is understood.
+
+Actions taken
+
+Corran Mill implemented the first four recommendations by the end of June 2022. Tomasz Rivera led the changes and invited Wetmoor's staff to witness the first batch produced under the new procedure. Wetmoor replaced the 140 faulty modules in the course of April and May, and reorganized its spare stock. Mokoena changed the plant's cleaning protocol.
+
+Financial consequences for the supplier's parent
+
+The incident had wider consequences. The Brannock Foundry Group was at that time negotiating a loan with the Harbourgate Mutual Bank to finance the expansion of its plants. The group's chief executive, Sigrid Tavares, had hoped to complete the negotiations in the spring. After reading the Institute's report, the bank's chief risk officer, Emeka Lindqvist, asked for a postponement and proposed that the loan of 75 million crowns should be made conditional on an external audit of the group's quality systems at both of its plants, Corran Mill and Ashgill Works. Tavares accepted. The loan was approved later in the year, with the audit as a condition.
+
+Lessons
+
+Mokoena has said that the main lesson was that a plant is only as dependable as the least visible link in its supply chain. She also said that the incident had shown the value of independent expertise: because the Marrow Institute was able to investigate without commercial pressure, its findings were accepted by all parties. Her team now requests the cure data for every batch of membranes before it is installed, and Corran Mill has made the data available in electronic form.
+
+Idowu, whose audit team later investigated incidents at the Tidewrack Tidal Array and the Gantry Line, described the Wetmoor episode as a textbook example of a failure in which every individual check had worked as designed, but the checks together had not covered the real risk. He noted that the pattern of a defect in one batch passing through an inspection regime was one that he would see again.
+
+
+Annex A: Technical detail and chronology
+
+Membrane construction. A spiral-wound reverse-osmosis module is made by wrapping flat sheets of membrane, separated by mesh spacers, around a central perforated tube. The active layer of each sheet is a polyamide film a fraction of a micrometer thick, supported by a porous polysulfone layer and a fabric backing. The Corran Mill modules carry an additional protective coating, a cross-linked hydrophilic polymer about two micrometers thick, which resists fouling and tolerates chlorine. The coating is applied from solution, dried, and cured in a continuous oven.
+
+The cure fault. The curing oven at Corran Mill has three zones. The specification for the coating requires 148 degrees Celsius in the second zone. During the production of batch C-31, the controller of that zone developed a fault in its thermocouple input and read about eleven degrees too high, so that the oven's heaters held the zone at about 137 degrees. The oven's data log recorded both the displayed reading and the output of a secondary monitoring thermocouple, and the two disagreed by eleven degrees throughout the batch, but the plant had no alarm on the disagreement.
+
+Laboratory findings. The Marrow Institute's laboratory measured the degree of cross-linking of coating samples by dissolving them in a solvent and weighing the insoluble fraction. For correctly cured coatings, 94 to 97 percent of the coating remained insoluble. For batch C-31, the figure was 71 percent. Samples of the fouling layer from Wetmoor, examined by infrared spectroscopy, showed the characteristic signature of the coating's polymer chains broken by oxidation, confirming that chlorine had attacked the under-cured coating.
+
+Chronology. On 1 April the pressure drop across train 3 was 0.2 bar above its baseline. On 2 April trains 1 and 5 showed rising pressure drops. On 3 April the operators carried out a second round of chlorine cleaning on trains 1 to 6, which increased the pressure drops of all of them. On 4 April, at 09:30, Casimir Eze ordered the shutdown. On 6 April the first samples were sent to the Institute. Idowu's team arrived on 7 April, the first findings were presented on 14 April, and the plant restarted on 16 April with 140 replacement modules from earlier, unaffected batches, in a configuration that allowed three trains to remain offline.
+
+Replacement. The replacement of 140 modules was carried out by the plant's maintenance team over six days. Each module weighs about 18 kilograms and must be handled carefully to avoid damaging the seals. Corran Mill provided 140 new modules of a later batch, at its own cost, and then supplied a full replacement set for the remaining C-31 modules in May.
+
+Costs. The incident cost the project about 310,000 crowns in lost sales and about 190,000 crowns for the emergency response. The modules, worth 1.1 million crowns, were replaced under warranty. Customers' extra costs, estimated at about 240,000 crowns in total, were not compensated by the supplier, but Mokoena arranged a credit against the following quarter's water charges.
+
+Corran Mill's changes. By June 2022 Tomasz Rivera had installed a second thermocouple on each oven zone, with a comparator that stops the line if the readings differ by more than three degrees. The batch release procedure was changed to include a solvent-insolubility test on a sample from every batch. The oven log is now reviewed by a named engineer, who signs the batch certificate. Rivera also introduced a training session for operators on the chemistry of curing, which he led himself.
+
+Audit of the Brannock Foundry Group. The condition attached to the group's loan required an external audit of quality systems at its plants. The audit was carried out in the first half of 2023 by an independent firm and examined both Corran Mill and Ashgill Works. It found that Corran Mill's changes were effective, and it made recommendations about batch traceability at Ashgill Works. The audit report was provided to the Harbourgate Mutual Bank in July 2023, and the bank confirmed that the condition had been met. Later in 2023 the interest rate on the loan was reduced by half a percentage point.
+
+Regulatory follow-up. The regional water regulator inspected the plant in June 2022 and again in December 2022, and found that the plant's testing and cleaning procedures had been revised satisfactorily. In its annual report, the regulator cited the incident as an example of a good response by an operator, in the sense that the plant had stopped promptly, reported openly, and given the regulator the data it needed.

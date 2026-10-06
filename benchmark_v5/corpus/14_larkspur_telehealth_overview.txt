@@ -1,0 +1,92 @@
+Larkspur Telehealth Network: Project Overview
+
+The Larkspur Telehealth Network is a remote health care service that connects specialists at the St. Idris Hospital Trust with patients and clinicians across the Calder Reach. It links 34 rural clinics, eleven care homes, and several offshore and island communities to hospital consultants through secure video, shared records, and remote monitoring equipment. The network began operating in 2019 and has since handled more than 140,000 consultations.
+
+Dr. Sunniva Eldridge has led the project since its founding. Her deputy is Dr. Kofi Aaltonen, who manages the technical platform and the clinic equipment, and the clinical chief is Dr. Mireille Tan, a consultant physician who oversees clinical protocols and quality. The project employs 57 people, including 15 clinicians who work part time on the service.
+
+The problem it solves
+
+The Calder Reach is a region of scattered communities, mountain valleys, and islands. For a patient in a remote village, a visit to a specialist at the hospital in Skerrin can mean a journey of several hours, a day off work, and the expense of travel. Many people, especially the elderly, delay or skip appointments. Before Larkspur, the trust found that patients from outlying areas were diagnosed later, with more advanced conditions, than those who lived near the hospital.
+
+Larkspur lets the specialist come to the patient, virtually. A nurse or general practitioner at the local clinic sets up the consultation, the patient and specialist see and hear each other, and the clinic's equipment sends measurements such as blood pressure, heart rhythm, and images of the skin or eyes directly to the specialist.
+
+The services
+
+The network offers several services. Teleconsultation is the most common, covering follow-up appointments for chronic conditions such as diabetes, heart failure, and respiratory disease. Tele-dermatology and tele-ophthalmology let clinic staff photograph a patient's skin or retina and send the images for expert review, shortening the wait for diagnosis. A remote monitoring service gives selected patients home devices that measure their vital signs and alert a nurse at St. Idris if the readings move outside safe limits. A tele-stroke service connects emergency departments in smaller hospitals with a neurologist, who can advise on treatment within minutes.
+
+The technology
+
+Every clinic is equipped with a consultation cart, which has a high-definition camera, a microphone, a screen, and a set of digital medical instruments. The carts connect to the hospital over the Hollin Fibre Backbone, the region's publicly owned fiber network. Where fiber is not available, a clinic uses a radio link to the nearest backbone node. Because medical consultations are sensitive to delay and interruption, the network gives Larkspur traffic a high priority and a guaranteed amount of bandwidth.
+
+All video and data are encrypted from end to end, and the platform complies with the data protection rules that apply to health records. Aaltonen's team applies software updates in the early hours of the morning, to avoid interrupting consultations, and tests every change in a copy of the production system before release.
+
+Funding
+
+The Calder Reach Development Board granted 18 million crowns to build the network, and the St. Idris Hospital Trust meets the running costs from its operating budget. The trust has calculated that each remote consultation costs about a third as much as an equivalent face-to-face visit once the patient's travel costs and the time of staff are taken into account. Dr. Marguerite Anand, the chief executive of the trust, has pointed to this saving as justification for expanding the service.
+
+Clinical governance
+
+All Larkspur clinicians work under the trust's clinical governance framework. Tan's team audits a sample of consultations every month, checking the quality of the advice, the completeness of the records, and the patient's experience. Each year the project publishes a report that compares outcomes for patients treated through the network with those for similar patients seen in person. The most recent report found that the outcomes were equivalent for the conditions studied, and that patients treated through Larkspur were seen on average eleven days sooner.
+
+The patient's experience
+
+Patient feedback has been very positive. In a 2023 survey, 93 percent of respondents said that they would use the service again, and many said that they would not have been able to attend a hospital appointment otherwise. Some elderly patients were initially nervous about the technology, and the clinics have set aside time for staff to help them. The project has also developed a simple instructions leaflet in the languages most commonly spoken in the region.
+
+Training and support
+
+The project trains clinic staff to run consultations, to use the equipment, and to recognize when a patient should be referred to the hospital in person. A help desk, staffed from seven in the morning until ten at night, supports clinics with technical problems. Eldridge visits each clinic at least once a year and says that these visits are the best way to learn what is working and what is not.
+
+Relationship with other projects
+
+Larkspur depends on several other projects in the Calder Reach. Its connectivity comes from the Hollin Fibre Backbone. The remote monitoring devices, vaccines, and some medicines sent to clinics are stored and delivered by the Merrow Cold Chain. Isotope Works, on the same hospital campus, supplies the radioactive tracers used in the scans that the telehealth consultants review. Eldridge believes that this interdependence is a strength, because it means that the network benefits from the reliability of the whole regional system, but she also recognizes that it exposes the service to the failure of any link.
+
+Challenges
+
+The principal challenge is connectivity. A consultation cannot take place if the fiber link fails, and while the clinics have a mobile-radio backup, its bandwidth is too low for high-quality video. A second challenge is recruiting enough specialists to handle the growth in demand, since the consultants volunteer their time on top of their hospital duties.
+
+The future
+
+Eldridge plans to expand the service to a further 20 clinics and to add remote consultations for mental health care. The project is also developing an artificial intelligence tool that analyzes retinal images for signs of diabetic eye disease, to be used under clinical supervision. She hopes that within five years every resident of the Calder Reach will be within a short distance of a clinic offering the full range of Larkspur services.
+
+
+Operating history, year by year
+
+2017. The St. Idris Hospital Trust studied the feasibility of delivering specialist care to remote communities by video. A small pilot involving two clinics and a single consultant showed that patients were willing to use the technology, and that clinicians could carry out many follow-up consultations without a physical examination. The trust's board agreed to expand the pilot into a full network and invited Dr. Sunniva Eldridge, a consultant in diabetes and endocrinology who had run the pilot, to lead it.
+
+2018. Eldridge assembled a team and spent the year designing the service. She recruited Dr. Kofi Aaltonen, a clinician with a background in health informatics, as the technical lead, and Dr. Mireille Tan, an experienced consultant physician, as the clinical lead. The team tested several consultation carts and selected one that had a high-quality camera and a set of digital instruments. The Calder Reach Development Board approved a grant of 18 million crowns in the autumn.
+
+2019. The Larkspur Telehealth Network launched with six clinics and 14 specialists in the spring. It connected over the new Hollin Fibre Backbone, and within the first six months it handled 2,100 consultations. By the end of the year there were fifteen clinics on the network. Patients who were surveyed said that they valued the saving of travel time, and clinicians commented that the quality of the video was better than they had expected.
+
+2020. The pandemic produced a surge in demand for remote care, and the network handled 31,000 consultations in the year, five times the volume of 2019. The team deployed a rapid expansion program, which added thirteen clinics and eleven care homes in four months. Tan introduced a protocol for assessing patients with respiratory symptoms by video, which was adopted by other regions.
+
+2021. The service added the remote monitoring program, in which selected patients with heart failure or chronic lung disease receive home devices that transmit their readings to a nurse at St. Idris. In its first year, the program was associated with a 28 percent fall in emergency admissions among enrolled patients. The tele-stroke service also started, linking three smaller hospitals to the neurology team.
+
+2022. The network reached its full complement of 34 clinics. A review by an external evaluator found that patient outcomes were equivalent to those of conventional care, and that the service was highly cost-effective. Eldridge presented the findings to the Board, which agreed to continue its grant for a further five years.
+
+2023. In June a cable cut on the Hollin Fibre Backbone at Hollin Pass interrupted the network for seven hours. About 140 consultations were canceled or moved to the telephone, and the tele-stroke service had to fall back on its slower radio link. The incident is described in a separate report. After it, the project installed higher-capacity radio backup links at the thirteen most remote clinics.
+
+2024. The service piloted remote mental health consultations at eight clinics, and began to develop an artificial intelligence tool to help screen retinal images for diabetic eye disease. The tool is being validated with the Marrow Institute of Applied Science, which provides the image analysis expertise. The network handled about 52,000 consultations in the year.
+
+Results
+
+By the end of 2023 the network had completed more than 140,000 consultations. The average waiting time for a specialist appointment for patients in remote clinics fell from 47 days to 36 days. The proportion of patients who failed to attend appointments fell from 14 percent to 5 percent. The trust estimates that the service saved patients about 2.1 million kilometers of travel in 2023.
+
+Staff and clinicians
+
+The project has a core team of 42 staff, and 15 clinicians who work part time on the service. Each clinic has a named telehealth coordinator, usually a nurse, who is trained by the project. Aaltonen runs the technical help desk, and Tan organizes the monthly clinical review at which cases are discussed. Eldridge notes that the quality of the service depends heavily on the clinic staff, who must manage the equipment and the patient's expectations.
+
+Data protection and ethics
+
+The project has an ethics committee that reviews every new service before launch. All records are held on the trust's secure servers, and access is logged. In 2022 an external audit found that the project's practices complied with the data protection law, and made two recommendations on the retention of video recordings, which were implemented.
+
+Relationships with other projects
+
+The project buys connectivity from the Hollin Fibre Backbone and regularly meets with the backbone's network team. The Merrow Cold Chain delivers vaccines and equipment to the clinics. The trust's Isotope Works supplies radioactive tracers for scans that the telehealth consultants review. Eldridge has also worked with the Calder Reach Development Board to ensure that the most remote clinics are among the first to be connected by the backbone's extension to the islands.
+
+Education and training
+
+The service has become a teaching resource: medical students from the region's university take placements in the telehealth hub, and the project provides a short course for general practitioners on running remote consultations. Tan has written a guide to the etiquette of video consultations that is used across the trust.
+
+Plans
+
+In addition to the extension of the network, Eldridge hopes to secure funding for a mobile clinic that can be driven to places with no clinic building and connected through a satellite link. The project is also exploring ways to integrate data from patients' wearable devices into the remote monitoring service.

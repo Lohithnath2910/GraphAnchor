@@ -1,0 +1,103 @@
+Information Security: Authentication and User Authentication Protocols
+
+Authentication & User Authentication Protocols
+
+What is Authentication Authentication is the process of verifying the identity of a user or device before granting access to a system or resources. In simpler terms, it's about confirming that someone or something is who or what they claim to be
+
+Here's how it works: User Provides Credentials: The user presents some form of identification, such as a username and password, a security token, or biometric data (fingerprint, facial recognition). System Verifies Credentials: The system checks the provided credentials against its records to see if they match. Access Granted (or Denied): If the credentials are valid, the system grants access to the user. If not, access is denied.
+
+Common Authentication Methods: Something You Know: Passwords, PINs, secret questions Something You Have: Security tokens, smart cards, mobile phones Something You Are: Biometrics (fingerprints, facial recognition, voice recognition)
+
+Authorization Authorization is the process of determining what specific actions an authenticated user or system is permitted to perform on a resource.
+
+Authentication vs Authorization Focus: Authorization focuses on permissions and privileges. It's about defining who can do what. Relationship to Authentication: Authorization happens after authentication. Once someone has proven their identity (authentication), authorization decides what they can actually do with that identity.
+
+User Authentication Protocols (token Based) SAML 2.0 OAuth 2.0 Kerberos Radius
+
+SAML 2.0 SAML stands for Security Assertion Markup Language. It's an open standard for exchanging authentication and authorization data between an Identity Provider (IdP) and a Service Provider (SP)
+
+Consider an Enterprise HR Portal Request Portal VTOP Username / Password Username / Password Username / Password User
+
+How SAML Works HR Portal VTOP Username / Password User Identity Provider Authenticated Request Access Request SAML Assertion Send SAML Assertion Access Granted Service Provider
+
+How SAML Works? User Accesses SP: The user attempts to access the SP. SP Requests Assertion: The SP sends an authentication request to the IdP, even if the user is already authenticated with the IdP. IdP Checks Authentication Status: The IdP checks its internal records to see if the user is already authenticated and if their session is still valid. IdP Issues Assertion: If the user is still validly authenticated, the IdP issues a new SAML assertion containing the updated user information. SP Verifies and Grants Access: The SP receives the assertion, verifies it, and grants the user access to the requested resources
+
+What is SAML Assertion? An assertion is an XML document that carries information about a user, such as their identity, attributes, and authorizations.
+
+Key Information User Identity: Contains information about the authenticated user, such as their name, email address, and unique identifiers. Attributes: Includes user attributes relevant to access control, such as roles, groups, and permissions. Authentication Statements: Provides details about the authentication method used (e.g., password, multi-factor authentication). Authorization Decisions: May include information about the user's authorization to access specific resources or perform certain actions.
+
+Sample Assertion
+
+Sample Assertion
+
+Why use SAML Enhanced Security: Passwords are stored and managed in one secure IdP, reducing the attack surface and credential fatigue. Centralized Offboarding: When an employee leaves the company, disabling their account in the central IdP immediately revokes their access to all connected SAML-enabled applications. Improved User Experience: Employees only need to remember one set of credentials (or rely on seamless session tokens) to access dozens of workplace tools.
+
+Kerberos
+
+What is Kerberos? Kerberos is a network authentication protocol that uses a system of tickets to allow nodes communicating over a non-secure network to prove their identity to one another in a secure manner
+
+How Kerberos Works USER Principal File Server Insecure Network Resource AuthenticationServer (AS) Ticket Granting Server (TGT) Request for a ticket Ticket Granting Ticket Ticket Granting Ticket Token Token Access Granted
+
+How it Works User Authentication: A user provides their credentials (username and password) to the KDC. Ticket Granting Ticket (TGT): The KDC verifies the user's identity and issues a TGT, which is a ticket that allows the user to access other services. Service Tickets: The user uses the TGT to request service tickets for specific resources (e.g., files, printers). Access Granted: The KDC issues service tickets to the user, allowing them to access the requested resources.
+
+Benefits Strong Authentication: Provides robust security by using encryption and a trusted third party. Single Sign-On (SSO): Allows users to authenticate once and access multiple resources without re-entering credentials. Improved Security: Reduces the risk of password theft and unauthorized access. Scalability: Can be used in large-scale networks with many users and services.
+
+Radius - Remote Authentication Dial-In User Service protocol
+
+What is Radius Protocol RADIUS (Remote Authentication Dial-In User Service) is a networking protocol that provides centralized authentication, authorization, and accounting (AAA) management for users who access a remote network.
+
+Authentication, Authorization, and Accounting (AAA) Authentication: RADIUS verifies the identity of a user or device trying to access the network. This usually involves checking usernames and passwords against a central database. Authorization: Once authenticated, RADIUS determines what resources the user is allowed to access. This could include specific network segments, applications, or services. Accounting: RADIUS tracks user activity, such as connection times, data usage, and bandwidth consumption. This information can be used for billing, troubleshooting, and network planning.
+
+How it Works Wireless Access Point( WAP 1) Building 1 Username/Password WAP 2 Building 2 User Satish User Satish Username/Password (Are they Different ?)
+
+How it Works Wireless Access Point( WAP 1) Building 1 Username/Password User Satish Radius Server Username/Password Grant /Deny Grant /Deny Authentication, Authorization, and Accounting (AAA)
+
+How it Works Wireless Access Point( WAP 2) Building 2 Username/Password User Satish Radius Server Username/Password Grant /Deny Grant /Deny Authentication, Authorization, and Accounting (AAA) Supplicant Radius Client (NAS)
+
+Supplicant In the context of network security, a supplicant is a software component or device that initiates and participates in the authentication process to gain access to a protected network or service. Initiates authentication requests: It starts the process by sending authentication credentials (like usernames and passwords) to the authentication server. Responds to authentication challenges: The authentication server may send challenges (e.g., cryptographic puzzles) to the supplicant, which must respond correctly to prove its identity. Receives authentication results: The supplicant receives the authentication response from the server (success or failure).
+
+Radius Client (Network Access Server) Acts as the gateway between users and the network. Receives user authentication requests (e.g., username/password). Forwards these requests to the RADIUS server for verification. Receives authorization decisions from the server and grants or denies access accordingly.
+
+Radius Server Centralized authentication, authorization, and accounting (AAA) server. Stores and manages user credentials and access policies. Verifies user identities. Determines access privileges based on authorization rules. Tracks user activity for accounting purposes (optional)
+
+Key Enterprise Advantages of This Model: Seamless Mobility: Employees can roam freely across corporate campuses, floors, and offices without needing separate Wi-Fi keys for each location. Dynamic Policies: Wherever they log in, the RADIUS server can apply uniform network access rules or dynamically place them on the correct network segment (VLAN) based on their department or security clearance. Instant Revocation: If an employee leaves the company or their device is compromised, disabling their account in the central directory instantly locks them out of the Wi-Fi network across every building simultaneously, unlike a shared pre-shared key (PSK) where changing the password requires updating every single router and device.
+
+OAuth 2.0
+
+OAuth 2.0 OAuth 2.0 is an authorization framework that allows third-party applications to obtain limited access to user data from a service provider, without the need to share the user's credentials directly
+
+How OAuth 2.0 Works Google Social Media App POST Photos from Google photos Redirected Username/ Password Grant Permission Auth Server Authorization Code Get Access Token Access Token Access Photos using Token
+
+How it Works User Initiates: A user wants to use a third-party application (like a social media app) to access data from another service (like their email provider).
+
+Redirection to Authorization Server: The third-party application redirects the user to the authorization server of the service they want to access (e.g., Google, Facebook).
+
+User Grants Permission: The user is prompted to log in to the service and grant the third-party application permission to access specific data.
+
+How it Works Authorization Code Issued: If the user grants permission, the authorization server issues an authorization code to the third-party application.
+
+Token Exchange: The third-party application uses the authorization code to request an access token from the authorization server.
+
+Access Granted: The authorization server issues an access token to the third-party application.
+
+Data Access: The third-party application uses the access token to access the user's data from the service
+
+Authorization Code
+
+Sample Access Token Structure: JWTs have three parts separated by dots Header: Contains metadata about the token, such as the algorithm used to sign it (e.g., HMAC SHA-256). Payload: Contains the claims (information) about the entity (e.g., user ID, name, expiration time). Scopes: The permissions granted to the client application (e.g., "read_profile," "write_posts") Signature: Used to verify the integrity and authenticity of the token.
+
+LDAP - Lightweight Directory Access Protocol
+
+What is Active Directory Active Directory is a directory service developed by Microsoft for Windows domain networks
+
+Active Directory Centralized Management: Allows administrators to centrally manage user accounts, group memberships, and access permissions across the network. Authentication: Authenticates users and devices to ensure only authorized individuals can access network resources. Authorization: Controls access to resources based on user identity and group membership. User and group management: Create, manage, and organize user accounts and groups. Group Policy: Enforces security settings and configurations across the network.
+
+LDAP (Lightweight Directory Access Protocol) LDAP (Lightweight Directory Access Protocol) is a standardized communication protocol for accessing and managing directory services. Active Directory, on the other hand, is Microsoft's implementation of a directory service. Active Directory functions as an LDAP server, meaning it provides access to its directory data using the LDAP protocol.
+
+How it Works App 1 (VTOP) App 2 (Moodle) App 3 (NeoColab) Active Directory Username / Password Username / Password Username / Password Username / Password Username / Password Username / Password
+
+How it Works Client-Server Model: LDAP operates on a client-server model. Client: An application or program that wants to access directory information. Server: The computer running the directory service software (e.g., Active Directory, OpenLDAP). Communication: Clients communicate with the LDAP server using a series of requests and responses over a network connection.
+
+How it Works Operations: LDAP defines various operations for interacting with the directory, including: Search: Retrieve entries based on specific criteria (e.g., find all users in a particular department). Add: Create new entries in the directory. Modify: Update existing entries with new information. Delete: Remove entries from the directory. Bind: Authenticate a user to the directory. Data Exchange: Information is exchanged between the client and server using a standardized format.
+
+Benefits Improved user experience: Eliminates the need for users to remember multiple passwords. Enhanced security: Reduces the risk of password-related security breaches. Increased productivity: Saves users time by streamlining the login process.

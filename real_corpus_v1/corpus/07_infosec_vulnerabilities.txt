@@ -1,0 +1,71 @@
+Information Security: Vulnerabilities
+
+Information Security Unit I
+
+Vulnerabilities
+
+Vulnerabilities Vulnerabilities are weaknesses in a system, network's design, implementation, or configuration that can be exploited by malicious actors. These vulnerabilities can lead to unauthorized access, data breaches, system disruptions, or other security incidents.
+
+Software Vulnerabilities Outdated Software: Using outdated software with known vulnerabilities can make systems easy targets for hackers. Unpatched Software: Failing to apply security patches can leave systems exposed to attacks. Zero-Day Vulnerabilities: These are newly discovered vulnerabilities that haven't been patched yet, making them particularly dangerous.
+
+Configuration Vulnerabilities Weak Password Policies: Using weak or easily guessable passwords can compromise security. Default Configurations: Many devices come with default settings that are often insecure. Misconfigured Firewalls: Improperly configured firewalls can leave networks vulnerable to attacks.
+
+Network Vulnerabilities Insecure Wireless Networks: Weak Wi-Fi encryption can allow unauthorized access to the network. Open Ports: Unnecessary open ports can provide entry points for attackers. Network Scanning: Attackers can scan networks to identify vulnerable systems.
+
+Human Error Phishing Attacks: Social engineering attacks can trick users into revealing sensitive information. Accidental Data Exposure: Mistakes in handling sensitive data can lead to breaches. Poor Security Practices: Negligence or lack of awareness can create vulnerabilities.
+
+Threats
+
+What is a threat? Threat: A potential danger or harm to a computer system.
+
+Types of Threats Human-initiated (e.g., malicious attacks, accidental errors) Computer-initiated (e.g., software bugs, hardware failures) Natural disasters (e.g., floods, earthquakes)
+
+Types of Human Threats: Benign (Non-malicious): Accidental mistakes like spilling drinks on laptops, deleting data, sending emails to the wrong person, etc. Malicious: Intentional actions aimed at causing harm. These are often called attacks.
+
+Types of Malicious Attacks: Random: Targets any computer or user (e.g., malicious code on a website). Directed: Targets specific computers, organizations, individuals, or software products.
+
+Harm
+
+What is harm? The negative consequences of actualized threat is known as harm
+
+Types of Harm Hardware damage or theft Software corruption or unauthorized access Data loss, modification, or unauthorized disclosure Denial of service
+
+Example Black Market for Digital Assets: Stolen credentials, personal information, and other digital assets are sold on underground markets. The market value of these assets can differ significantly from their true value to the rightful owner.
+
+Hackers Success
+
+Method Skill and Knowledge: Attackers need technical skills and knowledge to exploit vulnerabilities. Tools and Resources: Access to hacking tools and resources can facilitate attacks. Open Source Information: Publicly available information about systems and software can be used for malicious purposes.
+
+Opportunity System Accessibility: Publicly accessible systems and networks are prime targets. Poor Security Practices: Weak passwords, lack of updates, and unsecured configurations create opportunities for attacks. Human Error: Mistakes made by users can lead to security breaches.
+
+Motive Financial Gain: Cybercriminals often seek monetary benefits. Espionage: State-sponsored actors may target sensitive information. Vandalism: Some attackers may simply want to cause disruption or damage. Activism: Hacktivists may use cyberattacks to promote political or social causes.
+
+Computer Security Computer security, also known as cybersecurity, is the practice of protecting computer systems and networks from digital attacks.
+
+Computer Security: Protecting Valued Assets Hardware: Physical components of the computer system. Software: Programs and applications that run on the hardware. Data: Information stored on the computer, such as documents, photos, and emails.
+
+Identifying Valuable Assets: Determine what is important to you and the organization. Consider the potential impact of loss or damage to each asset.
+
+Data as a Unique Asset Data is often irreplaceable and difficult to recover. Protecting data is crucial to maintain privacy, security, and business continuity.
+
+Intellectual Property Digital assets can represent intellectual property, such as designs, research data, and creative works. Protecting intellectual property is essential for innovation and economic growth.
+
+Protecting hardware, software, and data is crucial for safeguarding other assets, such as network connectivity and user access.
+
+Counter Measures Physical Controls Administrative Controls Technical Controls
+
+Physical Controls Locks Security guards Fire suppression systems
+
+Administrative Controls Policies, procedures, and guidelines that regulate behaviour and system use. Examples: Access control policies Security awareness training Incident response plans
+
+Technical Controls Firewalls Intrusion detection systems Encryption Access control lists
+
+Malicious Code
+
+Malwares Malware is a broad term used to describe any type of malicious software designed to harm computer systems or networks. It can steal data, damage files, disrupt operations, or even take control of devices.
+
+Types of Malwares Viruses: Self-replicating programs that attach themselves to other files. Can corrupt or delete files, or even damage hardware.
+
+Worms: Self-propagating malware that spreads across networks without human interaction. Can consume network bandwidth and system resources.
+
+Trojan Horses: Malicious programs disguised as legitimate software. Can steal data, install other malware, or grant remote access to attackers.

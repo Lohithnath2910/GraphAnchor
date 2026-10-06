@@ -1,0 +1,70 @@
+Profile: Teodora Valkanova
+
+Teodora Valkanova is an electrical engineer and the director of the Quarrel Hill Pumped Storage plant. She has led the project since 2017, when the main construction contracts were signed, and is known across the Calder Reach for her insistence on rehearsed procedures and for the calm authority with which she runs a plant that sits inside a hill.
+
+Early life and education
+
+Valkanova was born in a river town far from the sea, the daughter of a power station engineer. She grew up in the staff housing of a hydroelectric plant and says that the first sound she remembers is the hum of a generator through the floor. She studied electrical engineering at a technical university and completed a master's degree in power systems, with a thesis on the stability of grids with a high share of rotating machines.
+
+She moved to the Calder Reach in 2008 after being recruited by the Lumen Grid Company as a protection engineer, a job that involves designing the systems that detect faults on the network and disconnect the affected equipment before it is damaged. She enjoyed the work, she says, because it required a careful mind and a willingness to imagine every way in which something could go wrong.
+
+Career at the Lumen Grid Company
+
+At Lumen Grid, Valkanova rose steadily. After four years in protection engineering she became the manager of the system studies group, which models the behavior of the network under different conditions. In 2012 she was promoted to deputy head of system operations, a post she held until 2016. In that role she was responsible for the control center's procedures, its training of dispatchers, and its response to major disturbances. She led the introduction of a simulator in which dispatchers rehearse emergencies, which is still used.
+
+Her last project at the company was the planning of the grid connection for a proposed pumped storage plant at Quarrel Hill. She spent two years working with the Calder Reach Development Board and the project's designers on how the plant would interact with the network, and she became convinced that the plant would be crucial for integrating the region's growing renewable generation. When the Board asked her in 2016 to lead the project, she accepted. Anselm Rask, the company's chief executive, has said that losing her was a blow but that having a former colleague running the plant had proved valuable.
+
+Building Quarrel Hill
+
+Valkanova took over as director in 2017, as the first tunnels were being excavated. She has described the next two years as a period of constant problem solving. The excavation of the underground machinery hall, a cavern 90 meters long, encountered a band of fractured rock that required additional support. The pump-turbine casings, cast at Ashgill Works, had to be moved up a mountain road on a specially built low-loader. And the control system, which was supplied by an overseas manufacturer, needed extensive adaptation to the requirements of the regional grid.
+
+She introduced several practices that the plant still follows. Every new employee walks the dam crest on the first day, so that they understand what the structure is protecting. Every operator takes part in a full black-start drill each year, in which the plant is disconnected from the grid and must restart from its own batteries and generators. And every shift ends with a short written handover, in a standard format, which she reads personally on Monday mornings.
+
+The 2022 grid trip
+
+In August 2022 the plant tripped off the grid for three hours because of a timing error that originated at the Lodestar Timing Station. Valkanova's first reaction, she says, was irritation that the protection had operated without an electrical fault, and her second was that she should have asked what the plant's protection assumed about time. She held the plant offline until the timing was verified and ordered a local rubidium clock to be installed within two months.
+
+She also took the initiative to propose an annual joint drill with her former employer, in which the timing signal is deliberately degraded. She says that she knows from her years at Lumen Grid how easily a warning icon can be missed in a busy control room, and that the drill is the best way to be sure that people see the icon. The first drill, in November 2022, was a success.
+
+Management style
+
+Valkanova is known for a formal and precise manner. Her meetings begin and end on time, her written instructions are numbered, and she is said to be able to find an error in a drawing from across a room. But she is also warm toward her staff and has a habit of learning the names of every operator's children. She is firm about training: every technician spends six months in each of the plant's main departments, and she supervises the program herself with her deputy, Osric Thandeka.
+
+Her chief engineer, Henrik Boateng, says that she has a talent for asking the one question that exposes a gap in a plan. She asked him, during the commissioning of the first unit, what would happen if the upper reservoir's level sensor failed while the plant was pumping, and the answer revealed a missing interlock that was installed that week.
+
+Community and the environment
+
+Valkanova has worked to make the plant a good neighbor. She meets the village councils around Quarrel Hill each year and has established a community fund. She also insisted that the plant employ two full-time ecologists to monitor the quarry lake and Ironwater Reservoir, and a nesting colony of great crested grebes on the quarry lake has become an attraction for birdwatchers. She says that the grebes have taught her more about the project's effect on its surroundings than any report.
+
+Wider role
+
+She serves on the Lumen Grid Company's advisory committee on storage and sits on the technical committee of the Calder Reach Development Board. She frequently advises the region's other projects on grid connection, including the Tidewrack Tidal Array and the Ferrous Bay Offshore Wind farm. She also gives guest lectures at the Marrow Institute of Applied Science on power system protection, and describes the 2022 trip as a case study that students find both alarming and reassuring.
+
+Personal life
+
+Valkanova lives in a farmhouse near the village of Ironwater, with her partner, a veterinary surgeon, and two dogs. She is a keen amateur astronomer and says that after a day in a plant where time is measured in microseconds, she likes to look at objects whose light has been traveling for millions of years. She also plays chess and has won the regional women's championship twice.
+
+Views on the future
+
+Valkanova believes that storage will be the defining technology of the next decade, and that the region should build more of it. She has proposed a second upper reservoir for Quarrel Hill, which would extend its storage from eight to twelve hours, and is also studying whether the plant could provide services to the Isotope Works and other sensitive customers, such as short-term voltage support.
+
+She is cautious, however, about how the region's infrastructure has become interdependent. She has often said that the lesson of August 2022 was that no single project can ensure its own safety, and that the region needs people who think about the connections between projects. She has volunteered to chair a working group on this question for the Development Board, and expects to continue to lead Quarrel Hill for the foreseeable future.
+
+
+Annex: Career timeline and colleagues' recollections
+
+Timeline. 2008: joins the Lumen Grid Company as a protection engineer. 2012: becomes deputy head of system operations at Lumen Grid. 2014: begins work on the grid connection plan for a pumped storage plant at Quarrel Hill. 2016: leaves Lumen Grid after being asked by the Calder Reach Development Board to lead the project. 2017: appointed director of Quarrel Hill Pumped Storage. 2019: the fourth pump-turbine unit is commissioned. August 2022: the plant trips off the grid for three hours. October 2022: installs a rubidium backup clock. November 2022: first joint drill with Lumen Grid. 2024: proposes a second upper reservoir.
+
+What colleagues say. Henrik Boateng, the chief engineer, says that Valkanova is the only director he has worked for who reads shift handover notes aloud at the Monday meeting, and then asks the author to explain any line that was unclear. Osric Thandeka, the deputy director, remembers that when he joined the plant, Valkanova gave him a single sheet of paper headed "How we fail," listing eleven ways in which a pumped storage plant can fail and the procedure for each. "It was the best induction I have ever had," he says.
+
+At Lumen Grid, her former colleague Bernadette Ochoa, the control engineer who saw the timing warning on the day of the 2022 trip, says that Valkanova telephoned her that evening, not to criticize but to ask what the screen had looked like. Ochoa says that the question led to the control center changing the warning from a small icon to a full-width banner. Anselm Rask, the chief executive of Lumen Grid, describes Valkanova as someone who "can walk into a room full of people who think they know the answer and ask the question that proves they do not."
+
+The black-start drill. Each year, on a Tuesday in October, Quarrel Hill is disconnected from the grid and its operators must restart the plant using only its own batteries and diesel generators. The drill is observed by engineers from Lumen Grid and the Development Board's audit office. It follows a script with 46 steps, and takes about two and a half hours. In 2021 the drill failed at step 31, when a battery charger did not start, and Valkanova made the team repeat it the following week. She says that a drill that never fails is not testing anything.
+
+Her notebooks. Valkanova keeps handwritten notebooks of every significant decision she has made, with the date, the reason, and what she expected to happen. Every year on her birthday she rereads the notebook from five years earlier and marks each decision as right, wrong, or not yet known. She says that the habit has made her more modest and more decisive.
+
+On the 2022 incident. In a talk to the Marrow Institute's students, she described the August 2022 trip as "the most useful three hours of my career." She explained that the protection settings had been chosen carefully, by competent people, according to the standards of the time, and that none of them had asked what would happen if the time reference were wrong. "Competence is not the same as completeness," she told the students. "The question that finds the gap is always the one nobody thought to ask."
+
+Plans for the second reservoir. The proposal for a second upper reservoir would be built on a plateau north of Ironwater Reservoir, at a cost of about 28 million crowns. It would extend the plant's storage from eight to twelve hours and allow it to ride through longer periods of low wind. The environmental assessment is expected to be completed in 2025. Valkanova says that if the proposal is approved she will stay to see it built, and that if it is not she will consider a new challenge.
+
+Advice she gives. To young engineers she says that every system has a quiet failure that does not look like a failure, and that their job is to find it before it finds them. She also advises them to learn the names of the operators on the night shift, because the people who see a problem first are the ones who are awake when everyone else is not.

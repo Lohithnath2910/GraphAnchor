@@ -1,0 +1,78 @@
+Incident Report: Tidewrack Hub Seal Failures, February 2023
+
+Summary
+
+On the evening of 9 February 2023 the Tidewrack Tidal Array in Skerrin Sound suffered the first serious equipment failure since it began operating in 2020. Water entered the rotor hubs of three of the array's 24 turbines, numbers 7, 11, and 18, after the main hub seals failed. The three turbines were shut down and lifted out of the water, and the output of the array fell to about 60 percent of normal for the following nine weeks while the damaged units were repaired and the cause of the failure was investigated. This report summarizes the incident, the independent investigation led by Dr. Kasper Idowu of the Marrow Institute of Applied Science, and the actions taken afterward.
+
+Background
+
+Each Tidewrack turbine has a two-bladed rotor mounted on a hub, a heavy iron casting that carries the load of the blades and contains the pitch mechanism that turns each blade about its axis. The hub is sealed against seawater by a pair of rotating seals where each blade root passes through the casting. The hubs were manufactured at Ashgill Works, the casting plant of the Brannock Foundry Group, and delivered in four batches between 2019 and 2020. The hubs for turbines 7, 11, and 18 came from the batch designated AH-14, which was cast in the autumn of 2019.
+
+The turbines had given no cause for concern in the first three years. The project's condition monitoring system tracked the vibration, temperature, and oil pressure of every hub, and a routine inspection of every nacelle was carried out each year. The last inspection of the three affected turbines had taken place in the spring of 2022 and had found no defects.
+
+Timeline of the event
+
+At 17:42 on 9 February, the monitoring system raised an alarm on turbine 11: the oil in the hub's lubrication circuit showed a sudden rise in water content. The duty engineer in the control room, following the standard procedure, shut the turbine down by feathering its blades, and called out the on-call team. Within eleven minutes similar alarms were received from turbines 7 and 18. The shift supervisor, Marit Sorensen, who is the deputy director of the project, took charge of the response and ordered the three turbines to be isolated.
+
+The next slack tide was at 21:10, and the offshore team, working from the catamaran with the lifting frame, raised turbine 11's nacelle to the surface. When the hub cover was removed on the quay, technicians found that seawater had entered the hub and mixed with the lubricating oil. The oil had turned a milky gray color. The same condition was found in turbines 7 and 18 over the following two days. All three turbines were replaced in the water by spare nacelles from the quayside store within five days, but the spare nacelles were of an earlier design with a lower rating, so the array's output remained reduced.
+
+Investigation
+
+Dr. Bjorn Halvorsen, who leads the Tidewrack project, asked the Marrow Institute of Applied Science to carry out an independent investigation. The Institute assigned Dr. Kasper Idowu, a senior engineer who leads its audit team, together with two metallurgists and a marine engineer. The investigators examined the three failed hubs on the quayside, took samples from them for laboratory analysis, reviewed the manufacturing and inspection records from Ashgill Works, and interviewed the project's maintenance staff.
+
+The first finding was that the seals themselves were not the root cause. They were found to be in good condition, with normal wear, but the surfaces against which they ran were not smooth. In each of the three hubs, the seal seat, the machined ring on which the seal rides, contained a cluster of tiny voids just below the surface. The voids had opened up under the repeated loading of the tides and had roughened the seat, allowing seawater to bypass the seal.
+
+Metallurgical analysis showed that the voids were casting porosity: small gas pockets trapped in the iron as it solidified. Such pockets are a known hazard of casting, and Ashgill Works had used ultrasonic testing to detect them. However, the investigators found that the ultrasonic procedure applied to batch AH-14 had a limitation. The probe settings used for the batch were adequate for the thick sections of the hub, but they were not sensitive enough to find small clusters of porosity close to the machined surface of the seal seat. The pockets were therefore not detected during manufacturing.
+
+Idowu's team also examined the production records of batch AH-14. They found that the batch had been poured on a day when the foundry's melt had a slightly higher than usual gas content, because of damp scrap in the furnace charge. The deviation was within the permitted limits, but it increased the probability of porosity. The batch contained 14 hubs, and the investigators recommended that the whole batch be treated as suspect.
+
+Impact
+
+The immediate effect was the loss of generation. The array's output fell to about 60 percent of normal for nine weeks. The lost production was about 6.7 gigawatt-hours, and the project's revenue fell by roughly 1.4 million crowns. The Lumen Grid Company, which buys the electricity, adjusted its dispatch plan, and the effect on the grid was small, since the loss was spread over several weeks.
+
+The failure had a more noticeable effect on the Cinder Lake Battery Recycling works, which receives electricity directly from the array. The shortfall in supply forced the works to run its shredding line at half rate for two weeks, until it could draw more from the regional grid. The works' director, Dr. Ximena Duarte, used the period for maintenance, but she asked the Tidewrack project for firmer guarantees of supply in the future.
+
+The Harbourgate Mutual Bank, which financed the array, was notified of the failure under the terms of the loan. The bank's chief risk officer, Emeka Lindqvist, asked for the investigation report and for confirmation that the problem was confined to one batch of hubs.
+
+Findings and recommendations
+
+The investigation's final report, published in April 2023, made several recommendations. First, all 14 hubs from batch AH-14 should be inspected using a more sensitive technique, and any hub showing porosity near the seal seat should be replaced. Second, the foundry should revise its ultrasonic inspection procedure to include a dedicated scan of the seal seats, using a higher-frequency probe. Third, Tidewrack should add a routine check of the water content of the hub oil, with a lower alarm threshold, so that a seal leak can be detected earlier. Fourth, the project should keep a spare hub of the full rating in its quayside store, in addition to spare nacelles.
+
+Corrective action
+
+The Brannock Foundry Group accepted the findings and agreed to meet the cost of replacing the affected hubs. Sigrid Tavares, the group's chief executive, wrote to Halvorsen to apologize and to confirm that Ashgill Works had already changed its inspection procedure. Of the 14 hubs in batch AH-14, 12 were installed in the array and two were held in the foundry as spares. The sensitive re-inspection found porosity near the seal seat in five of the twelve installed hubs, including the three that had failed, and the five were replaced during the summer of 2023.
+
+The yard manager, Yusra Demir, who runs Ashgill Works, led the redesign of the inspection procedure and arranged for an independent laboratory to witness the first scans using the new method. The new procedure was applied to every large casting made afterward, including the pump casings and gate pivot blocks that the foundry supplied to other projects in the region.
+
+Tidewrack restored its full output in mid-April 2023, after the replacement hubs had been fitted. The project also installed new oil water-content sensors on all 24 turbines and lowered the alarm threshold from five percent to one percent.
+
+Lessons
+
+Halvorsen has said that the incident taught the project two lessons. The first was about suppliers: it is not enough to accept a certificate of inspection, and the project must understand the limits of the inspection method. The second was about spares. The project had spare nacelles but had not considered that the failures might be common to a whole batch, which would require spares of the same design as the failed units.
+
+Sorensen, who led the response, noted that the project's emergency procedures worked well. The three turbines were isolated within an hour, no one was injured, and no oil was released into the Sound. She also recommended that future drills include a scenario in which several turbines fail within a short time.
+
+Follow-up
+
+The array's second phase, which was under discussion at the time, was delayed pending the demonstration of stable hub performance over several years. The project board decided that the second phase would not be approved until the full inspection of all hubs in the first phase was complete. Philippa Osterhout, the chair of Harbourgate, welcomed the decision.
+
+The Marrow Institute's report was made available to other users of cast components in the region. The Institute's audit team, which had already investigated a membrane failure at the Wetmoor Water Reuse project in 2022, noted that both incidents involved a single batch of a component made by a Brannock Foundry Group plant, and it recommended that the group introduce a batch-level traceability system across its plants.
+
+
+Annex A: Technical detail and chronology
+
+Hub construction. The Tidewrack rotor hub is a single spheroidal graphite iron casting weighing 3.1 tonnes before machining. It has a central bore for the main shaft and two blade-root bearings set 180 degrees apart. Each blade root is sealed by a double lip seal, with a grease chamber between the lips, and the seal rides on a hardened ring pressed into a machined seat. The seat is machined to a surface roughness of 0.4 micrometers. The investigators found that in the failed hubs, subsurface voids as small as 0.3 millimeters had opened into the seat surface over three years of tidal loading, creating a leakage path under the seal lip.
+
+Inspection method. At Ashgill Works the hubs were inspected by ultrasonic testing with a probe of 2 megahertz, which is suitable for thick sections. The seal seat, however, is a zone less than 12 millimeters from the machined surface, and a probe of this frequency has a "dead zone" near the surface in which small defects are not resolved. The foundry's procedure for earlier batches had included an additional radiographic check of the seal seats, but for batch AH-14 the radiographic check had been dropped to shorten the schedule, a change that the foundry's quality system had approved on the basis that ultrasonic testing was sufficient.
+
+Re-inspection. The 12 installed hubs of the batch were re-inspected in the summer of 2023 using phased-array ultrasonic probes of 10 megahertz and computed radiography. Five hubs showed clusters of voids within eight millimeters of the seal seat. These were the hubs of turbines 7, 11, and 18, which had already failed, and of turbines 4 and 15, which had not yet failed but showed early signs of oil contamination. All five were replaced during July and August 2023. The two spare hubs held at the foundry were scrapped.
+
+Chronology of the response. The alarm on turbine 11 was raised at 17:42 on 9 February. Turbine 7 followed at 17:49 and turbine 18 at 17:53. The nacelle of turbine 11 was on the surface by 21:40. The spare nacelle fitted to turbine 11 was lowered into the water on 11 February, to turbine 7 on 12 February, and to turbine 18 on 14 February. The spare nacelles were of the earlier 1.5 megawatt design, so the capacity of the array stayed at about 40 megawatts instead of 43 until the final repairs.
+
+Oil analysis. Samples from the three failed hubs contained between 18 and 31 percent water by volume. The oil's viscosity had dropped by nearly half, and bearing surfaces showed early corrosion pitting. A laboratory at the Marrow Institute of Applied Science found no evidence of damage to the bearings that would have prevented their reuse after cleaning, and the nacelles were rebuilt with new seals and fresh oil.
+
+Costs. The total cost of the incident to the project was about 3.9 million crowns, made up of 1.4 million in lost revenue, 1.2 million for vessel hire and repair labor, 0.7 million for the investigation and inspection program, and 0.6 million for replacement parts not covered by the supplier. The Brannock Foundry Group paid for the replacement hubs, valued at about 2.2 million crowns, and contributed a further 400,000 crowns toward the project's other costs.
+
+Interviews. Idowu's team interviewed 19 people. Lazar Okonkwo, the chief engineer, told them that he had always regarded the hubs as the most reliable part of the turbine and had never spoken with the foundry about the inspection method. A technician at Ashgill Works, who asked not to be named in the report, said that the decision to drop the radiographic check had been taken to meet a delivery date that the project itself had pressed, and the investigators noted that the project had no record of making such a request.
+
+Follow-up audit. In April 2024, the Institute's audit team returned to verify that the recommendations had been carried out. It found that all hubs had been re-inspected and that the new inspection procedure at the foundry had been applied to every casting since June 2023. It also found that Tidewrack's oil sensors had detected two minor seal leaks in the winter of 2023 to 2024, both of which were repaired before any turbine failed.

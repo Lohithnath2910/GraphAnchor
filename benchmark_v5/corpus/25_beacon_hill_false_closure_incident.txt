@@ -1,0 +1,72 @@
+Incident Report: Beacon Hill Barrier False Closure, January 2024
+
+Summary
+
+At 03:40 on 19 January 2024 the Beacon Hill Flood Barrier closed all six of its gates without a real surge threatening, and stayed closed for eleven hours. The estuary was blocked to shipping, and the Dunmarrow Port was unable to receive or dispatch ships for the period. The cause was a fault in the firmware of a tide gauge, which sent false readings of a rapidly rising sea level to the barrier's control system, and a weakness in the logic that decides when to close. No flooding occurred and no one was injured, but the incident cost the port and its customers about 3.1 million crowns. The Calder Reach Development Board asked Dr. Kasper Idowu of the Marrow Institute of Applied Science to audit the control system.
+
+The control system
+
+The barrier's gates are closed on the decision of a duty officer, who is advised by an automatic system. The system takes readings from a network of sensors: tide gauges at the barrier and along the estuary, wave buoys offshore, and meteorological stations. It compares the measured water levels with forecasts from the national weather service and calculates the risk of overtopping. When the risk crosses a threshold, the system issues an alert recommending closure, and starts a countdown. If the duty officer does not respond within fifteen minutes, the system closes the gates automatically, because a late closure is considered more dangerous than an unnecessary one.
+
+The sensors were supplied by the Marrow Institute of Applied Science, whose coastal engineers designed the network and calibrated the models. The control system was upgraded in early 2023, when a second set of independent clocks was added and a connection was made to the Lodestar Timing Station.
+
+What happened
+
+During the night of 18 to 19 January, a tide gauge at the seaward end of the estuary, designated gauge E4, received an automatic firmware update that had been scheduled by its manufacturer's remote service. The update, which was applied at 03:12, contained a bug that caused the gauge to report its readings in the wrong unit for a period of a few minutes after it restarted. The readings, which were off by a factor of 3.28, showed the sea level rising by two meters in four minutes.
+
+At 03:19 the control system noted that gauge E4's reading differed sharply from those of the neighboring gauges, but its logic gave priority to the highest reading from any gauge in a conservative design choice, on the principle that a sensor that sees danger should not be overruled by sensors that do not. At 03:25 the system issued an alert and started the countdown. The duty officer, Zofia Okafor, who was working alone on the night shift, saw the alert and checked the other gauges. She judged that gauge E4 was probably wrong, but the procedure did not allow her to override the automatic system without a second person's confirmation, and she was unable to reach the deputy director, Dariusz Imani, in time. At 03:40 the countdown expired and the gates began to close.
+
+The consequences of the closure
+
+The gates closed in 27 minutes, and a ship that was entering the estuary had to turn back. By 04:30 the control room had established that the alert was false, but reopening a closed barrier is a slow, deliberate process. The procedure requires that the hydraulic system be checked after every closure, that the water levels on both sides of the gates be equalized, and that the dockmaster be consulted. The gates were fully reopened at 14:40, after eleven hours.
+
+During that time, the Dunmarrow Port could not receive or dispatch any vessel through the estuary. Seven ships were delayed, including two container ships, a tanker, and a ferry. The port's automated terminal, which had been planning for a morning peak, had to reschedule its cranes, and the Strand & Keel Shipping trains that were due to collect containers waited for several hours. The port's director, Cormac Adebayo, estimated the total cost to the port and its users at about 3.1 million crowns.
+
+Investigation
+
+Ingrid Solheim, the project's director, asked the Development Board for an independent audit. Dr. Kasper Idowu and his team spent three weeks at the barrier. They reviewed the logs of the control system, examined gauge E4 and its firmware, and interviewed the duty officer and the maintenance staff.
+
+The audit found three causes. The first was the manufacturer's firmware bug, which had not been detected because the update had been applied automatically without testing at the barrier. The second was the control system's logic, which had given priority to the highest reading without requiring corroboration from neighboring gauges. The third was the procedure that required two people to override the automatic closure, which meant that a lone officer who correctly suspected a false alarm was not able to stop it.
+
+Recommendations
+
+The audit made eight recommendations. Firmware updates for sensors must be turned off for automatic installation and must be tested before being applied. The control system should check that a sensor's reading is consistent with those of its neighbors and with the physical laws that govern the water level, and should treat an implausible rate of change as a fault. A closure should require the agreement of at least two independent sensors. The duty officer should be permitted to extend the countdown on her own authority. The night shift should be staffed by two officers. The barrier should have a fast reopening procedure for false closures. The control room should carry out regular exercises with false alarms. And the project should agree with Dunmarrow Port on a protocol for communicating closures.
+
+Actions
+
+Solheim accepted all the recommendations. The firmware updates were disabled immediately, and the sensor network was reviewed in February. The control system's software was revised by Pilar Wanjiru's hydraulics and controls team, with the voting logic that Idowu's team had earlier recommended to the Gantry Line project after the timing incident of 2022. The new logic requires that two of three nearby gauges agree before an automatic closure. The night shift now has two duty officers, and the countdown can be extended by a single officer.
+
+The reopening procedure was shortened, and a trial in April 2024 reopened the gates in two hours. A joint exercise with the Dunmarrow Port in May tested the communication protocol, and the port now receives a warning at the moment an alert is issued, not when the gates start to close.
+
+Lessons
+
+Solheim wrote that the incident had demonstrated the cost of caution that is not balanced against the cost of a false alarm. The control system's conservative logic was right for a real surge, but it had not been designed with a clear view of the cost of a false closure. The barrier protects 14,000 homes, but it also sits across the main shipping route of the region, and a closure has real economic consequences.
+
+Idowu, who had led the audit of the Wetmoor, Tidewrack, and Gantry Line incidents, observed that the recommendation to require independent confirmation is among the most common in his reports. He said that automated systems are generally very good at doing what their designers imagined, and very poor at recognizing situations that their designers did not, and that the best protection is a second, independent opinion.
+
+Follow-up
+
+The Development Board's safety panel reviewed the changes in June 2024 and approved the return of the barrier to normal operation under the revised procedures. The panel noted that the barrier's overall record, with only one false closure in three years of service, was good, but encouraged the project to extend its testing of unusual failure modes.
+
+
+Annex A: Technical detail and chronology
+
+The gauge network. The barrier's sensor network comprises 14 tide gauges, 6 wave buoys, 3 meteorological stations, and 2 current meters. The gauges are pressure transducers mounted on piles, with a measurement range of 0 to 12 meters and an accuracy of 5 millimeters. Gauge E4, at the seaward end of the estuary, is one of four in the outer estuary and is the one that the control system uses to detect a rise of the sea before it reaches the barrier.
+
+The firmware bug. The firmware update of 19 January was intended to correct an error in the gauge's temperature compensation. It also changed the default unit of the output from meters to feet, an error that would normally have been caught by the manufacturer's testing. After restarting, the gauge sent readings in feet for 11 minutes until a configuration message from the control system reset the unit. A level of 3.1 meters appeared as 10.2 in the data stream, which the control system interpreted as 10.2 meters, a physically impossible but not automatically rejected value.
+
+How the logic responded. The control system's validation rejected any reading outside the gauge's range of 0 to 12 meters, but the false reading of 10.2 meters was within range. The rate-of-rise check, which was supposed to flag implausible changes, was set to trip at 2 meters in ten minutes and was applied only to the average of all gauges rather than to each gauge separately. The mean of the 14 gauges rose by only 0.5 meters, which fell below the check's threshold, so the faulty reading was treated as valid.
+
+Chronology. At 03:12 the firmware update was applied. At 03:14 the gauge restarted. At 03:19 the control system logged a discrepancy between gauge E4 and its neighbors. At 03:25 the system issued an alert for closure and started the 15-minute countdown. At 03:27 the duty officer, Zofia Okafor, examined the readings. At 03:31 she tried to call the deputy director, Dariusz Imani, whose telephone was off. At 03:40 the gates began to close. At 03:41 the unit error in gauge E4 was reset by the control system and the readings returned to normal. At 04:07 all gates were closed. At 04:30 the control room established that the alert was false. At 14:40 the gates were fully open.
+
+Why reopening took eleven hours. The reopening procedure was designed on the assumption that closures would be real, and that the sea would be higher on the seaward side of the gates than on the estuary side. The procedure required the water levels on both sides to be equalized before the gates were moved, a process that takes several hours when the difference is large. In this case the levels were almost equal, but the procedure's checklist required the hydraulic system to be tested, the sills to be inspected by divers, and the dockmaster's agreement to be obtained. The divers could not enter the water until slack tide at 10:30, and the inspection of all six sills took until 13:00.
+
+The effect at the port. Seven ships were affected. The container ship Marguerite Orlova, which had been entering the estuary, turned back and anchored offshore for eleven hours. A tanker and a ferry, which had been scheduled to depart in the morning, were delayed. The port's automated cranes had been planning for the ship's arrival, and the scheduling system had to re-plan 1,400 container moves. About 2,100 containers were collected late by trucks and trains, including Strand & Keel Shipping's morning freight service, which was held for about six hours.
+
+Costs. The delays cost the shipping lines about 1.7 million crowns in demurrage and extra fuel, the port about 0.9 million, and the road and rail operators about 0.5 million. The barrier's own costs, including the audit, were about 290,000 crowns. The total of about 3.1 million crowns was shared according to a formula that the Development Board agreed in the following months.
+
+The manufacturer. The gauge manufacturer acknowledged the firmware error and issued a corrected version within two weeks. It also changed its update process so that customers can choose to approve updates before they are applied. Its representative told the project that it was the first time the company's firmware had changed a unit of measurement without a prior notice.
+
+The decision to disallow single-person override. The audit explained that the rule requiring a second person had been added in 2021 after a near miss in which a duty officer had overridden a closure that proved to be genuine. The rule was reasonable in itself, but the project had not considered the case of a night shift with one person. The revised procedure allows one officer to extend the countdown, but not to cancel a closure, and requires two officers on every shift.
+
+Follow-up. In June 2024 the safety panel's review of the barrier concluded that the revised logic was sound. A test in the same month, in which an engineer sent a false reading from a gauge in a controlled exercise, showed that the system now treated it as a fault and did not issue an alert. The barrier's availability, measured over the following six months, was 99.5 percent.

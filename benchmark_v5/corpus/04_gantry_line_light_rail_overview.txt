@@ -1,0 +1,75 @@
+Gantry Line Light Rail: Project Overview
+
+The Gantry Line is a light rail project that is replacing the Calder Reach's slow, ageing suburban railway with a modern, high-frequency network. It is run from Mossgate Yard, a former railway workshop on the eastern edge of Mossgate, where the project's engineers maintain a dedicated 1.4 kilometer test track. The Gantry Line is the largest single investment of the Calder Reach Development Board, which committed 140 million crowns to it, and its leader, Idris Kowalczyk, has been in charge since 2018.
+
+Kowalczyk's deputy is Fenella Okoro, who is responsible for construction and rolling stock, and the signals chief is Pavel Lindgren, who leads the team that designs and tests the signaling and control systems. The project employs 210 people.
+
+Scope of the project
+
+The old suburban railway ran a handful of trains an hour on a single-track line with long signaling blocks, so that trains were forced to wait for each other at passing loops. The Gantry Line is converting 80 kilometers of this railway into a modern double-track network with frequent short trains. At the time of writing, 52 of the 80 kilometers have been equipped with the new signaling system, and the first revenue services under the new system began running in 2022.
+
+The goal is to run a train every four minutes in each direction during peak periods, compared with every twenty minutes before. The project estimates that the line will carry about 38,000 passengers on a typical weekday once the full network is operational, roughly three times the pre-project figure.
+
+Moving-block signaling
+
+The central technical idea of the project is a moving-block signaling system. In traditional signaling, the track is divided into fixed blocks, and only one train may be in a block at a time. In a moving-block system, the position and speed of every train is tracked continuously, and each train is given a movement authority that extends only as far as the safe braking distance behind the train in front. This allows trains to run much closer together without compromising safety.
+
+A moving-block system depends critically on accurate time. Train positions are reported by radio and by balises, small beacons laid in the track, and every position report is stamped with the time at which it was taken. For the system to compare reports from different trains, all clocks must agree to within a few microseconds. The Gantry Line obtains its reference time from the Lodestar Timing Station at Cairn Head, which broadcasts a disciplined timing signal over fiber to Mossgate Yard. Each trackside controller also contains a local oscillator, which keeps time between updates from the station.
+
+Hardware
+
+The trackside controllers are housed in rugged cabinets, and both the cabinets and the precision oscillators inside them are supplied by Ashgill Works, the casting and machining plant of the Brannock Foundry Group. The cabinets are castings in a corrosion-resistant aluminum alloy designed to withstand salt air and vibration, and the oscillators are machined and assembled in the plant's electronics workshop. The control software and the train-scheduling algorithm that decides how services are spaced across the network were developed by the Gantry Line team itself.
+
+The scheduling algorithm is a significant piece of intellectual property. It allocates track space to services in real time, and takes into account the timetable, the position of every train, and the condition of every switch. The Dunmarrow Port Automation project later adopted a modified version of the algorithm to schedule container cranes at Dunmarrow Port, with help from the Gantry Line's engineers.
+
+Rolling stock and depots
+
+The project has ordered 46 four-car electric trains from an overseas manufacturer; 31 have been delivered. The trains are maintained at Mossgate Yard, where a covered workshop can service eight vehicles at once. A second, smaller depot at the western end of the line is under construction. All the vehicles are fitted with onboard units that communicate with the trackside controllers and report their position every 200 milliseconds.
+
+Stations are being rebuilt with level boarding, step-free access, and platform screen doors at the busiest locations. The project has also negotiated with the Calder Reach's bus operators to align bus timetables with train arrivals at the six main interchange stations.
+
+Funding and governance
+
+The Gantry Line is funded by the Calder Reach Development Board, which also holds the safety case for the project and appoints an independent assessor to review it. Kowalczyk reports quarterly to the Board's committee on transport. He is known for requiring every project manager to present a "risk of the month" at the weekly leadership meeting, a habit he says he brought with him from his earlier career in freight operations.
+
+Team culture
+
+Kowalczyk holds a standing open meeting every Friday in the signals workshop. Any engineer, regardless of seniority, can raise a safety concern, and the notes from each meeting are circulated to the whole project. Lindgren has described the meeting as the single most effective safety measure the project has, because it catches small problems before they become incidents.
+
+The project runs an apprenticeship program for signaling technicians, with about thirty apprentices at any one time. The apprentices learn on the test track, where they build, install, and test a complete signaling section as part of their final assessment.
+
+Passenger experience and expected benefits
+
+Early service data show that journey times on the equipped sections have fallen by about a quarter, and that the proportion of trains arriving within a minute of schedule has risen to 94 percent. Passengers surveyed in 2023 rated the reliability of the line much higher than that of the old railway, although some complained about the construction disruption. The project estimates that, when complete, the line will remove about 9,000 car journeys from the region's roads each weekday.
+
+Risks and dependencies
+
+The project is aware that its reliance on a single external timing source is a risk, and the signals team studied the issue during the design phase. The risk became real in 2022, when a timing fault caused a major service disruption, described in a separate incident report. The project's response, including an upgrade of its backup oscillators, is described there as well.
+
+Construction approach
+
+The Gantry Line is being built in sections so that most of the old railway can remain in service during construction. Each section is closed for a "blockade," usually a weekend or a two-week period, during which the track is renewed, the old signals are removed, and the new trackside controllers and balises are installed. At the end of the blockade the section is tested for several nights before being handed over to service. This staged approach has been criticized for causing disruption, but Kowalczyk argues that it is the only way to keep the railway running while it is rebuilt.
+
+A typical blockade involves about 140 workers and 30 machines. Nighttime test runs use an instrumented train that records the performance of the radio links, the balise readers, and the timing system, and the data are analyzed the next morning by the signals team under Pavel Lindgren. If a section fails the test, the blockade is extended; so far four of the sixteen blockades have overrun, the longest by three days.
+
+Signaling architecture in more detail
+
+The signaling system has three layers. At the lowest level, the trackside controllers operate the points and signals and read the balises. In the middle, regional interlocking computers, installed in four equipment rooms along the line, check that routes are safe and pass movement authorities to the trains. At the top, a central control room at Mossgate Yard supervises the entire network and makes decisions about the timetable. Each layer is duplicated, and the system is designed so that the failure of any single component results in the affected trains being brought to a stop safely rather than any train being allowed to proceed without authority.
+
+The safety case, which is the document in which the project demonstrates that the system is acceptably safe, runs to about 3,000 pages. It was prepared by Lindgren's team and reviewed by an independent assessor appointed by the Calder Reach Development Board. One of the key assumptions of the safety case was that the external timing signal would remain accurate, an assumption that was later tested by events.
+
+Procurement and suppliers
+
+The trackside cabinets and oscillators come from Ashgill Works, and the trains from an overseas manufacturer. The radio equipment, the interlocking computers, and the balises were supplied by three different specialist companies. Kowalczyk's procurement team deliberately divided the contracts among several suppliers rather than awarding a single turnkey contract, because the team wished to keep control of the system architecture. The decision made the integration work harder but, in Kowalczyk's view, produced a more transparent and maintainable system.
+
+Staffing and training
+
+In addition to the 210 permanent staff, the project employs about 300 contractors at the height of construction activity. Staff are organized in five directorates: construction, signaling, rolling stock, operations readiness, and finance and commercial. A project safety assurance manager reports to Kowalczyk. The training program for the 32 drivers who will operate the first services began in 2021 and uses a full-motion simulator at Mossgate Yard that reproduces every section of the line.
+
+Environmental and community impact
+
+The project is replacing diesel trains with electric ones, which will cut emissions along the corridor by an estimated 14,000 tonnes of carbon dioxide a year. Noise barriers are being installed beside the track in residential areas, and the new trains are significantly quieter than the old ones. The project also supports a community fund that pays for tree planting along the line and for small improvements at stations chosen by local residents in a yearly vote.
+
+Relationship with other projects
+
+The Gantry Line depends on, and in turn supports, several other infrastructure projects in the region. It is the largest customer of the Lodestar Timing Station. Its scheduling method has been reused at the Dunmarrow Port Automation project. Its signal engineers have also advised the Beacon Hill Flood Barrier on the design of its control system. Kowalczyk has said that he regards this exchange of expertise as one of the strengths of the Calder Reach's infrastructure community, though he acknowledges that it creates dependencies that must be carefully managed.

@@ -1,0 +1,31 @@
+Information Security: Attribute-Based Access Control (ABAC)
+
+Attribute-Based Access Control (ABAC) Attribute-Based Access Control (ABAC) is a dynamic, highly granular security model used to determine whether a user is allowed to access a specific system, file, or application.
+
+Instead of simply looking at a user's role (like "Admin" or "Employee"), ABAC calculates access permissions in real-time by evaluating a combination of specific characteristics, known as attributes.
+
+The Four Pillars of ABAC Subject Attributes: Who is requesting access? (e.g., job title, department, security clearance, training level). Resource Attributes: What are they trying to access? (e.g., document classification, owner, creation date, department tag). Environment Attributes: What is the context of the request? (e.g., time of day, geographic location, IP address, device type). Action Attributes: What do they want to do with it? (e.g., read, edit, delete, approve). The system then checks these attributes against a set of programmed policies (if/then rules). If all conditions are met, access is granted.
+
+Attribute-Based Encryption (ABE) Attribute-Based Encryption (ABE) is a type of public-key cryptography where the secret key of a user and the ciphertext are dependent upon attributes (e.g., role, department, location). Decryption is possible only if there is a match between the attributes and the access structure. The two primary flavors of ABE are Ciphertext-Policy ABE (CP-ABE) and Key-Policy ABE (KP-ABE). The distinction lies in where the access policy is embedded and where the descriptive attributes reside
+
+Ciphertext-Policy Attribute-Based Encryption Ciphertext-Policy Attribute-Based Encryption (CP-ABE) is an advanced form of public-key cryptography where the access control rules are mathematically embedded directly into the encrypted data itself, rather than being enforced by a central server.
+
+In a CP-ABE system, there are two distinct halves to the security mechanism: The Ciphertext (The Lock): When a data owner encrypts a file, they attach an access policy (a logic tree of rules) to the ciphertext. A user can only decrypt the file if the attributes embedded in their private key mathematically satisfy the access policy embedded in the ciphertext.
+
+Example - The Setup (Issuing the Keys) The hospital's IT security team does not use standard passwords. Instead, every employee is issued a cryptographic private key that mathematically embeds their specific professional attributes.
+
+The Encryption (Embedding the Rules)
+
+The Decryption (The Attribute Test) This satisfies the left side of the OR gate. The mathematics of his key successfully pair with the mathematics of the file. The file unlocks. This satisfies all three requirements on the right side of the OR gate. The file unlocks. He fails the AND gate required for doctors. The math fails. The file remains encrypted. The math fails. The file remains encrypted.
+
+Key-Policy Attribute-Based Encryption (KP-ABE) Key-Policy Attribute-Based Encryption (KP-ABE) is the exact inverse of CP-ABE. It is another cryptographic way to enforce Attribute-Based Access Control (ABAC), but it flips where the rules and the attributes are stored.
+
+Key-Policy Attribute-Based Encryption (KP-ABE) In CP-ABE (Ciphertext-Policy): The encrypted file holds the policy (the lock/rules), and the user's key holds the attributes (the ID badge). In KP-ABE (Key-Policy): The encrypted file is simply tagged with a list of attributes, and the user's key holds the policy (the rules).
+
+Example A company has thousands of servers generating daily security and financial logs. These logs are automatically encrypted and uploaded to a central cloud repository.
+
+The Encryption (Tagging the Data) A finance server generates a daily transaction log.
+
+The Setup (Issuing the "Smart Key")
+
+When is KP-ABE used over CP-ABE? While CP-ABE is better for scenarios where the data owner wants strict control over who sees their files (like a doctor encrypting a patient record), KP-ABE is ideal for systems where the data creator and the access controller are different entities.

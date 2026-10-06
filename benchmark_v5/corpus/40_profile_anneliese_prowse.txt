@@ -1,0 +1,72 @@
+Profile: Dr. Anneliese Prowse
+
+Dr. Anneliese Prowse is an electronics and radio engineer who directs the Lodestar Timing Station at Cairn Head. She has led the station since 2019 and was involved in its design from the first feasibility study. She is known for a quiet manner, an unusual understanding of what time means to the people who depend on it, and a habit of visiting customers before they ask.
+
+Early life and education
+
+Prowse grew up in a small town in a mountain region, where her mother ran the local post office and her father repaired radios. She says that her earliest experiments were with a crystal set that she built from a kit at the age of nine, and that her first lesson in timing came from trying to tune it. She studied physics at a university in the capital, and then took a doctorate in radio astronomy, working on the timing of pulsars, the rapidly spinning remnants of dead stars whose radio pulses are so regular that they rival atomic clocks.
+
+The doctorate gave her a lasting fascination with precise time, and also with the problem of how to measure it in the presence of noise. She spent three years after her degree at a radio observatory, where she worked on receivers and on the software that corrected for the delays of signals passing through the interstellar medium.
+
+Career in railway signaling
+
+In 2013 Prowse moved to the Calder Reach for family reasons and, finding that there were few jobs for radio astronomers, took a post as a signal engineer in the Calder Reach Development Board's rail office. The office was then planning a modern signaling system for the region's suburban railway, and she was assigned to the team that specified the radio and timing requirements. The work gave her an intimate understanding of why a moving-block railway needs time accurate to microseconds.
+
+From 2016 to 2019 she worked on the design team of the Gantry Line project, which was formed before the appointment of its director, Idris Kowalczyk, in 2018. She specified the timing architecture of the signaling system, including the local oscillators in the trackside controllers and the interface to an external timing source. It was while she was doing this work that she became convinced that the region needed its own timing source, rather than a patchwork of commercial receivers.
+
+Creating Lodestar
+
+Prowse wrote the first feasibility study for a regional timing station in 2017, in her own time. She presented it to the Board's technology office, which commissioned a larger study, and by 2018 the Board had approved the project and a budget of 21 million crowns. When the Board advertised for a director, she applied and was appointed in the spring of 2019.
+
+She recruited her first team carefully. Jun-seo Baek, a physicist who had worked on atomic clocks at a university laboratory, became her deputy, and Ronja Eklund, an operations manager from a telecommunications company, joined as operations chief in 2020. She says that she looked for people who were obsessive about detail but also willing to ask for help. Her rule for the team is that no one changes a clock setting without a second person present.
+
+The station took shape quickly. The clock room was finished in July 2019, the three antennas were installed in August, and the first valid signal was produced in November. By 2021 it had three customers: the Gantry Line, the Dunmarrow Port Automation project, and the Lumen Grid Company.
+
+The 2022 lightning strike
+
+On the night of 14 August 2022, lightning struck antenna 3 and cracked its bearing. Prowse drove to the station in the dark and arrived at 01:30. She has said that she can still remember the sound of the antenna's motor straining against the damaged bearing, a sound that she had never heard before.
+
+In the days that followed she faced a crisis that went far beyond the station. The degraded signal contributed to the stoppage of the Gantry Line, the collision of two cranes at the port, and the tripping of the Quarrel Hill plant. She wrote the station's incident report personally, and in it acknowledged that the warning procedure had been inadequate. She had assumed that the quality indicator would be enough, and she had not checked whether the customers were using it.
+
+She says that the incident changed her understanding of her role. She had thought of Lodestar as a technical facility whose job was to produce a good time signal. Afterward she thought of it as a service whose customers needed to know when it was not working well, and she now spends about a quarter of her time on customer engagement. She introduced a monthly degradation drill and an automated system that notifies all customers within two minutes of a change in quality.
+
+Style and working relationships
+
+Prowse is reserved in public but is regarded by her staff as warm and generous. She hosts a monthly lunch at the station for the whole team, cooked by Baek, who is a talented amateur chef. She keeps a framed printout of the pulsar signal that was the subject of her doctoral thesis on the wall of her office, and she says that it reminds her that time is not an invention but a discovery.
+
+She has a close working relationship with Yusra Demir, the manager of Ashgill Works, which supplies the mechanical parts of the antennas. The plant's engineers worked through a weekend in 2022 to cast and machine a replacement bearing, and Prowse says that she will never forget it. She has also built a strong relationship with Ngozi Valera, who runs the network operations center of the Hollin Fibre Backbone, which carries Lodestar's signal.
+
+Wider influence
+
+Prowse is a member of the Development Board's technical committee and chairs its working group on timing resilience. She has helped to draft the Board's rule that any project with an external timing dependency must hold a local backup clock. She also gives lectures on timing at the Marrow Institute of Applied Science, and has supervised two doctoral students there.
+
+Her influence is also felt in a more personal way: several of the region's engineers have attended her short course on "what to do when your clock is wrong," which she developed after the 2022 incident. She says that the best way to make a system resilient is to ask every engineer to imagine, once a year, that the one thing they have never doubted is false.
+
+Personal life
+
+Prowse lives in a cottage near Cairn Head, which she rents from a farmer, with her husband, a geologist who studies the headland's rocks. She is a keen hill walker and is known to walk to the station on days when the road is closed by snow. She plays the viola in a small chamber group and says that she appreciates the way a quartet has to agree on its timing without a conductor.
+
+Plans
+
+Prowse's priorities for the coming years are the fourth antenna and a second site inland, which would allow the station to survive the loss of the whole headland. She is also exploring a terrestrial radio timing signal as a last-resort backup, a project led by Baek. She hopes that, in time, the region will have a timing service whose customers think of it the way they think of the water supply: something that is almost never noticed, because it almost never fails.
+
+
+Annex: Career timeline and colleagues' recollections
+
+Timeline. 2008 to 2011: doctorate in radio astronomy, studying pulsar timing. 2011 to 2013: works at a radio observatory on receivers. 2013: moves to the Calder Reach and joins the Development Board's rail office as a signal engineer. 2016 to 2019: member of the Gantry Line design team. 2017: writes the first feasibility study for a regional timing station. 2018: the Board approves Lodestar with a budget of 21 million crowns. Spring 2019: appointed director of the Lodestar Timing Station. November 2019: the first valid time signal is produced. 14 August 2022: lightning cracks the bearing of antenna 3. 19 August 2022: antenna 3 returns to service. 2024: begins design of a fourth antenna and a second timing site.
+
+What colleagues say. Jun-seo Baek, the deputy director, says that Prowse once spent an entire night comparing two clocks that disagreed by three nanoseconds, and that in the morning she announced that the disagreement was a cable that had been nudged by a cleaner's mop. "She was not annoyed," he says. "She was delighted. To her it was proof that the system was telling the truth."
+
+Ronja Eklund, the operations chief, recalls that on the morning after the lightning strike, Prowse called a team meeting in the clock room and began it by saying, "Everything we do from now will be judged by whether we tell our customers the truth quickly." Gideon Lund, the site manager, says that she was the first on the headland to check that the staff who lived on site were safe.
+
+Customers' views. Pavel Lindgren of the Gantry Line says that Prowse's visit in the weeks after the August 2022 incident was the most useful thing the station could have done: "She sat in our control room for two days, with a notebook, and asked us what we would do if she were wrong. Nobody had ever asked us that." Cormac Adebayo of Dunmarrow Port says that the monthly degradation drill is the only exercise in which his control room has to work with a signal that is slightly wrong rather than missing.
+
+The clock room. The clock room is a windowless chamber of about 40 square meters. Four cesium clocks and two hydrogen masers sit on a granite slab that is isolated from the building by rubber mounts. The room's temperature is kept at 20.0 degrees Celsius, plus or minus 0.1. Visitors must wear overshoes and leave their mobile telephones outside, because the radio emissions of a telephone can disturb the masers. Prowse allows no one to enter alone: every entry is logged and every person is accompanied by a second staff member.
+
+The monthly degradation drill. On the first Tuesday of each month at 11:00, Eklund's team deliberately reduces the quality of the signal for ten minutes, while the customers' engineers watch how their systems respond. Prowse asks each customer to write a short note on what they saw. In March 2023, the first drill, one customer's equipment ignored the quality indicator entirely; the fault was corrected within a week. By 2024 every customer's system responded correctly.
+
+Writing and speaking. Prowse writes a short note at the end of every week, which she circulates to customers, describing the station's performance and any events. She keeps it to one page. She says that the discipline of writing it each week has changed the way she thinks, because she cannot write "no events" without checking that it is true.
+
+Courses. The short course that she developed after the 2022 incident, entitled "What to do when your clock is wrong," has been attended by about 160 engineers from the region's projects. The course's central exercise asks each participant to draw the path by which time reaches their system, and to mark each point at which it could be wrong. She says that most participants find at least two points they had never considered.
+
+Advice. Prowse tells her staff that the purpose of a time signal is not to be right but to be trustworthy: a signal that is accurate to a nanosecond but silently wrong is worse than one that is accurate to a microsecond and honest about its quality.

@@ -1,0 +1,94 @@
+Institution Profile: Harbourgate Mutual Bank
+
+Harbourgate Mutual Bank is a regional lender based in Skerrin. It was founded in 1949 as a savings cooperative for fishermen and dockworkers, and it has since become the Calder Reach's main private financier of infrastructure and large industrial projects. It is owned by its depositors and borrowers rather than by outside shareholders, a structure that its leaders say encourages a long-term view. Philippa Osterhout has chaired the bank since 2018, and Emeka Lindqvist has served as its chief risk officer since 2015.
+
+Scale and structure
+
+The bank has about 310 employees and total assets of around 1.4 billion crowns. Its business is divided into retail banking, which serves households and small firms in the region, and its infrastructure and project finance division, which finances large capital projects. The infrastructure division is small, with about 25 staff, but it accounts for a third of the bank's lending and most of its public reputation.
+
+The infrastructure portfolio
+
+The bank's three largest infrastructure loans are to renewable energy and port projects. It provided 44 million crowns to the Tidewrack Tidal Array in 2018, structured over eighteen years. It provided 58 million crowns to the Dunmarrow Port Automation project in 2019, to pay for the automated cranes and the retraining of workers. And in 2019 it provided 120 million crowns to the Ferrous Bay Offshore Wind farm, the largest single loan in the bank's history.
+
+Beyond these, the bank lent 75 million crowns to the Brannock Foundry Group in 2022. This loan, to finance the expansion of the group's plants, was originally expected to be completed in the spring of that year, but it was delayed after a membrane fouling incident at the Wetmoor Water Reuse project was traced to a batch of membranes made at the group's Corran Mill. Lindqvist then proposed that the loan be made conditional on an external audit of the quality systems at both of the group's plants. The group's chief executive agreed, the audit was carried out in 2023, and the interest rate on the loan was reduced by half a percentage point once the audit found that the necessary improvements had been made.
+
+Risk philosophy
+
+Lindqvist is known for his blunt questions and for a large wall chart in his office that shows the main dependencies between the projects the bank finances. He often says that a bank lending to several projects in one small region is really lending to one interconnected machine, and that a bank should know where the connections are. He reviews every infrastructure loan before approval and visits the project sites at least once a year.
+
+The bank's lending policy requires that borrowers commission an independent technical audit after any serious incident. The policy was adopted in 2018 and strengthened in 2023, after the sequence of incidents in the previous two years. The policy has been applied to the Tidewrack hub failures of February 2023, to the Dunmarrow crane collision of August 2022, and to the Ferrous Bay cable fault of November 2023.
+
+Responses to incidents
+
+After the Dunmarrow crane collision, Lindqvist asked for a copy of the audit office's report and the safety assessor's review, and confirmed that the bank would not change the terms of the loan. After the Ferrous Bay cable fault, he wrote to the project's director to ask about the inspection regime for the shoreline, and to the Calder Reach Development Board to ask what it would do to fund a second cable. The bank has said that it will support a second cable provided that the project can demonstrate the benefits for regional resilience.
+
+Following the Tidewrack hub failures, Lindqvist asked for confirmation that the problem was confined to one batch of hubs. The project's director, Dr. Bjorn Halvorsen, provided the investigation report of the Marrow Institute of Applied Science, and the bank accepted that the incident was a manufacturing defect, not a design flaw. Osterhout, who had attended a board meeting at the project in 2021, commented that the bank's confidence in the project had been reinforced by the quality of its response.
+
+People who passed through the bank
+
+The bank has been a source of talent for the region's infrastructure. Cormac Adebayo worked as an infrastructure analyst in the bank's project finance division from 2014 to 2020, during which he led the due diligence on the Dunmarrow Port Automation loan. In 2020 he left the bank to become the project's director. Osterhout described the move as both a loss and a compliment, noting that it was unusual for a bank to lend to a project and then lose its analyst to it. The bank has since introduced a rule that any staff member who moves to a borrower must be excluded from the bank's oversight of that borrower for two years.
+
+Retail and community activity
+
+The bank's retail business serves about 90,000 customers. It offers savings accounts, mortgages, and loans for small businesses and farms, and it has a particularly strong position among members of the Verdant Seeds Cooperative, many of whom bank with it. The bank operates a community fund that supports local projects, such as the repair of playgrounds and the restoration of the Skerrin library, and its annual charity swim across the harbor has become a local tradition.
+
+Governance
+
+The bank's board has nine members, including Osterhout, Lindqvist, two representatives of depositors, two representatives of borrowers, and three independent directors. The bank is regulated by the national financial authority and is audited by an external firm. Its accounts show a healthy capital ratio, and it has not made a loss in any year since 1991.
+
+Financial performance
+
+The bank reports annual profits of about 38 million crowns. Its infrastructure loans have a very low default rate, a fact that Lindqvist attributes to careful selection and monitoring rather than luck. The bank earns about 1.6 percent on its infrastructure loan book after costs, which is modest, but the loans are long-term and stable.
+
+Relationships with other organizations
+
+The bank has close relationships with the Calder Reach Development Board, which endorses many of the projects it finances. It is also a customer of the Lumen Grid Company's power purchase agreements, in the sense that the revenue of the Tidewrack and Ferrous Bay loans depends on the power purchase agreements with the grid company. The bank shares information with the Marrow Institute of Applied Science, which provides independent technical reviews of the projects it finances.
+
+Lessons for lenders
+
+Lindqvist has given several talks on what the bank learned from the incidents of 2022 and 2023. He argues that the traditional way of assessing infrastructure risk, which examines each project separately, is inadequate in a region where the projects are connected. He now asks every borrower to describe not only its own risks but also the risks it inherits from others, and the bank maintains a register of the connections among its borrowers.
+
+Future plans
+
+The bank is preparing to finance the second export cable for the Ferrous Bay wind farm and is studying a loan for the second phase of the Tidewrack array. It is also considering a green bond to raise capital specifically for renewable energy and resilience projects. Osterhout has said that the bank's aim is to be a patient lender in a region that needs long-term investment, while being honest with its borrowers about the risks they share.
+
+
+Annex: How the bank lends, and the loan book
+
+The loan approval process
+
+Every infrastructure loan at Harbourgate Mutual Bank passes through five stages. The first is a screening by the infrastructure division, which decides whether a proposal fits the bank's criteria: a revenue stream that is predictable, a technology that has been proved elsewhere, and a borrower with experienced management. The second is a technical due diligence, in which an engineer reviews the design and the plan. The third is a financial model, built by an analyst, which tests the project's ability to repay under adverse scenarios. The fourth is a risk review chaired by Emeka Lindqvist. The fifth is the board's approval.
+
+Lindqvist's risk review has a standard list of questions. What is the single component that, if it fails, stops the revenue? Who makes it? What happens if it is late? What does the project depend on that it does not control? He says that the fourth question is the most important and the least often answered well. Since 2023 the bank has required every borrower to submit a dependency statement with its application.
+
+Terms of the principal loans
+
+The loan to the Tidewrack Tidal Array, of 44 million crowns, runs for eighteen years and carries a fixed rate for the first ten. Repayments are linked to the volume of electricity delivered, with a minimum payment that covers interest. The bank holds a charge over the project's assets and its power purchase agreement with the Lumen Grid Company.
+
+The loan to the Dunmarrow Port Automation project, of 58 million crowns, runs for twelve years and is repaid out of a per-container fee charged to shipping lines. The bank receives monthly throughput figures, and the loan agreement requires the project to maintain an independent safety assessor and to report near misses each quarter.
+
+The loan to the Ferrous Bay Offshore Wind farm, of 120 million crowns, runs for twenty years and is secured on the farm's long-term power purchase agreement with the Lumen Grid Company. It includes a requirement for business interruption insurance, and the bank has the right to approve any change to the project's export arrangements.
+
+The loan to the Brannock Foundry Group, of 75 million crowns, runs for ten years and was approved in 2022 with a condition that the group commission an external quality audit of both Ashgill Works and Corran Mill. The audit was completed in 2023, and the interest rate fell by half a percentage point.
+
+Staff of the infrastructure division
+
+The head of the infrastructure division is Rosalind Achterberg-Kane, a former project engineer who has led the division since 2019. The senior analyst is Joaquim Brandt, who joined in 2020 as a replacement for Cormac Adebayo and who leads the monitoring of the Tidewrack and Dunmarrow loans. The division's technical adviser, a retired power station engineer named Ottilie Hartmann, reviews the technical risk of each proposal and visits projects with Lindqvist.
+
+The risk register
+
+Lindqvist's wall chart is a large diagram of the connections between the projects the bank finances. It shows, for example, that the Tidewrack Tidal Array supplies the Lumen Grid Company and the Cinder Lake works, that the Ferrous Bay wind farm uses the Dunmarrow Port as its operations base, that the port depends on the Lodestar Timing Station, and that the Brannock Foundry Group supplies components to several of the borrowers and to other projects in the region. The chart has been revised four times since 2021.
+
+After the Ferrous Bay brownout of November 2023, Lindqvist added a new layer to the chart showing the dependencies of the bank's own customers: the hospitals, depots, and factories that were affected, and which the bank also lends to through its retail and business arms. He says that he had not understood until that moment how much of the bank's total lending depended, indirectly, on a single cable.
+
+Responding to a crisis
+
+When the bank learns of a serious incident at a borrower, it follows a protocol. Within 24 hours the relationship manager contacts the borrower and asks for a written account. Within a week Lindqvist convenes the credit committee, which decides whether to ask for an independent review. The borrower is asked for a corrective action plan, and the bank monitors its implementation. The bank has said that it prefers to work with a borrower through a crisis, and has never called a loan in default because of an incident.
+
+Retail and community lending
+
+The bank's retail division has 24 branches in the Calder Reach and serves about 90,000 customers. It is the preferred bank of many members of the Verdant Seeds Cooperative, and it provides the Cooperative's savings and loan scheme with its operating infrastructure. The bank also offers a small business loan scheme for suppliers to the region's infrastructure projects, which has funded about 140 businesses since 2018.
+
+The community fund
+
+The bank's community fund, set up in 1975, receives one percent of annual profit and funds small projects across the region. In 2023 it awarded 410,000 crowns to 58 projects, including a new roof for the Skerrin library, equipment for a children's sailing club in Dunmarrow, and a tool library in Mossgate. The annual charity swim across Skerrin harbor, which Osterhout completes each year, raised 62,000 crowns in 2023.

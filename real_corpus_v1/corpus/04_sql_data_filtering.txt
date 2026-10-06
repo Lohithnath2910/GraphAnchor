@@ -1,0 +1,65 @@
+SQL Fundamentals: Data Filtering with WHERE, LIKE, IN, and BETWEEN
+
+SQL FUNDAMENTALS Data Filtering in SQL Extracting the right rows: WHERE, comparison operators, AND / OR, LIKE, IN, BETWEEN, and subqueries. School of Computer Science and Engineering
+
+Module2: Databases for Data Science
+
+SQL - Tool for Data Science Structured Query Language (SQL) is a programming language used to manage and interact with data stored in relational databases.
+
+The standard language for databases since the 1970s.
+
+A relational database stores data in the form of tables (rows and columns). SQL allows users to communicate with these databases.
+
+SQL in a typical Data Science workflow Company Database SQL Query Required Data Python / R / Excel Analysis, Visualization, Machine Learning
+
+SQL - Tool for Data Science SQL can create, update, delete, and retrieve data in databases like MySQL, Oracle, PostgreSQL, Microsoft SQL Server, SQLite, and IBM Db2 etc used in data science.
+
+SQL - Tool for Data Science
+
+What can SQL do? SQL provides built-in commands and functions to:
+
+What can SQL do? SQL provides built-in commands and functions to:
+
+What can SQL do? These four operations are commonly known as CRUD: C - Create (Insert) R - Read (Select) U - Update D - Delete
+
+Why data analysts chooses SQL
+
+SESSION OVERVIEW Objectives & Teaching Learning Material To explain SQL data filtering techniques for extracting relevant information from large datasets To demonstrate advanced filtering using LIKE, IN, BETWEEN, and subqueries To illustrate how proper filtering improves data accuracy, performance, and analytical outcomes Teaching + Learning Material: LCD, Whiteboard Marker, Presentation Slides
+
+CONCEPT Data Filtering in SQL Data filtering is a fundamental process in data science that transforms complex, redundant datasets into efficient, actionable information. By removing unnecessary records and refining query results, filtering enhances both performance and accuracy in data analysis.
+
+MOTIVATION Why Data Filtering Matters Targeted Analysis Extract specific portions of data needed for focused analysis rather than processing entire datasets unnecessarily. Data Accuracy Remove redundant records that could lead to incorrect analysis and skewed results in your findings. Enhanced Performance Improve query performance and reduce application strain by working with refined, optimized datasets.
+
+SAMPLE DATA The Workers Dataset Throughout this presentation, we'll use a sample "workers" table to demonstrate filtering techniques. This table contains employee information including names, IDs, salaries, and department details.
+
+This retrieves every record and every column without any filtering applied. Every query starts here SELECT defines the columns you want. FROM defines the table you're reading. WHERE (next) defines which rows qualify.
+
+CHAPTER 2 Introducing the WHERE Clause The WHERE clause is the foundation of data filtering in SQL. It allows you to specify conditions that records must meet to be included in your results.
+
+BUILDING BLOCKS Comparison Operators Instead of just the equal sign (=), the WHERE clause supports multiple comparison operators for flexible filtering: Greater Than Filters records where the value is larger than the specified amount. Less Than Filters records where the value is smaller than the specified amount. Greater / Equal Includes records equal to or larger than the specified value. Less / Equal Includes records equal to or smaller than the specified value. Not Equal Excludes records that match the specified value.
+
+The condition filters the entire dataset to return only matching records.
+
+APPLYING WHERE Filtering by Salary Range Numeric comparisons allow you to filter based on salary thresholds and other quantitative criteria.
+
+CHAPTER 3 · COMBINING CONDITIONS Combining Conditions with AND Sometimes you need to apply multiple conditions simultaneously. The AND operator ensures that only records satisfying all conditions are retrieved. Both conditions must be true for a record to appear in results.
+
+COMBINING CONDITIONS Expanding Results with OR The OR operator retrieves records that satisfy either condition, along with records that satisfy both. This broadens your result set.
+
+TEXT FILTERING Pattern Matching with LIKE The LIKE clause enables pattern matching in text data using two powerful wildcards: Percent Sign Represents any string of zero or more characters. Use it to match flexible patterns in your data. Underscore Represents exactly one single character or digit. Perfect for position-specific matching.
+
+CHAPTER 5 · LIST MATCHING The IN Operator The IN operator allows you to test if an expression matches any value in a list. It's a cleaner alternative to multiple OR conditions.
+
+LIST MATCHING Excluding Values with NOT IN Use the NOT keyword to exclude specific values from your results. This inverts the logic of the IN operator.
+
+ADVANCED FILTERING Subqueries: Queries Within Queries A subquery (also called a nested query or subselect) is a SELECT query embedded within the WHERE clause of another query. The inner query's results are used by the outer query as filtering conditions. Subqueries provide an elegant way to handle queries that depend on results from another query, making complex filtering logic more manageable.
+
+RANGE FILTERING Range Filtering with BETWEEN The BETWEEN keyword allows you to filter records within a specific range of values. It's a shorthand for combining >= and <= operators. Start Value Specify the minimum value in your range (inclusive). End Value Specify the maximum value in your range (inclusive). Results All records within the range are returned.
+
+RANGE FILTERING Excluding Ranges with NOT BETWEEN Use NOT BETWEEN to retrieve records outside a specified range. This inverts the BETWEEN logic.
+
+RECAP Mastering Data Filtering Effective data filtering transforms raw datasets into actionable insights. By mastering these SQL techniques, you can efficiently extract exactly the data you need. Start with WHERE Use basic WHERE clauses with comparison operators for simple filtering. Combine Conditions Apply AND/OR operators to create complex multi-condition filters. Match Patterns Leverage LIKE with wildcards for flexible text matching. Use Advanced Operators Apply IN, BETWEEN, and subqueries for sophisticated filtering. Optimize Performance Refined queries reduce strain and improve application efficiency.
+
+Summary Purpose and Importance of Data Filtering Targeted analysis, data accuracy, and improved performance. Basic SQL Query Structure SELECT statement, selecting all records. Filtering with Conditions (AND, OR) Combining multiple criteria for refined results. Pattern Matching Using LIKE Use of % and _ wildcards for flexible text matching. Filtering with IN and NOT IN Matching or excluding values in a list. Subqueries for Advanced Filtering Nested queries inside the WHERE clause. Range Filtering: BETWEEN / NOT BETWEEN Inclusive and exclusive range filtering. Mastering Data Filtering Summary of techniques: WHERE, AND/OR, LIKE, IN, BETWEEN, Subqueries.
+
+REFERENCE Further Reading Sanjeev Wagh, Manisha Bhende, Anuradha Thakare, "Fundamentals of Data Science", CRC Press, 1st Edition, 2022. Pages 52-57 End of Presentation

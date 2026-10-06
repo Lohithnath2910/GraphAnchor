@@ -1,0 +1,72 @@
+Profile: Idris Kowalczyk
+
+Idris Kowalczyk is a transport engineer and the director of the Gantry Line light rail project. He has led the project since 2018, and its public face since the first revenue services ran under the new signaling system in 2022. He is known for plain speaking, for a love of timetables, and for a weekly open meeting at which any engineer on the project may raise a safety concern.
+
+Early life and education
+
+Kowalczyk grew up in Mossgate, in a family of railway workers: his father was a signalman and his grandfather a locomotive driver. As a boy he collected timetables, and by the age of twelve he could recite the departure times of every train on the region's main line. He says that this was not a sign of genius but of boredom, since the trains were few and infrequent, and that the most important thing he learned from it was that a railway is a system in which every delay propagates.
+
+He studied transport engineering at a university outside the region, graduating in 2009. He then worked for a railway consultancy for five years, preparing timetables and capacity studies for small regional lines in several countries. The work taught him how much capacity a line can gain from better scheduling, and how little most operators exploited it.
+
+Career at Strand & Keel Shipping
+
+In 2014 Kowalczyk returned to the Calder Reach to join Strand & Keel Shipping, the freight carrier based at Dunmarrow Port, as a network planner. He stayed there until 2018. His job was to plan how the company's locomotives and wagons moved across the region's shared rail line, a task made more difficult by the fact that the line was also used by slow passenger trains and that the signaling system allowed only one train in each long block.
+
+He developed a scheduling method that reduced the idle time of the company's locomotives by about eighteen percent, a result that attracted the attention of the Calder Reach Development Board's transport office. The method used a technique for allocating track space in real time, taking account of the position and speed of every train, and it became the basis of the scheduling algorithm that the Gantry Line uses today. Ravindra Kallenbach, who was the company's operations director when Kowalczyk joined and became its chief executive in 2017, has said that Kowalczyk was the best planner he ever worked with.
+
+Kowalczyk says that his time at the freight company taught him how much capacity was wasted by rigid signaling blocks. Fighting for track space as a freight planner, he says, made him want to rebuild the railway so that no one would have to fight for it.
+
+Leading the Gantry Line
+
+In 2018 the Board recruited Kowalczyk to lead the planned light rail project. He assembled a team of signaling engineers, construction managers, and rolling stock specialists, and spent his first year on the design of the moving-block signaling system. He recruited Fenella Okoro as deputy director for construction and rolling stock and Pavel Lindgren as signals chief.
+
+The project's budget of 140 million crowns was the largest the Board had ever committed to a single scheme, and Kowalczyk was acutely aware of the scrutiny it brought. He decided early that the project would be open about its risks. He introduced a "risk of the month" item in the weekly leadership meeting, in which one project manager presents the risk they are most worried about, and he started the Friday open meeting in the signals workshop, where any engineer, regardless of seniority, can raise a safety concern.
+
+The 2022 timing incident
+
+On 15 August 2022 the Gantry Line's central system brought all trains to a stop for four hours because the timing signal from the Lodestar Timing Station had degraded. Kowalczyk was in the control room by 07:30 and spent the morning working with Lindgren. He made a short statement to the press at midday, in which he said that the system had stopped trains because it was designed to, and that the project would find out why it had not been warned.
+
+He asked the Marrow Institute of Applied Science to audit the project's safety case. The audit, led by Dr. Kasper Idowu, found that the safety case had assumed that the timing signal would be continuously available, and it recommended better backup oscillators and new logic for deciding which clock to trust. Kowalczyk accepted all of the recommendations. He also wrote a personal letter to the passengers' association and attended its meeting in September, where he apologized for the delays and described the changes that were being made.
+
+He says that the most important lesson was the difference between a component failing and a system failing safely. The signaling system had done what it was supposed to do, but he had not thought enough about what it would feel like to be a passenger on a train that had been stopped safely.
+
+Relationships and influence
+
+Kowalczyk is closely connected to the region's other projects. His former employer, Strand & Keel Shipping, is a major user of the railway that the Gantry Line shares. His scheduling method was adapted for the Dunmarrow Port Automation project, with help from his engineers, and he has advised the Beacon Hill Flood Barrier on control system design. He is a regular user of the Lodestar Timing Station, and he attends its quarterly users' forum.
+
+He is also a mentor to younger engineers. He runs a graduate placement scheme at the Gantry Line, and he has sponsored two scholarships at the Marrow Institute for students of railway engineering. When Dr. Anneliese Prowse, who now directs Lodestar, left the Gantry Line's design team in 2019, he wrote her a reference that she says is the best she ever received.
+
+Management style
+
+Kowalczyk is direct and informal. He is rarely seen in a suit, preferring a high-visibility jacket, and he spends most of his time on the line or at Mossgate Yard. He holds the Friday meeting standing up, so that it stays short. He is known for his rule that "every delay has an owner," meaning that every delay on the network must be traced to a named person who is responsible for finding out why it happened, not in order to blame that person but to ensure that someone follows up.
+
+His staff say that he is demanding but fair, and that he is willing to admit when he is wrong. Lindgren recalls that at the end of the 2022 audit, Kowalczyk stood up in front of the whole signals team and said, "We were told that this could happen, and we did not listen. That is on me."
+
+Personal life
+
+Kowalczyk lives in Mossgate with his wife, a schoolteacher, and their three children. He still collects railway timetables and has a collection of more than 2,000, from all over the world. On weekends he volunteers on a heritage steam railway in the hills, where he drives a small locomotive that was built in the foundry at Mossgate in 1927.
+
+Views on the future
+
+Kowalczyk's ambition is to complete the Gantry Line by 2027 and to see ridership reach 38,000 passengers on a typical weekday. He believes that the region's transport system needs a single, integrated timetable that covers trains, buses, and ferries, and he has proposed a regional journey planner. He also wants the Gantry Line to become a model for how to build a safety-critical system openly, and he has offered to share the project's safety case and its audit reports with other railways. He says that the mark of a good engineering project is not that it never fails but that it fails in ways that its people understand.
+
+
+Annex: Career timeline and colleagues' recollections
+
+Timeline. 2009: graduates in transport engineering. 2009 to 2014: works for a railway consultancy. 2014: joins Strand & Keel Shipping as a network planner. 2017: Ravindra Kallenbach becomes the company's chief executive. 2018: leaves the freight company and is appointed director of the Gantry Line light rail project. 2019: the first trackside controllers are installed. 2022: the first revenue services run under moving-block signaling. 15 August 2022: all trains on the equipped sections are stopped for four hours by a timing fault. December 2022 to January 2023: the Marrow Institute audits the safety case. Spring 2023: the backup oscillators are installed. 2024: 52 of 80 kilometers of the line are equipped.
+
+What colleagues say. Fenella Okoro, the deputy director, says that Kowalczyk's most unusual habit is that he reads the complaints from passengers himself, at his desk, every Monday morning, and replies to a sample of them. Pavel Lindgren, the signals chief, remembers that in the 2022 audit, Kowalczyk insisted on being present at every interview with his own staff, "not to defend anyone but to listen, because he said that he needed to hear it directly."
+
+Kallenbach, who knew him at the freight company, says that Kowalczyk could look at a timetable and see the places where it would break. "He once told me that a timetable is a promise made to a thousand people, and that you should never make a promise you have not tested," he says. Dr. Anneliese Prowse, who worked in the Gantry Line's early design team before he became director, says that he was the first manager she had worked with who asked her what she was afraid of.
+
+The Friday meeting. Held in the signals workshop at 08:30 each Friday, the meeting is standing-only and limited to 30 minutes. Any member of staff may bring a concern, and each concern is recorded with a name and a date. The project's records show that between 2018 and 2024 the meeting recorded 412 concerns, of which 359 were closed, 41 are in progress, and 12 were deliberately closed without action, with the reasons recorded. The audit of 2022 found that three of the problems it identified had been raised at the meeting in 2021.
+
+The risk of the month. Each month a project manager presents the risk that worries them most. The presentations are recorded, and the risk register is updated afterward. Kowalczyk says that the discipline is more valuable than the register: it forces managers to put their worry into words in front of colleagues, which is the first step to doing something about it.
+
+On the scheduling method. The scheduling method that Kowalczyk developed at the freight company, and that the Gantry Line now uses, allocates track space by solving a series of small optimization problems every few seconds, rather than planning a day in advance. The Dunmarrow Port Automation project adapted it for cranes. Kowalczyk says that he is proud that the method has found a second use, though he insists that the credit belongs to the freight company's planners and to the Gantry Line's software team, who rewrote it three times.
+
+His collection. The collection of railway timetables that he keeps in his office includes a Calder Reach timetable from 1911, in which the journey from Skerrin to Mossgate takes 52 minutes. On the Gantry Line it takes 24. He has said that he would like to have the 1911 timetable framed on the wall of Mossgate Yard, as a reminder of how much waiting people used to accept.
+
+Volunteering. On weekends Kowalczyk drives a small steam locomotive on a heritage railway in the hills above Mossgate, built in the Mossgate foundry in 1927. He describes it as "a signaling system with no signals, where the only safety device is the driver paying attention." He says that it has taught him more about human attention than any manual.
+
+Advice. He tells new project managers to ask three questions of every plan: what is the first thing that will go wrong, who will notice, and what will they do? He says that if a plan cannot answer these, it is not a plan but a hope.

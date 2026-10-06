@@ -1,0 +1,81 @@
+Wetmoor Water Reuse: Project Overview
+
+The Wetmoor Water Reuse project turns treated municipal wastewater into high-quality water for industry and irrigation. It is based at Wetmoor Works, a purpose-built treatment campus on the southern edge of the town of Wetmoor, about thirty kilometers west of Skerrin. Wetmoor began operating in 2021 and has a design capacity of 55,000 cubic meters of reclaimed water per day, enough to supply the equivalent of a mid-sized town.
+
+Dr. Naledi Mokoena has directed Wetmoor Works since 2019. Her deputy is Casimir Eze, who runs the daily operation of the plant, and the head of the laboratory is Dr. Ebba Ruud. The project employs 96 people in operations, maintenance, laboratory analysis, and customer liaison.
+
+Purpose and customers
+
+The Calder Reach is a region where fresh water is scarce in summer. Most rivers are short and steep, and groundwater is limited, so industrial users and farms have traditionally competed with households for the same supplies. Wetmoor was created to relieve that pressure by treating the effluent of three municipal sewage works to a standard suitable for non-drinking uses. Its customers include a paper mill, two food-processing plants, a cooling system at a regional power station, and about 1,800 hectares of irrigated farmland operated by members of the Verdant Seeds Cooperative.
+
+Reclaimed water is sold at a price below that of drinking water, and the project's revenue depends on keeping this price attractive while covering its costs. In its third year of operation, Wetmoor recovered 71 percent of its operating cost from sales, with the balance covered by a continuing grant.
+
+The treatment process
+
+Wastewater arrives at the plant after basic treatment at the municipal works. It first passes through a fine screen and a biological reactor, where bacteria remove most of the dissolved organic matter and nutrients. The water is then filtered through ultrafiltration membranes, which remove bacteria and suspended particles, and finally passes through reverse-osmosis membranes that remove dissolved salts and trace contaminants. The last stage is disinfection with ultraviolet light and a small dose of chlorine to protect the water in the distribution pipes.
+
+The reverse-osmosis stage is the most technically demanding and the one on which the quality of the final product depends. Wetmoor's reverse-osmosis hall contains 360 spiral-wound membrane modules, arranged in ten parallel trains. All the modules are supplied by Corran Mill, the polymer plant of the Brannock Foundry Group. The modules carry a chlorine-resistant surface coating, which allows them to be cleaned regularly with chlorine without damaging the membrane. A module is expected to last about five years before replacement.
+
+Power and utilities
+
+The plant uses a great deal of electricity, mainly for the high-pressure pumps in the reverse-osmosis hall. It buys its electricity from the Lumen Grid Company under a supply contract that includes an interruptible tariff, meaning the plant agrees to reduce its consumption for short periods if the grid is under stress. Because the reclaimed water can be stored in reservoirs on site, the interruptions have no noticeable effect on customers. The plant also has a small standby diesel generator that can run the lighting, controls, and laboratory but not the main pumps.
+
+Brine and residuals
+
+Every membrane process produces a concentrated waste stream. Wetmoor's brine is treated in evaporation ponds on the edge of the site, where the concentrated salts crystallize in the summer sun. The crystallized salt is collected and sold to a road-maintenance contractor. Sludge from the biological reactor is thickened and sent to an anaerobic digester, whose biogas supplies roughly a tenth of the plant's energy.
+
+Funding and governance
+
+Wetmoor was funded by the Calder Reach Development Board, which committed 38 million crowns. The Board regards the project as a pilot for further water reuse schemes in the region and requires an annual public report on quality and costs. Mokoena has also agreed to give the research partner, the Marrow Institute of Applied Science, access to the plant's data. Mokoena herself worked for seven years as a researcher at the Institute before taking up her post at Wetmoor, and the plant's laboratory maintains close ties with her former colleagues.
+
+Quality assurance
+
+Because reclaimed water is used for food processing and irrigation, quality control is rigorous. The plant's laboratory analyses samples every hour at four points in the process, testing for turbidity, conductivity, total organic carbon, and a panel of indicator organisms. Weekly composite samples are sent to an external accredited laboratory, and the results are posted on the project's public web page. A water-quality incident, defined as any reading outside the permitted range, triggers an automatic shutdown of the delivery pumps until the cause is identified.
+
+Staff and training
+
+Wetmoor runs a three-year operator training program for school leavers, in partnership with a local technical college. Trainees rotate through the biological, membrane, and laboratory sections and are expected to complete a project, such as reducing the energy use of a specific pump. Mokoena says that about two thirds of the plant's operators began as trainees.
+
+Community and communication
+
+Early in the project's life, residents of Wetmoor were concerned about odor and about the idea of "recycled sewage" being used on food crops. The project responded with an open-door policy: the plant hosts public tours every month, and the laboratory publishes its raw data. Odor complaints have fallen to a handful each year since a covered biological reactor was installed in 2022. Farmers who use reclaimed water report that crop quality is as good as, or better than, that obtained with river water, partly because the water is consistent in quality from week to week.
+
+Plans for expansion
+
+The Development Board has asked Mokoena to prepare a business case for a second plant in the east of the region, which would double the region's reuse capacity. She has said that any expansion should wait until the plant has demonstrated stable membrane performance over a full replacement cycle, a position shaped by an interruption in 2022 that is described in a separate incident report.
+
+Plant layout and physical description
+
+Wetmoor Works occupies 17 hectares on land that was formerly a gravel pit, which gave the project a deep excavation to house the large tanks at a low level without raising the skyline. The site is organized in the direction of flow from north to south. At the northern end are the inlet works and the biological reactors, followed by the ultrafiltration building, then the reverse-osmosis hall, and finally the storage reservoirs and the pumping station that sends the product water into the distribution network. The administration building and laboratory stand to the east, with a visitor gallery overlooking the reverse-osmosis hall.
+
+The biological reactors are four concrete tanks, each 60 meters long, operated as membrane bioreactors. In this design, the ultrafiltration membranes are submerged directly in the reactor, which allows a much higher concentration of bacteria than a conventional settling process, so the tanks can be smaller. The air blowers that supply oxygen to the bacteria are the single largest consumer of electricity in this section, and Casimir Eze's team has spent considerable effort on tuning their control so that the oxygen supply matches the load.
+
+Distribution network
+
+Reclaimed water leaves the plant through a dedicated purple-colored pipeline network, a convention that is used worldwide so that nobody mistakes the water for drinking supply. The network has about 46 kilometers of pipes, most of them installed in the verges of existing roads. A pumping station at the plant sends the water to a storage tank on a ridge above the town, from which most of the deliveries flow by gravity. Every connection is fitted with a backflow preventer and a meter, and each customer site is inspected annually.
+
+Regulation and permits
+
+Wetmoor operates under a license from the regional water regulator, which specifies the quality of the product water and the procedures to be followed in the event of an excursion. The license also requires that the plant maintain an emergency plan covering equipment failure, chemical spills, and loss of power. The plant's compliance team files a monthly return, and the regulator's inspectors visit twice a year without notice. In the plant's first three years, the inspectors recorded no major non-compliance.
+
+The role of the research partner
+
+The relationship with the Marrow Institute of Applied Science is not only an access agreement for data. Researchers from the Institute run experiments on the plant's pilot line, which is a small reverse-osmosis unit used to test new membranes and cleaning procedures without risking the main process. Mokoena has said that the pilot line has paid for itself several times over by allowing the plant to try different cleaning chemistries on real wastewater before applying them to the full-scale membranes.
+
+People and organization
+
+The project's departments are operations, under Casimir Eze; the laboratory, under Dr. Ebba Ruud; maintenance; customer liaison; and finance. A health and safety officer reports to Mokoena directly. The staff includes 11 process engineers, 28 operators, 17 technicians, and 9 laboratory analysts. A staff canteen is run as a cooperative, and every Thursday Mokoena has lunch there with whichever team is on shift, a habit that she says gives her a better feel for the plant than any report.
+
+Environmental benefits
+
+By treating wastewater to a high standard and supplying it for reuse, Wetmoor reduces the discharge of treated effluent into the coastal waters near Wetmoor by about 45 percent. It also reduces the withdrawal of river water by the paper mill and the food processors, which has allowed the river's summer flow to stay above the minimum level set by the regulator in two successive dry summers. The Development Board has used these results in its case for a regional reuse strategy.
+
+Financial overview
+
+In its third year the plant had operating costs of about 8.4 million crowns, and recovered 71 percent of them from water sales. The remaining deficit is covered by a continuing grant from the Development Board. Mokoena has set a target of full operating cost recovery by the sixth year, a goal that depends on attracting further industrial customers and on keeping membrane replacement costs under control. The plant keeps a spare stock of membrane modules equal to about five percent of the installed number, so that a failed module can be replaced in a day.
+
+Customers in detail
+
+The paper mill, the largest customer, takes about 14,000 cubic meters a day for pulp washing and boiler feed. The two food-processing plants use reclaimed water for washing vegetables before processing and for cooling, though not for any product that enters the food directly. The power station uses reclaimed water in its cooling towers, replacing river water that was formerly drawn during the summer months. The farmers of the Verdant Seeds Cooperative use the water for drip irrigation of cereal crops and fodder, and Mokoena regards agricultural customers as the most valuable in the long term because the demand is steady and the quality requirements are well understood.
+
+A customer committee meets four times a year, chaired by a rotating customer representative. The committee reviews delivery volumes, price changes, and any quality concerns, and its recommendations are reported to the Development Board. Several customers have commented that this transparency is one of the project's strengths, and that it contrasts with the utilities they have dealt with in the past.

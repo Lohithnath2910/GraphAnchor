@@ -1,32 +1,25 @@
 """
 Quantitative benchmark: plain vector RAG vs hybrid graph RAG.
 
-What this does, in plain terms:
-  For every question in gold_qa.json, it calls the running GraphAnchor server
-  twice - once with graph traversal off (plain vector RAG) and once with it
-  on (hybrid graph RAG) - and checks three things for each:
-    1. Retrieval coverage: do the retrieved chunks actually contain the
-       key facts needed to answer the question?
-    2. Answer correctness: does the generated answer contain those same
-       key facts, and does it avoid known-wrong phrases?
-    3. Latency: how long did the /query call take, end to end?
+For every question in the gold file, the running GraphAnchor server is queried in two modes:
+  vector          plain vector RAG, top-k chunks (k=3 by default)
+  hybrid          vector top-k + graph traversal (what GraphAnchor adds)
 
-Requirements before running:
-  1. The GraphAnchor server must be running: `uvicorn main:app --port 8000`
-  2. The same 30-document synthetic corpus used for the qualitative
-     comparison must already be ingested into that running server
-     (fresh DB via /reset, then re-ingest the corpus).
-  3. Nothing beyond the Python standard library is required - this script
-     deliberately avoids adding new dependencies to the project.
+Per query it records:
+  retrieval recall   do the retrieved chunks contain the expected key facts?
+  answer correctness does the generated answer contain them (and avoid forbidden phrases)?
+  latency            end-to-end seconds for the /query call
+
+Robustness: every query gets a generous timeout and automatic retries, results are written to the
+CSV after every query (a crash or Ctrl+C loses nothing), and --resume skips finished queries.
+
+Requirements: the server is running (`uvicorn main:app --port 8000`) with the corpus already
+ingested. Standard library only.
 
 Usage:
-  python eval/run_benchmark.py [--base http://localhost:8000] [--out eval/results.csv]
-
-Output:
-  - Prints a summary table to the console (overall + per-category, per mode).
-  - Writes a detailed per-question CSV to eval/results.csv (or --out).
-  - Prints a short list of low/medium-confidence questions that need a
-    human to double-check the gold answer before the numbers are trusted.
+  python eval/run_benchmark.py --gold benchmark_v4/gold_qa.json --out eval/v4_results.csv
+  python eval/run_benchmark.py ... --resume          # continue an interrupted run
+  python eval/run_benchmark.py ... --timeout 1200    # seconds allowed per query (default 900)
 """
 
 import argparse
@@ -37,6 +30,10 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 from statistics import mean, median
+
+MODES = ("vector", "hybrid")
+FIELDS = ["id", "category", "confidence", "mode", "k_used", "question",
+          "latency_sec", "retrieval_recall", "answer_correctness", "answer"]
 
 
 def percentile(values, pct):
@@ -51,8 +48,8 @@ def percentile(values, pct):
     return s[f] + (s[c] - s[f]) * (k - f)
 
 
-def call_query(base_url, question, enable_graph, timeout=120):
-    params = urllib.parse.urlencode({"q": question, "enable_graph": str(enable_graph).lower()})
+def call_query(base_url, question, enable_graph, k, timeout):
+    params = urllib.parse.urlencode({"q": question, "k": k, "enable_graph": str(enable_graph).lower()})
     url = f"{base_url}/query?{params}"
     start = time.perf_counter()
     with urllib.request.urlopen(url, timeout=timeout) as resp:
@@ -61,11 +58,22 @@ def call_query(base_url, question, enable_graph, timeout=120):
     return data, latency
 
 
+def call_with_retries(base_url, question, enable_graph, k, timeout, retries):
+    # Retries transient failures (timeouts, dropped connections, Ollama hiccups) with a growing pause.
+    last = None
+    for attempt in range(retries + 1):
+        try:
+            return call_query(base_url, question, enable_graph, k, timeout)
+        except Exception as e:
+            last = e
+            if attempt < retries:
+                print(f"      retry {attempt + 1}/{retries} after error: {e}", flush=True)
+                time.sleep(5 * (attempt + 1))
+    raise last
+
+
 def gather_retrieved_text(result):
-    parts = []
-    for c in result.get("ranking_breakdown", []) or []:
-        parts.append(c.get("text", ""))
-    return " ".join(parts).lower()
+    return " ".join(c.get("text", "") for c in result.get("ranking_breakdown", []) or []).lower()
 
 
 def score_entry(gold, retrieved_text, answer_text):
@@ -87,83 +95,151 @@ def score_entry(gold, retrieved_text, answer_text):
     return retrieval_recall, answer_correctness
 
 
-def run(base_url, gold_path, out_path):
-    gold = json.loads(Path(gold_path).read_text())
+def fmt(v):
+    return "n/a" if v in (None, "") else f"{float(v):.2f}"
+
+
+def summarize(subset, label):
+    lat = [float(r["latency_sec"]) for r in subset if r["latency_sec"] != ""]
+    rec = [float(r["retrieval_recall"]) for r in subset if r["retrieval_recall"] != ""]
+    acc = [float(r["answer_correctness"]) for r in subset if r["answer_correctness"] != ""]
+    if not lat:
+        print(f"  {label:15s} no scored data")
+        return
+    full = sum(1 for a in acc if a == 1.0)
+    print(f"  {label:15s} n={len(lat):2d}  retrieval={mean(rec):6.1%}  answer={mean(acc):6.1%}  "
+          f"fully-correct={full:2d}/{len(acc):<2d}  latency mean/med/p95={mean(lat):.1f}/{median(lat):.1f}/{percentile(lat, 95):.1f}s")
+
+
+def head_to_head(rows, a, b):
+    # Per-question answer-correctness comparison of mode a vs mode b.
+    by_q = {}
+    for r in rows:
+        if r["answer_correctness"] != "":
+            by_q.setdefault(r["id"], {})[r["mode"]] = float(r["answer_correctness"])
+    win = tie = loss = 0
+    for modes in by_q.values():
+        if a in modes and b in modes:
+            if modes[a] > modes[b]:
+                win += 1
+            elif modes[a] < modes[b]:
+                loss += 1
+            else:
+                tie += 1
+    print(f"  {a} vs {b}: {a} better on {win} questions, same on {tie}, worse on {loss}")
+
+
+def print_summary(rows, needs_review):
+    cats = list(dict.fromkeys(r["category"] for r in rows))
+    print("\n" + "=" * 100)
+    print("OVERALL")
+    print("=" * 100)
+    for mode in MODES:
+        summarize([r for r in rows if r["mode"] == mode], mode)
+    for cat in cats:
+        print("\n" + "-" * 100)
+        print(cat.upper())
+        print("-" * 100)
+        for mode in MODES:
+            summarize([r for r in rows if r["mode"] == mode and r["category"] == cat], mode)
+    print("\n" + "=" * 100)
+    print("HEAD-TO-HEAD (answer correctness per question)")
+    print("=" * 100)
+    head_to_head(rows, "hybrid", "vector")
+    if needs_review:
+        print("\nQUESTIONS TO DOUBLE-CHECK BEFORE TRUSTING THE NUMBERS")
+        for qid, question, note in needs_review:
+            print(f"  Q{qid}: {question}" + (f"  (note: {note})" if note else ""))
+
+
+def run(base_url, gold_path, out_path, k, timeout, retries, resume):
+    gold = json.loads(Path(gold_path).read_text(encoding="utf-8"))
+    out = Path(out_path)
 
     rows = []
-    needs_review = []
+    done = set()
+    if resume and out.exists():
+        with open(out, newline="", encoding="utf-8") as f:
+            rows = list(csv.DictReader(f))
+        done = {(int(r["id"]), r["mode"]) for r in rows}
+        print(f"Resuming: {len(done)} queries already in {out}", flush=True)
 
-    for g in gold:
-        if g.get("confidence") in ("low",) or not g.get("expected_keywords"):
-            needs_review.append((g["id"], g["question"], g.get("note", "")))
-
-        for mode_name, enable_graph in (("vector", False), ("hybrid", True)):
-            try:
-                result, latency = call_query(base_url, g["question"], enable_graph)
-                answer = result.get("answer", "")
-                retrieved_text = gather_retrieved_text(result)
-                retrieval_recall, answer_correctness = score_entry(g, retrieved_text, answer)
-            except Exception as e:
-                answer = f"[ERROR: {e}]"
-                latency = None
-                retrieval_recall = None
-                answer_correctness = None
-
-            rows.append({
-                "id": g["id"],
-                "category": g["category"],
-                "confidence": g.get("confidence", ""),
-                "mode": mode_name,
-                "question": g["question"],
-                "latency_sec": round(latency, 3) if latency is not None else "",
-                "retrieval_recall": round(retrieval_recall, 3) if retrieval_recall is not None else "",
-                "answer_correctness": round(answer_correctness, 3) if answer_correctness is not None else "",
-                "answer": answer,
-            })
-
-    with open(out_path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+    if out.exists() and out.stat().st_size > 0 and not resume:
+        raise SystemExit(f"{out} already has results. Use --resume to continue it, or choose a new --out.")
+    new_file = not (resume and out.exists())
+    f = open(out, "w" if new_file else "a", newline="", encoding="utf-8")
+    writer = csv.DictWriter(f, fieldnames=FIELDS)
+    if new_file:
         writer.writeheader()
-        writer.writerows(rows)
+        f.flush()
 
-    print(f"\nDetailed per-question results written to: {out_path}\n")
+    needs_review = []
+    consecutive_errors = 0
+    t_all = time.perf_counter()
+    try:
+        for n, g in enumerate(gold, 1):
+            if g.get("confidence") in ("low",) or not g.get("expected_keywords"):
+                needs_review.append((g["id"], g["question"], g.get("note", "")))
 
-    def summarize(subset, label):
-        lat = [r["latency_sec"] for r in subset if r["latency_sec"] != ""]
-        rec = [r["retrieval_recall"] for r in subset if r["retrieval_recall"] != ""]
-        acc = [r["answer_correctness"] for r in subset if r["answer_correctness"] != ""]
-        if not lat:
-            print(f"  {label}: no scored data")
-            return
-        print(f"  {label}:")
-        print(f"    n = {len(lat)}")
-        print(f"    retrieval recall     = {mean(rec):.2%}" if rec else "    retrieval recall     = n/a")
-        print(f"    answer correctness   = {mean(acc):.2%}" if acc else "    answer correctness   = n/a")
-        print(f"    latency mean/median/p95 = {mean(lat):.2f}s / {median(lat):.2f}s / {percentile(lat, 95):.2f}s")
+            hybrid_k = k  # filled in once the hybrid call tells us how many chunks it used
+            for mode in MODES:
+                if (g["id"], mode) in done:
+                    # Rebuild hybrid_k from the saved row so vector_matched stays consistent on resume.
+                    if mode == "hybrid":
+                        hybrid_k = int(next(r["k_used"] for r in rows if int(r["id"]) == g["id"] and r["mode"] == "hybrid") or k)
+                    continue
 
-    print("=" * 60)
-    print("OVERALL")
-    print("=" * 60)
-    for mode in ("vector", "hybrid"):
-        summarize([r for r in rows if r["mode"] == mode], f"{mode} RAG")
+                enable_graph = mode == "hybrid"
+                k_used = hybrid_k if mode == "vector_matched" else k
+                k_used = max(1, min(20, k_used))  # server limit is 20
+                try:
+                    result, latency = call_with_retries(base_url, g["question"], enable_graph, k_used, timeout, retries)
+                    answer = result.get("answer", "")
+                    retrieved_text = gather_retrieved_text(result)
+                    if mode == "hybrid":
+                        hybrid_k = len(result.get("ranking_breakdown", []) or []) or k
+                    retrieval_recall, answer_correctness = score_entry(g, retrieved_text, answer)
+                except Exception as e:
+                    answer = f"[ERROR: {e}]"
+                    latency = None
+                    retrieval_recall = None
+                    answer_correctness = None
 
-    print()
-    for cat in ("single_hop", "multi_hop"):
-        print("=" * 60)
-        print(cat.upper())
-        print("=" * 60)
-        for mode in ("vector", "hybrid"):
-            summarize([r for r in rows if r["mode"] == mode and r["category"] == cat], f"{mode} RAG")
-        print()
+                row = {
+                    "id": g["id"],
+                    "category": g["category"],
+                    "confidence": g.get("confidence", ""),
+                    "mode": mode,
+                    "k_used": hybrid_k if mode == "hybrid" else k_used,
+                    "question": g["question"],
+                    "latency_sec": round(latency, 3) if latency is not None else "",
+                    "retrieval_recall": round(retrieval_recall, 3) if retrieval_recall is not None else "",
+                    "answer_correctness": round(answer_correctness, 3) if answer_correctness is not None else "",
+                    "answer": answer.replace("\n", " "),
+                }
+                rows.append(row)
+                writer.writerow(row)
+                f.flush()
 
-    if needs_review:
-        print("=" * 60)
-        print("QUESTIONS TO DOUBLE-CHECK BEFORE TRUSTING THE NUMBERS")
-        print("=" * 60)
-        for qid, question, note in needs_review:
-            print(f"  Q{qid}: {question}")
-            if note:
-                print(f"        note: {note}")
+                consecutive_errors = consecutive_errors + 1 if latency is None else 0
+                if consecutive_errors >= 3:
+                    # A stalled server fails every query; stop instead of burning hours of timeouts.
+                    raise SystemExit("3 queries in a row failed: the server looks stalled. Restart uvicorn, "
+                                     "then rerun the same command with --resume (failed rows are kept; delete them "
+                                     "from the CSV first if you want them retried).")
+
+                print(f"[{n}/{len(gold)}] {mode:14s} {g['category']:12s} k={row['k_used']:<2} "
+                      f"{'ERR' if latency is None else f'{latency:6.1f}s'} "
+                      f"retr={fmt(retrieval_recall)} ans={fmt(answer_correctness)} "
+                      f"(elapsed {(time.perf_counter() - t_all) / 60:.1f} min)", flush=True)
+    except KeyboardInterrupt:
+        print("\nInterrupted. Partial results are saved; rerun with --resume to continue.", flush=True)
+    finally:
+        f.close()
+
+    print(f"\nDetailed per-question results: {out}")
+    if rows:
+        print_summary(rows, needs_review)
 
 
 if __name__ == "__main__":
@@ -171,5 +247,9 @@ if __name__ == "__main__":
     parser.add_argument("--base", default="http://localhost:8000")
     parser.add_argument("--gold", default=str(Path(__file__).parent / "gold_qa.json"))
     parser.add_argument("--out", default=str(Path(__file__).parent / "results.csv"))
+    parser.add_argument("--k", type=int, default=3, help="vector chunks per query (default 3)")
+    parser.add_argument("--timeout", type=int, default=180, help="seconds allowed per query (default 180)")
+    parser.add_argument("--retries", type=int, default=1, help="retries per failed query (default 2)")
+    parser.add_argument("--resume", action="store_true", help="continue an interrupted run from --out")
     args = parser.parse_args()
-    run(args.base, args.gold, args.out)
+    run(args.base, args.gold, args.out, args.k, args.timeout, args.retries, args.resume)

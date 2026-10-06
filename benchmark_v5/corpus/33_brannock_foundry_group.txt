@@ -1,0 +1,100 @@
+Company Profile: The Brannock Foundry Group
+
+The Brannock Foundry Group is the largest manufacturing company in the Calder Reach and the supplier of many of the heavy components on which the region's infrastructure depends. Its headquarters are in Mossgate, a town of foundries, workshops, and railway yards a few kilometers inland from Skerrin. The group was established in 1931 as a small iron foundry by a master founder named Alasdair Brannock, and today it employs about 1,950 people at two main production sites. Sigrid Tavares has been its chief executive since 2016.
+
+The two plants
+
+The group's two plants are complementary. Ashgill Works, on the northern edge of Mossgate, is a casting and machining plant. It produces large iron and steel castings, forgings, and precision-machined parts for the energy, transport, and water industries. The plant's manager is Yusra Demir. Corran Mill, in the valley of the river Corran about twelve kilometers to the west, is a polymers and composites plant, where the group makes membranes, coatings, and composite structures such as wind turbine blades. The plant's manager is Tomasz Rivera.
+
+Ashgill Works
+
+Ashgill Works has a melting shop with two induction furnaces, a pattern shop, a molding hall that can produce castings of up to 40 tonnes, a heat treatment shop, and a machining hall with some of the largest machine tools in the region. It is accredited for the production of safety-critical castings and has a metallurgical laboratory, an ultrasonic testing center, and a radiography facility. About 900 people work at the plant.
+
+The plant supplies a range of components to the region's major projects. It produced the rotor hubs of all 24 turbines of the Tidewrack Tidal Array. It cast the pump-turbine casings of the Quarrel Hill Pumped Storage plant, each of which weighs more than 38 tonnes. It made the large pivot blocks for the six gates of the Beacon Hill Flood Barrier. It supplies the trackside controller cabinets and the precision oscillators of the Gantry Line light rail project. And it made the azimuth bearings and mounting frames for the antennas of the Lodestar Timing Station. The plant also produces components for customers outside the region.
+
+Corran Mill
+
+Corran Mill was established in 1974 to make rubber and plastic parts for the group's foundry customers, and has since become a specialist in membrane technology and composite materials. The plant has a film-casting line for polymer membranes, a coating and curing line, a module winding hall, a composite laminating hall, and a testing laboratory. About 620 people work there.
+
+The plant is the source of the membrane modules used by the Wetmoor Water Reuse project, with its chlorine-resistant coating. It also manufactured the 144 blades of the Ferrous Bay Offshore Wind farm in a dedicated production line, which it built over fourteen months at a cost of about 18 million crowns. A team from the mill is based permanently at the Dunmarrow Port to repair blade damage on site.
+
+Corporate structure
+
+The group is privately held. About 45 percent of the shares belong to the descendants of the founder, about 30 percent to a regional pension fund, and the rest to employees and a small number of investors. The board of directors has eight members, including Tavares, the chair Matthias Aldrich, and independent directors with experience of manufacturing and finance. The group's annual revenue is about 420 million crowns, of which about 38 percent comes from customers in the Calder Reach.
+
+Quality and the incidents of 2022 and 2023
+
+The group's reputation for quality was tested by two incidents. In April 2022 a batch of membrane modules designated C-31, made at Corran Mill, failed at the Wetmoor Water Reuse project after the coating had been cured at too low a temperature, because of a faulty oven controller. The Marrow Institute of Applied Science investigated, and the group paid for the replacement of 140 modules.
+
+In February 2023 three of the Tidewrack turbines suffered failures of their hub seals, and the Institute's investigation found that the hubs, from a batch designated AH-14 made at Ashgill Works, had casting porosity near the seal seats that the plant's ultrasonic inspection had not detected. The group paid for the replacement of the affected hubs, a cost of about 2.2 million crowns.
+
+Taken together, the two incidents caused a major review within the group. Tavares announced a program to introduce full batch traceability at both plants, a tightening of the inspection procedures for safety-critical castings and coatings, and a quality committee of the board. She also commissioned an external audit of the quality systems of both plants, a step that was also a condition of a 75 million crown loan that the group negotiated with the Harbourgate Mutual Bank in 2022. The audit, completed in 2023, found that the group's improvements were effective, and the loan's interest rate was reduced by half a percentage point.
+
+Emergency response
+
+The group's ability to respond quickly in an emergency is one of its strengths. In August 2022, when lightning damaged an antenna at the Lodestar Timing Station, Ashgill Works cast and machined a replacement bearing and mounting frame in a single weekend, a process that normally takes three weeks. Demir has said that the plant keeps a small stock of forged blanks and patterns for exactly this reason. The Lodestar Timing Station has since signed a maintenance agreement with the plant that gives it priority for emergency orders.
+
+Customers and the region
+
+The group is a major supplier to the region's infrastructure projects, and its relationship with the Calder Reach Development Board has been described by Tavares as a partnership. The Board's policy of giving preference to local suppliers has meant that the group has won a large share of the work, and the Board's audit office has noted that this concentration creates a risk: a single quality problem at one of the group's plants can affect several projects at once. The audit office recommended that the group introduce batch-level traceability and share inspection data with its customers, and Tavares has accepted the recommendation.
+
+Research and innovation
+
+The group employs 85 engineers and scientists in its research and development department, which collaborates with the Marrow Institute of Applied Science on new casting alloys, additive manufacturing, and polymer chemistry. Dr. Ximena Duarte, who now leads the Cinder Lake Battery Recycling works, was a researcher in the metallurgical laboratory at Ashgill Works before she left to take up that post, and the group maintains a friendly relationship with the works. One current project aims to develop a casting inspection method based on artificial intelligence, which would analyze ultrasonic and radiographic data to detect subtle patterns that human inspectors might miss.
+
+Employees and training
+
+The group runs an apprenticeship program that takes about 70 school leavers a year, in trades such as pattern making, welding, machining, and laboratory technology. About a quarter of the group's workforce started as apprentices. It also sponsors a scholarship at the Marrow Institute for students of materials engineering.
+
+Environmental performance
+
+Foundries consume a great deal of energy, and the group has committed to halving its carbon emissions by 2030. Ashgill Works has replaced its coal-fired cupola with induction furnaces powered by electricity, much of it from renewable sources. The plant now recycles about 85 percent of its sand. Corran Mill has reduced its solvent emissions by 60 percent through a program of recovery and reuse.
+
+Community role
+
+The group is the largest employer in Mossgate, and its fortunes are closely tied to those of the town. It funds a youth training center, a community hall, and a small museum of foundry history in a restored pattern shop. Tavares has said that the group's duty is not only to make good castings but also to keep skilled industrial jobs in the region.
+
+Outlook
+
+Tavares aims to expand the group's work in renewable energy components, including tidal and offshore wind, and to enter new markets such as hydrogen storage vessels. She also intends to turn the lessons of 2022 and 2023 into a competitive advantage, by offering customers full traceability and open inspection data. She has said that in the long run the group's reputation will depend less on its worst day than on how it responded to it.
+
+
+Annex: The foundry floor, the mill floor, and the people
+
+A day at Ashgill Works
+
+The first shift at Ashgill Works begins at 06:00, when the furnace crews charge the induction furnaces with scrap and alloying elements. The charge is a closely controlled mixture, and every ladle of molten metal is sampled and analyzed by the laboratory before it is poured. A typical casting begins as a wooden or resin pattern in the pattern shop, from which a mold is made in sand bonded with resin. The mold is assembled, filled with molten metal, and left to cool for hours or days, depending on its size. Large castings are then heat-treated, cleaned, and inspected.
+
+The inspection is the part of the process that has changed most since 2022. Every safety-critical casting is now inspected by ultrasonic testing with probes of two frequencies, one for thick sections and one for the surface zones, and by radiography for critical areas such as seal seats and flanges. The results are recorded in a digital certificate that is linked to the casting's serial number and heat number, which identifies the particular melt from which it was made. A customer can retrieve the certificate by scanning a tag on the casting.
+
+A day at Corran Mill
+
+At Corran Mill the production lines run on three shifts. The membrane casting line produces a continuous sheet of polymer film, which passes through a bath, a coating station, and the curing oven. After curing, the sheet is cut, wound into modules, and tested under pressure. Each module is tested in a pressure vessel for leaks and flux, and a sample from each batch is tested in the laboratory for coating properties, including, since 2022, the degree of cross-linking.
+
+The composite hall, where the Ferrous Bay blades were made, is a very large space with a floor area of 12,000 square meters. A 61-meter blade is laminated in two shells, bonded together, and finished by hand. The process takes about nine days, and each blade is inspected with ultrasound and a visual check. The hall now produces replacement blades and repair kits for the Ferrous Bay wind farm.
+
+Key staff
+
+The group's chief financial officer is Henriette Castellanos, and its director of quality is Dr. Ambrose Tiernan, who was appointed in 2022 to lead the group-wide quality program after the incidents. The head of the metallurgical laboratory at Ashgill Works is Dr. Obadiah Greenfield, whose laboratory was the group's contact with the Marrow Institute during the Tidewrack investigation. The head of Corran Mill's polymer laboratory is Dr. Fatima Ashworth.
+
+The traceability program
+
+The batch traceability program that Tavares announced in 2022 has three parts. The first is a digital record for each batch or casting, linking its raw materials, process data, and inspection results. The second is a rule that any deviation, such as the oven temperature disagreement that caused the C-31 failure, must be flagged automatically and reviewed by a named person before the product is released. The third is a customer portal, through which customers can see the certificates for the components they have received.
+
+The portal opened in the spring of 2024, and the Quarrel Hill Pumped Storage plant, the Gantry Line, and the Lodestar Timing Station were its first users. Dr. Tiernan reports quarterly to the quality committee of the board, and the committee reports to the Calder Reach Development Board's audit office.
+
+Notable products
+
+The group's most notable product in recent years was the set of 24 rotor hubs for the Tidewrack Tidal Array, each weighing 3.1 tonnes. The Quarrel Hill pump-turbine casings, 38 tonnes each, were the heaviest castings the plant had made. The six pivot blocks for the Beacon Hill gates, at 26 tonnes, were the largest in the plant's history to be inspected with the new radiographic procedure. The 188 oscillator units for the Gantry Line's backup upgrade were the most precise instruments the plant's electronics workshop had made. And the bearing sets for the Lodestar antennas were made from forged blanks held in stock for emergencies.
+
+The group and its suppliers
+
+The group buys scrap steel and iron from the region's scrap merchants and alloying elements from overseas suppliers. It buys polymers and resins from three chemical companies and carbon fiber from an overseas manufacturer. Tavares has said that the group's greatest exposure is to the price of electricity, since its furnaces and ovens consume about 62 gigawatt-hours a year. The group's electricity is supplied by the Lumen Grid Company under a long-term contract.
+
+Industrial relations
+
+About 80 percent of the group's workforce belongs to the metalworkers' union, and relations are generally good. The union's representative at Ashgill Works, Bartholomew Ng, sits on the plant's safety committee and was involved in the review of the inspection procedures after 2023. He told the investigators that the workers had known that radiography was dropped for batch AH-14 but had not been asked for their opinion, and that this would change.
+
+Recognition
+
+In 2024 Ashgill Works received a national award for manufacturing quality, in recognition of the traceability program, and Corran Mill received an award for its apprentice scheme. Tavares accepted both awards, and said in her speech that the group's best work had been done on the days when nobody was looking.

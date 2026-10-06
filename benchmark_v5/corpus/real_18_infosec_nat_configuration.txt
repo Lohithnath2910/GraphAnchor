@@ -1,0 +1,5 @@
+Information Security: Static NAT Configuration
+
+Term Description Inside Local IP Address Before translation source IP address located inside the local network. Inside Global IP Address After translation source IP address located outside the local network. Outside Global IP Address Before translation destination IP address located outside the remote network. Outside Local IP Address After translation destination IP address located inside the remote network.
+
+PAT: In PAT, Private IP addresses are translated into the public IP address via Port numbers. Port Address Translation (PAT/NAT Overload) can map multiple Private IPv4 addresses to a single public IP address by using different source ports.

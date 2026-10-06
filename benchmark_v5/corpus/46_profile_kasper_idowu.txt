@@ -1,0 +1,74 @@
+Profile: Dr. Kasper Idowu
+
+Dr. Kasper Idowu is a metallurgist and reliability engineer who leads the audit team of the Marrow Institute of Applied Science. Since 2015 he and his team have investigated most of the serious failures in the Calder Reach's infrastructure, and his published reports are among the most widely read technical documents in the region. He is known for a patient manner, a taste for understatement, and a conviction that almost every failure has more than one cause.
+
+Early life and education
+
+Idowu was born in a shipbuilding town on the south coast, where his father was a welder and his mother a seamstress. He remembers watching his father inspect a weld with a flashlight and a magnifying glass, and being told that a weld that looks good can still be bad, and a weld that looks bad can still be good, and that the only way to tell the difference was to look deeper. He studied metallurgy at a university in the capital and completed a doctorate in 2006 on fatigue cracking in welded steel structures.
+
+Early career
+
+After his doctorate Idowu worked for nine years in the aviation industry, first as a materials engineer at an aircraft maintenance company and then as an accident investigator for a national air safety agency. The investigation work, he says, shaped his view of failure. In aviation, he explains, every accident is examined by a team that includes engineers, operators, and human factors specialists, and the investigation is not finished until it has explained not only what broke but why the organization did not see it coming.
+
+He worked on the investigation of fourteen accidents and incidents, and he says that the lesson he took from them was that blame is rarely useful. People generally do what the system around them makes easy, so the most effective remedy is nearly always to change the system.
+
+Joining the Institute
+
+In 2015 Idowu moved to the Calder Reach, where his wife had been offered a post at the regional university, and joined the Marrow Institute of Applied Science as a senior engineer in its department of reliability and safety. The director, Professor Ottoline Brandvik, had been looking for someone to set up an independent investigation team, and she appointed him to lead it. He recruited a small group of metallurgists, control systems engineers, and a human factors specialist, and the team now has eight members.
+
+Its independence is protected by the Institute's core grant from the Calder Reach Development Board, and by a rule that the team does not accept contracts from organizations whose projects it may be asked to investigate. Idowu says that he sees this "audit firewall" as the most valuable asset of the team, because it lets him say things that clients may not want to hear.
+
+The major investigations
+
+The first major investigation of Idowu's team in the region was the membrane fouling at the Wetmoor Water Reuse project in April 2022. The team found that a batch of membranes, designated C-31, made at Corran Mill, had been under-cured because of a faulty oven controller, and that the batch release procedure had not tested for the property that mattered. Idowu has called it a textbook case of a failure in which every individual check had worked as designed but the checks together had not covered the real risk.
+
+Between December 2022 and January 2023 his team audited the safety case of the Gantry Line light rail project, after a timing incident in August 2022 had stopped all trains for four hours. The audit found that the system had behaved as designed, and that the problem lay in the assumption that the external timing signal would always be accurate. It recommended better backup oscillators, which were ordered from Ashgill Works at a cost of 2.4 million crowns, and new logic for deciding which clock to trust.
+
+In 2023 the team investigated the failure of three hub seals at the Tidewrack Tidal Array, and traced it to porosity in a batch of hubs, AH-14, cast at Ashgill Works, whose ultrasonic inspection had not been sensitive enough to find it. The team also reviewed the shredder fire at Cinder Lake in September 2023, and the loss of seed stocks at the Merrow Cold Chain's Dunmarrow depot in November. In 2024 it audited the false closure of the Beacon Hill Flood Barrier, which had been triggered by a firmware error in a tide gauge.
+
+A pattern in his findings
+
+Idowu's colleagues have noticed that his reports share a pattern. They establish the technical cause with great care, they identify the organizational conditions that allowed it, and they make recommendations that can be tested. He says that two conclusions recur: that a defect in one batch of a component can pass through an inspection regime that was designed to find random defects, and that a protective rule written for one situation can cause harm in another. He says that the most common recommendation in his reports is to require an independent second opinion.
+
+He is also known for his unwillingness to hide uncomfortable facts. In the Tidewrack report, he noted that the project's own records showed no request to the foundry to shorten its schedule, even though a technician at the foundry had said that the decision to drop a radiographic check had been taken to meet a delivery date. In the Wetmoor report he wrote that the plant's own cleaning procedure had made the damage worse. Some clients have been irritated, but most have come to value his candor.
+
+Teaching and public role
+
+Idowu teaches a popular short course on incident investigation for staff of the region's infrastructure projects, and he gives the Institute's annual lecture on resilience each autumn. He also advises the Calder Reach Development Board's audit office, led by Lucan Obuya, on technical matters, and the two have a friendly professional relationship: the audit office investigates incidents in which the Board has a direct interest, and Idowu's team handles those in which an independent engineering opinion is needed.
+
+He advocates for the sharing of incident reports across the region. He wrote the proposal that led the Development Board to publish a summary of every serious incident in its annual report, and he has encouraged project directors to share their reports with each other. Several of them, including Dr. Ximena Duarte of Cinder Lake and Dr. Farouk Haidari of Merrow Cold Chain, now exchange reports routinely.
+
+Relationships with the region's directors
+
+Idowu has investigated incidents at the projects of many of the region's directors, and he has come to know them well. He admires the openness of Idris Kowalczyk, the director of the Gantry Line, whose team had already noted several of the problems the audit found in the minutes of its weekly open meeting. He respects Dr. Naledi Mokoena, whom he knew as a colleague at the Institute before she became director of Wetmoor, and he has worked with Dr. Bjorn Halvorsen of Tidewrack, who was a fellow student of Brandvik's. He says that the directors who respond best to an investigation are those who regard it as a service rather than a threat.
+
+Personal life
+
+Idowu lives in Skerrin with his wife, who is a lecturer in statistics, and their two sons. He is a keen amateur woodworker and builds furniture in a shed behind his house, using traditional joints without screws or nails. He says that woodworking reminds him of what he does at work: it is mostly about understanding how things hold together and how they come apart.
+
+Views on the future
+
+Idowu believes that the biggest risk in the region's infrastructure is not the failure of any single project but the connections between them, and he supports the Institute's proposal for a regional simulation model that would let the Board test the effects of a failure in one project on others. He has asked for two more staff for his team, which the Board has agreed to fund. He says that he hopes, one day, to write a report that begins with the words "nothing went wrong," but that he does not expect to be given the opportunity.
+
+
+Annex: Career timeline and colleagues' recollections
+
+Timeline. 2006: completes a doctorate on fatigue cracking in welded steel. 2006 to 2012: materials engineer at an aircraft maintenance company. 2012 to 2015: accident investigator at a national air safety agency. 2015: joins the Marrow Institute of Applied Science and founds its audit team. April 2022: investigates the membrane fouling at Wetmoor. December 2022 to January 2023: audits the Gantry Line safety case. 2023: investigates the Tidewrack hub seal failures; reviews the shredder fire at Cinder Lake and the seed bank storage. January to March 2024: audits the Beacon Hill false closure.
+
+What colleagues say. Professor Brandvik says that when she hired Idowu she asked him what he would do if a client asked him to soften a finding. "He said he would put the softened version on one side of the page and the original on the other, and let the reader decide," she recalls. "I hired him on the spot."
+
+Members of his team describe him as a patient interviewer. Dr. Mirela Zander, the head of the Institute's department of reliability and safety, says that Idowu begins every interview by saying, "I am not here to find out who is at fault. I am here to find out why it made sense." Dr. Rutendo Halliday of the membrane group says that she has never seen him raise his voice, "even when an executive tried to take a report out of his hands."
+
+Directors who have been investigated by his team speak of him with respect. Dr. Naledi Mokoena of Wetmoor says that he treated her staff as colleagues, not suspects. Idris Kowalczyk of the Gantry Line calls him "the auditor who made us better." Sigrid Tavares, the chief executive of the Brannock Foundry Group, whose plants were the source of two of his reports, says that the reports were uncomfortable and correct, and that she keeps copies on her desk.
+
+How the audit team writes. Each report has a fixed structure: a summary of one page; the background; the timeline of events; the technical findings; the organizational findings; the recommendations, each with an owner and a date; and an annex of evidence. Idowu insists that every sentence in the report can be traced to a document or an interview. He allows no adjectives in the findings, and he sends every draft to a reader who knows nothing about the subject and asks them to mark every line they do not understand.
+
+The audit firewall. The Institute's rule that the audit team may not accept contracts from organizations whose projects it may be asked to examine is known as the audit firewall. The rule has cost the Institute about 1.4 million crowns a year in lost contract revenue. Idowu says that the firewall is the reason that clients can accept his findings, and that if he ever had to choose between the firewall and the budget he would choose the firewall.
+
+An unfinished question. Idowu has said that the investigation that still troubles him is not one of the region's incidents but one from his time at the air safety agency, in which a small aircraft was lost and the cause was never established. He keeps a photograph of the wreckage in his desk drawer, and takes it out when he feels that an investigation is being concluded too quickly. He says that it reminds him that "not knowing" is a legitimate finding.
+
+Training courses. His short course on incident investigation, given three times a year, has been attended by about 190 engineers from the region's projects. It teaches the "five conversations" method: talk to the person who did the work, the person who supervised it, the person who designed it, the person who wrote the procedure, and the person who has never heard of it. He says that the fifth conversation is often the most revealing.
+
+The regional dependency review. Idowu supported the Development Board's audit office, led by Lucan Obuya, in the regional dependency review of 2023. He has proposed that the review be turned into a living model, updated whenever a project changes, so that the effects of a failure can be tested before it occurs. The Institute's department of digital systems has begun to build a prototype.
+
+Advice. He tells young engineers to read old incident reports in the way that others read novels, for the pleasure of watching ordinary decisions accumulate into an event. He also advises them to be suspicious of the phrase "human error," which he says is a place where an investigation stops rather than where it ends.

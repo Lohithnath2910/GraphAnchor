@@ -1,0 +1,96 @@
+Company Profile: Strand & Keel Shipping
+
+Strand & Keel Shipping is a family-controlled freight and logistics company based at Dunmarrow Port, the Calder Reach's only deep-water port. It was founded in 1958 by two partners, a lorry driver named Anders Strand and a ship's chandler named Hugh Keel, who began by delivering cargo from the quayside to farms in the surrounding hills. Today it is the region's dominant freight carrier, with 22 locomotives, about 450 wagons, a fleet of road vehicles, and about 780 employees. Ravindra Kallenbach has been its chief executive since 2017.
+
+What the company does
+
+Strand & Keel runs three main businesses. Its rail freight division operates trains on the region's main railway line, sharing the track with passenger services and the Gantry Line. Its port and terminal services division handles cargo at Dunmarrow, including the management of rail sidings and the storage of bulk goods. Its specialist logistics division provides temperature-controlled, hazardous, and time-critical transport, serving the health, energy, and recycling sectors. The company handles about 3.1 million tonnes of cargo in a typical year.
+
+Key customers
+
+The company's customers include some of the region's most demanding infrastructure projects. The Dunmarrow Port Automation project is its biggest client: Strand & Keel's trains deliver and collect most of the containers that pass through the automated terminal, and the company's operations center at the port works closely with the terminal's scheduling system. The company carries the recovered cobalt, nickel, and lithium products of the Cinder Lake Battery Recycling works, and it collects used batteries from municipal collection points for the works. It delivers the isotopes produced at the Isotope Works to hospitals across the region, using temperature-controlled vehicles and a dedicated courier team, and it provides the refrigerated wagons for the Merrow Cold Chain project, operating them under contract.
+
+Strand & Keel also carries bulk goods such as grain, fertilizer, and building materials, and moves the large components used by other projects. It brought the turbine components for the Ferrous Bay Offshore Wind farm from the factories to the quay at Dunmarrow during construction.
+
+Organization and leadership
+
+Kallenbach joined the company in 2003 as a rail planner, and rose through operations and finance before becoming chief executive. He is the first leader in the company's history who is not a descendant of one of the founders, though the founding families still hold about 58 percent of the shares. The company's board includes two members of the Strand family and one of the Keel family, as well as independent directors. Kallenbach has a reputation for running a data-driven operation: every locomotive carries sensors that report its position and condition to a central dashboard, and the company publishes its punctuality figures each month.
+
+The company's network planning team has been an important source of talent for the region. Idris Kowalczyk, who now leads the Gantry Line light rail project, worked for Strand & Keel as a network planner between 2014 and 2018, where he designed a scheduling method that cut the idle time of locomotives by about eighteen percent. Kallenbach has said that losing Kowalczyk was painful, but that the company benefits from having a friendly voice in the design of the new signaling system, which affects its freight trains as well as the passenger services.
+
+The railway
+
+The company uses the region's main line, which is owned by the Development Board and shared among passenger and freight operators. The arrival of the Gantry Line, with its higher frequency of passenger trains, has made it harder to find paths for freight during the day, and Strand & Keel has moved much of its traffic to the night. Kallenbach has worked with Kowalczyk and the Board to develop a timetable that gives freight guaranteed windows, and the scheduling method that Kowalczyk developed is used to plan them.
+
+Safety culture
+
+Kallenbach holds a monthly open meeting with locomotive drivers and depot staff, at which any safety concern can be raised without fear of reprisal. He rides in a locomotive cab one day a month. The company's safety record is among the best in the region, with no serious accident in the past eight years. The company was involved in a minor incident in 2022, when a dispatcher was delayed in receiving notification of the problems at the Lodestar Timing Station, but no injuries or damage resulted.
+
+Technology
+
+The company has invested heavily in tracking technology. Every wagon and container carries a tag that reports its location, and for temperature-sensitive cargoes the tag also reports temperature. The tracking system is integrated with the port's scheduling system, which allows the port to plan crane movements according to the expected arrival of trains. It has also been connected to the Isotope Works's dispatch software, so that the facility can see the progress of each isotope container in real time.
+
+Environmental performance
+
+Strand & Keel has been replacing its diesel locomotives with hybrid and battery-electric units, and plans to have only electric locomotives on its main routes by 2030. The first battery locomotive entered service in 2023. The company also runs a program to reduce road transport, by moving cargo from lorry to rail where it can. It estimates that its rail services save about 38,000 tonnes of carbon dioxide a year compared with road haulage.
+
+Finances
+
+Strand & Keel's revenue in 2023 was about 142 million crowns, and its operating profit was about 11 million crowns. It borrows from several banks, and its capital expenditure program, which includes new locomotives and wagons, is financed partly by retained earnings and partly by loans. The company has paid a dividend in each of the last twenty years.
+
+Relationships
+
+The company has agreements with the Calder Reach Development Board for the use of the main line, with the Dunmarrow port company for its terminal services, and with its major customers. Kallenbach sits on the Dunmarrow Port Automation project's customer advisory group, which meets every quarter. He also attended the review that followed the false closure of the Beacon Hill Flood Barrier in January 2024, because the closure had held several of the company's trains at Dunmarrow for hours.
+
+Training and community
+
+The company trains about 40 new drivers and technicians each year in its own academy, and it offers apprenticeships to school leavers. It supports the Dunmarrow lifeboat station and sponsors the port's annual maritime festival. Its headquarters, a red-brick warehouse on the quay, includes a small museum of the company's history, with photographs of the founders and their first vehicles.
+
+Challenges
+
+The main challenge is dependency on the port and the railway. A disruption at either affects the company's whole business, and incidents in recent years, such as the crane collision of August 2022 and the false closure of the barrier in January 2024, have shown how a single event can ripple through the logistics chain. Kallenbach has worked with the other operators and with the Development Board to improve coordination and information-sharing during incidents, and the company has appointed a resilience manager to review its dependencies.
+
+Outlook
+
+Kallenbach's strategy for the next five years focuses on three goals: converting the locomotive fleet to electric power, expanding the specialist logistics business for the health and energy sectors, and building a second rail terminal inland to relieve pressure on the port. He says that the company's role is to be the dependable link in a chain whose other parts are less predictable than they appear.
+
+
+Annex: Operations, fleet, and key staff
+
+The fleet
+
+Strand & Keel Shipping's 22 locomotives are in three classes. Twelve are diesel-electric units built in the early 2000s, used for the main freight services. Eight are newer hybrid units, which can run on batteries in port areas and in tunnels, and which entered service between 2020 and 2023. Two are battery-electric locomotives, the first of which entered service in 2023 and is used for shunting at the Dunmarrow Port. The company's 450 wagons include container flats, covered wagons for grain, tank wagons, and a specialist fleet of 38 refrigerated and insulated wagons that are operated for the Merrow Cold Chain project.
+
+Key staff
+
+The chief operating officer is Imelda Whitcombe-Ross, who oversees the rail operations division. The head of the port and terminal services division is Tobias Mulgrave, and the head of the specialist logistics division, which handles the isotope, battery, and temperature-controlled work, is Dr. Hana Voskuijlen. The company's resilience manager, appointed in 2023, is Lorcan Adeyemi, who maintains a register of the company's dependencies on external systems such as the port's cranes, the barrier at Beacon Hill, and the rail signaling.
+
+A typical day
+
+A typical day in the Dunmarrow operations center starts at 04:30, when the planners review the night's arrivals and the port's schedule for the day. By 06:00 the first container trains leave for the inland terminals, and the first isotope couriers depart from the Isotope Works. The center receives a continuous feed from the port's scheduling system, which gives it an estimated time for each container, and from the freight tracking system, which gives the position of every wagon.
+
+At about 10:00 the cobalt and lithium products from Cinder Lake arrive at the port by rail, where they are inspected and loaded for export. In the early afternoon the refrigerated wagons are marshalled for the evening vaccine service, and at 18:00 the planners agree the next day's plan with the Merrow Cold Chain's depot managers. The center is staffed by twelve planners and dispatchers in three shifts.
+
+The specialist logistics division
+
+The specialist division is the company's fastest-growing business, and accounted for 27 percent of revenue in 2023. For hazardous cargo such as used batteries, the division has trained drivers, fire-resistant containers, and procedures that comply with international rules. For medical isotopes it provides a dedicated courier service, with vehicles that carry shielded containers and a dispatcher who tracks each delivery against the isotope's decay clock. For temperature-controlled goods, it operates the Merrow wagons and a fleet of refrigerated trucks.
+
+Dr. Voskuijlen, who joined from a pharmaceutical logistics company, introduced a "zero tolerance" policy for temperature excursions in isotope and vaccine consignments. Each vehicle carries two independent temperature loggers, and each consignment is accompanied by a printed record. She has said that the work is demanding, because the cost of a failure is not measured in crowns but in missed treatments.
+
+Safety record and incidents
+
+The company records every incident, however small. In 2023 it logged 412 incidents, of which 389 were near misses or minor events, 21 were minor injuries, and 2 were more serious. The company reports its figures to the Development Board each quarter. Kallenbach says that a rising number of reported near misses is a sign of a healthy culture, and he has a policy of publishing them to staff every month.
+
+The company was affected by several of the region's major incidents. After the Dunmarrow crane collision of August 2022, it reduced its train schedule to the port for three days, and after the Beacon Hill barrier's false closure in January 2024, its morning freight service was held for about six hours. It was also the carrier that moved the replacement isotope doses to the St. Idris Hospital Trust's scanning service after the Isotope Works lost a production run in November 2023, by express courier to a facility in the neighboring region.
+
+Relationships with the port
+
+Strand & Keel's relationship with the Dunmarrow Port Automation project is close and sometimes complicated. The port's scheduling system plans crane movements around the company's trains, but it also plans them around ships, and the two do not always coincide. A weekly coordination call between the company's planners and the port's scheduling team resolves conflicts, and a joint committee meets quarterly. Cormac Adebayo, who leads the port project, has said that the company is both his best customer and his most demanding critic.
+
+Training and the academy
+
+The company's academy in Dunmarrow trains about 40 new drivers and technicians a year. The course for locomotive drivers lasts eighteen months and includes 400 hours in a simulator. The academy also runs courses for other operators in the region, including the Gantry Line's drivers, who learned to operate the freight interface at the Mossgate junction there. Kallenbach describes the academy as the company's most important investment.
+
+Sustainability
+
+The company's first battery locomotive reduced diesel use at the port by 140,000 liters in its first year. The company has also begun to use renewable diesel in its older locomotives, and it is installing solar panels on the roof of its main workshop. It estimates that its carbon emissions per tonne-kilometer have fallen by 19 percent since 2019.

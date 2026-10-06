@@ -1,0 +1,74 @@
+Profile: Dr. Bjorn Halvorsen
+
+Dr. Bjorn Halvorsen is a marine engineer and the director of the Tidewrack Tidal Array in Skerrin Sound, the Calder Reach's largest tidal power installation. He has led the project since 2018, two years before its first turbine entered the water, and is widely credited with turning an uncertain demonstration idea into a commercially operating power station.
+
+Early life and education
+
+Halvorsen was born in a fishing village on the far northern coast of the Calder Reach, the son of a boat builder and a primary school teacher. As a boy he spent his summers on his father's boatyard, where he learned to read currents and tides by watching how boats behaved in them. He has said that the first time he understood that a tide was an engine rather than just a nuisance was when a neighbor's mooring chain, snapped by a spring tide, towed a loaded fishing boat across the harbor mouth.
+
+He studied naval architecture at a university outside the region, and then returned to the Calder Reach for his doctorate at the Marrow Institute of Applied Science, which he began in 2008. His doctoral supervisor was Professor Ottoline Brandvik, the Institute's director, who at the time led its coastal engineering group. His thesis, completed in 2013, concerned the loads on turbine blades in turbulent tidal flows, and it included measurements taken from a small experimental rotor that he and two other students mounted on a barge in Skerrin Sound.
+
+Halvorsen says that Brandvik's greatest influence on him was a habit of mind: she insisted that every claim in a thesis be supported by a measurement, that every measurement come with an estimate of its uncertainty, and that every uncertainty be stated honestly even when it was embarrassing. He says that when he is tempted to describe the project's performance in a flattering way, he hears her voice asking for the error bars.
+
+Career before Tidewrack
+
+After his doctorate Halvorsen spent four years at an overseas company that developed tidal turbines, working first as a research engineer and then as the manager of a demonstration site in a Scottish firth. There he learned the practical difficulties of marine work: the short windows at slack tide, the cost of vessel hire, and the fact that most failures occur at the interfaces between components made by different suppliers. He also saw a project fail commercially because it had been designed to demonstrate a technology rather than to earn a return, and he decided that if he ever led a project of his own, it would have to pay its way.
+
+He returned to the Calder Reach in 2017, when the Harbourgate Mutual Bank and a municipal investment fund began looking for a director for a planned tidal array in Skerrin Sound. He was recommended by Brandvik, and after a six-month selection process he was appointed in the spring of 2018.
+
+Building Tidewrack
+
+Halvorsen's first year at Tidewrack was spent on three tasks. The first was the financing: he worked with the bank's risk team, and especially its chief risk officer, Emeka Lindqvist, to design a loan that tied repayment to the electricity delivered. The second was the design: he insisted that the turbines be designed so that a whole nacelle could be lifted to the surface in one piece and exchanged for a spare, because he had seen how much time was lost in Scotland on underwater repairs. The third was the community: he spent most of 2018 and 2019 in meetings with the fishing cooperative, the ferry operators, and the harbor board, and he kept a notebook of every promise he made to them, which he reviews every year.
+
+He chose to buy the rotor hubs from Ashgill Works, the casting plant of the Brannock Foundry Group, because the plant was close and because its engineers were willing to visit the site. He has said that he regards the choice as right in principle but that it taught him a lesson in 2023, when three turbines failed because of porosity in a batch of hubs.
+
+The 2023 hub failures
+
+When three turbines lost their hub seals on 9 February 2023, Halvorsen was at the quayside within an hour. He and his deputy, Marit Sorensen, organized the isolation of the turbines and the exchange of their nacelles, and he asked the Marrow Institute for an independent investigation. He wrote a letter to the project's lenders the same night, and published the investigation report, in full, in April.
+
+He has said that the hardest part of the incident was not the engineering but the communication with the fishing cooperative and with the project's employee shareholders, who had asked him whether their savings were safe. He held a meeting in the quayside shed at which he showed them the investigation's findings and answered questions for three hours. He says that the experience reinforced his belief in openness: a problem that is hidden becomes a crisis, but a problem that is shown becomes a lesson.
+
+Leadership style
+
+Colleagues describe Halvorsen as calm, careful, and unusually good at listening. He holds a short meeting at seven o'clock each morning at the quay, where the previous night's alarms and the day's tide times are reviewed on a single whiteboard. He rotates every new employee through every department in their first two weeks, including a day on a vessel at a spring tide, and he insists that the finance team spends at least one day a year offshore.
+
+He is also known for his dry humor. When the project's second annual report showed that the array had generated 121 gigawatt-hours, he noted in the foreword that the figure was "approximately what the tide had been planning to do anyway." Employees say that he has never raised his voice at work.
+
+Relationships with other projects
+
+Halvorsen has close working relationships with several other project directors. He and Dr. Priya Raghunathan, who leads the Seedvault North breeding project, both studied under Brandvik, and they meet for lunch each spring, a tradition they began in 2018. He has an agreement with Dr. Ximena Duarte, who leads the Cinder Lake Battery Recycling works, to give the works priority in case of limited supply from the array, an arrangement that was tested in February 2023. And he speaks regularly with the Lumen Grid Company's dispatchers, whose daily planning uses the project's tide-based output forecast.
+
+Public role
+
+Halvorsen is frequently asked to speak about renewable energy. He has given evidence to a committee of the national parliament and has written a column for a regional newspaper about the economics of tidal power. He regards it as part of his job to say honestly what the technology can and cannot do: it will not replace wind power, he says, but it can complement it because its output is predictable.
+
+He sits on the Marrow Institute's industrial advisory panel and teaches a graduate seminar each year on the design of marine energy projects. He also coaches the youth sailing team at a club in Skerrin, a commitment that he says keeps him in touch with the actual behavior of water.
+
+Personal life
+
+Halvorsen lives in Skerrin with his wife, a marine biologist who works on seal populations, and their two daughters. The family has a small sailing boat, which he describes as the most expensive way he knows of getting wet. He plays the accordion badly, and has promised that he will stop when the second phase of Tidewrack is approved.
+
+Views on the future
+
+Halvorsen believes that the main challenge for tidal power is not technology but trust. Investors, lenders, regulators, and communities have all been burned by projects that promised more than they delivered, and each new project must rebuild that trust from the beginning. He has said that his proudest achievement at Tidewrack is not the electricity but the fact that the fishing cooperative, which opposed the project in 2018, now invites him to its annual dinner.
+
+He expects the second phase of Tidewrack, twelve turbines in the deeper western channel, to go ahead once the hub inspection program is complete, and has said that he intends to remain with the project until it is built. In the longer term he hopes that the nacelle design can be used in other tidal channels, and that the lessons of Skerrin Sound will help other regions to develop tidal power more quickly and more safely.
+
+
+Annex: Career timeline and colleagues' recollections
+
+Timeline. 2008: begins doctoral research at the Marrow Institute of Applied Science under Professor Ottoline Brandvik. 2013: completes his doctorate on blade loads in turbulent tidal flow. 2013 to 2017: works for an overseas tidal turbine developer, first as a research engineer and then as manager of a demonstration site. 2017: returns to the Calder Reach. March 2018: appointed director of the Tidewrack Tidal Array. 2019: the first foundations are laid in Skerrin Sound. 2020: the array delivers its first power. 2021: the second annual report records 121 gigawatt-hours. February 2023: three turbines suffer hub seal failures. April 2023: publishes the Marrow Institute's investigation report in full. Summer 2023: five hubs from batch AH-14 are replaced. 2024: the project board makes approval of the second phase conditional on completion of the hub inspection program.
+
+What colleagues say. Marit Sorensen, the deputy director, remembers that on the evening of the hub failures, Halvorsen asked only one question of the control room: "Is anyone in the water?" When told that no one was, she says, his shoulders dropped, and he began to ask about the oil. Lazar Okonkwo, the chief engineer, says that Halvorsen never once suggested that the failure was someone else's fault, even though the foundry's inspection method was the root cause. "He said that it was our array and our hubs," Okonkwo recalls, "and that we should have understood the inspection."
+
+Philippa Osterhout, the chair of the Harbourgate Mutual Bank, says that she found Halvorsen's quarterly reports to be the most readable of any borrower's, because they gave the bad numbers first. Dr. Priya Raghunathan, a fellow student of Brandvik's, describes him as someone who can sit through a long silence without feeling the need to fill it. And Professor Brandvik herself has said that the thesis he submitted in 2013 was the first she had read in which the chapter on limitations was longer than the chapter on results.
+
+The Skerrin quayside routine. At seven each morning the shift engineer, the vessel masters, the environmental officer, and any visitors gather around a whiteboard on the quay. The board lists the day's tide times, the state of every turbine, any alarms from the previous night, and the weather window for offshore work. Halvorsen insists that the board is wiped and rewritten each morning by hand, rather than displayed on a screen, because writing the day's plan makes people think about it. A line at the bottom of the board, in his handwriting, reads "What could hurt someone today?"
+
+Decisions he regards as most important. In 2018 he decided to design the turbines so that a whole nacelle could be lifted to the surface and swapped, which allowed turbines to return to the water within a day. In 2019 he decided to leave a navigation channel along the northern edge of the Sound entirely clear of turbines, a decision that increased the project's cost by about 1.2 million crowns but won the support of the fishing cooperative. In 2020 he decided to give the employees an ownership stake, which now covers about forty staff. In 2023 he decided to publish the investigation report in full.
+
+Public statements. In an interview with a regional newspaper after the hub failures he said, "A tidal turbine is a machine that lives in the worst environment we can offer it. If it never failed, we would be doing something wrong, because it would mean we had over-built it. What matters is whether we see the failure coming and whether we are honest about it afterward." The interview was widely quoted by other project directors in the region.
+
+Teaching. Halvorsen teaches a graduate seminar at the Institute each spring on the design of marine energy projects. The seminar's final assignment asks students to write the investigation report of a failure that has not yet occurred, based on their own design. He says that the exercise makes students think about weaknesses at the stage when they are cheapest to fix.
+
+Advice to young engineers. He tells new graduates joining the project three things: measure before you claim, write down what you promised, and learn the name of the person who made each part. He says that the third has paid off many times, since it is easier to get an answer from a person than from a department.

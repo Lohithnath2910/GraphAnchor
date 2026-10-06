@@ -1,0 +1,137 @@
+Information Security: Security in Operating Systems
+
+Security in Operating Systems Layered Design, Kernelized Design and Reference Monitor
+
+List the processes/functions/ apps of an Operating System
+
+List of Processes /Functions Device drivers for printers, scanners, USB devices Threads within a web browser to load different parts of a webpage CPU scheduling algorithms (e.g., round-robin, priority scheduling) Access control lists (ACLs) to manage file permissions Compilers: GCC, Clang, Visual C++ Web browsers (e.g., Chrome, Firefox)
+
+List of Processes /Functions File sharing mechanisms (e.g., network file systems, server message block) Command-line interpreters (e.g., Bash, PowerShell) Virtual memory management (paging, swapping) User Authentication: Passwords, biometrics Disk partitioning and formatting tools File managers (e.g., Windows Explorer, Finder) Database Managers: MySQL, PostgreSQL, Oracle Database
+
+List of Processes /Functions Device Allocation: Assigning printers, scanners, and other peripherals to processes. Child processes created by a compiler to handle different stages of compilation Text editors (e.g., Notepad, Nano) Memory allocation algorithms (e.g., first-fit, best-fit) System monitoring tools (e.g., Task Manager, top)
+
+List of Processes /Functions Device Allocation: Assigning printers, scanners, and other peripherals to processes. Child processes created by a compiler to handle different stages of compilation Text editors (e.g., Notepad, Nano) Memory allocation algorithms (e.g., first-fit, best-fit) System monitoring tools (e.g., Task Manager, top)
+
+List of Processes /Functions File systems: NTFS (Windows), ext4 (Linux), APFS (macOS) Deadlock Prevention/Detection Semaphores and mutexes for process synchronization Spreadsheet Software: Microsoft Excel, Google Sheets Word processors (e.g., Microsoft Word, LibreOffice Writer) Media Players: VLC, Windows Media Player Which processes/functions/apps are most important ? How do you segregate high privileged processes /functions from low privileged ones ? Which processes /functions should load first when booting up the system ? How do you ensure that you are not booting a malware infected OS?
+
+Operating System Design to Protect Objects - Layered Operating System MAP the identified processes /apps/functions to these layers in the diagram
+
+Operating System Design to Protect Objects - Layered Operating System
+
+Operating System Design to Protect Objects - Layered Operating System
+
+Operating System Design to Protect Objects - Layered Operating System
+
+Layered Design Layered Structure: Secure operating systems have a layered structure (like a building with floors), with the most sensitive operations at the innermost layers (lower floors). Trust and Access: Trustworthiness and access rights decrease as you move outward through the layers. More trusted processes are closer to the center. Separation: Layers are separated using techniques like physical, temporal, logical, and cryptographic separation. Logical separation is most common in layered design. (Kernel processes have higher privileges than user processes)
+
+Layered Design Encapsulation: Each layer encapsulates (hides) the details of the layers below it. Damage Control: Layering helps to contain the damage caused by problems. Problems in one layer are less likely to affect other layers.
+
+Difference between an OS kernel and a Security Kernel
+
+Difference between an OS kernel and a Security Kernel OS Kernel: Provides a wide range of functions, including process management, memory management, device drivers, file systems, and networking. Security Kernel: Has a more limited set of functions focused on security, such as access control, authentication, authorization, and auditing
+
+Difference between an OS kernel and a Security Kernel - Example OS Kernel: May implement discretionary access control (DAC), where users have some control over access permissions. Security Kernel: Enforces mandatory access control (MAC), where the system administrator defines strict access control rules that cannot be overridden by users (Users cannot change system files)
+
+Why we need a separate security kernel? Coverage: The security kernel acts as a central point of enforcement for all security checks, ensuring complete mediation of access to protected objects. Separation: Isolating security mechanisms from the rest of the OS and user space enhances protection against penetration and compromise. Unity: Consolidating all security functions into a single codebase simplifies tracing, debugging, and understanding of security mechanisms.
+
+Why we need a separate security kernel? Modifiability: Changes to security mechanisms become easier to implement, test, and control due to their localized nature within the security kernel. Compactness: The security kernel's smaller size compared to the entire OS kernel improves its manageability and reduces its attack surface. Verifiability: The compact size of the security kernel allows for rigorous analysis and formal verification, ensuring that all security situations are addressed.
+
+Reference Monitor The most important part of a security kernel is the reference monitor, the portion that controls accesses to objects
+
+Reference Monitor - Security-Enhanced Linux - Example SELinux has a security policy database that defines rules for how different security contexts can interact. These rules specify which processes can access which files, directories, network ports, and other resources. The policy is typically defined in a human-readable format and then compiled into a binary format that the kernel can use.
+
+Reference Monitor - Example Whenever a process attempts to access a resource, the SELinux reference monitor intercepts the request. It examines the security context of both the process and the resource. It then consults the security policy to determine if the requested access is allowed based on the configured rules. If the access is allowed, the reference monitor permits the operation. Otherwise, it denies access and logs the event. Kernelized Design emphasizes on a separate Security Kernel
+
+Operating System Loading Stages List the steps that happen during the System Boot up process
+
+Operating System Loading Stages Power Flow: The power button triggers the flow of electricity to the motherboard and its components. Initial Checks: The BIOS (Basic Input/Output System), a small program stored on a chip, performs initial checks on the hardware, ensuring essential components like the CPU, memory, and storage are functioning correctly. Boot Loader: The BIOS locates and activates the boot loader, a small program that's responsible for loading the operating system. Operating System Loading: The boot loader finds the operating system (like Windows or macOS) on your storage drive and loads Operating System core, called the kernel, into memory.
+
+Operating System Loading Stages Kernel Initialization: The kernel takes over, setting up essential system processes, drivers for your hardware, and memory management. Services and Drivers: The kernel starts essential background services and loads drivers to communicate with your laptop's specific hardware (keyboard, trackpad, display, etc.). User Interface: Finally, the graphical user interface (what you see on the screen) or the command-line interface appears, allowing you to interact with your laptop.
+
+Operating System Loading Stages How do you ensure that you are not booting a malware infected OS?
+
+UEFI (Unified Extensible Firmware Interface) TPM (Trusted Platform Module Signed using Private Key Verified using the Public Key in TPM SECURE BOOT Using UEFI and TPM Signed using Private Key
+
+UEFI - Unified Extensible Firmware Interface The Unified Extensible Firmware Interface (UEFI) is essentially a modern replacement for the older BIOS (Basic Input/Output System) that's found in computers. UEFI plays a crucial role in the startup process. When you turn on your computer, UEFI is one of the first things that runs. It initializes the hardware components and then loads the operating system
+
+TPM (Trusted Platform Module) A Trusted Platform Module (TPM) is a specialized security chip on a computer's motherboard. It's designed to provide hardware-based security functions, enhancing the overall security of the system
+
+TPM (Trusted Platform Module) Hardware-Based Security: Unlike software-based security, which can be vulnerable to attacks, a TPM provides a hardware-based root of trust. This means it's much harder to tamper with. It is isolated from the CPU. Cryptographic Key Storage: A primary function of the TPM is to securely store cryptographic keys. These keys are used for various security operations, such as encryption and authentication.
+
+TPM (Trusted Platform Module) Secure Boot: The TPM plays a role in Secure Boot, a feature that verifies the integrity of the boot process. It helps ensure that only trusted software is loaded during startup, preventing malware from compromising the system. Hardware-Based Encryption: TPMs are often used in conjunction with disk encryption software, such as BitLocker in Windows. They can securely store the encryption keys, adding an extra layer of protection to your data
+
+Check on your Systems
+
+Check on your Systems
+
+Check on your Systems
+
+Check on your Systems
+
+Check on your Systems
+
+Trusted Software /Trusted Computing Base What is it ?
+
+UEFI (Unified Extensible Firmware Interface) TPM (Trusted Platform Module Signed using Private Key Verified using the Public Key in TPM SECURE BOOT Using UEFI and TPM Signed using Private Key You can TRUST this SYSTEM Implementation of Sufficient Security Measures and Mechanisms TRUSTED SYSTEMS
+
+What are Trusted Systems ? A trusted system is one that has been shown to warrant some degree of trust that it will perform certain activities faithfully, that is, in accordance with users' expectations. "Trusted" applies to various parts of a system, from individual programs to entire hardware and software stacks are the components of a trusted system
+
+UEFI (Unified Extensible Firmware Interface) TPM (Trusted Platform Module Signed using Private Key Verified using the Public Key in TPM Trusted Software and TCB Signed using Private Key Trusted Software Trusted Computing Base
+
+Trusted computing base (TCB) A "trusted computing base" (TCB) includes all the hardware, firmware, and software components responsible for enforcing a system's security policy. This could include the kernel, device drivers, and security hardware like a TPM.
+
+Characteristics of Trusted Systems Enforcement of a Defined Security Policy :mandatory access control (MAC) to restrict access to classified information based on security labels. Implementation of Sufficient Security Measures and Mechanisms: A system that uses strong encryption, multi-factor authentication, and intrusion detection systems to protect sensitive data. Independent Scrutiny / Evaluation :A security product that undergoes a Common Criteria evaluation by an accredited testing laboratory. Who Performs such an evaluation ?
+
+Common Criteria (ISO/IEC 15408) Standard (Common Criteria or CC) is an international standard (ISO/IEC 15408) used for computer security certification The Common Criteria provides a framework for evaluating the security features of IT products and systems. It establishes a standardized way to assess whether a product meets specific security requirements. It is used to increase confidence in the security of IT products and to facilitate mutual recognition of security evaluations between countries.
+
+Who Created It: The Common Criteria was developed through the collaboration of several governments in the mid-1990s. Specifically, it was created by the governments of: Canada France Germany Netherlands United Kingdom United States It was created to unify existing security evaluation standards from those regions
+
+Key Aspects of Common Criteria Target of Evaluation (TOE): The product being evaluated Protection Profiles (PPs): Documents defining security requirements for specific product types Security Targets (STs): Documents detailing how a TOE meets PP requirements created by Vendors of the product Evaluation Assurance Levels (EALs): EALs are a set of seven hierarchical levels that define the depth and rigor of the Common Criteria evaluation.
+
+EAL Levels EAL1: Functionally Tested. EAL2: Structurally Tested. EAL3: Methodically Tested and Checked. EAL4: Methodically Designed, Tested, and Reviewed. EAL5: Semi-formally Designed and Tested. EAL6: Semi-formally Verified Design and Tested. EAL7: Formally Verified Design and Tested
+
+Common Criteria Website
+
+Protection Profiles
+
+Certified Products
+
+Rootkits
+
+Who is a Root user? In Unix-like operating systems (including Linux and macOS), the "root" user is a special user account that has complete and unrestricted access to the system The root user has the highest level of privileges on the system. It can perform any operation, including Installing and uninstalling software. Modifying system files. Changing user permissions. Accessing any file or directory.
+
+Rootkit An attack package that attains root status is called a rootkit. A rootkit is a type of malicious software (malware) designed to gain administrative-level control over a computer system without being detected. Its primary purpose is to hide its presence and the presence of other malicious software, allowing an attacker to maintain persistent, unauthorized access
+
+Types of Rootkits Bootloader Rootkits: These infect the bootloader, which is the software that loads the operating system. This allows the rootkit to gain control before the OS even starts. Firmware Rootkits: These infect the firmware of hardware components, such as the BIOS/UEFI. This makes them very hard to detect and remove. Kernel-Mode Rootkits: These are the most dangerous type. They operate at the core of the operating system (the kernel), giving them deep control and making them extremely difficult to detect. Virtual Machine Rootkits: These rootkits operate from outside of the virtual machines operating system, at the hypervisor level
+
+Rootkit Attack Vectors Malicious Software Installations Exploiting Vulnerabilities Phishing and Social Engineering Physical Access Network Attacks
+
+Rootkit Attacks Sony BMG Copy Protection Scandal (2005): Sony BMG distributed CDs with copy protection software that secretly installed a rootkit on Windows computers. This rootkit aimed to prevent piracy, but it also created significant security vulnerabilities. The rootkit hid itself and other files, which opened the door for other malware to exploit the system. Infected large number of systems.
+
+Stuxnet (2010): Stuxnet was a complex computer worm that targeted industrial control systems (ICS), specifically those used in Iran's nuclear program. It used a rootkit to hide itself and its malicious code, allowing it to manipulate industrial equipment. Stuxnet caused significant damage to Iran's nuclear centrifuges, demonstrating the potential for rootkits to be used in cyber warfare. It was one of the first known examples of a cyberweapon targeting critical infrastructure.
+
+DirtyMoe Rootkit (2021) This rootkit was used in a large-scale botnet operation. Cybercriminals spread the DirtyMoe rootkit, and infected over 100,000 windows systems. It's primarily used for: Cryptocurrency mining (cryptojacking). Distributed denial-of-service (DDoS) attacks. Establishing remote access to compromised systems.
+
+How to Safe Guard Systems from Rootkits Rootkits can be very difficult to detect with standard antivirus software. Specialized rootkit detection tools may be needed. In severe cases, reinstalling the operating system may be the only way to remove a rootkit.
+
+Additional Content
+
+Security in Operating Systems - Why it is important ? Viruses, Trojan horses, and similar forms of malicious code may masquerade as harmless programs or attach themselves to other legitimate programs. Nevertheless, the malicious code files are stored somewhere, usually on disk or in memory, and their structure can be detected with programs that recognize patterns or behavior. A powerful defense against such malicious code is prevention to block the malware before it can be stored in memory or on disk
+
+Security in Operating Systems - Why it is important ? The operating system protects users from each other. It safeguards critical memory and storage areas. It handles identification and authentication. It manages fair sharing of hardware resources. The operating system is a tempting target for attackers.
+
+Compromising the operating system grants complete control of the machine.
+
+Forms of Operating Systems An operating system is an executive or supervisor for a piece of computing machinery. Operating systems are not just for conventional computers. Some form of operating system can be found on any of the following objects a dedicated device such as a home thermostat or a heart pacemaker an automobile (especially the engine performance sensors and the automated control functions such as antilock brakes); similarly, the avionics components of an airplane or the control system of a streetcar or mass transit system List some devices or systems, beyond traditional computers, that utilize operating systems ?
+
+Forms of Operating Systems a smartphone, tablet, or other web appliance a network appliance, such as a firewall or intrusion detection and prevention system a controller for a bank of web servers a (computer) network traffic management device
+
+Operating System Functions
+
+OS Functions that involve Security Enforced sharing: The OS controls access to resources to ensure authorized use and prevent conflicts. Interprocess communication and synchronization: The OS facilitates communication and coordination between different processes. Protection of critical OS data: The OS safeguards its own data to maintain system security and integrity. Guaranteed fair service: The OS ensures all users receive a fair share of system resources. Interface to hardware: The OS provides a standardized way for users and applications to interact with hardware. Write what you know about the producer consumer problem in OS ? How it enables interprocess communication ? (Semaphores,Mutex and Shared Memory)
+
+OS Functions that involve Security User authentication: The OS verifies user identities to control access and protect against unauthorized use. Memory protection: The OS isolates processes in memory to prevent interference and protect sensitive data. File and I/O device access control: The OS manages access to files and I/O devices to ensure data security and integrity. Allocation and access control to general objects: The OS controls access to shared objects to prevent conflicts and ensure proper synchronization. (Access to Printers in multi user operating system)
+
+What is an Operating System Kernel? It's a fundamental layer of software that sits between the hardware (the physical components of your computer) and the software applications you use every day. It allows you to run multiple programs simultaneously, access files, connect to the internet, and much more. What is an Operating System Kernel ? List some of its functions ?
+
+Kernel Functions Enforced sharing Interprocess communication and synchronization Protection of critical OS data Interface to hardware User authentication Memory protection File and I/O device access control Allocation and access control to general objects

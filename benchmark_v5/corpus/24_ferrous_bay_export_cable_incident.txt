@@ -1,0 +1,82 @@
+Incident Report: Ferrous Bay Export Cable Fault and Regional Brownout, November 2023
+
+Summary
+
+On the afternoon of 14 November 2023 a severe storm damaged the export cable of the Ferrous Bay Offshore Wind farm at the point where it comes ashore at the Ferrous headland. The fault disconnected all 48 turbines from the grid at 15:08, removing about a third of the region's electricity supply in an instant. The Lumen Grid Company shed load to prevent a wider collapse, causing a brownout that lasted about six hours and affected hospitals, industrial plants, and storage depots. The cable took six weeks to repair. This report was prepared by Callum Pryor, the project's director, and reviewed by the Calder Reach Development Board's audit office.
+
+The export cable
+
+The wind farm's electricity is carried to the shore by a single 220-kilovolt cable, 27 kilometers long, which is buried in the seabed along most of its route. Where it approaches the shoreline, the cable passes through a rocky surf zone, and it emerges onto the beach through a protective steel duct set into the cliff. From the beach, it continues underground for a few kilometers to the substation of the Lumen Grid Company.
+
+The cable and its installation were designed to withstand the conditions in the bay, but the surf zone is the most vulnerable part. The project's risk assessment had identified it as a hazard, and the cable had been given an additional armored sleeve in that section. The design assumed that the burial depth and the rock protection would be maintained.
+
+The storm
+
+A deep low-pressure system moved onto the western coast on 13 November. By the afternoon of the 14th the waves in Ferrous Bay were more than seven meters high, and winds at the turbines reached 31 meters per second, which is above the cut-out speed of 25 meters per second. The turbines shut down automatically in sequence from 13:30, as designed, and were being feathered gradually when the cable failed.
+
+At 15:08, the protection system at the substation detected a fault current on the cable and opened the breaker. The wind farm was disconnected. At the time, the turbines that were still turning were delivering about 70 megawatts, but the abrupt loss of that power, combined with a loss of reactive power support, was enough to destabilize the grid.
+
+What the investigation found
+
+Divers inspected the cable when the weather allowed, on 18 November. They found that the surf zone's rock protection had been displaced by the waves, and that the cable's armored sleeve had been abraded against the rocks in a section about four meters long. The outer layers of the cable had worn through, and seawater had entered the insulation, causing an electrical fault.
+
+Gustav Nilsen, the head of marine operations, and Saoirse Valdez, the deputy director, led the project's own investigation, supported by an independent cable specialist. They concluded that the cable's protection in the surf zone had been inadequate for the combination of waves and tidal range experienced during the storm, and that a gradual loss of rock cover over the preceding two winters had left the cable more exposed. The project's inspection regime had included an annual survey of the surf zone, but the most recent survey, in the spring of 2023, had not detected the loss of rock cover because it was carried out at the wrong state of the tide.
+
+The grid response
+
+The Lumen Grid Company's control center at Mossgate responded to the loss of the wind farm by instructing automatic load shedding in several parts of the region, to avoid a collapse of frequency. Within seconds, about 160 megawatts of demand was disconnected. Lumen then brought generation back from other sources, including the Quarrel Hill Pumped Storage plant, which switched into generation within ninety seconds, and the Tidewrack Tidal Array. Even so, the supply remained unstable and the voltage fluctuated for about six hours.
+
+The chief executive of the Lumen Grid Company, Anselm Rask, said in a statement that the network had behaved as designed and that blackout across the region had been avoided, but acknowledged that the loss of a single cable should not have caused so much disruption.
+
+Consequences
+
+The brownout affected several of the region's most important facilities. The Isotope Works facility at the St. Idris Hospital Trust lost a production run. The Merrow Cold Chain's depot at Dunmarrow suffered a refrigeration failure that put seeds and vaccines at risk. The Wetmoor Water Reuse plant had to reduce its output for several hours. A number of industrial plants and several hundred homes lost power for periods of between thirty minutes and three hours. These effects are described in separate reports.
+
+The wind farm itself lost about 38 gigawatt-hours of production during the six weeks that it was disconnected, worth about 2.5 million crowns in revenue. The cost of repairing the cable, including the hire of a specialist vessel, was about 6.8 million crowns, of which about 4.9 million was covered by insurance.
+
+Repair
+
+The repair of a damaged subsea cable is complex. The cable ship arrived from a neighboring region on 28 November and, after waiting for a window of calm weather, cut out the damaged section on 5 December. A new length of cable was spliced into the existing cable by a team of specialist jointers, working in a tent on the deck of the vessel. The repaired cable was tested and re-energized on 27 December, and the wind farm was back in service on 28 December.
+
+Recommendations
+
+The review made seven recommendations. The surf zone's protection should be rebuilt with heavier rock armor and a concrete mattress. The annual survey should be carried out at the correct state of the tide and supplemented by a sonar scan after every major storm. The project should plan and fund a second export cable on a different route. The project and the grid operator should agree on a procedure for a controlled reduction of the wind farm's output before a storm, to reduce the shock if the cable fails. Lumen Grid should improve its capacity to ride through the sudden loss of a large generator. The region's major electricity users should be informed of the risks. And the project's insurance should be reviewed.
+
+Actions
+
+Pryor accepted the recommendations. The shoreline protection was rebuilt in the spring of 2024 using about 3,600 tonnes of rock armor and a series of concrete mattresses. A sonar survey is now carried out after any storm with waves above five meters. The Calder Reach Development Board agreed in principle in 2024 to fund a second export cable, and the Harbourgate Mutual Bank, which financed the wind farm, was consulted on the new financing. The bank's chief risk officer, Emeka Lindqvist, said that the bank would support a second cable provided that the project demonstrated the benefits for the region's resilience.
+
+Wider consequences
+
+The event caused a major debate in the Calder Reach about dependence on a few critical assets. Hester Vandermeer, the chair of the Development Board, said that the region had built a modern infrastructure but had not always asked what would happen if one part failed, and she asked the audit office to broaden its dependency review. The review's interim report, in March 2024, described the Ferrous Bay cable as one of the three most significant single points of failure in the region, along with the Lodestar Timing Station and the Hollin Fibre Backbone.
+
+Lessons
+
+Pryor wrote that the incident had changed his view of the project's responsibilities. He had thought of the wind farm as a producer of electricity, whose risks were financial and operational. After November 2023, he said, he thought of it also as a part of the safety net of the region, and he committed to treating its reliability with the same seriousness as a hospital would treat its power supply.
+
+
+Annex A: Technical detail and chronology
+
+The cable. The export cable is a three-core, 220-kilovolt submarine cable with cross-linked polyethylene insulation, a lead sheath, and a double layer of galvanized steel wire armor. Its outer diameter is 230 millimeters and its weight in air is about 90 kilograms per meter. A fiber-optic unit in the cable core carries the farm's communication and control data. The cable was manufactured overseas and delivered on a single reel. Where it approaches the shore, an additional polyurethane sleeve with bend restrictors protects it for 180 meters through the surf zone.
+
+The shoreline. The cable comes ashore at the Ferrous headland, where the beach consists of cobbles and boulders. A trench was blasted through a rock platform and the cable laid in it, covered with a layer of rock armor weighing 80 to 400 kilograms per stone. The design assumed that this armor would remain in place under storm waves of up to six meters.
+
+The storm's waves. The wave buoy offshore recorded a significant wave height of 7.3 meters and a maximum wave of 12.8 meters at 14:40 on 14 November, with a wave period of 14 seconds, from the west-southwest. This is considered a one-in-twenty-five-year event. The long period waves generate large forces on the shore, and the investigation concluded that they had mobilized the armor stones, some of which weighed more than 300 kilograms.
+
+The damage. Divers found a gap in the armor about eleven meters long, with boulders shifted and the cable exposed. In a four-meter length the sleeve had worn through and the steel armor wires had been abraded and broken. The lead sheath had a split of about 60 millimeters, allowing water to reach the insulation. The cable failed electrically at 15:08 when the insulation, weakened by moisture, broke down under load.
+
+Chronology. At 13:30 the turbines began a sequential shutdown. At 14:40 the waves peaked. At 15:08:11 the cable's protection tripped. At 15:08:13 the grid's frequency began to fall from 50.00 hertz. At 15:08:14 Lumen Grid's automatic load shedding disconnected about 160 megawatts of demand. At 15:08:30 Quarrel Hill began to generate. At 15:12 the frequency reached its lowest point at 48.9 hertz. At 15:20 the frequency had recovered to above 49.5. At about 21:30, after six hours of fluctuating supply, the grid was stable again.
+
+The grid's behavior. The lowest frequency reached, 48.9 hertz, was within the design limit but below the point at which sensitive equipment might be tripped. Lumen Grid's operating records showed that the system's reserve of fast-acting generation at the time was about 120 megawatts, less than the 240 megawatts of the farm's capacity, and that the grid had therefore relied on load shedding to compensate for the shortfall.
+
+Repair detail. The cable vessel completed the cut-out of the damaged section on 5 December, removing 70 meters of cable. A new section of 92 meters was prepared on the deck with a flexible joint at each end. The jointers worked in shifts of twelve hours, and each joint took about sixty hours. The repaired cable was subjected to a high-voltage test at 1.7 times the operating voltage for 60 minutes on 26 December, and was re-energized the next day. The wind farm's first turbine delivered power at 06:10 on 28 December.
+
+Costs. The cable ship's charter was 2.9 million crowns, the cable and joints 1.7 million, the shore works 1.1 million, and the investigation and project costs 1.1 million. Insurance covered 4.9 million crowns. The lost generation of 38 gigawatt-hours was worth about 2.5 million crowns, of which part was recovered through business interruption cover.
+
+The second cable. The proposal for a second export cable envisages a different landing site, about nine kilometers north of the Ferrous headland, where the shoreline is sandy and less exposed. The estimated cost is 31 million crowns. The project's technical team, led by Saoirse Valdez, completed a route survey in 2024 and presented a business case to the Development Board in the autumn.
+
+Insurance and liability. The project's insurers accepted the claim for physical damage but disputed part of the business interruption claim, arguing that the project had not carried out the survey of the surf zone at the time recommended by the cable manufacturer. The dispute was settled in 2024, with the insurers paying about 70 percent of the claimed loss of revenue.
+
+Reporting. Pryor sent a first notification to the Calder Reach Development Board and the Harbourgate Mutual Bank within three hours of the event. The bank's chief risk officer, Emeka Lindqvist, wrote to ask about the cable's inspection regime, and the project's reply, sent on 17 November, described the annual survey and acknowledged that the 2023 survey had been carried out at high tide and had not seen the displaced armor.
+
+Public communication. The project issued a statement on the evening of 14 November explaining that the farm had been disconnected by a cable fault and that the grid operator was working to restore supply. A regional radio station read the statement on air. Pryor was interviewed on television the next morning, and said that the project would publish a full report, which it did on 12 January 2024.

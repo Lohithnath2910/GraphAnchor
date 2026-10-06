@@ -11,6 +11,13 @@ except ImportError:
 
 logger = logging.getLogger("graphanchor")
 
+# Extraction client with a hard timeout so one looping generation can't hang ingestion.
+_extract_client = ollama.Client(timeout=90)
+# Answer client: timeout so a stuck generation cannot hang a request forever.
+_answer_client = ollama.Client(timeout=120)
+# Answers are 1-3 sentences; the cap stops a looping generation from running until the context fills.
+ANSWER_OPTIONS = {"num_ctx": 8192, "temperature": 0.1, "num_predict": 300}
+
 class Relation(BaseModel):
     entity: str = Field(description="The source entity")
     relation: str = Field(description="The relationship between source and target")
@@ -28,7 +35,7 @@ def extract_graph_from_chunk(text: str) -> GraphExtraction:
         "Strict Extraction Rules:\n"
         "1. Entity Recognition & Canonicalization:\n"
         "   - Identify clear, distinct named entities: People, Projects, Organizations, Facilities, Components, Technologies, Conditions, Chemicals, Locations, and Roles.\n"
-        "   - Use proper canonical casing and exact names (e.g., 'Dr. Aris Thorne', 'Munich Foundry', 'Inhibitor-Z').\n"
+        "   - Use proper canonical casing and exact names exactly as written in the text. Never use names that do not appear in the text.\n"
         "2. Coreference & Pronoun Resolution:\n"
         "   - ALWAYS resolve anaphoric pronouns ('he', 'she', 'they', 'it', 'his', 'her', 'their', 'its') to the primary named entity referenced in the text.\n"
         "   - NEVER create entity nodes with pronoun names like 'He', 'She', 'It', or 'They'.\n"
@@ -41,7 +48,9 @@ def extract_graph_from_chunk(text: str) -> GraphExtraction:
         "   - NEVER output standalone verbs ('is', 'has', 'was') as entity names.\n"
         "   - Entities MUST be concrete nouns or names, NOT verbs or actions like 'misuse of'.\n"
         "5. Output Schema:\n"
-        "   - Return strictly valid JSON containing the list of unique 'entities' and 'relations' matching the requested schema."
+        "   - Return strictly valid JSON containing the list of unique 'entities' and 'relations' matching the requested schema.\n"
+        "6. Brevity:\n"
+        f"   - Output at most {config.extraction_max_relations} entities and {config.extraction_max_relations} relations: only the most important facts. Do not enumerate every term in the text."
     )
 
     user_prompt = f"Extract all factual entities and relationships from the following text:\n\n{text}"
@@ -49,14 +58,15 @@ def extract_graph_from_chunk(text: str) -> GraphExtraction:
     last_err = None
     for attempt in range(config.ollama_max_retries + 1):
         try:
-            response = ollama.chat(
+            response = _extract_client.chat(
                 model=config.llm_model,
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt}
                 ],
                 format=GraphExtraction.model_json_schema(),
-                options={"num_ctx": 4096, "temperature": 0.0}
+                # repeat_penalty stops the model looping on its entity list; temperature rises on retries so a retry isn't identical
+                options={"num_ctx": 4096, "temperature": 0.3 * attempt, "repeat_penalty": 1.3, "num_predict": 1400}
             )
             return GraphExtraction.model_validate_json(response['message']['content'])
         except Exception as e:
@@ -150,13 +160,13 @@ def generate_answer(
     last_err = None
     for attempt in range(config.ollama_max_retries + 1):
         try:
-            response = ollama.chat(
+            response = _answer_client.chat(
                 model=config.llm_model,
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt}
                 ],
-                options={"num_ctx": 4096, "temperature": 0.1}
+                options=ANSWER_OPTIONS
             )
             return response['message']['content'].strip()
         except Exception as e:
@@ -180,14 +190,14 @@ def stream_answer(
         return
 
     try:
-        response_stream = ollama.chat(
+        response_stream = _answer_client.chat(
             model=config.llm_model,
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt}
             ],
             stream=True,
-            options={"num_ctx": 4096, "temperature": 0.1}
+            options=ANSWER_OPTIONS
         )
         for chunk in response_stream:
             content = chunk.get('message', {}).get('content', '')

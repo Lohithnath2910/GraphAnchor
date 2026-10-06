@@ -1,0 +1,94 @@
+Cinder Lake Battery Recycling: Project Overview
+
+Cinder Lake Battery Recycling is a materials recovery plant that extracts valuable metals from used lithium-ion batteries. It occupies the buildings of a former ironworks on the shore of Cinder Lake, a small reservoir in the hills about fifteen kilometers north of Skerrin. The works opened in 2021 and processes batteries collected from across the Calder Reach: electric vehicle packs, grid storage modules, and the small cells from tools and electronics.
+
+Dr. Ximena Duarte has directed Cinder Lake since the project opened. Her deputy is Hamid Zielinski, who runs operations, and the process chief is Astrid Mbeki, who leads the chemical engineering team responsible for the shredding and leaching lines. The project employs 63 people, including 14 researchers and engineers.
+
+The recycling challenge
+
+Lithium-ion batteries contain cobalt, nickel, manganese, lithium, copper, and aluminum, many of which are valuable and some of which are scarce or come from places with poor environmental and labor standards. Recovering them from used batteries reduces the need for new mining, keeps hazardous materials out of landfill, and gives the Calder Reach's manufacturers a local source of raw material. The difficulty is that a battery is a carefully engineered sandwich of materials designed to stay together for ten years, and taking it apart safely and cleanly is hard.
+
+Cinder Lake's approach is to treat the batteries in three stages: safe discharge and dismantling, mechanical shredding, and chemical recovery. At the end of the process, the plant produces a mixed cobalt and nickel product, lithium carbonate, copper foil, and aluminum scrap, which it sells to manufacturers. The cobalt recovery rate is 96 percent, which is better than most commercial recyclers achieve.
+
+Process description
+
+Incoming batteries are first sorted by chemistry and condition. Damaged or swollen cells are separated and stored in a fireproof bunker, because they can ignite spontaneously. The good packs are discharged to a safe voltage in a controlled electrical cabinet, and then dismantled by technicians who remove the casings and the control electronics. The modules are fed into a sealed shredder that operates in an atmosphere of nitrogen to prevent fires.
+
+The shredded material is sieved into three streams: a coarse stream of plastic and metal casing, a stream of copper and aluminum foil, and a fine black powder containing the active materials of the electrodes. The black powder is the valuable fraction. It is dissolved in a mild acid, and the metals are then recovered one at a time by chemical precipitation and solvent extraction. The lithium, which is the last to be recovered, is precipitated as lithium carbonate.
+
+A tank-by-tank record of the process is kept for every batch, so that the origin of each kilogram of recovered metal can be traced back to the batteries that supplied it. This traceability is increasingly demanded by battery manufacturers, who must show that their materials are recycled.
+
+Electricity supply
+
+The shredding line and the drying ovens consume large amounts of electricity. Cinder Lake has a direct supply arrangement with the Tidewrack Tidal Array, whose cable from Skerrin Sound runs past the site and connects to the works through a dedicated substation. The arrangement gives Cinder Lake a stable electricity price, and gives the tidal project a guaranteed local customer. The plant also has a connection to the regional grid for backup, though the changeover is not instantaneous, so that an interruption of the tidal supply forces the shredding line to slow down.
+
+Logistics
+
+The plant's logistics are managed by Strand & Keel Shipping, which collects used batteries from regional collection points by road and delivers the recovered products to customers by rail and sea. Strand & Keel provides specialized vehicles for damaged batteries, with fire-resistant containers and trained drivers. Ravindra Kallenbach, the chief executive of Strand & Keel, has noted that the batteries are among the most demanding cargoes the company carries, and that his drivers receive extra training to transport them.
+
+Research partnership
+
+Cinder Lake has a research partnership with the Marrow Institute of Applied Science. Institute chemists work on the plant's pilot line, testing improved leaching chemistries that use less acid and produce less waste. The Institute also provides graduate students and shares specialized analytical equipment. One current project aims to develop a method to separate nickel and cobalt without solvents, which would cut the cost and environmental impact of the final stage.
+
+Duarte's background
+
+Duarte is a materials chemist with a doctorate from a university outside the region. Before leading Cinder Lake she spent four years working in the metallurgy laboratory at Ashgill Works, the casting plant of the Brannock Foundry Group, where she studied the chemistry of alloys and the causes of casting defects. She says that the years in a foundry taught her what real industrial reliability means, and she insists that the plant's operators understand the chemistry behind every process step, not just the procedures.
+
+Safety management
+
+Fire is the major hazard in battery recycling, and Cinder Lake's safety systems reflect this. The shredding hall is protected by a water mist system and by inert gas, and there are thermal cameras that monitor every conveyor. Operators wear fire-resistant clothing, and the plant holds monthly drills with the local fire service. The works has also installed detectors for hydrogen fluoride, a toxic gas released when electrolyte burns, and staff carry personal gas monitors.
+
+Environmental performance
+
+The plant recycles about 4,200 tonnes of batteries a year and recovers about 82 percent of their weight as reusable materials. The remainder, mostly plastics and the electrolyte residue, is treated and disposed of under license. Wastewater from the chemical stages is treated on site and recycled where possible. An independent audit in 2023 found that the plant's emissions were well within its permit limits.
+
+Customers and markets
+
+The recovered cobalt and nickel are sold to manufacturers of battery materials, while the lithium carbonate is sold to chemical companies. About a third of the output is sold within the Calder Reach, and the rest is exported. The plant's revenue depends on the prices of these metals, which fluctuate widely. In its third year, the works achieved a modest operating profit, helped by a rise in the price of cobalt.
+
+Staff and community
+
+Many of the staff live in the village beside the lake, and several worked in the old ironworks before it closed. Duarte and her colleagues have emphasized hiring from the community, and about sixty percent of the employees come from within ten kilometers of the site. The plant holds an annual open day and runs a school education program on recycling and the chemistry of batteries.
+
+Future development
+
+Duarte plans to double the plant's capacity by 2027 and to add a process for recovering graphite, the largest component of a battery by weight, which is currently not recovered. The expansion would depend on extending the supply of batteries through new collection partnerships and on continued access to stable electricity. She is also working with the Calder Reach Development Board on a regional regulation that would require manufacturers to take back used batteries.
+
+
+Operating history, year by year
+
+2019. The Calder Reach Development Board and the Marrow Institute of Applied Science jointly identified a derelict ironworks on the shore of Cinder Lake as a possible site for a battery recycling plant. The works had closed in the 1990s and had been used for storage ever since, but it retained a heavy-duty electrical supply, a rail siding, and large halls with strong floors. A business case prepared by the Institute concluded that the site could process 4,000 tonnes of batteries a year at a modest profit. The site was bought by a project company in the autumn.
+
+2020. Refurbishment of the old halls took the whole year. The roof of the main hall was replaced, new floors were laid with a chemical-resistant coating, and the electrical supply was upgraded to take the cable from the Tidewrack Tidal Array, which was being laid at the same time. The project's board advertised for a director, and Dr. Ximena Duarte, who had spent four years at Ashgill Works studying the chemistry of casting alloys, applied. She was appointed in the autumn and left the foundry at the end of the year.
+
+2021. Duarte started in January and set about recruiting the team. Hamid Zielinski, who had run a hazardous waste facility, became deputy and operations manager, and Astrid Mbeki, a chemical engineer from an industrial gas company, became process chief. The shredding line was commissioned in April, and the chemical recovery section in August. The first batch of cobalt product was shipped in October. Strand & Keel Shipping was appointed as the project's logistics provider, and its drivers began collecting batteries from municipal sites.
+
+2022. The works reached its first full year of operation and processed 3,100 tonnes of batteries. The cobalt recovery rate stabilized at 96 percent, and the lithium carbonate produced met the specification of a battery chemicals buyer. A pilot line for testing new leaching chemistries, funded by the Institute, was commissioned in the autumn. In November a team from the Institute began a project to reduce the acid consumption of the leaching process.
+
+2023. In February, a loss of generation at the Tidewrack Tidal Array, caused by an equipment fault described in a separate report, forced the works to run its shredding line at half rate for two weeks, because the grid connection could not make up the shortfall instantly. Duarte used the time to carry out maintenance that had been postponed. In September a fire broke out in the shredding hall after a damaged battery pack was fed into the shredder; the fire was extinguished by the automatic systems within minutes, but the shredder was out of service for three weeks. The incident is described in a separate report.
+
+2024. After the fire, the project added a second inspection stage at the entrance of the shredding line, in which every pack is scanned with a thermal camera and a weighing check, and it extended the quarantine bunker. Duarte also negotiated a new agreement with the Tidewrack project to give Cinder Lake a priority in the event of limited supply, together with a small battery bank to smooth short interruptions. The works processed 4,200 tonnes, a record.
+
+Operating results
+
+In 2023 the works generated about 11.4 million crowns in revenue, of which cobalt and nickel accounted for 63 percent, lithium carbonate for 22 percent, and copper and aluminum for the rest. Operating costs were about 10.1 million crowns. The two interruptions of 2023 reduced the year's profit by about a quarter. The project's accountant, Leopold Nwachukwu, produces a monthly report that tracks the recovery rate for each metal against the target.
+
+People and culture
+
+Duarte is known for her insistence that every member of staff, from the shredding operators to the finance team, should understand the chemistry of the plant. In her first year she introduced a weekly "chemistry hour," in which a member of the process team explains one step of the process in plain language. Mbeki says that the habit has helped the operators to anticipate problems. The project has 63 employees, many of whom live in the village beside the lake.
+
+Partnership with the Institute
+
+The Marrow Institute of Applied Science supplies four of the researchers who work at the site, and its analytical laboratory provides independent checks of the purity of every shipment. Dr. Kasper Idowu, who leads the Institute's audit team, was consulted after the fire to review the project's safety procedures. His recommendations, which included the second inspection stage, were adopted in full.
+
+Suppliers and customers
+
+The project buys its reagents from three chemical suppliers and sells the recovered metals under annual contracts. A key customer is a battery materials manufacturer outside the region that takes most of the cobalt and nickel product. Strand & Keel Shipping delivers the shipments to the port at Dunmarrow, where they are loaded for export. Duarte has said that one of the benefits of her time at Ashgill Works was an understanding of how suppliers think, which helps her to manage the project's own contracts.
+
+Regulatory framework
+
+The works operates under a hazardous waste license that sets limits on the quantity of batteries stored on site, the temperature of the storage bunkers, and the emissions to air and water. The regional environment agency inspects it three times a year. The license was renewed in 2023 after the agency reviewed the fire report and the changes that followed.
+
+Education and outreach
+
+Cinder Lake runs a program for schools in which students bring in a used battery and see it processed in the visitor gallery. The project also trains collection staff from the municipalities, who learn how to recognize damaged batteries and store them safely. In 2023 the training was extended to staff at electrical retail stores, which are a common source of used batteries.

@@ -15,6 +15,7 @@ class AppConfig(BaseModel):
     similarity_threshold: float
     max_file_size_mb: float = 5.0
     ollama_max_retries: int = 2
+    extraction_max_relations: int = 20  # cap on relations/entities extracted per chunk (was a hardcoded 12)
     hybrid_fusion_alpha: float = 0.55
     vector_anchor_confidence: float = 0.75
     graph_edge_base_confidence: float = 0.85

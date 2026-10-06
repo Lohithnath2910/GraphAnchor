@@ -1,0 +1,104 @@
+Institution Profile: The Marrow Institute of Applied Science
+
+The Marrow Institute of Applied Science is the Calder Reach's principal research and technical advisory organization. It occupies the Marrow Campus, a group of buildings and laboratories on the wooded slopes of Corran Heights, a few kilometers north of Skerrin. The Institute was founded in 1989 as a small laboratory for coastal engineering and has grown into an organization of about 480 researchers, engineers, and support staff. Professor Ottoline Brandvik has directed the Institute since 2013.
+
+Mission and structure
+
+The Institute's mission is to apply scientific knowledge to the practical problems of the region: energy, water, transport, food, health, and the resilience of infrastructure. It is organized in five departments: marine and coastal engineering, energy and materials, environment and agriculture, digital systems, and a department of reliability and safety. About two thirds of its research budget is covered by a core grant from the Calder Reach Development Board, and the rest comes from project contracts, student fees, and a small endowment.
+
+The Institute has a doctoral program with about 95 students, who spend part of their time in industry projects. Many of the region's current project directors studied at the Institute, a fact that has made the Institute an unusual network of personal relationships across the region's infrastructure.
+
+Brandvik and her influence
+
+Professor Brandvik is a coastal engineer who started her career in wave modelling. She became director in 2013 and has transformed the Institute's relationship with industry by insisting that its researchers work on real projects rather than abstract problems. She has also supervised a number of doctoral students who have become prominent in the region, including Dr. Bjorn Halvorsen, who leads the Tidewrack Tidal Array, and Dr. Priya Raghunathan, who leads the Seedvault North breeding project. Both describe her as a demanding but generous supervisor, and both have said that her insistence on measuring before claiming shaped their approach to their work.
+
+Projects hosted and supported
+
+The Institute hosts the Seedvault North project, which breeds drought-tolerant cereals and is led by Raghunathan. It provides a marine monitoring team for the Tidewrack Tidal Array, whose director studied there, and it designed and supplies the sensor network of the Beacon Hill Flood Barrier. Its researchers work with the Cinder Lake Battery Recycling works on new leaching chemistries, with the Wetmoor Water Reuse project on membrane testing, and with the Larkspur Telehealth Network on image analysis. It carried out the seabed and environmental surveys for the Ferrous Bay Offshore Wind farm, and it publishes the environmental monitoring reports of several projects.
+
+Beyond these, the Institute lends its expertise to the Calder Reach Development Board on policy questions, and to the St. Idris Hospital Trust on the physics of its isotope production methods.
+
+The audit team
+
+The part of the Institute with the highest public profile is its audit team. The team was set up in 2015 under Dr. Kasper Idowu, a senior engineer in the department of reliability and safety, to provide independent technical investigations of failures and near misses. Its independence from the projects it examines is protected by the Institute's core grant, which means that it does not depend on those projects for its funding. The team comprises eight engineers and scientists, including metallurgists, control systems engineers, and a human factors specialist.
+
+In recent years the team has investigated several important incidents. In April 2022 it examined the membrane fouling at the Wetmoor Water Reuse project, and traced it to a defective batch of membranes made at Corran Mill. In the winter of 2022 and 2023 it audited the Gantry Line's safety case after the timing incident of August 2022. In 2023 it investigated the hub seal failures at the Tidewrack Tidal Array, and found that a batch of hubs from Ashgill Works had porosity near the seal seats. It was consulted after the shredder fire at Cinder Lake in September 2023, and in 2024 it audited the false closure of the Beacon Hill Flood Barrier. It also reviewed the seed bank storage arrangements after the loss of seed stocks in November 2023.
+
+The audit team's reports are published, and several of them are used in the Institute's teaching. The team's reports have a recognizable pattern: they establish the technical cause, identify the organizational conditions that allowed it, and make recommendations that can be tested. Idowu has said that the most common conclusion of his team's work is that a check that had worked as designed had not covered the real risk.
+
+Research highlights
+
+The Institute's research has produced several results of regional importance. The coastal engineering group's hydrodynamic model of the Beacon estuary was used to design the flood barrier. The energy and materials group developed the first cobalt recovery process used at Cinder Lake. The environment and agriculture group produced the genetic markers used in the Brindlewheat-3 breeding program. The digital systems group developed the sensors and software that detect early signs of failure in the Tidewrack turbines.
+
+Facilities
+
+The campus has a wave basin, a materials testing laboratory with a large hydraulic press, a clean room for electronic components, greenhouses and a field station on the Corran Heights terraces, and a high-performance computing facility. The library holds regional records dating back to the 1850s, including historic tide gauge data that is used to study sea level rise.
+
+Education and training
+
+The Institute offers master's and doctoral programs in coastal engineering, energy systems, materials, plant science, and reliability engineering, in partnership with the region's university. It also runs short courses for the staff of infrastructure projects, including a popular course on incident investigation led by Idowu. In summer, it hosts about 60 undergraduate interns, many of whom are placed in the region's projects.
+
+Governance and finances
+
+The Institute is governed by a council of twelve members, including representatives of the Development Board, the university, industry, and the staff. Its budget is about 62 million crowns a year. The core grant from the Development Board accounts for 70 percent of this, and Brandvik has argued to the Board that the grant should remain at that level because it ensures the independence of the Institute's advice. Revenue from contracts has grown steadily, but the Institute does not accept contracts from organizations whose projects it may be asked to audit, a rule known as the "audit firewall."
+
+Relationships
+
+The Institute has agreements with the Verdant Seeds Cooperative, which funds Seedvault North through seed sales, and with the Lumen Grid Company, for research on grid stability. It has a long relationship with the Brannock Foundry Group, whose plants supply many of the region's large components, and whose engineers sit on an industrial advisory panel at the Institute. After the incidents at Wetmoor and Tidewrack, in which the audit team found faults in components from the group's plants, some staff worried that the relationship would suffer. Brandvik wrote to the group's chief executive, Sigrid Tavares, to say that the Institute would continue to work with the group but would always report what it found, and Tavares replied that she expected nothing else.
+
+Public role
+
+The Institute is frequently asked to comment on infrastructure matters by the media. Brandvik believes that part of its role is to explain, in plain language, why things go wrong. The Institute's annual lecture on resilience, given each autumn, draws large audiences, and the audit team's reports are summarized in a public bulletin.
+
+Challenges
+
+The Institute's main challenge is the retention of skilled staff, since many of its engineers receive offers from industry. It has responded with a program of sabbaticals and secondments to the region's projects. Another challenge is the pace of its audit work, which has grown with the number and complexity of the region's projects. Idowu's team has asked for more staff, and the Board has agreed to fund two additional posts.
+
+Looking ahead
+
+The Institute's strategy for the next five years focuses on the resilience of interdependent infrastructure. It has proposed a regional simulation model that would allow the Development Board to test the effects of a failure in one project on others before it happens. Brandvik has said that, after the incidents of 2022 and 2023, the Institute has an obligation to help the region understand its own complexity.
+
+
+Annex: Departments, staff, and the Institute's year
+
+The five departments
+
+The department of marine and coastal engineering is led by Professor Eilidh Carmichael. It runs the wave basin, the coastal modeling group that produced the Beacon estuary model, and the marine team that monitors the Tidewrack Tidal Array. Its largest project in 2023 was a study of the effect of sea level rise on the region's harbors.
+
+The department of energy and materials is led by Professor Nkechi Overgaard. It includes the materials testing laboratory, the electrochemistry group that works with Cinder Lake on leaching chemistry, and the membrane group, which for many years was led by Dr. Naledi Mokoena before she became director of Wetmoor Works. The membrane group now has a staff of nine, led by Dr. Rutendo Halliday.
+
+The department of environment and agriculture is led by Dr. Lars Quennell. It includes the plant genetics laboratory, in which Seedvault North is based, the soil science group, and the environmental monitoring team that carries out the wildlife surveys for Ferrous Bay and Tidewrack. The department also runs the field station on the Corran Heights terraces.
+
+The department of digital systems is led by Dr. Sakura Wimmer. It develops sensors, software, and data analysis for the region's projects. It designed the Beacon Hill barrier's sensor network and the condition monitoring software used by Tidewrack, and it is working with the Larkspur Telehealth Network on the retinal image screening tool.
+
+The department of reliability and safety is the smallest, with twelve staff, and is led by Dr. Mirela Zander. The audit team led by Dr. Kasper Idowu is part of this department, as are a group on human factors and a group on safety-critical software.
+
+How the audit team works
+
+When the Development Board or a project director asks the Institute to investigate an incident, Idowu assigns a lead investigator and two or three team members, and the team goes to the site within 48 hours where possible. They preserve evidence, interview staff separately, and request all records. The team writes a first draft of its findings within three weeks, circulates it to the people concerned for comment on factual accuracy, and publishes a final report in eight to twelve weeks.
+
+The team does not make recommendations of discipline. Idowu has a rule that every report must include at least one recommendation about the organization of the work and not only about the equipment, and another about how the organization will check that its recommendations have been implemented. Six months after each report, the team returns to verify progress, and it publishes a short follow-up.
+
+Notable figures
+
+Professor Brandvik's former doctoral students include Dr. Bjorn Halvorsen, who leads the Tidewrack Tidal Array, and Dr. Priya Raghunathan, who leads Seedvault North. The Institute's alumni also include Dr. Naledi Mokoena, who worked as a researcher in the energy and materials department from 2011 to 2018 before becoming director of Wetmoor Works. Dr. Ximena Duarte's Cinder Lake works is a partner of the Institute, though she herself did not study there.
+
+The Institute's year
+
+The academic year starts in September, with an induction week for new doctoral students that includes a day on the water at Skerrin and a day in the field on the Corran Heights terraces. In November the Institute hosts a symposium on infrastructure resilience, which since 2022 has been dominated by the lessons of that year's incidents. In March, the Institute's open weekend attracts about 2,500 visitors, who can see the wave basin, the clean room, and the seed bank's viewing window.
+
+In June, doctoral students present their research to a panel of industry representatives, among them the directors of the region's projects. Several of the region's directors have said that they recruit from this event. In July and August, the Institute hosts summer interns, about 60 in total, who are placed with the region's projects.
+
+Facilities and equipment
+
+The wave basin is 30 meters long and 12 meters wide, and can generate waves up to 0.8 meters high with a programmable pattern. The materials testing laboratory has a servo-hydraulic press with a capacity of 2,000 kilonewtons and an electron microscope. The clean room is used to assemble sensors. The high-performance computing facility, with 4,800 processor cores, is shared with the regional university and is used for modeling.
+
+The Institute's archive of regional records includes tide gauge data from Skerrin from 1851, the longest continuous series in the region. The archive was digitized between 2019 and 2022, and the Institute's coastal modelers have used it to compute the long-term rise in the sea level at the Beacon estuary.
+
+Finances in detail
+
+The Institute's budget of 62 million crowns is made up of the core grant of 43.4 million from the Development Board, contracts of 12.7 million, student fees of 3.9 million, and endowment income and donations of 2 million. In 2023 it spent 58 percent of the budget on staff, 14 percent on equipment, 9 percent on buildings, and the rest on running costs, travel, and student support.
+
+Partnerships beyond the region
+
+The Institute has partnerships with universities and laboratories in five other countries. Its coastal engineers share a wave modeling code with a Scottish laboratory, its plant geneticists exchange material with a seed bank in Scandinavia, and the audit team has a standing arrangement with an air accident investigation agency, from which Idowu's own career came. Brandvik has said that the Institute's international links are essential, because a small region can only be at the frontier in a few fields if it borrows freely from others.

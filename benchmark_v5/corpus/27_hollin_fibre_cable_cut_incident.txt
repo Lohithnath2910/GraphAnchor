@@ -1,0 +1,78 @@
+Incident Report: Hollin Pass Cable Cut, June 2023
+
+Summary
+
+At 09:12 on 6 June 2023 a dredging barge working on the Beacon Hill estuary severed the main trunk cable of the Hollin Fibre Backbone where it crosses the river at Hollin Pass. The cut isolated a number of customers for periods of up to seven hours, including the clinics served by the Larkspur Telehealth Network. The cable was repaired by 16:20 the same day, and a program to protect all river and estuary crossings was launched. This report was written by the project's director, Wen Ashdown.
+
+The route and the crossing
+
+The Hollin trunk runs from Skerrin across the mountains through Hollin Pass to the inland towns. At a point about two kilometers south of the summit of the pass, the cable crosses the Hollin river in a duct buried under the riverbed. The crossing is about forty meters wide. The cable was installed in 2018 by trenching, at a depth of about 1.5 meters below the riverbed, and was marked with warning signs on both banks.
+
+The crossing was identified in the project's risk register as a vulnerable point. A second, diverse route existed for most customers, but not for all: the clinics of the Larkspur Telehealth Network in the mountain communities, and a few small customers, were served only by the Hollin trunk and did not have a second path. The project had plans to add a second path, but the work had been delayed by the Board's budget cycle.
+
+The contractor and the dredging
+
+The dredging barge belonged to a contractor, Estuary Marine Works, which had been hired by the Calder Reach Development Board's flood defense program to remove silt from the approaches to the Beacon Hill estuary. The Hollin river flows into the estuary, and the contractor had received a permit to deepen a short stretch of the river near its mouth.
+
+The dredging work was supposed to stop well downstream of the cable crossing. However, the contractor's survey drawings used an older map of the river that showed the cable's position about eighty meters farther downstream than its true position. The contractor had not used the call-before-you-dig service that the project operates, because the contractor's project manager believed that the cable lay outside the work area according to the drawings.
+
+The cut
+
+At 09:12, the dredging barge's cutter head bit into the riverbed above the cable. The cable was severed and its duct crushed. The network operations center, led by Ngozi Valera, saw the optical power fall to zero on all the fibers of the Hollin trunk at 09:12 and generated an alarm. The failover systems switched the traffic of customers with second paths onto the coastal route within fifty milliseconds. The customers without second paths lost their connection.
+
+Valera's team used an optical measuring instrument to locate the break, which they found to be 19.4 kilometers from the Skerrin node, close to the river crossing. A splicing crew was sent to the site at 09:40. The site manager, Dmitri Falk, who is the project's deputy director, arrived at 10:30 and discovered the barge, which was still working, and asked the barge's crew to stop. The crew's supervisor, who had not known that the cable was there, complied.
+
+Effects
+
+The customers affected by the outage included the Larkspur Telehealth Network's thirteen mountain clinics, a rural school, two care homes, and a small business park. About 140 consultations had to be canceled or converted to telephone calls. The tele-stroke service, which relies on high-quality video, had to fall back on a radio link of much lower capacity, which allowed an emergency stroke consultation to take place but with poor video quality. The St. Idris Hospital Trust's consultant on duty judged that the outcome for the patient concerned had not been affected.
+
+The timing signal from the Lodestar Timing Station, which also travels on the backbone, was not affected, because the customers on the affected section had no timing connection. Ashdown has noted that this was fortunate, since the outage occurred only ten months after the Lodestar incident of August 2022.
+
+Repair
+
+Repairing a cable that has been cut under a river is not simple. The splicing crew had to dig a trench from both banks to expose the cut ends, drain the water that flowed in, and find enough spare cable to bridge the gap, which turned out to be about twenty meters because the cutter head had torn out a long section. The project's stock of spare cable at the Hollin depot allowed the crew to replace the damaged section without delay. The crew spliced 288 fibers in two joint enclosures, a task that normally takes a day. By working in shifts, they restored the first fibers at 15:10, and the last at 16:20.
+
+Findings
+
+Ashdown's investigation found that the cause was the incorrect position of the cable on the contractor's survey map, compounded by the contractor's failure to use the project's call-before-you-dig service. It also found that the project's own records had been updated in 2020 but that the update had not been sent to the Board's flood defense program, which provided the maps to its contractors.
+
+The investigation also criticized the project's lack of redundancy at the crossing and for customers in the mountain communities. Ashdown said that the project had been aware of the vulnerability but had not made it a priority, because the outages of the past had been rare.
+
+Recommendations and actions
+
+Ashdown made six recommendations. The project should establish a single, authoritative map of the cable route and share it with all of the Board's contractors. Contractors working within fifty meters of the route should be required to hold a permit, issued only after a briefing from the project's engineers. The river and estuary crossings, of which there are 23 on the route, should be reinforced with concrete covers and marked with buoys and signs. A second path should be built for the customers in the mountains. The Board's contracts should require contractors to use the call-before-you-dig service. And the project should install fiber sensors that can detect digging near the cable and send an alarm.
+
+Falk's engineering team began the crossing program in the autumn of 2023, and 70 percent of the crossings had been completed by mid-2024. The permit rule came into effect in January 2024. The second path to the mountain clinics, a loop through a neighboring valley, was approved by the Board in 2024 and will be completed in 2025.
+
+Financial and legal outcomes
+
+The contractor's insurance paid for the repair, which cost about 240,000 crowns. Estuary Marine Works acknowledged its error and revised its procedures. The Development Board's flood defense program, whose project at the Beacon Hill barrier had hired the contractor, agreed to review how it provided information to its contractors.
+
+Lessons
+
+Ashdown said that the incident had confirmed what her team already knew: cable cuts by excavation are the most common cause of network outages in the world, and no amount of technology can fully protect against a contractor who does not know that a cable is there. The remedies were therefore mainly about information: making sure that everyone who digs knows where the cable is. She added that the incident had given the project an opportunity to make a case for investment in redundancy that had previously been difficult to make.
+
+The Larkspur Telehealth Network's director, Dr. Sunniva Eldridge, said that the outage had been a reminder that a clinical service depends on infrastructure that clinicians do not see. She welcomed the project's response and agreed to a joint exercise to test the radio backup links.
+
+
+Annex A: Technical detail and chronology
+
+The cable. The Hollin trunk uses a loose-tube cable containing 288 single-mode optical fibers, with a diameter of 21 millimeters and a steel-tape armor. It is installed in a 110-millimeter high-density polyethylene duct, with a pull rope and a warning tape laid 40 centimeters above the duct. At river crossings, the duct is installed by horizontal directional drilling beneath the riverbed, at a depth of at least 3 meters below the bed. At the Hollin river crossing in 2018, however, the crew had been unable to drill because of boulders in the riverbed, and had instead trenched the duct at 1.5 meters, covered it with concrete slabs, and backfilled the trench.
+
+The cutter head. The dredging barge's equipment was a cutter suction dredger with a rotating cutter head 1.6 meters in diameter, operating at a depth of up to 3 meters. It was working in a channel that the contractor had marked on its drawings as running from the river mouth upstream for 400 meters. The cable crossing lay at 480 meters according to the project's records, but at 400 meters according to a plan dated 2015 that the contractor had received from the Development Board's flood defense program. The contractor therefore believed that the work area ended 80 meters before the cable, though the actual end of the work area, as surveyed by the barge's own positioning system, was close to the crossing.
+
+Chronology. At 09:10 the barge advanced to the upper end of the work area. At 09:12:20 the cutter head struck the concrete slabs and the duct. At 09:12:21 the optical power on all 288 fibers fell to zero at the Skerrin end. At 09:12:22 the network management system raised a fiber-cut alarm. At 09:12:30 traffic for customers with diverse paths was switched to the coastal route, with the longest interruption being 48 milliseconds. At 09:14 Ngozi Valera confirmed the cut on the trunk, and at 09:15 she identified the fault's approximate location with an optical time-domain reflectometer. At 09:40 the splicing crew left Skerrin. At 10:30 Falk arrived and stopped the dredging. At 11:15 the crew had exposed the cut ends. At 13:05 the new section was laid, and splicing began. At 15:10 the first fibers were restored. At 16:20 all 288 fibers were restored.
+
+Customers without diverse paths. Of the backbone's 61 customers, 55 had diverse paths and were not affected. Six did not. They were the thirteen mountain clinics of the Larkspur network (counted as one customer), a rural school, two care homes, a business park, a small internet provider serving three villages, and a mountain weather station. The internet provider's customers, about 640 households, lost internet access for seven hours.
+
+Spare cable and equipment. The Hollin depot held 2,400 meters of spare cable of the same type. The crew used 38 meters to bridge the gap and for the two joint chambers. Each splice enclosure holds 288 fusion splices, and each splice takes about three minutes, giving about 14 hours of work for a single technician. The crew used four technicians in two teams to complete the work in about five hours.
+
+Costs. The repair cost about 240,000 crowns, of which 150,000 was for labor and equipment and 90,000 for materials. The contractor's insurance paid in full. The customers affected received a credit for the day's service fee. The indirect costs to customers are harder to measure, but Larkspur estimated about 45,000 crowns in lost clinic time and rescheduling.
+
+Mapping error. The 2015 plan was a design drawing prepared before the route survey of 2017, and showed the cable in a different position. The project's own as-built records, updated in 2020 after a correction survey, put the crossing at 480 meters. Ashdown's team found that the Development Board's flood defense program had retained the 2015 drawing in its contractor information pack and had not been notified of the correction. Dmitri Falk wrote to all parts of the Board in July 2023 with a table of corrections.
+
+Digging near the cable. Statistics from other networks show that cable damage by third parties accounts for between 40 and 60 percent of all outages. The project introduced a permit scheme for work near its route, requiring that contractors obtain a permit and a briefing. In the first six months of the scheme the project issued 212 permits, and its engineers attended 31 sites to mark the cable's location.
+
+Fiber sensing. A distributed acoustic sensing system, installed in 2024 on the most vulnerable stretches, uses a laser pulse sent along a spare fiber to detect vibrations along the cable. The system can detect digging within about two meters and raises an alarm within ten seconds. A trial on a ten-kilometer length near Hollin Pass detected 17 events in three months, three of which were unauthorized digging that was stopped before the cable was reached.
+
+Customer follow-up. Ashdown held a meeting with the customers affected on 14 June 2023, at which she presented the findings and the program of improvements. The customers asked for credits, for assurances about a second path, and for faster notification. The project agreed to send an alert to customers within five minutes of any outage and to offer a second path to every customer at a regulated price.

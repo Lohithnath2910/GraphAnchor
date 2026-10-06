@@ -1,0 +1,74 @@
+Incident Report: Gantry Line Timing Drift and Fail-Safe Stops, August 2022
+
+Summary
+
+On Monday 15 August 2022 the Gantry Line light rail system experienced a series of automatic fail-safe stops that halted trains on its equipped sections for about four hours during the morning peak. No one was hurt and no train came into conflict with another, but about 11,000 passengers were delayed and the project's reputation for reliability was damaged. The cause was a degradation of the timing signal supplied by the Lodestar Timing Station at Cairn Head, combined with a limitation in the oscillators that were meant to bridge such a failure. An independent audit led by Dr. Kasper Idowu of the Marrow Institute of Applied Science examined the safety case and made recommendations, including an upgrade of the backup oscillators, at a cost of 2.4 million crowns.
+
+Background
+
+The Gantry Line uses a moving-block signaling system in which every train's position is reported with a time stamp, and the central system compares reports from different trains to calculate safe separation. All clocks in the system must agree to within a few microseconds. The reference time is obtained from the Lodestar Timing Station, and each of the trackside controllers contains a local oscillator that maintains time between updates from the station.
+
+The trackside controllers and their oscillators were manufactured by Ashgill Works, the casting and machining plant of the Brannock Foundry Group. The oscillators used in the first phase of the project were of a standard grade, specified to keep time to within the required accuracy for about two minutes after losing the external signal. The project's safety case had concluded that this was ample, because the external signal was expected to be continuously available.
+
+Events of 15 August
+
+The lightning strike at Cairn Head late on the night of 14 August had cracked the azimuth bearing of antenna 3 at Lodestar. The station's software excluded the antenna from its calculations, but the reduced accuracy meant that the time signal began to drift slowly. By the start of the morning peak on Monday, the drift at the Gantry Line's central system was about 25 microseconds.
+
+At 06:40, the control system at Mossgate Yard detected that position reports from two trains in the Mossgate area disagreed by more than the safe margin. Following its design, the system treated the disagreement as a possible failure of train detection and brought the trains concerned to a stop. Within twenty minutes the same condition occurred in other parts of the equipped network, and by 07:10 all trains on the 52 equipped kilometers had been stopped by the system, which had no means of telling which clock was correct.
+
+The signals chief, Pavel Lindgren, was called to the control room at 06:55. After eliminating faults in the radio network and the interlocking computers, he asked the duty desk at Lodestar whether the timing signal was healthy, and was told at 07:50 that the station had been operating with reduced accuracy since the previous night. The project had not connected Lodestar's quality indicator to its alarms.
+
+Recovery
+
+Lindgren's team decided to switch the central system to a manual procedure in which a controller authorized each train movement by radio, at a speed of no more than 20 kilometers per hour. The first trains moved at 08:45 and normal service resumed at 10:40. The delay affected about 11,000 passengers on that morning, and many were diverted to buses that the project hired at short notice.
+
+The project's director, Idris Kowalczyk, held a short statement to the press at midday and committed to a full investigation. He asked the Marrow Institute to audit the safety case, and the Institute assigned its audit team under Dr. Kasper Idowu. The audit took place between December 2022 and January 2023.
+
+Findings of the audit
+
+The audit found that the system had behaved as designed. The fail-safe stops were the intended result of a loss of timing integrity, and they prevented any possibility of a collision. The problem lay in the design assumptions. The safety case had assumed that the external signal would be continuously available and accurate, and it had specified oscillators that could cover only a brief interruption. Because the drift in this case was slow, the oscillators were of no help: they could keep their own time, but the system could not tell whether the external signal or the local clocks were right.
+
+Idowu's team also found that Lodestar's quality indicator, which could have warned the control room that the signal was degraded, had not been connected, and that the project's procedures contained no instruction for what to do if timing quality was lost. The audit also noted that the control room's staff had little training in the diagnosis of timing problems.
+
+Recommendations
+
+The audit made six recommendations. The project should install higher-grade backup oscillators in every trackside controller, capable of holding the required accuracy for at least four hours. The control system should use the quality indicator from Lodestar and raise a prominent alarm when quality falls. The system should be modified so that, when the external signal and the local clocks disagree, it can identify the more reliable source by voting among several clocks, rather than stopping all trains. The safety case should be rewritten to state its dependence on external time explicitly. The project and Lodestar should conduct joint drills. A manual fallback procedure should be documented and rehearsed.
+
+Actions
+
+The backup oscillators were ordered from Ashgill Works, which had supplied the originals, and were of a new design using an oven-controlled crystal. The upgrade cost 2.4 million crowns, covering the oscillators for all the trackside controllers on the equipped part of the line. Installation was carried out over eight weekends in the spring of 2023, and the first revenue service with the upgraded system ran in June. Yusra Demir, the manager of Ashgill Works, noted that the new oscillators were among the most precise the plant had made.
+
+Lindgren rewrote the voting logic of the control system, and the new software was tested for three months on the test track at Mossgate Yard before being released. The alarm connected to Lodestar's quality indicator went live in September 2022, only a month after the incident. The first joint drill with Lodestar, in which the signal was deliberately degraded for fifteen minutes during a quiet part of the day, took place in February 2023.
+
+Effects on other projects
+
+The Gantry Line's engineers shared their findings with the Dunmarrow Port Automation project, which had suffered a crane collision from the same cause, and with the Beacon Hill Flood Barrier, which was preparing a control system upgrade. The barrier project adopted the voting approach to clock management in its own design.
+
+Passenger and public response
+
+The public response was mixed. Many commuters complained about the delays, but the project's open communication and the speed of the corrective measures were praised in the local press. Kowalczyk wrote a personal letter to the passenger group and attended its meeting in September. Ridership dipped by about four percent in the month after the incident and recovered fully within three months.
+
+Lessons
+
+Kowalczyk has said that the most important lesson was the difference between a component failing and a system failing safely. The signaling system did what it was meant to do: it stopped trains rather than risk a collision. But the safe response was also a disruptive one, and the project had not thought enough about the passenger experience of a safe failure. Idowu's report agreed, and recommended that every safety case should include an analysis of how the system degrades, not only how it fails.
+
+
+Annex A: Technical detail and chronology
+
+The oscillators. The original oscillators in the Gantry Line's trackside controllers were temperature-compensated crystal oscillators, a common low-cost design. Their stability is about one part in ten million, which means that if left to run free they drift by about one microsecond every ten seconds. This is enough to maintain the required three-microsecond accuracy for roughly half a minute, and the project's specification had allowed two minutes by assuming a comfortable margin in typical conditions. The replacements are oven-controlled crystal oscillators, in which the crystal is held at a constant temperature in a small insulated oven, with a stability of about one part in ten billion. They keep the required accuracy for several hours.
+
+Voting logic. The new control logic compares the time signal from Lodestar with the outputs of the oscillators in the trackside controllers along each section. If the external signal disagrees with a majority of the local oscillators by more than a set margin, the system flags the external signal as suspect, and continues to run on the local oscillators while raising an alarm. If the oscillators disagree with each other, the system treats the section as degraded and reduces the permitted speed. The logic was verified in a series of 41 test scenarios on the test track at Mossgate Yard.
+
+Chronology of 15 August. At 06:40 the first fail-safe stop occurred at the Mossgate Yard junction. By 06:52 six trains had been halted. At 07:10 all 14 trains in service on the equipped sections were stopped. At 07:50 Lindgren learned from Lodestar that the signal was degraded. The decision to switch to manual authorization was taken at 08:05, and the first controlled movement took place at 08:45. By 09:30 eight trains were running under manual control at reduced speed, and at 10:40 the system was restored to automatic operation after the central clocks had been synchronized to a local reference. Full timetable service was restored at 11:30.
+
+Passengers. The project's records showed that 11,200 passengers were affected. Replacement buses carried about 3,400 of them. The project refunded the day's fares for the affected services, at a cost of about 61,000 crowns. A complaints survey received 840 responses in the following two weeks, of which 71 percent mentioned the lack of information at stations during the first hour.
+
+Communication failures. The audit noted that the information systems at stations had displayed "delays" for the first hour without explaining the cause or the expected duration. Kowalczyk acknowledged this in his statement and introduced a procedure under which the control room posts a plain-language message within fifteen minutes of any stoppage, and updates it every thirty minutes. A passenger information manager, Winifred Achebe, was appointed in October 2022 to run the procedure.
+
+Cost of the upgrade. The 2.4 million crowns for the oscillator upgrade covered 188 oscillator units at about 8,500 crowns each, installation labor, and testing. A further 340,000 crowns was spent on the control software changes, and 120,000 crowns on the audit itself. The Calder Reach Development Board agreed to meet the costs from the project's contingency fund.
+
+Rolling stock effects. Trains already in service were not affected technically, since they carry their own on-board clocks, but the on-board units must be re-synchronized after each stop under the new procedure. Kowalczyk's team made a small change to the onboard software to automate the re-synchronization.
+
+The audit's wider observations. Dr. Kasper Idowu noted in the audit report that the Gantry Line engineers had been unusually frank about the weaknesses of their design. He wrote that the culture of the weekly open meeting, in which any engineer may raise a safety concern, had been visible in the interviews, and that several of the problems identified by the audit had already been mentioned in the minutes of those meetings in 2021, but without being given priority. He recommended that the project track every concern raised in the open meeting to a documented conclusion.
+
+Follow-up. In October 2023 the Institute's audit team reviewed the implementation of the recommendations. All six had been implemented. The team ran a test in which Lodestar's signal was deliberately corrupted for one hour, in the presence of Lindgren and Prowse, and the system continued to run trains under automatic control using its local oscillators, with only a warning displayed in the control room.

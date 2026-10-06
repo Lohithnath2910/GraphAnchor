@@ -1,0 +1,78 @@
+Profile: Dr. Ximena Duarte
+
+Dr. Ximena Duarte is a materials chemist and the director of the Cinder Lake Battery Recycling works. She has led the project since it opened in 2021 and has built it from a derelict ironworks into one of the most efficient battery recycling plants in the region. She is known for her insistence that every person in a plant, from the shredder operators to the accountants, should understand its chemistry.
+
+Early life and education
+
+Duarte was born in a mining town in the mountains, where her father was a metallurgist at a copper mine and her mother ran a pharmacy. She grew up in the sound and smell of an industrial process, and she says that she knew by the age of ten that she wanted to understand how rock becomes metal. She studied chemistry at a university in the capital and then took a doctorate in materials science, working on the corrosion of metals in aggressive environments. She finished in 2015.
+
+Career at Ashgill Works
+
+In 2016 Duarte moved to the Calder Reach to take a post in the metallurgical laboratory at Ashgill Works, the casting plant of the Brannock Foundry Group. She worked there for four years, until 2020. Her job was to study why castings fail: why some cracked and others did not, why one batch of alloy behaved differently from another, and how to predict a defect before it appeared.
+
+She says that the foundry was the best education she could have had. She learned how an industrial plant really works, how much of its reliability depends on the habits of operators rather than on specifications, and how easily a small deviation can pass through a chain of checks. She developed a testing routine for alloys that is still used on the foundry floor, and she holds a patent for a method of detecting hidden porosity in large bearings.
+
+She left Ashgill Works in 2020, on good terms, because she wanted to work on recycling rather than production. The metallurgical laboratory's chief, who is still a friend, has said that losing her was a blow but that he was pleased to see her put her foundry experience to use.
+
+Creating Cinder Lake
+
+In 2019 the Calder Reach Development Board and the Marrow Institute of Applied Science identified a derelict ironworks on the shore of Cinder Lake as the site for a battery recycling plant. The project company advertised for a director in 2020, and Duarte, who had been following the project, applied. She was appointed in the autumn and started in January 2021.
+
+She recruited Hamid Zielinski, who had run a hazardous waste facility, as her deputy and operations manager, and Astrid Mbeki, a chemical engineer from an industrial gas company, as her process chief. The shredding line was commissioned in April 2021, the chemical recovery section in August, and the first batch of cobalt product was shipped in October. By 2022 the plant was recovering 96 percent of the cobalt in the batteries it processed.
+
+Duarte introduced a "chemistry hour" each week, in which a member of the process team explains one step of the process to everyone in the plant in plain language. She says that the habit has made the operators better at noticing problems and has improved morale, because people are proud of what they understand.
+
+Interruptions of 2023
+
+The plant faced two serious interruptions in 2023. In February, a loss of generation at the Tidewrack Tidal Array, whose cable supplies the works directly, forced the shredding line to run at half rate for two weeks. Duarte used the period for maintenance, but she asked the project's director, Dr. Bjorn Halvorsen, for firmer guarantees of supply, and the two agreed on a priority arrangement and a small battery bank to smooth short interruptions.
+
+In September a fire broke out in the shredding hall after a damaged battery pack passed the plant's entrance inspection undetected. The automatic systems extinguished the fire in six minutes, and no one was seriously hurt, but the shredder was out of service for three weeks. Duarte wrote the report herself and asked Dr. Kasper Idowu of the Marrow Institute to review the plant's procedures. She adopted all six of his recommendations, including a second inspection stage with a thermal camera and a weighing check.
+
+She says that the lesson of the fire was that safety systems must be designed on the assumption that front-end checks will sometimes fail. The suppression systems had worked as intended, and without them the damage would have been much worse. She also says that the principal weakness had been the quality of information from outside: the plant cannot control how its suppliers handle batteries, but it can control what it accepts.
+
+Relationships
+
+Duarte maintains good relations with her former employer. She buys castings and spare parts from Ashgill Works, and she says that her understanding of how suppliers think is useful when she negotiates contracts. She works closely with the Institute, which supplies four researchers to her plant and independent analysis of every shipment. And she relies on Strand & Keel Shipping, whose specialized vehicles collect used batteries and carry the recovered products to the port.
+
+She also has an agreement with Dr. Halvorsen at Tidewrack and a friendly rivalry with Dr. Farouk Haidari at Merrow Cold Chain, whose refrigeration plant, like her shredder, is a place where small faults have large consequences. They have agreed to share their incident reports.
+
+Management style
+
+Duarte is direct and curious. She walks the plant floor every morning and asks operators what has gone wrong, and she keeps a whiteboard in her office that lists every unresolved process problem, with the date it was first reported. Any problem that has stood on the board for more than a month is discussed at a weekly meeting, where the team decides whether to fix it, redesign around it, or accept it.
+
+Her staff describe her as exacting but fair. Zielinski says that she never asks anyone to do something that she has not tried herself, and that she has been seen on the shredder platform in a fire-resistant suit on more than one occasion. She also insists on a policy of hiring locally: about sixty percent of the plant's employees live within ten kilometers of the site, and several once worked in the old ironworks.
+
+Public role
+
+Duarte is a member of the Development Board's technical committee on environmental technology and has advised the Board on a proposed regulation that would require manufacturers to take back used batteries. She gives talks about battery recycling at schools and conferences, and she hosts an annual open day at the works, at which visitors can see a battery being processed from the viewing gallery.
+
+Personal life
+
+Duarte lives in the village beside Cinder Lake, in a house that she restored herself, with her partner, a potter, and a lurcher named Cobalt. She swims in the lake every morning from April to October, which she says is the only time of day when she does not think about chemistry. She is also a keen cook and has a collection of regional recipes that she is gradually trying to document.
+
+Plans
+
+Duarte plans to double the plant's capacity by 2027 and to add a process for recovering graphite, which is the largest component of a battery by weight but is not currently recovered. She is working with the Marrow Institute on a method for separating nickel and cobalt without solvents, and with the Development Board on a regulation for battery take-back. She says that her aim is to show that recycling can be profitable as well as virtuous, and that the way to do this is to understand the chemistry better than anyone else.
+
+
+Annex: Career timeline and colleagues' recollections
+
+Timeline. 2015: completes a doctorate in materials science. 2016: joins the metallurgical laboratory at Ashgill Works. 2016 to 2020: works at the foundry on casting defects and alloy testing. 2019: the Cinder Lake ironworks is bought by a project company. Autumn 2020: appointed director of the Cinder Lake Battery Recycling works. January 2021: starts work and recruits her team. April 2021: the shredding line is commissioned. October 2021: the first cobalt product is shipped. February 2023: Tidewrack's output drop forces half-rate operation for two weeks. 12 September 2023: the shredder fire. 2024: the new entrance inspection stage and extended quarantine bunker are completed.
+
+What colleagues say. Hamid Zielinski, the deputy director and operations manager, says that on the day of the fire Duarte arrived at the hall within four minutes, in her swimming costume and a towel, because she had been in the lake, and that she took charge of the evacuation count before she had put her shoes on. "She counted every person herself," he says. "She said that numbers on a sheet were not the same as faces."
+
+Astrid Mbeki, the process chief, says that the weekly chemistry hour changed the plant. "Before, the operators followed the procedure," she says. "After, they understood why the procedure was there, and they started to find the cases where it was wrong." She recalls an operator who noticed, during a chemistry hour on solvent extraction, that the plant's pH meter was drifting, and whose observation led to a recalibration that improved cobalt recovery by half a percentage point.
+
+At Ashgill Works, the head of the metallurgical laboratory, Dr. Obadiah Greenfield, says that Duarte left behind a testing routine that is still used. "She had a way of making a defect tell its story," he says. Dr. Kasper Idowu of the Marrow Institute, who reviewed the plant's procedures after the fire, says that Duarte was the only director he had met who had already written most of the recommendations before he arrived.
+
+The whiteboard. Duarte's whiteboard lists every unresolved process problem with the date it was first reported. In 2023 it held an average of eleven items. The longest-standing was a vibration in a conveyor motor that had been on the board for 61 days; it was finally fixed when a technician realized that the motor had been mounted on the wrong plate. A weekly meeting decides whether each problem should be fixed, redesigned around, or accepted. Duarte says that "accepted" is a perfectly good answer if it is written down.
+
+The fire in her own words. In the report she wrote, Duarte set out in a paragraph what she called "the chain of ordinary events." A forklift in a warehouse had dropped a pack. A label had covered a crack. A document had said the pack was undamaged. A technician had looked for a crack in the wrong place. A second technician had no reason to check again. "Nobody did anything unreasonable," she wrote. "That is the point."
+
+Relationship with the retailer. After the fire, Duarte visited the warehouse of the electrical retailer whose pack had caused it. She spent an afternoon with its staff, walking through the process by which batteries were collected, and suggested a change to the packing of damaged packs. The retailer's warehouse manager later told her that no one from a customer had ever visited before. The retailer paid 220,000 crowns toward the works' losses, and the two organizations have since developed a joint checklist.
+
+Collaboration with Tidewrack. After the February 2023 interruption, Duarte and Dr. Bjorn Halvorsen agreed that the array would give the works priority if supply was limited, and that the works would install a battery bank to smooth short interruptions. The agreement was tested in the winter of 2023 to 2024, when the array's output fell during a maintenance outage, and the works lost no production.
+
+Community. About sixty percent of the works' staff live within ten kilometers. Duarte runs a program in which former ironworks employees are invited to visit the plant each year and see what has been done with their old workplace. About fifty come, and she says that their comments on the structure of the old halls have been surprisingly useful.
+
+Advice. She tells new operators to ask "why" three times about every instruction, and to write down the answers. She also says that the best sign of a healthy plant is that nobody is afraid to say that they do not understand.

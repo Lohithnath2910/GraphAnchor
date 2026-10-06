@@ -1,0 +1,84 @@
+Incident Report: Shredder Fire at Cinder Lake, September 2023
+
+Summary
+
+At 10:35 on 12 September 2023 a fire broke out in the shredding hall of the Cinder Lake Battery Recycling works. The fire started when a damaged lithium-ion battery pack, which had passed through the plant's entrance checks undetected, was fed into the shredder. The plant's automatic suppression system extinguished the fire within six minutes, no one was injured, and the damage was confined to the shredder and its conveyors. The shredding line was out of service for three weeks. This report was prepared by Dr. Ximena Duarte, the director of the works, with the assistance of the fire service and the plant's insurers, and reviewed by Dr. Kasper Idowu of the Marrow Institute of Applied Science.
+
+Background
+
+Fire is the principal hazard in battery recycling. A lithium-ion cell that has been damaged, overcharged, or short-circuited can enter a state called thermal runaway, in which it heats itself and releases flammable gases and, in some cases, burning electrolyte. Cinder Lake's process is designed to reduce this risk. Incoming batteries are sorted, and damaged or swollen packs are set aside in a fireproof bunker. Good packs are discharged to a safe voltage and dismantled by hand. The modules are then shredded in a sealed chamber filled with nitrogen to exclude oxygen.
+
+The works had operated for two years without a fire in the shredding hall. A small fire in the quarantine bunker in 2022 had been contained by the bunker's own systems and had resulted in an upgrade of the bunker's thermal cameras.
+
+The pack
+
+The pack that caused the fire was a module from a grid storage battery, delivered to the works on 11 September from a collection point operated by a regional electrical retailer. The delivery documents stated that the pack was undamaged and discharged. In fact, the pack had been dropped from a forklift at the retailer's warehouse some weeks before, and its casing had a crack on one side that was hidden by the label. The module's internal wiring had been damaged, and one of its cell groups had a partial internal short circuit.
+
+The inspection at the entrance of the plant consisted of a visual check by a technician and a measurement of the pack's voltage. The technician noted that the voltage was low, consistent with a discharged pack, and did not see the crack, which was hidden by the label and in shadow. The pack was passed on to the dismantling area, where a second technician removed its casing and cut the connections. The pack was sent on to the shredder in a batch with seven others.
+
+The fire
+
+At 10:31, the shredder was processing the batch. At 10:35 the thermal cameras above the conveyor detected a rapid rise in temperature in one module as it entered the shredding chamber. The shredder's control system, following its programming, stopped the feed and the shredding motors, and triggered the nitrogen purge. However, the damaged cell group had already begun to burn, and the heat spread to neighboring cells in the chamber and on the output conveyor.
+
+The water mist system over the conveyors started automatically at 10:36 and the fire service was called by the control room. The fire service arrived at 10:52, by which time the automatic systems had extinguished the flames. The firefighters cooled the remains of the batteries with water for a further hour, and the operations manager, Hamid Zielinski, supervised the evacuation of the hall, which was completed in under three minutes.
+
+Impact
+
+No one was hurt, although one operator was treated for the inhalation of smoke. The shredder's chamber and the output conveyor were damaged, and the hall had to be cleaned of soot and of the residues of the burned material, some of which were toxic. The plant lost three weeks of shredding capacity. The recovery lines downstream were able to continue for part of the time on stored black powder, but they ran out in the second week.
+
+The financial costs were about 1.3 million crowns for the repairs and clean-up, of which the insurers covered about 900,000 crowns, and about 850,000 crowns in lost revenue. The works processed 3,950 tonnes in 2023 compared with the plan of 4,500.
+
+Investigation
+
+The investigation covered the origin of the pack, the plant's inspection arrangements, and the response to the fire. The fire service concluded that the fire's cause was a damaged module and that the plant's response had been exemplary. The insurers' assessor made a number of recommendations on the layout of the shredder hall.
+
+Dr. Kasper Idowu was invited by Duarte to review the plant's procedures independently. He interviewed the technicians, examined the records of the entrance inspections for the previous year, and reviewed a sample of delivery documents. His review found that the entrance inspection relied too heavily on the accuracy of the delivery documents and on the observation of a single technician. It found that about two percent of the incoming packs in the sample had some damage that was not noted in the documents.
+
+Recommendations and actions
+
+The review made six recommendations. Every pack should be scanned with a thermal camera and weighed at the entrance. Labels should be removed before inspection. Packs from certain sources should be treated as higher risk and inspected more thoroughly. The quarantine bunker should be extended. A second water mist system should protect the dismantling area. And the plant should agree on handling standards with its collection partners, so that damaged packs are labeled as such.
+
+Duarte adopted all six recommendations. The thermal and weight checks at the entrance were in operation by October 2023, and the bunker was extended in the first quarter of 2024. She met the managers of the collection points and agreed that packs would be shipped in rigid containers with a signed checklist. The retailer whose pack had caused the fire reviewed its warehouse procedures and compensated the plant for part of the loss.
+
+Operational changes
+
+After the fire, the works changed the way it manages the shredding line. Astrid Mbeki, the process chief, introduced a rule that no batch of more than five modules is fed into the shredder, so that if a fire starts it involves less material. The feed rate was reduced by about eight percent, a loss that was offset by fewer stops.
+
+The plant also practiced evacuations and fire response more frequently. A drill is now held every month, and once a quarter the drill is conducted with the local fire service on site. The staff were given additional training on gas detection and on the use of breathing apparatus.
+
+Electricity effects
+
+The fire occurred seven months after another interruption at the works, when a loss of generation at the Tidewrack Tidal Array in February had forced the plant to run at half rate for two weeks. Duarte noted in her report that the two events together had cost the plant about a quarter of its profit for the year, and that the rate of throughput the plant could sustain was lower than it had planned.
+
+Lessons
+
+Duarte wrote that the lesson of the fire was that safety systems must be designed on the assumption that the front-end checks will sometimes fail. The plant's suppression and containment systems worked as designed, and without them the damage could have been much more serious. She also noted that the principal weakness was the quality of the information received from the outside: the plant cannot control how its suppliers handle batteries, but it can control what it accepts. The works now declines packs whose condition it cannot verify.
+
+Idowu's review noted, in a comment that he later repeated in other contexts, that incidents of this kind rarely have a single cause. The pack was damaged by a forklift, the label hid the damage, the documents were wrong, the technician missed the crack, and the second technician had no reason to check again. Any of these steps, working correctly, would have averted the fire.
+
+
+Annex A: Technical detail and chronology
+
+The shredding line. The shredder is a twin-shaft machine with hardened steel cutters, driven by two 90-kilowatt motors, operating inside a gastight chamber 3 meters long. The chamber is purged with nitrogen so that the oxygen concentration stays below four percent, a level at which a lithium-ion fire cannot be sustained in the absence of an external source of oxygen. Material enters through a double airlock and leaves on a conveyor in an enclosed tunnel. The conveyor runs to a vibrating screen that separates the fractions.
+
+The thermal runaway. In a damaged module the internal short circuit generated heat that was not noticed until the cells were cut by the shredder. When cells are cut, their separators are compromised and their stored energy is released in a short time. The cell group concerned contained forty cells of the pouch type, and as each cell went into runaway the heat spread to the next. The nitrogen atmosphere prevented flaming in the chamber, but the output conveyor tunnel, where the shredded material had been exposed to some air through a leaking door seal, did ignite.
+
+Why the nitrogen did not fully contain it. The investigation found that a door seal on the output tunnel had been degraded and had allowed enough air to enter that the oxygen concentration at that point was about nine percent, well above the target. The oxygen monitor was placed in the main chamber and not in the tunnel, and so did not detect the problem. The seal had been scheduled for replacement at the next planned shutdown, but the work order had not been marked as urgent.
+
+Chronology. At 10:31 the batch entered the airlock. At 10:34:20 the first cell group began to heat. At 10:35:05 the thermal camera alarm triggered, the feed was stopped, and the nitrogen flow was increased. At 10:35:40 flames were visible at the output tunnel. At 10:36 the water mist system activated. At 10:36:40 the fire alarm was sounded, and the hall was evacuated in two minutes and forty seconds. At 10:41 the flames were out. At 10:52 the fire service arrived, and by 11:55 the remaining cells had been cooled.
+
+Gas emissions. During the fire, the hydrogen fluoride detectors in the hall registered a peak of 14 parts per million, above the exposure limit of 3, for about four minutes. Staff had been evacuated and wore their personal monitors. The ventilation system's scrubber captured most of the gas, and measurements at the site boundary showed no detectable emissions. One operator, who had been slow to leave, was treated for mild irritation and returned to work the following day.
+
+The damage. The shredder chamber had to be stripped and its seals, bearings, and cutters replaced, at a cost of about 540,000 crowns. The output tunnel and the first conveyor were replaced at a cost of about 290,000 crowns. Cleaning of the hall, which was contaminated with soot and electrolyte residues, cost about 310,000 crowns, and the extra inspection and testing before restart, about 160,000 crowns. The shredding line was restarted on 3 October.
+
+Insurance. The works' insurers paid about 900,000 crowns toward the repairs and cleaning, and reduced their premium after the works adopted the new entrance procedures. The insurers' assessor, Gregor Lindemann, said that the plant's automatic systems had saved the plant from a much more serious loss.
+
+The retailer. The electrical retailer that supplied the pack, Brightwater Electrical, reviewed its warehouse procedures and accepted that the damaged pack should not have been shipped. It paid a compensation of 220,000 crowns toward the works' losses and agreed to use rigid transport containers with signed checklists in future. Duarte noted that she valued the retailer's cooperation and had no wish to end the relationship.
+
+Entrance inspection after the fire. The revised procedure requires every incoming pack to pass through a station with a thermal camera, a scale, and a voltage meter. The pack's weight is compared with the nominal weight for its type, which is stored in a database, and a deviation of more than three percent leads to quarantine. Packs from sources with a history of non-conformities are opened and examined by a second person. In the first six months, the procedure identified 61 packs with undeclared damage, 9 of which showed a hot spot on the thermal camera.
+
+Other consequences. The works notified the regional environment agency, which carried out an inspection in October and issued a notice requiring a revised hazard assessment. The agency accepted the revised assessment in January 2024. The works' hazardous waste license was renewed in 2023 after the agency had reviewed the fire report.
+
+Staff. Following the fire, the works offered counselling to the staff who had been in the hall. Duarte arranged for a debrief with the fire service, at which the crews and the operators discussed what had gone well and what had not. The most important point was that the evacuation had been fast because the operators had practiced it, and Zielinski has since asked for a drill every month.
+
+Idowu's review. Dr. Kasper Idowu's review was delivered in a short memorandum on 6 October 2023. He noted that the plant's culture was open and that the operators had reported near misses regularly, but that the near-miss reports for the previous year contained three instances of undeclared damage to packs that had not led to any systemic change. He recommended that near-miss reports be reviewed monthly by the director, a practice that Duarte adopted.

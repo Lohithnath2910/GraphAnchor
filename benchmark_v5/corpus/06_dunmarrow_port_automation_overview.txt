@@ -1,0 +1,86 @@
+Dunmarrow Port Automation: Project Overview
+
+Dunmarrow is the Calder Reach's only deep-water port, set at the mouth of the Dunmarrow estuary on the southern coast, and the gateway through which most of the region's imports and exports pass. The Dunmarrow Port Automation project is the program that has replaced the manual container cranes on the port's main quay with eight automated cranes controlled from a central room. The first automated crane entered service in 2021, and all eight were operating by the end of 2022.
+
+Cormac Adebayo has led the project since 2020. His deputy is Wilhelmina Odhiambo, who manages the transition from manual to automated working, and the control room chief is Stellan Marsh, who runs the central control room and the operators who supervise the cranes remotely. The project employs 134 people, down from 215 on the quay before automation.
+
+Why the port needed automation
+
+Before automation, Dunmarrow's container terminal had a reputation for delays. Ships sometimes waited for days for a berth, and containers spent an average of more than forty hours in the yard before being collected. The port's old cranes were slow, and the shift patterns of the crane drivers, combined with the manual stacking of containers, limited the throughput to about 380,000 containers a year. The regional economy was increasingly constrained by this bottleneck, and several large exporters threatened to move their cargoes to ports in neighboring regions.
+
+The port authority commissioned a study that concluded that the quay could handle nearly twice as many containers if cranes and yard equipment were coordinated by a central scheduling system. The study recommended automation, and the port company created the project to deliver it. After the financing was agreed, the contracts were signed in 2019.
+
+The automated cranes
+
+The eight cranes are rail-mounted gantry cranes that run along the quay edge and the container stacking blocks. Each crane is fitted with laser scanners, cameras, and positioning sensors, and moves containers between ships, stacks, and trucks without a driver in the cab. A human operator in the control room supervises several cranes at a time and takes over only when the system asks for help, for example when a container is damaged or a lashing cannot be released.
+
+Each crane's controller reports its position every ten milliseconds, and the central scheduling system uses these reports to plan the movements of all eight cranes so that they never occupy the same part of the quay. The accuracy of this coordination depends on the timestamps attached to every position report. For this reason the cranes take their reference time from the Lodestar Timing Station at Cairn Head, which sends a disciplined timing signal to the port over the regional fiber network.
+
+The scheduling system
+
+The central scheduling system decides which container each crane should move next, where it should be stacked, and in which order the trucks and trains should be loaded. The scheduling algorithm at the core of the system was adapted from the train-scheduling method developed by the Gantry Line light rail project. Engineers from the Gantry Line spent several months in Dunmarrow helping Adebayo's team to tune the algorithm for the different physical constraints of a quay, where the cranes move on fixed rails but the work is more varied than train movements.
+
+Since the algorithm entered service, the average time a container spends in the yard has fallen from 41 hours to 26, and the number of container moves per crane per hour has risen by about a third. The port now handles around 590,000 containers a year.
+
+Rail and shipping connections
+
+The port's rail yard is connected to the main line, and the container trains that serve the port are operated by Strand & Keel Shipping, whose headquarters are on the same quay. Strand & Keel is the project's largest customer: its trains deliver and collect most of the containers that pass through the terminal. The scheduling system coordinates ship arrivals with the freight timetable so that wagons spend less time waiting. Ravindra Kallenbach, the company's chief executive, has said that the port is now the most predictable part of his network.
+
+Financing
+
+The project was financed by the Harbourgate Mutual Bank, which provided a loan of 58 million crowns in 2019. The loan covers the purchase and installation of the cranes, the licence for the control software, the network equipment, and the retraining of the port's workers. Adebayo knows the bank well, having worked in its infrastructure division before joining the project. The loan is repaid out of a per-container fee charged to shipping lines, and the bank receives monthly figures on throughput.
+
+Workforce transition
+
+Automation reduced the number of jobs on the quay, and the project took the transition seriously. A retraining program, negotiated with the dockworkers' union, offered affected crane drivers a choice of becoming remote crane supervisors, maintenance technicians, or yard coordinators. About seventy percent of the drivers accepted a new role in the port, and the others took voluntary severance or early retirement. A simulator room in the control building lets new supervisors practice handling unusual events without risk to real equipment.
+
+Odhiambo has described the transition as the hardest part of the project. She says that the technology was ready long before the people were, and that the most important decision the project made was to involve the drivers' representatives in the design of the control room. The supervisors' desks, for example, were arranged according to their suggestions, with the screens for each crane grouped by ship rather than by crane number.
+
+Safety systems
+
+The cranes have several layers of safety. Laser scanners stop a crane if a person or vehicle enters its working zone. Each crane carries its own anti-collision sensors, and a safety controller independent of the scheduling system will bring a crane to a halt if it detects a hazard. After an incident in 2022, described in a separate report, the project added independent collision sensors that do not depend on the timing signal.
+
+Environmental aspects
+
+The cranes are electric, and a regenerative drive on each hoist returns energy to the port's power system when containers are lowered. The port has also replaced diesel yard tractors with electric ones, which has reduced emissions and noise on the quay. The project monitors air quality at the port boundary and reports the results to the Calder Reach Development Board every quarter.
+
+Outlook
+
+Adebayo hopes to add two more cranes and an automated stacking yard by 2027, subject to a new financing agreement. The next phase would raise the port's capacity to around 750,000 containers a year. He also intends to work with the Lodestar Timing Station and other users on a backup timing arrangement, so that the cranes can continue working safely if the external timing signal is interrupted.
+
+
+Operating history, year by year
+
+2018. The port company's feasibility study, completed in the winter of 2017, was presented to shipping lines and exporters during 2018. The study concluded that the terminal could roughly double its throughput if cranes and yard equipment were coordinated by a central scheduling system, and it estimated that the investment would be recovered in about eleven years through a per-container fee. Three shipping lines signed letters of intent to continue calling at Dunmarrow, on condition that the delays were reduced. The port company then approached the Harbourgate Mutual Bank, which had financed other projects in the region, and began negotiating a loan.
+
+2019. The loan of 58 million crowns was agreed in the spring. Emeka Lindqvist, the bank's chief risk officer, asked for a detailed analysis of the technology risks and a commitment that the project would employ an independent safety assessor. The assessor's contract was signed in June. The cranes were ordered from an overseas manufacturer, and the licence for the control software was purchased. Cormac Adebayo, who had led the bank's due diligence on the project as an infrastructure analyst, became increasingly involved in the technical discussions.
+
+2020. Adebayo left the bank and was appointed to lead the project in February. He recruited Wilhelmina Odhiambo, an operations manager from a container terminal in another region, as deputy, and Stellan Marsh, a control systems engineer, as control room chief. Site preparation began on the main quay, including the strengthening of the crane rails and the installation of fiber ducts and power cables. The team also began to adapt the train-scheduling method of the Gantry Line, whose signaling engineers made their first visit to Dunmarrow in September.
+
+2021. The first automated crane was commissioned in March and handled its first ship in May, after the port was connected to the Lodestar Timing Station. During the following months the second to fourth cranes were installed, and the control room staff gradually took over from the manual operators. The retraining program for crane drivers was at its peak, and by the end of the year 74 drivers had chosen new roles in the port. Throughput rose by 18 percent compared with 2020, even though only half of the cranes were automated.
+
+2022. The fifth to eighth cranes entered service between February and July, completing the program on schedule. In August an incident occurred in which two cranes collided during the night, causing damage of 2.9 million crowns. The Calder Reach Development Board's audit office investigated and found that the cause was a loss of timing accuracy at the Lodestar Timing Station. The incident is described in a separate report. After the investigation, the project installed independent collision sensors on all eight cranes and introduced regular timing-loss drills.
+
+2023. The port handled 590,000 containers, its highest annual figure to date, and the average time that a container spent in the yard fell to 26 hours. Adebayo reported to the Harbourgate Mutual Bank that the project had reached its financial targets, and the bank agreed to review the terms of the loan. The project also began a trial of a "slow mode" in which cranes continue at reduced speed using only their own sensors if the external timing signal is lost. The trial, carried out in November, showed that the cranes could maintain about 60 percent of normal throughput safely without the external signal.
+
+2024. The slow mode was adopted permanently. The port company also opened discussions with the Beacon Hill Flood Barrier about coordinating barrier closures with ship movements, since a closure of the estuary affects every vessel entering Dunmarrow. A pilot project to exchange data between the two control rooms was agreed in the spring, and the first joint drill took place in the summer.
+
+Throughput figures
+
+Container moves per crane per hour rose from 21 in the first year of automation to 28 in 2023. The number of ship delays attributable to the quay fell by about two thirds. The average waiting time for a berth dropped from 31 hours before automation to eleven hours, and the proportion of trucks collected within the booked time slot rose from 62 percent to 91 percent. These figures are published each quarter in the port's performance report.
+
+The workforce
+
+Staff numbers fell from 215 before automation to 134 in 2023, but the composition changed more than the total. The number of crane supervisors rose to 42, while the number of maintenance technicians doubled to 36, and a new group of 14 data analysts joined to work on the scheduling system. Odhiambo says that the quality of the jobs has improved, with fewer night shifts and a lower rate of injuries, but that some former drivers found it hard to adapt to working at a screen. The project has appointed a welfare officer to support staff through the transition.
+
+Relationship with shipping lines
+
+Five shipping lines now call regularly at Dunmarrow. The project holds a quarterly meeting with their representatives, at which the lines can raise concerns about berth allocation and delays. Strand & Keel Shipping, whose rail operations handle most of the port's inland traffic, attends the meeting as well. Adebayo has said that the shipping lines' feedback in the early years of the project was often critical, particularly about the number of containers that had to be re-handled, and that much of the system's later tuning was driven by it.
+
+Safety record
+
+Apart from the 2022 collision, the quay recorded no serious accidents in the period 2021 to 2024. Minor incidents, mostly involving trucks in the yard, fell by half after automation. The project's independent safety assessor reviews the safety case annually and has praised the quality of the incident reporting. Marsh runs a monthly "what almost happened" meeting in the control room at which operators describe near misses without fear of blame, and the notes are circulated across the project.
+
+Community and environment
+
+The port is close to the town of Dunmarrow, and residents have been concerned about noise and traffic. The project introduced time slots for trucks, which spread arrivals through the day and reduced queues, and the electric yard tractors are quieter than the diesel vehicles they replaced. The project also funds a small grant scheme for community groups in the harbor district, which in 2023 supported a sailing club and a youth theatre.
