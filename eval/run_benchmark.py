@@ -33,7 +33,7 @@ from statistics import mean, median
 
 MODES = ("vector", "hybrid")
 FIELDS = ["id", "category", "confidence", "mode", "k_used", "question",
-          "latency_sec", "retrieval_recall", "answer_correctness", "answer"]
+          "latency_sec", "retrieval_recall", "doc_recall", "answer_correctness", "answer"]
 
 
 def percentile(values, pct):
@@ -48,8 +48,9 @@ def percentile(values, pct):
     return s[f] + (s[c] - s[f]) * (k - f)
 
 
-def call_query(base_url, question, enable_graph, k, timeout):
-    params = urllib.parse.urlencode({"q": question, "k": k, "enable_graph": str(enable_graph).lower()})
+def call_query(base_url, question, enable_graph, k, timeout, answer=True):
+    params = urllib.parse.urlencode({"q": question, "k": k, "enable_graph": str(enable_graph).lower(),
+                                     "answer": str(answer).lower()})
     url = f"{base_url}/query?{params}"
     start = time.perf_counter()
     with urllib.request.urlopen(url, timeout=timeout) as resp:
@@ -58,12 +59,12 @@ def call_query(base_url, question, enable_graph, k, timeout):
     return data, latency
 
 
-def call_with_retries(base_url, question, enable_graph, k, timeout, retries):
+def call_with_retries(base_url, question, enable_graph, k, timeout, retries, answer=True):
     # Retries transient failures (timeouts, dropped connections, Ollama hiccups) with a growing pause.
     last = None
     for attempt in range(retries + 1):
         try:
-            return call_query(base_url, question, enable_graph, k, timeout)
+            return call_query(base_url, question, enable_graph, k, timeout, answer)
         except Exception as e:
             last = e
             if attempt < retries:
@@ -74,6 +75,18 @@ def call_with_retries(base_url, question, enable_graph, k, timeout, retries):
 
 def gather_retrieved_text(result):
     return " ".join(c.get("text", "") for c in result.get("ranking_breakdown", []) or []).lower()
+
+
+def doc_recall(gold, result):
+    # Strict retrieval metric: share of the documents the question needs (gold source_docs) that appear among the
+    # retrieved chunks. Unlike keyword recall it is not fooled by a name that recurs in many documents.
+    need = gold.get("source_docs") or []
+    if not need:
+        return None
+    files = [(c.get("metadata") or {}).get("filename") or "" for c in result.get("ranking_breakdown", []) or []]
+    def hit(n):
+        return any(f.startswith(f"{n:02d}_") for f in files) if isinstance(n, int) else any(n in f for f in files)
+    return sum(1 for n in need if hit(n)) / len(need)
 
 
 def score_entry(gold, retrieved_text, answer_text):
@@ -103,11 +116,14 @@ def summarize(subset, label):
     lat = [float(r["latency_sec"]) for r in subset if r["latency_sec"] != ""]
     rec = [float(r["retrieval_recall"]) for r in subset if r["retrieval_recall"] != ""]
     acc = [float(r["answer_correctness"]) for r in subset if r["answer_correctness"] != ""]
+    docs = [float(r["doc_recall"]) for r in subset if r.get("doc_recall") not in (None, "")]
     if not lat:
         print(f"  {label:15s} no scored data")
         return
     full = sum(1 for a in acc if a == 1.0)
-    print(f"  {label:15s} n={len(lat):2d}  retrieval={mean(rec):6.1%}  answer={mean(acc):6.1%}  "
+    ans = f"{mean(acc):6.1%}" if acc else "   n/a"
+    dr = f"{mean(docs):6.1%}" if docs else "   n/a"
+    print(f"  {label:15s} n={len(lat):2d}  keyword-retr={mean(rec):6.1%}  doc-retr={dr}  answer={ans}  "
           f"fully-correct={full:2d}/{len(acc):<2d}  latency mean/med/p95={mean(lat):.1f}/{median(lat):.1f}/{percentile(lat, 95):.1f}s")
 
 
@@ -152,7 +168,7 @@ def print_summary(rows, needs_review):
             print(f"  Q{qid}: {question}" + (f"  (note: {note})" if note else ""))
 
 
-def run(base_url, gold_path, out_path, k, timeout, retries, resume):
+def run(base_url, gold_path, out_path, k, timeout, retries, resume, retrieval_only=False):
     gold = json.loads(Path(gold_path).read_text(encoding="utf-8"))
     out = Path(out_path)
 
@@ -193,17 +209,22 @@ def run(base_url, gold_path, out_path, k, timeout, retries, resume):
                 k_used = hybrid_k if mode == "vector_matched" else k
                 k_used = max(1, min(20, k_used))  # server limit is 20
                 try:
-                    result, latency = call_with_retries(base_url, g["question"], enable_graph, k_used, timeout, retries)
+                    result, latency = call_with_retries(base_url, g["question"], enable_graph, k_used, timeout, retries,
+                                                        answer=not retrieval_only)
                     answer = result.get("answer", "")
                     retrieved_text = gather_retrieved_text(result)
                     if mode == "hybrid":
                         hybrid_k = len(result.get("ranking_breakdown", []) or []) or k
                     retrieval_recall, answer_correctness = score_entry(g, retrieved_text, answer)
+                    d_recall = doc_recall(g, result)
+                    if retrieval_only:
+                        answer_correctness = None
                 except Exception as e:
                     answer = f"[ERROR: {e}]"
                     latency = None
                     retrieval_recall = None
                     answer_correctness = None
+                    d_recall = None
 
                 row = {
                     "id": g["id"],
@@ -214,6 +235,7 @@ def run(base_url, gold_path, out_path, k, timeout, retries, resume):
                     "question": g["question"],
                     "latency_sec": round(latency, 3) if latency is not None else "",
                     "retrieval_recall": round(retrieval_recall, 3) if retrieval_recall is not None else "",
+                    "doc_recall": round(d_recall, 3) if d_recall is not None else "",
                     "answer_correctness": round(answer_correctness, 3) if answer_correctness is not None else "",
                     "answer": answer.replace("\n", " "),
                 }
@@ -251,5 +273,7 @@ if __name__ == "__main__":
     parser.add_argument("--timeout", type=int, default=180, help="seconds allowed per query (default 180)")
     parser.add_argument("--retries", type=int, default=1, help="retries per failed query (default 2)")
     parser.add_argument("--resume", action="store_true", help="continue an interrupted run from --out")
+    parser.add_argument("--retrieval-only", action="store_true",
+                        help="skip the LLM answer: measures retrieval only, about 10x faster")
     args = parser.parse_args()
-    run(args.base, args.gold, args.out, args.k, args.timeout, args.retries, args.resume)
+    run(args.base, args.gold, args.out, args.k, args.timeout, args.retries, args.resume, args.retrieval_only)

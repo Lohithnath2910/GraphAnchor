@@ -423,22 +423,51 @@ GENERIC_TOKENS = {
 MAX_GRAPH_CHUNKS = 8  # most extra chunks graph traversal may add to the vector top-k
 MAX_GRAPH_CANDIDATES = 80  # traversal chunks considered before keeping the MAX_GRAPH_CHUNKS most relevant
 
-def rank_graph_candidates(candidate_ids: list[str], query_emb: list[float], chunks_col, limit: int) -> list[tuple[str, float | None]]:
-    # Keeps the `limit` traversal chunks most similar to the question (cosine similarity on the stored chunk
-    # embeddings), instead of the first ones the traversal happened to reach. Falls back to traversal order
-    # (similarity None) if the embeddings cannot be read, so retrieval never breaks.
+QUERY_STOPWORDS = {"who", "whom", "whose", "which", "what", "when", "where", "that", "this", "these", "those", "with",
+                   "from", "have", "were", "been", "does", "will", "than", "then", "into", "also", "their", "there"}
+
+def rank_graph_candidates(candidate_ids: list[str], query_emb: list[float], chunks_col, limit: int,
+                          query_text: str = "", seen_doc_ids: set[str] | None = None) -> list[tuple[str, float | None]]:
+    # Keeps the `limit` traversal chunks that best answer the question. Score = cosine similarity of the stored chunk
+    # embedding to the question, blended with how many of the question's rarer words the chunk contains (IDF over the
+    # candidate pool, so words every candidate shares count for nothing). Chunks from a document that is already
+    # selected are discounted, because multi-hop answers usually need one chunk from each of several documents.
+    # Falls back to traversal order (similarity None) if the embeddings cannot be read, so retrieval never breaks.
     if len(candidate_ids) <= 1:
         return [(cid, None) for cid in candidate_ids]
     try:
-        got = chunks_col.get(ids=candidate_ids, include=["embeddings"])
+        got = chunks_col.get(ids=candidate_ids, include=["embeddings", "documents"])
         ids = list(got["ids"])
+        texts = [(t or "").lower() for t in got["documents"]]
         embs = np.asarray(got["embeddings"], dtype=np.float32)
         q = np.asarray(query_emb, dtype=np.float32)
         sims = (embs @ q) / ((np.linalg.norm(embs, axis=1) * np.linalg.norm(q)) + 1e-9)
-        order = sorted(range(len(ids)), key=lambda i: (-float(sims[i]), candidate_ids.index(ids[i])))
-        return [(ids[i], float(sims[i])) for i in order[:limit]]
+
+        q_words = {w for w in re.findall(r"[a-z0-9\-]{4,}", query_text.lower().replace("'s", "")) if w not in QUERY_STOPWORDS}
+        df = {w: sum(1 for t in texts if w in t) for w in q_words}
+        idf = {w: float(np.log((len(texts) + 1) / (df[w] + 0.5))) for w in q_words if df[w] > 0}
+        idf_total = sum(idf.values()) or 1.0
+        lex = [sum(idf[w] for w in idf if w in t) / idf_total for t in texts]
+
+        lo, hi = float(sims.min()), float(sims.max())
+        sim_norm = [(float(x) - lo) / ((hi - lo) or 1.0) for x in sims]
+        w = config.graph_lexical_weight
+        base = [(1.0 - w) * sim_norm[i] + w * lex[i] for i in range(len(ids))]
+
+        picked: list[tuple[str, float | None]] = []
+        doc_count: dict[str, int] = {d: 1 for d in (seen_doc_ids or set())}
+        remaining = set(range(len(ids)))
+        while remaining and len(picked) < limit:
+            def adjusted(i):
+                return base[i] * (config.graph_same_doc_discount ** doc_count.get(ids[i].rsplit("_", 1)[0], 0))
+            best = max(remaining, key=lambda i: (adjusted(i), -candidate_ids.index(ids[i])))
+            remaining.discard(best)
+            d = ids[best].rsplit("_", 1)[0]
+            doc_count[d] = doc_count.get(d, 0) + 1
+            picked.append((ids[best], float(sims[best])))
+        return picked
     except Exception as e:
-        logger.warning(f"Graph chunk ranking by similarity failed, using traversal order: {e}")
+        logger.warning(f"Graph chunk ranking failed, using traversal order: {e}")
         return [(cid, None) for cid in candidate_ids[:limit]]
 
 def _distinctive_tokens(text: str) -> set[str]:
@@ -567,9 +596,10 @@ def rank_and_fuse_chunks(
 def query_chunks(
     q: str = Query(..., min_length=1),
     k: int = Query(3, ge=1, le=20),
-    enable_graph: bool = Query(True, description="Toggle graph traversal augmentation")
+    enable_graph: bool = Query(True, description="Toggle graph traversal augmentation"),
+    answer: bool = Query(True, description="Set false to return retrieval only (no LLM call), used by fast retrieval benchmarks")
 ):
-    return _run_query(q, k, enable_graph)
+    return _run_query(q, k, enable_graph, generate=answer)
 
 def _run_query(q: str, k: int, enable_graph: bool, generate: bool = True):
     # Executes hybrid search combining vector retrieval and graph traversal; generates an answer unless generate=False.
@@ -680,17 +710,21 @@ def _run_query(q: str, k: int, enable_graph: bool, generate: bool = True):
                 if cid and cid not in retrieved_chunk_ids and cid not in candidate_ids:
                     candidate_ids.append(cid)
             candidate_ids = candidate_ids[:MAX_GRAPH_CANDIDATES]
-            ranked_graph = rank_graph_candidates(candidate_ids, emb, chunks_col, MAX_GRAPH_CHUNKS)
+            ranked_graph = rank_graph_candidates(candidate_ids, emb, chunks_col, MAX_GRAPH_CHUNKS, q,
+                                                 {cid.rsplit("_", 1)[0] for cid in retrieved_chunk_ids})
             needed_chunk_ids = [cid for cid, _ in ranked_graph]
             similarity_by_id = {cid: sim for cid, sim in ranked_graph}
             if needed_chunk_ids:
                 with db_cursor() as cursor:
                     placeholders = ",".join("?" * len(needed_chunk_ids))
-                    cursor.execute(f"SELECT chunk_id, text FROM chunks WHERE chunk_id IN ({placeholders})", needed_chunk_ids)
+                    cursor.execute(
+                        "SELECT c.chunk_id, c.text, d.filename FROM chunks c LEFT JOIN documents d ON d.doc_id = c.doc_id "
+                        f"WHERE c.chunk_id IN ({placeholders})", needed_chunk_ids)
                     for row in cursor.fetchall():
                         connected_chunks.append({
                             "chunk_id": row[0],
                             "text": row[1],
+                            "metadata": {"filename": row[2]} if row[2] else {},
                             "similarity": similarity_by_id.get(row[0])
                         })
         else:
@@ -703,8 +737,10 @@ def _run_query(q: str, k: int, enable_graph: bool, generate: bool = True):
             graph_edges=graph_results
         )[:limit]
 
-        # Limit graph edges to top 25 to provide enough graph context without overwhelming
-        top_graph_edges = sorted(graph_results, key=lambda x: x.get("confidence", 0), reverse=True)[:25]
+        # Send the 25 most useful triples: those extracted from the passages shown to the LLM come first (they back
+        # up the evidence it reads), then by extraction confidence.
+        shown_ids = {c["chunk_id"] for c in ranked_chunks}
+        top_graph_edges = sorted(graph_results, key=lambda x: (x.get("found_in_chunk") not in shown_ids, -x.get("confidence", 0)))[:25]
 
         logger.info(f"query: retrieval done in {time.perf_counter() - t0:.1f}s ({len(ranked_chunks)} chunks)")
         answer = ""

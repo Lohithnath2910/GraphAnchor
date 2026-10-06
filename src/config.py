@@ -19,6 +19,8 @@ class AppConfig(BaseModel):
     hybrid_fusion_alpha: float = 0.55
     vector_anchor_confidence: float = 0.75
     graph_edge_base_confidence: float = 0.85
+    graph_lexical_weight: float = 0.5  # share of graph-chunk selection score from question-word overlap (rest: embedding similarity)
+    graph_same_doc_discount: float = 0.6  # multiplier per chunk already selected from the same document
 
 def load_config(path: str = "config.yaml") -> AppConfig:
     if not Path(path).exists():

@@ -1,5 +1,6 @@
 import logging
 import time
+from functools import lru_cache
 
 import ollama
 
@@ -12,6 +13,7 @@ logger = logging.getLogger("graphanchor")
 
 _embed_client = ollama.Client(timeout=60)
 
+@lru_cache(maxsize=4096)  # repeated questions and entity names skip the ~2 s Ollama call; callers never mutate the list
 def get_embedding(text: str) -> list[float]:
     # Retrieves vector embeddings using the configured Ollama model, with automatic retries for transient failures.
     last_err = None
