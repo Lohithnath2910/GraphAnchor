@@ -10,3 +10,6 @@ test_docs/
 __pycache__/
 *.pyc
 .pytest_cache/
+
+# Tool caches
+.ruff_cache/

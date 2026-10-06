@@ -1,102 +1,89 @@
-# GraphAnchor ⚓
+# GraphAnchor
 
-GraphAnchor is a lightweight, local-first Graph RAG (Retrieval-Augmented Generation) backend. It extracts structured knowledge graphs from unstructured text documents and intelligently merges entities using vector similarity.
+A local-first hybrid RAG engine. It ingests documents one at a time, extracts a knowledge graph with a small on-device
+language model, and answers questions with vector search plus graph traversal. Multi-hop questions are answered in steps.
+Everything runs offline through [Ollama](https://ollama.com/); no API keys, no cloud.
 
-## 🌟 What Exactly This Does
+## Results
 
-1. **Token-based Chunking**: Safely splits large incoming text documents into manageable overlapping chunks using OpenAI's `tiktoken` sliding window.
-2. **Structured Entity Extraction**: Uses local LLMs (via Ollama in JSON-mode) to extract entities and their relationships from text into a strictly enforced graph schema.
-3. **Smart Entity Placement**: 
-   - Attempts an **exact match** against known graph entities.
-   - If that fails, it falls back to **Cosine Similarity** using embedding models. If the new entity is semantically similar to an existing one (above a 0.7 threshold), they are merged.
-   - Otherwise, it creates a new unconnected "island" entity in the graph.
-4. **Dual Storage Architecture**: 
-   - Uses **SQLite** for robust tabular storage of the graph relationships (`edges`) and document references (`chunks`).
-   - Uses **ChromaDB** for vector embeddings and similarity search of entities.
-5. **100% Local Processing**: No API keys, no cloud billing. Everything runs entirely on your local machine for complete data privacy.
+On questions that chain facts across documents, GraphAnchor answers **59.5%** correctly against **38.0%** for standard vector
+RAG (+21.5 points) and retrieves the right documents **88.3%** of the time against **51.9%**. On single-fact questions it
+matches or slightly beats vector RAG. Full tables, method and limitations: [results.md](results.md) ([PDF](results.pdf)).
 
----
+## How it works
 
-## 🚀 Setup & Installation
+1. **Ingest** (`POST /ingest`): text is split into overlapping token chunks; each chunk is embedded and stored in ChromaDB;
+   a local LLM extracts (entity, relation, entity) triples, entities are merged by exact match, then embedding similarity,
+   with spaCy clean-up, and the triples go to SQLite. Ingestion is atomic and de-duplicated by content hash.
+2. **Retrieve** (`GET /query`): vector search finds entry chunks; a breadth-first walk of the graph (up to 4 hops) pulls in
+   linked chunks, which are re-ranked by similarity and question-word overlap.
+3. **Route**: chained or list-style questions use the graph; single-fact questions are answered by vector search alone.
+4. **Reason**: a multi-hop question is split into 2 or 3 steps, each retrieved and answered in turn; the final answer uses the
+   merged evidence and the facts established along the way. The response includes `reasoning_steps` and
+   `graph_traversal.paths`.
+5. **Answer**: a grounded prompt answers only from the supplied context and says so when the answer is not there.
 
-### 1. Install Prerequisites
-You will need two main tools installed on your system:
-* **uv**: An extremely fast Python package and environment manager.
-  * *Windows:* `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`
-  * *macOS/Linux:* `curl -LsSf https://astral.sh/uv/install.sh | sh`
-* **Ollama**: A local LLM runner.
-  * Download and install from [ollama.com](https://ollama.com/).
+## Quick start
 
-### 2. Pull the AI Models
-Once Ollama is installed, pull the necessary models for extraction and embedding:
+**Requirements:** [uv](https://docs.astral.sh/uv/), [Ollama](https://ollama.com/), Python 3.11+.
+
 ```bash
-# For structured JSON extraction (fast & highly capable)
-ollama pull qwen2.5-coder:7b
-
-# For vector embeddings
+ollama pull llama3.2
 ollama pull snowflake-arctic-embed2:568m
+uv sync                                   # installs everything, including the pinned spaCy model
+uv run uvicorn main:app --port 8000       # then open http://127.0.0.1:8000  (API docs at /docs)
 ```
-*(Note: You can switch to `llama3.2` or other models by updating `config.yaml`)*
 
-### 3. Setup the Project
-Clone the repository and install the dependencies using `uv`:
+**Docker** (starts Ollama, downloads both models on first run, then the API):
+
 ```bash
-git clone https://github.com/Lohithnath2910/GraphAnchor.git
-cd GraphAnchor
-
-# Initialize virtual environment and sync dependencies
-uv sync
+docker compose up --build
 ```
 
----
+The graph database, vector store and embedding cache live in `./data` and survive restarts. For an NVIDIA GPU, uncomment
+the `deploy` block in `docker-compose.yml`.
 
-## 🧪 How to Test It Out
+## API
 
-### 1. Start the Server
-Activate your virtual environment and start the FastAPI server:
-```bash
-# Windows
-.venv\Scripts\Activate
+| Endpoint | Purpose |
+|---|---|
+| `POST /ingest` | upload a `.txt`, `.md` or `.pdf` file |
+| `GET /query?q=...&k=3&enable_graph=true` | retrieval plus answer; `answer=false` for retrieval only; `decompose=true/false` overrides the multi-step setting |
+| `GET /answer`, `POST /answer` | just the answer text |
+| `GET /answer/stream` | answer as server-sent events |
+| `GET /documents`, `GET /documents/{id}`, `DELETE /documents/{id}` | list, inspect, delete |
+| `GET /graph/stats`, `GET /graph/all` | graph size, whole graph |
+| `DELETE /reset?confirm=true` | wipe all data |
 
-# Start the server with hot-reloading
-uvicorn main:app --port 8000 --reload
-```
+## Configuration
 
-### 2. Interactive Swagger UI
-Open your browser and navigate to:
-**[http://localhost:8000/docs](http://localhost:8000/docs)**
+`config.yaml` holds models, paths and chunking. Behaviour switches have defaults in `src/config.py` and can be overridden in
+`config.yaml`:
 
-From this UI, you can manually interact with the API:
-* **POST `/ingest`**: Upload a `.txt` file to have it chunked, extracted, and embedded.
-* **GET `/graph/stats`**: View the current number of nodes and edges in your SQLite database.
-* **GET `/query`**: Perform a semantic vector search over your ingested chunks.
+| Setting | Default | Meaning |
+|---|---|---|
+| `llm_model`, `embed_model` | `llama3.2`, `snowflake-arctic-embed2:568m` | Ollama models |
+| `decompose_multihop` | on | answer multi-hop questions in steps (about 12 s per question) |
+| `graph_routing` | on | single-fact questions skip the graph |
+| `prompt_v2` | on | stricter, grounded answer prompt |
+| `graph_lexical_weight`, `graph_same_doc_discount` | 0.5, 0.6 | graph chunk selection |
+| `graph_hygiene`, `graph_min_coverage_gain` | off | experimental, not adopted |
 
-### 3. Testing with the Dataset
-If you want to see the "Smart Entity Placement" and multi-hop reasoning in action, use the frontend UI to upload the files located in the `data/massive_dataset` directory. This dataset contains 100 documents with an embedded 6-hop storyline hidden amongst noise, allowing you to test the isolated graph traversal mechanism against standard vector semantic search!
+Set `OLLAMA_HOST` to point at a remote Ollama (the Docker setup does this).
 
----
+## Benchmark
 
-## Current Progress
+`benchmark/` holds the 76-document corpus and 148 questions; `eval/run_benchmark.py` compares vector with hybrid and writes
+CSVs to `eval/results/`. See [benchmark/README.md](benchmark/README.md). The report's reproduce section has the commands.
 
-Ingestion, storage, entity placement, and hybrid retrieval (vector search plus single-hop graph traversal on `/query`) are implemented and working end to end.
+## Layout
 
-Backend hardening that has been added on top of that:
-* Upload validation on `/ingest`: rejects non-`.txt`, oversized, empty, or non-UTF8 files instead of crashing
-* Ingestion runs as a single atomic transaction (rollback and connection cleanup on failure, no partial writes)
-* Duplicate document detection by content hash
-* `/reset` requires a `?confirm=true` query parameter
-* Ollama calls retry on transient failures
-* Logging in place of print statements
-* CORS enabled so a local frontend can call the API directly
-
-### Minimal Frontend
-A single-page frontend is available at `web/index.html`. With the backend running (`uvicorn main:app --port 8000`), open the file directly in a browser. It lets you:
-* Upload a `.txt` file
-* Ask a question
-* See the matched text chunks and the graph connections for that query, drawn as a simple diagram
-
-The page has a spot reserved for a generated answer. It will show automatically once the `/query` response includes an `answer` field (or the endpoint producing that is wired in), and shows a placeholder message until then.
-
-### Still Open
-* A generation endpoint that turns retrieved and traversed chunks into a final answer
-* A full automated test suite
+| Path | Contents |
+|---|---|
+| `main.py`, `config.yaml`, `src/` | API server, retrieval, graph, generation |
+| `web/` | browser front end |
+| `benchmark/` | corpus, questions, builder, ingest script |
+| `eval/` | benchmark runner and recorded results |
+| `docs/` | project report and codebase explanation |
+| `tests/` | API tests (they reset the database: run them only against a scratch copy) |
+| `results.md`, `results.pdf` | the evaluation report |

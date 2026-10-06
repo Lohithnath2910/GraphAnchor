@@ -1,25 +1,39 @@
 [project]
-name = "project-i"
-version = "0.1.0"
-description = "Add your description here"
+name = "graphanchor"
+version = "0.2.0"
+description = "Local-first hybrid RAG: vector search plus a knowledge graph, with multi-step reasoning over private documents"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "chromadb>=1.5.9",
+    "en-core-web-sm",
     "fastapi>=0.141.1",
-    "httpx>=0.28.1",
+    "numpy>=2.0",
     "ollama>=0.6.2",
     "pydantic>=2.13.4",
     "pypdf>=6.17.0",
-    "pytest>=9.1.1",
-    "pytest-asyncio>=1.4.0",
     "python-multipart>=0.0.32",
     "pyyaml>=6.0.3",
-    "ruff>=0.16.8",
     "spacy>=3.8.16",
     "tiktoken>=0.13.0",
     "uvicorn>=0.52.1",
 ]
+
+[dependency-groups]
+# Not needed to run the server. httpx is required by FastAPI's TestClient.
+dev = [
+    "httpx>=0.28.1",
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+    "ruff>=0.16.8",
+]
+
+[tool.uv.sources]
+# The spaCy model is pinned as a wheel so nothing is downloaded when the server starts.
+en-core-web-sm = { url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
 
 [tool.pyright]
 extraPaths = ["."]

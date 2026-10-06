@@ -1,8 +1,18 @@
+# keep the build context small: only the server code is copied into the image
 .venv
-__pycache__
-*.pyc
 .git
 .gitignore
+.vscode
+.env
+.python-version
+__pycache__
+*.pyc
+.pytest_cache
+.ruff_cache
 data
+benchmark
+eval
+docs
 tests
-uv.lock
+results.md
+results.pdf
