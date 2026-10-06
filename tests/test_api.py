@@ -6,7 +6,17 @@ import pytest
 from fastapi.testclient import TestClient
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import tempfile
 import time
+
+# The tests wipe the database between cases, so they must never see ./data: point storage at a throwaway
+# directory before anything imports it, and enable the delete endpoints for this process only.
+from src.config import config
+
+_tmp = tempfile.mkdtemp(prefix="graphanchor_test_")
+config.db_path = os.path.join(_tmp, "graph.db")
+config.chroma_path = os.path.join(_tmp, "chroma")
+os.environ["GRAPHANCHOR_ALLOW_DELETE"] = "1"
 
 from main import app
 
@@ -44,9 +54,10 @@ def reset_db_before_and_after():
     # Clear databases after test
     client.delete("/reset?confirm=true")
 
-@patch('ollama.embeddings', side_effect=mock_embeddings)
-@patch('ollama.chat', side_effect=mock_chat)
-def test_easy_stats(mock_chat, mock_embed):
+@patch('src.retrieval._embed_client.embeddings', side_effect=mock_embeddings)
+@patch('src.generation._answer_client.chat', side_effect=mock_chat)
+@patch('src.generation._extract_client.chat', side_effect=mock_chat)
+def test_easy_stats(mock_extract, mock_chat, mock_embed):
     # Easy: Test stats endpoint on empty database
     response = client.get("/graph/stats")
     assert response.status_code == 200
@@ -55,9 +66,10 @@ def test_easy_stats(mock_chat, mock_embed):
     assert data["edge_count"] == 0
     assert data["total_entities_known"] == 0
 
-@patch('ollama.embeddings', side_effect=mock_embeddings)
-@patch('ollama.chat', side_effect=mock_chat)
-def test_medium_upload_and_query(mock_chat, mock_embed, tmp_path):
+@patch('src.retrieval._embed_client.embeddings', side_effect=mock_embeddings)
+@patch('src.generation._answer_client.chat', side_effect=mock_chat)
+@patch('src.generation._extract_client.chat', side_effect=mock_chat)
+def test_medium_upload_and_query(mock_extract, mock_chat, mock_embed, tmp_path):
     # Medium: Upload a single document, verify chunks, simple query
     # Create a temporary text file
     test_file = tmp_path / "test_doc.txt"
@@ -79,9 +91,10 @@ def test_medium_upload_and_query(mock_chat, mock_embed, tmp_path):
     assert "answer" in q_data
     assert len(q_data["vector_search_results"]) > 0
 
-@patch('ollama.embeddings', side_effect=mock_embeddings)
-@patch('ollama.chat', side_effect=mock_chat)
-def test_hard_complex_graph_query(mock_chat, mock_embed, tmp_path):
+@patch('src.retrieval._embed_client.embeddings', side_effect=mock_embeddings)
+@patch('src.generation._answer_client.chat', side_effect=mock_chat)
+@patch('src.generation._extract_client.chat', side_effect=mock_chat)
+def test_hard_complex_graph_query(mock_extract, mock_chat, mock_embed, tmp_path):
     # Hard: Upload complex file, query with graph traversal enabled and check wait/LLM generation
     test_file = tmp_path / "complex_doc.txt"
     # Provide a multi-hop story
@@ -115,9 +128,10 @@ The Munich Foundry is located in Germany."""
     assert "answer" in p_data
     assert len(p_data["answer"]) > 5
 
-@patch('ollama.embeddings', side_effect=mock_embeddings)
-@patch('ollama.chat', side_effect=mock_chat)
-def test_document_deletion(mock_chat, mock_embed, tmp_path):
+@patch('src.retrieval._embed_client.embeddings', side_effect=mock_embeddings)
+@patch('src.generation._answer_client.chat', side_effect=mock_chat)
+@patch('src.generation._extract_client.chat', side_effect=mock_chat)
+def test_document_deletion(mock_extract, mock_chat, mock_embed, tmp_path):
     test_file = tmp_path / "del_doc.txt"
     test_file.write_text("Alice works at Acme.")
     
@@ -158,13 +172,13 @@ def test_empty_file(tmp_path):
     assert res.status_code == 400
     assert "empty" in res.json()["detail"].lower()
 
-@patch('ollama.embeddings', side_effect=mock_embeddings)
+@patch('src.retrieval._embed_client.embeddings', side_effect=mock_embeddings)
 def test_extraction_failure_resilience(mock_embed, tmp_path):
     # If extraction fails, chunk should still be ingested but extraction_failures should be > 0
     def mock_chat_fail(*args, **kwargs):
         raise RuntimeError("Ollama crashed")
         
-    with patch('ollama.chat', side_effect=mock_chat_fail):
+    with patch('src.generation._extract_client.chat', side_effect=mock_chat_fail):
         test_file = tmp_path / "fail_doc.txt"
         test_file.write_text("This is some text.")
         
@@ -176,3 +190,10 @@ def test_extraction_failure_resilience(mock_embed, tmp_path):
         assert data["chunks_processed"] > 0
         assert data["extraction_failures"] > 0
         assert data["edges_added"] == 0
+
+def test_deletes_disabled_by_default(monkeypatch):
+    # Without the env flag neither delete endpoint may touch data.
+    monkeypatch.delenv("GRAPHANCHOR_ALLOW_DELETE")
+    assert client.delete("/reset?confirm=true").status_code == 403
+    assert client.delete("/documents/anything").status_code == 403
+    assert client.get("/graph/stats").json()["deletes_enabled"] is False
