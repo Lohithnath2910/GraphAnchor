@@ -279,9 +279,18 @@ def ingest_document(file: UploadFile = File(...)):
         extraction_failures=extraction_failures
     )
 
+def deletes_enabled() -> bool:
+    # Deleting is off unless the server is started with GRAPHANCHOR_ALLOW_DELETE=1: re-ingesting a corpus takes hours.
+    return os.environ.get("GRAPHANCHOR_ALLOW_DELETE") == "1"
+
+def require_deletes_enabled():
+    if not deletes_enabled():
+        raise HTTPException(status_code=403, detail="Deleting is disabled. Start the server with GRAPHANCHOR_ALLOW_DELETE=1 to enable it.")
+
 @app.delete("/reset")
 def reset_databases(confirm: bool = False):
     # Clears all data from SQLite and ChromaDB permanently.
+    require_deletes_enabled()
     if not confirm:
         raise HTTPException(status_code=400, detail="This permanently deletes all data. Pass ?confirm=true to proceed.")
 
@@ -341,6 +350,7 @@ def get_single_document_endpoint(doc_id: str):
 @app.delete("/documents/{doc_id}")
 def delete_single_document_endpoint(doc_id: str):
     # Selectively deletes a document and all its associated chunks and edges.
+    require_deletes_enabled()
     try:
         success = delete_document(doc_id)
         if not success:
@@ -363,12 +373,19 @@ def get_stats():
             cursor.execute("SELECT COUNT(*) FROM edges")
             edge_count = cursor.fetchone()[0]
 
+            cursor.execute("SELECT COUNT(*) FROM documents")
+            document_count = cursor.fetchone()[0]
+
         entities_count = get_entities_collection().count()
 
         return {
             "chunk_count": chunk_count,
             "edge_count": edge_count,
-            "total_entities_known": entities_count
+            "total_entities_known": entities_count,
+            "document_count": document_count,
+            "llm_model": config.llm_model,
+            "embed_model": config.embed_model,
+            "deletes_enabled": deletes_enabled()
         }
     except Exception as e:
         logger.error(f"Stats query failed: {e}")
@@ -983,7 +1000,8 @@ def get_answer_stream_endpoint(
     enable_graph: bool = Query(True, description="Toggle graph traversal")
 ):
     # Server-Sent Events (SSE) endpoint streaming grounded answer tokens in real time.
-    full_result = _run_query(q, k, enable_graph, generate=False)  # the answer is streamed below, not generated twice
+    # Same routing as /query (single-fact questions skip the graph); the answer is streamed below, not generated twice.
+    full_result = _dispatch_query(q, k, enable_graph, generate=False)
 
     # query_chunks already applies the chunk limit to ranking_breakdown, 
     # but we also need to apply the edge limit for the stream_answer call.
