@@ -1,0 +1,2850 @@
+[
+ {
+  "id": 1,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What does the acronym OSEMN stand for in the data science process?",
+  "expected_keywords": [
+   "Obtain",
+   "Scrub",
+   "Explore",
+   "Model",
+   "Interpret"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "01_fds_intro_and_assessment.txt"
+  ]
+ },
+ {
+  "id": 2,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "How many stages are in the Data Science Process described in this module?",
+  "expected_keywords": [
+   "8 stages"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "02_fds_data_science_context_1.txt"
+  ]
+ },
+ {
+  "id": 3,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What does CAP stand for in the CAP theorem mentioned for databases?",
+  "expected_keywords": [
+   "Consistency",
+   "Availability",
+   "Partition Tolerance"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "03_fds_data_science_context_2.txt"
+  ]
+ },
+ {
+  "id": 4,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "In SQL, what does the percent sign wildcard represent in a LIKE pattern?",
+  "expected_keywords": [
+   "zero or more characters"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "04_sql_data_filtering.txt"
+  ]
+ },
+ {
+  "id": 5,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What are the four operations commonly grouped under the acronym CRUD?",
+  "expected_keywords": [
+   "Create",
+   "Read",
+   "Update",
+   "Delete"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "04_sql_data_filtering.txt"
+  ]
+ },
+ {
+  "id": 6,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "Who introduced the NoSQL concept, and in what year?",
+  "expected_keywords": [
+   "Strozz",
+   "1998"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "05_nosql_databases.txt"
+  ]
+ },
+ {
+  "id": 7,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What are the four main types of NoSQL databases listed?",
+  "expected_keywords": [
+   "key-value",
+   "column-oriented",
+   "graph",
+   "document-oriented"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "05_nosql_databases.txt"
+  ]
+ },
+ {
+  "id": 8,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What is the key difference between RANK() and DENSE_RANK() when there are tied values?",
+  "expected_keywords": [
+   "skips the rank",
+   "does not skip"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "06_sql_window_functions.txt"
+  ]
+ },
+ {
+  "id": 9,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What are the three types of counter measures listed for vulnerabilities?",
+  "expected_keywords": [
+   "Physical Controls",
+   "Administrative Controls",
+   "Technical Controls"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "07_infosec_vulnerabilities.txt"
+  ]
+ },
+ {
+  "id": 10,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What exploit did WannaCry use to spread, and which agency originally developed it?",
+  "expected_keywords": [
+   "EternalBlue",
+   "National Security Agency",
+   "Shadow Brokers"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "08_infosec_malware_types.txt"
+  ]
+ },
+ {
+  "id": 11,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What is the difference between a transient virus and a resident virus?",
+  "expected_keywords": [
+   "Transient Virus",
+   "Resident Virus",
+   "active only while"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "08_infosec_malware_types.txt"
+  ]
+ },
+ {
+  "id": 12,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "Within how many days must a HIPAA breach affecting 500 or more people be reported to HHS?",
+  "expected_keywords": [
+   "60 days"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "09_infosec_security_standards.txt"
+  ]
+ },
+ {
+  "id": 13,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What penalty can India's Data Protection Board impose under the DPDPA for failing to take reasonable security safeguards?",
+  "expected_keywords": [
+   "250 crore"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "09_infosec_security_standards.txt"
+  ]
+ },
+ {
+  "id": 14,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What are the three functions covered by the AAA model used in RADIUS?",
+  "expected_keywords": [
+   "Authentication",
+   "Authorization",
+   "Accounting"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "10_infosec_authentication.txt"
+  ]
+ },
+ {
+  "id": 15,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "In SAML, what are the two main parties that exchange authentication and authorization data?",
+  "expected_keywords": [
+   "Identity Provider",
+   "Service Provider"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "10_infosec_authentication.txt"
+  ]
+ },
+ {
+  "id": 16,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What are the four pillars of Attribute-Based Access Control?",
+  "expected_keywords": [
+   "Subject Attributes",
+   "Resource Attributes",
+   "Environment Attributes",
+   "Action Attributes"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "11_infosec_abac.txt"
+  ]
+ },
+ {
+  "id": 17,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "In CP-ABE, what does the encrypted file hold, and what does the user's key hold?",
+  "expected_keywords": [
+   "holds the policy",
+   "holds the attributes"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "11_infosec_abac.txt"
+  ]
+ },
+ {
+  "id": 18,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What is the difference between discretionary access control and mandatory access control?",
+  "expected_keywords": [
+   "discretionary access control",
+   "mandatory access control"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "12_infosec_os_security.txt"
+  ]
+ },
+ {
+  "id": 19,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "Which governments collaborated to create the Common Criteria standard?",
+  "expected_keywords": [
+   "Canada",
+   "France",
+   "Germany",
+   "Netherlands",
+   "United Kingdom",
+   "United States"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "12_infosec_os_security.txt"
+  ]
+ },
+ {
+  "id": 20,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What three aspects make up information privacy according to this material?",
+  "expected_keywords": [
+   "sensitive data",
+   "affected",
+   "controlled disclosure"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "13_infosec_privacy.txt"
+  ]
+ },
+ {
+  "id": 21,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What are the three ways individuals can manage their identity to protect privacy?",
+  "expected_keywords": [
+   "Anonymity",
+   "Pseudonymity",
+   "Multiple Identities"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "13_infosec_privacy.txt"
+  ]
+ },
+ {
+  "id": 22,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What is the difference between Boolean-based and time-based blind SQL injection?",
+  "expected_keywords": [
+   "Boolean-based Blind SQL Injection",
+   "Time-based Blind SQL Injection"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "14_infosec_sql_injection.txt"
+  ]
+ },
+ {
+  "id": 23,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What technique groups patients with similar demographic and medical data to prevent inference attacks?",
+  "expected_keywords": [
+   "k-anonymization"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "15_infosec_multilevel_security.txt"
+  ]
+ },
+ {
+  "id": 24,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "How many customers were affected by the Marriott International data breach, and in what year?",
+  "expected_keywords": [
+   "Marriott",
+   "500 million",
+   "2018"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "15_infosec_multilevel_security.txt"
+  ]
+ },
+ {
+  "id": 25,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What three methods do firewalls use to control traffic?",
+  "expected_keywords": [
+   "Packet filtering",
+   "Proxy service",
+   "Stateful inspection"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "16_infosec_firewall_configuration.txt"
+  ]
+ },
+ {
+  "id": 26,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What does DMZ refer to in firewall configuration, per the house analogy?",
+  "expected_keywords": [
+   "front yard",
+   "DMZ"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "16_infosec_firewall_configuration.txt"
+  ]
+ },
+ {
+  "id": 27,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What are the three categories of DLP solution types described?",
+  "expected_keywords": [
+   "Network DLP",
+   "Storage DLP",
+   "Endpoint DLP"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "17_infosec_data_loss_prevention.txt"
+  ]
+ },
+ {
+  "id": 28,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What are the three primary classes of intrusion detection methodology?",
+  "expected_keywords": [
+   "Signature-based detection",
+   "Anomaly-based detection",
+   "stateful protocol analysis"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "17_infosec_data_loss_prevention.txt"
+  ]
+ },
+ {
+  "id": 29,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What is the difference between an Inside Local IP Address and an Inside Global IP Address?",
+  "expected_keywords": [
+   "Before translation",
+   "After translation"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "18_infosec_nat_configuration.txt"
+  ]
+ },
+ {
+  "id": 30,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "In PAT, how are multiple private IP addresses mapped to one public IP address?",
+  "expected_keywords": [
+   "Port Address Translation",
+   "source ports"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "18_infosec_nat_configuration.txt"
+  ]
+ },
+ {
+  "id": 31,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What is the main drawback of the partitioning approach to multilevel database security?",
+  "expected_keywords": [
+   "elimination of redundancy",
+   "high-level user"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "19_infosec_proposals_multilevel_security.txt"
+  ]
+ },
+ {
+  "id": 32,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What are the three pieces that make up an integrity lock for a data item?",
+  "expected_keywords": [
+   "sensitivity label",
+   "checksum"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "19_infosec_proposals_multilevel_security.txt"
+  ]
+ },
+ {
+  "id": 33,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "In KP-ABE, what does the encrypted ciphertext contain, and what does the user's private key contain?",
+  "expected_keywords": [
+   "encrypted data contains a set of attributes",
+   "private key contains the access policy"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "20_infosec_attribute_based_encryption.txt"
+  ]
+ },
+ {
+  "id": 34,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What cryptographic technique allows computations on encrypted data without decrypting it first?",
+  "expected_keywords": [
+   "Homomorphic Encryption"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "21_infosec_cryptographic_privacy.txt"
+  ]
+ },
+ {
+  "id": 35,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What does the acronym zk-SNARK stand for?",
+  "expected_keywords": [
+   "Succinct",
+   "Interactive Argument of Knowledge"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "21_infosec_cryptographic_privacy.txt"
+  ]
+ },
+ {
+  "id": 36,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What is the feminine singular form of the Spanish adjective for Italian nationality?",
+  "expected_keywords": [
+   "italiana"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "22_spanish_nationality.txt"
+  ]
+ },
+ {
+  "id": 37,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What is the masculine nationality adjective for someone from Germany in Spanish?",
+  "expected_keywords": [
+   "alemán"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "22_spanish_nationality.txt"
+  ]
+ },
+ {
+  "id": 38,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What is the Spanish word for the number 17?",
+  "expected_keywords": [
+   "Diecisiete"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "23_spanish_numbers.txt"
+  ]
+ },
+ {
+  "id": 39,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What is the Spanish ordinal number for '5th'?",
+  "expected_keywords": [
+   "Quinto"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "23_spanish_numbers.txt"
+  ]
+ },
+ {
+  "id": 40,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What are the four Spanish definite articles, by gender and number?",
+  "expected_keywords": [
+   "EL",
+   "LA",
+   "LOS",
+   "LAS"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "24_spanish_articles.txt"
+  ]
+ },
+ {
+  "id": 41,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What are the four Spanish indefinite articles, by gender and number?",
+  "expected_keywords": [
+   "UN",
+   "UNA",
+   "UNOS",
+   "UNAS"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "24_spanish_articles.txt"
+  ]
+ },
+ {
+  "id": 42,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "With which three types of people should you generally speak formally, per this material?",
+  "expected_keywords": [
+   "don't know",
+   "older than you",
+   "superior position"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "25_spanish_greetings.txt"
+  ]
+ },
+ {
+  "id": 43,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What is the 'nosotros/as' conjugation of the verb tener?",
+  "expected_keywords": [
+   "Tenemos"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "26_spanish_tener_verb.txt"
+  ]
+ },
+ {
+  "id": 44,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What topics does this material cover regarding the Spanish calendar?",
+  "expected_keywords": [
+   "Días",
+   "Meses",
+   "cumpleaños"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "27_spanish_dates_days_months.txt"
+  ]
+ },
+ {
+  "id": 45,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What are the three uses of the verb estar given in this material?",
+  "expected_keywords": [
+   "Location",
+   "Physical Condition",
+   "Emotion"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "28_spanish_estar_verb.txt"
+  ]
+ },
+ {
+  "id": 46,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What are the Spanish words for grandfather and grandmother?",
+  "expected_keywords": [
+   "abuelo",
+   "abuela"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "29_spanish_family.txt"
+  ]
+ },
+ {
+  "id": 47,
+  "category": "real_single_hop",
+  "confidence": "high",
+  "question": "What is a reflexive action in Spanish grammar, as defined in this material?",
+  "expected_keywords": [
+   "reflexive action",
+   "yourself"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   "30_spanish_reflexive_verbs.txt"
+  ]
+ },
+ {
+  "id": 101,
+  "category": "single_hop",
+  "confidence": "high",
+  "question": "Who directs the Lodestar Timing Station?",
+  "expected_keywords": [
+   "Prowse"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   5
+  ]
+ },
+ {
+  "id": 102,
+  "category": "single_hop",
+  "confidence": "high",
+  "question": "What is the name of the hub casting batch whose porosity caused the Tidewrack seal failures in February 2023?",
+  "expected_keywords": [
+   "AH-14"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   15
+  ]
+ },
+ {
+  "id": 103,
+  "category": "single_hop",
+  "confidence": "high",
+  "question": "Which membrane batch caused the April 2022 fouling at the Wetmoor Water Reuse project?",
+  "expected_keywords": [
+   "C-31"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   17
+  ]
+ },
+ {
+  "id": 104,
+  "category": "single_hop",
+  "confidence": "high",
+  "question": "Who is the chief executive of Strand & Keel Shipping?",
+  "expected_keywords": [
+   "Kallenbach"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   31
+  ]
+ },
+ {
+  "id": 105,
+  "category": "single_hop",
+  "confidence": "high",
+  "question": "What drought-tolerant wheat variety did the Seedvault North project release in 2022?",
+  "expected_keywords": [
+   "Brindlewheat-3"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   7
+  ]
+ },
+ {
+  "id": 106,
+  "category": "single_hop",
+  "confidence": "high",
+  "question": "Who chairs the Calder Reach Development Board?",
+  "expected_keywords": [
+   "Vandermeer"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   29
+  ]
+ },
+ {
+  "id": 107,
+  "category": "single_hop",
+  "confidence": "high",
+  "question": "Who heads the Audit Office of the Calder Reach Development Board?",
+  "expected_keywords": [
+   "Obuya"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   29
+  ]
+ },
+ {
+  "id": 108,
+  "category": "single_hop",
+  "confidence": "high",
+  "question": "Who directs the Merrow Cold Chain project?",
+  "expected_keywords": [
+   "Haidari"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   12
+  ]
+ },
+ {
+  "id": 109,
+  "category": "single_hop",
+  "confidence": "high",
+  "question": "What is the name of the upper reservoir of the Quarrel Hill Pumped Storage plant?",
+  "expected_keywords": [
+   "Ironwater"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   2
+  ]
+ },
+ {
+  "id": 110,
+  "category": "single_hop",
+  "confidence": "high",
+  "question": "Who leads the Larkspur Telehealth Network?",
+  "expected_keywords": [
+   "Eldridge"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   14
+  ]
+ },
+ {
+  "id": 111,
+  "category": "single_hop",
+  "confidence": "high",
+  "question": "What caused the cable cut at Hollin Pass in June 2023?",
+  "expected_keywords": [
+   "dredging"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   27
+  ]
+ },
+ {
+  "id": 112,
+  "category": "single_hop",
+  "confidence": "high",
+  "question": "Who manages Corran Mill?",
+  "expected_keywords": [
+   "Rivera"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   33
+  ]
+ },
+ {
+  "id": 114,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who manages the plant that made the rotor hubs of the Tidewrack Tidal Array?",
+  "expected_keywords": [
+   "Demir"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   1,
+   33
+  ]
+ },
+ {
+  "id": 128,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who manages the plant that made the pump casings for the Quarrel Hill Pumped Storage plant?",
+  "expected_keywords": [
+   "Demir"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   2,
+   33
+  ]
+ },
+ {
+  "id": 165,
+  "category": "multi_hop_4",
+  "confidence": "high",
+  "question": "Who manages the plant that made the hubs for the array whose director studied under the head of the institute that monitors its wildlife?",
+  "expected_keywords": [
+   "Demir"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   1,
+   30,
+   33
+  ]
+ },
+ {
+  "id": 125,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the chief executive of the group that supplied the membranes for the Wetmoor Water Reuse plant?",
+  "expected_keywords": [
+   "Tavares"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   3,
+   33
+  ]
+ },
+ {
+  "id": 137,
+  "category": "multi_hop_3",
+  "confidence": "high",
+  "question": "Who is the chief executive of the company that made the antenna bearings for the station supplying timing to the Gantry Line?",
+  "expected_keywords": [
+   "Tavares"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   4,
+   5,
+   33
+  ]
+ },
+ {
+  "id": 163,
+  "category": "multi_hop_4",
+  "confidence": "high",
+  "question": "Who is the chief executive of the group that owns the plant where the director of the works powered by the Tidewrack array used to work?",
+  "expected_keywords": [
+   "Tavares"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   1,
+   9,
+   33
+  ]
+ },
+ {
+  "id": 117,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who chairs the bank that financed the Ferrous Bay Offshore Wind farm?",
+  "expected_keywords": [
+   "Osterhout"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   10,
+   32
+  ]
+ },
+ {
+  "id": 132,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who chairs the bank that financed the port project whose biggest customer is Strand & Keel Shipping?",
+  "expected_keywords": [
+   "Osterhout"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   6,
+   32
+  ]
+ },
+ {
+  "id": 160,
+  "category": "multi_hop_4",
+  "confidence": "high",
+  "question": "Who chairs the bank whose former analyst now directs the port project that relies on timing from the station at Cairn Head?",
+  "expected_keywords": [
+   "Osterhout"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   5,
+   6,
+   41,
+   32
+  ]
+ },
+ {
+  "id": 122,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the chief executive of the freight company that carries the isotopes made at Isotope Works?",
+  "expected_keywords": [
+   "Kallenbach"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   8,
+   31
+  ]
+ },
+ {
+  "id": 130,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the chief executive of the freight company that carries the recovered products of the Cinder Lake works?",
+  "expected_keywords": [
+   "Kallenbach"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   9,
+   31
+  ]
+ },
+ {
+  "id": 162,
+  "category": "multi_hop_4",
+  "confidence": "high",
+  "question": "Who is the chief executive of the freight company whose largest customer is the port project directed by a former employee of the bank that financed the Tidewrack array?",
+  "expected_keywords": [
+   "Kallenbach"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   1,
+   41,
+   6,
+   31
+  ]
+ },
+ {
+  "id": 129,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who chairs the body that funded the Larkspur Telehealth Network?",
+  "expected_keywords": [
+   "Vandermeer"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   14,
+   29
+  ]
+ },
+ {
+  "id": 144,
+  "category": "multi_hop_3",
+  "confidence": "high",
+  "question": "Who chairs the board that funds the timing station whose lightning damage preceded the Quarrel Hill grid trip?",
+  "expected_keywords": [
+   "Vandermeer"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   16,
+   5,
+   29
+  ]
+ },
+ {
+  "id": 164,
+  "category": "multi_hop_4",
+  "confidence": "high",
+  "question": "Who chairs the board that funded the fiber backbone carrying the timing signal for the light rail line whose director once worked for Strand & Keel Shipping?",
+  "expected_keywords": [
+   "Vandermeer"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   39,
+   4,
+   5,
+   13,
+   29
+  ]
+ },
+ {
+  "id": 124,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who directs the institute whose audit team investigated the Wetmoor membrane fouling?",
+  "expected_keywords": [
+   "Brandvik"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   17,
+   30
+  ]
+ },
+ {
+  "id": 136,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who directs the institute that designed the sensor network of the Beacon Hill Flood Barrier?",
+  "expected_keywords": [
+   "Brandvik"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   11,
+   30
+  ]
+ },
+ {
+  "id": 142,
+  "category": "multi_hop_3",
+  "confidence": "high",
+  "question": "Who directs the institute that hosts the project whose duplicate seed bank was damaged at the Dunmarrow depot?",
+  "expected_keywords": [
+   "Brandvik"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   21,
+   7,
+   30
+  ]
+ },
+ {
+  "id": 120,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who directs the station that supplies the timing signal for the cranes at Dunmarrow Port?",
+  "expected_keywords": [
+   "Prowse"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   6,
+   5
+  ]
+ },
+ {
+  "id": 135,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who directs the station that supplies timing to the flood barrier at Beacon Hill?",
+  "expected_keywords": [
+   "Prowse"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   11,
+   5
+  ]
+ },
+ {
+  "id": 119,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the chief executive of the company that buys the electricity produced by the Tidewrack Tidal Array?",
+  "expected_keywords": [
+   "Rask"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   1,
+   35
+  ]
+ },
+ {
+  "id": 127,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the chief executive of the electricity company that supplies priority power to Isotope Works?",
+  "expected_keywords": [
+   "Rask"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   8,
+   35
+  ]
+ },
+ {
+  "id": 151,
+  "category": "multi_hop_3",
+  "confidence": "high",
+  "question": "Who is the chief executive of the electricity company that buys power from the array that supplies the Cinder Lake works?",
+  "expected_keywords": [
+   "Rask"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   9,
+   1,
+   35
+  ]
+ },
+ {
+  "id": 118,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the chief risk officer of the bank that financed the Tidewrack Tidal Array?",
+  "expected_keywords": [
+   "Lindqvist"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   1,
+   32
+  ]
+ },
+ {
+  "id": 139,
+  "category": "multi_hop_3",
+  "confidence": "high",
+  "question": "Who is the chief risk officer of the bank that financed the wind farm whose cable failure cost Isotope Works a production run?",
+  "expected_keywords": [
+   "Lindqvist"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   22,
+   10,
+   32
+  ]
+ },
+ {
+  "id": 123,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the chief executive of the hospital trust that hosts Isotope Works?",
+  "expected_keywords": [
+   "Anand"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   8,
+   36
+  ]
+ },
+ {
+  "id": 153,
+  "category": "multi_hop_3",
+  "confidence": "high",
+  "question": "Who is the chief executive of the hospital trust that hosts the telehealth network disrupted by the Hollin Pass cable cut?",
+  "expected_keywords": [
+   "Anand"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   27,
+   14,
+   36
+  ]
+ },
+ {
+  "id": 126,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who manages the mill that made the membranes for the Wetmoor Water Reuse plant?",
+  "expected_keywords": [
+   "Rivera"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   3,
+   33
+  ]
+ },
+ {
+  "id": 148,
+  "category": "multi_hop_3",
+  "confidence": "high",
+  "question": "Who manages the mill that made the membranes for the plant whose reclaimed water irrigates the farms of the Verdant Seeds Cooperative?",
+  "expected_keywords": [
+   "Rivera"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   34,
+   3,
+   33
+  ]
+ },
+ {
+  "id": 131,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who chairs the cooperative whose seed sales fund the Seedvault North project?",
+  "expected_keywords": [
+   "Fairbairn"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   7,
+   34
+  ]
+ },
+ {
+  "id": 133,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who directs the project that adopted the scheduling method of the Gantry Line light rail project?",
+  "expected_keywords": [
+   "Adebayo"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   4,
+   6
+  ]
+ },
+ {
+  "id": 134,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who directs the project that supplies reclaimed water to the farms of the Verdant Seeds Cooperative?",
+  "expected_keywords": [
+   "Mokoena"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   34,
+   3
+  ]
+ },
+ {
+  "id": 154,
+  "category": "multi_hop_3",
+  "confidence": "high",
+  "question": "Who directs the cold chain project whose Dunmarrow depot lost seed stock during the brownout caused by the Ferrous Bay export cable fault?",
+  "expected_keywords": [
+   "Haidari"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   24,
+   21,
+   12
+  ]
+ },
+ {
+  "id": 157,
+  "category": "multi_hop_3",
+  "confidence": "high",
+  "question": "Who directs the breeding project hosted by the institute whose director supervised the leader of the Tidewrack array?",
+  "expected_keywords": [
+   "Raghunathan"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   1,
+   30,
+   7
+  ]
+ },
+ {
+  "id": 115,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Which freight company previously employed the director of the Gantry Line?",
+  "expected_keywords": [
+   "Strand & Keel"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   4,
+   39
+  ]
+ },
+ {
+  "id": 116,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Which bank previously employed the director of the Dunmarrow Port Automation project?",
+  "expected_keywords": [
+   "Harbourgate"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   6,
+   41
+  ]
+ },
+ {
+  "id": 201,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the deputy director of the project led by the former Harbourgate Mutual Bank infrastructure analyst?",
+  "expected_keywords": [
+   "Odhiambo"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   41,
+   6
+  ],
+  "evidence": [
+   [
+    41,
+    "analyst in its infrastructure and project finance division"
+   ],
+   [
+    41,
+    "directs the dunmarrow port automation project"
+   ],
+   [
+    6,
+    "his deputy is wilhelmina odhiambo"
+   ]
+  ]
+ },
+ {
+  "id": 202,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the process chief of the recycling works directed by the former Ashgill Works laboratory researcher?",
+  "expected_keywords": [
+   "Mbeki"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   43,
+   9
+  ],
+  "evidence": [
+   [
+    43,
+    "post in the metallurgical laboratory at ashgill works"
+   ],
+   [
+    43,
+    "director of the cinder lake battery recycling works"
+   ],
+   [
+    9,
+    "process chief is astrid mbeki"
+   ]
+  ]
+ },
+ {
+  "id": 203,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who heads the laboratory of the water reuse project whose director previously researched membrane fouling at the Marrow Institute?",
+  "expected_keywords": [
+   "Ruud"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   44,
+   3
+  ],
+  "evidence": [
+   [
+    44,
+    "worked as a researcher at the institute"
+   ],
+   [
+    44,
+    "director of the wetmoor water reuse project"
+   ],
+   [
+    3,
+    "head of the laboratory is dr. ebba ruud"
+   ]
+  ]
+ },
+ {
+  "id": 204,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the signals chief of the light rail project directed by the former Strand & Keel network planner?",
+  "expected_keywords": [
+   "Lindgren"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   39,
+   4
+  ],
+  "evidence": [
+   [
+    39,
+    "network planner"
+   ],
+   [
+    39,
+    "director of the gantry line light rail project"
+   ],
+   [
+    4,
+    "signals chief is pavel lindgren"
+   ]
+  ]
+ },
+ {
+  "id": 205,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the deputy director of the pumped storage plant whose director started in the region as a protection engineer at the Lumen Grid Company?",
+  "expected_keywords": [
+   "Thandeka"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   38,
+   2
+  ],
+  "evidence": [
+   [
+    38,
+    "recruited by the lumen grid company as a protection engineer"
+   ],
+   [
+    38,
+    "director of the quarrel hill pumped storage plant"
+   ],
+   [
+    2,
+    "her deputy is osric thandeka"
+   ]
+  ]
+ },
+ {
+  "id": 206,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the deputy director of the breeding project whose founding leader was supervised by the head of the Marrow Institute?",
+  "expected_keywords": [
+   "Hartigan"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   42,
+   7
+  ],
+  "evidence": [
+   [
+    42,
+    "her supervisor was professor ottoline brandvik"
+   ],
+   [
+    42,
+    "founding leader of the seedvault north breeding project"
+   ],
+   [
+    7,
+    "her deputy is olumide hartigan"
+   ]
+  ]
+ },
+ {
+  "id": 207,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the head of radiochemistry at the isotope facility that the St. Idris Hospital Trust owns?",
+  "expected_keywords": [
+   "Szabo"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   36,
+   8
+  ],
+  "evidence": [
+   [
+    36,
+    "it owns the isotope works facility"
+   ],
+   [
+    8,
+    "head of radiochemistry is dr. vikram szabo"
+   ]
+  ]
+ },
+ {
+  "id": 208,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the clinical chief of the telehealth network that the St. Idris Hospital Trust hosts?",
+  "expected_keywords": [
+   "Tan"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   36,
+   14
+  ],
+  "evidence": [
+   [
+    36,
+    "it hosts the larkspur telehealth network"
+   ],
+   [
+    14,
+    "clinical chief is dr. mireille tan"
+   ]
+  ]
+ },
+ {
+  "id": 209,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the refrigeration chief of the cold chain project that the hospital trust jointly sponsors with the Development Board?",
+  "expected_keywords": [
+   "Bhatt"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   36,
+   12
+  ],
+  "evidence": [
+   [
+    36,
+    "joint sponsor of the merrow cold chain project"
+   ],
+   [
+    12,
+    "refrigeration chief is cosmo bhatt"
+   ]
+  ]
+ },
+ {
+  "id": 210,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who leads the group-wide quality program at the company whose casting plant made the Tidewrack rotor hubs?",
+  "expected_keywords": [
+   "Tiernan"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   1,
+   33
+  ],
+  "evidence": [
+   [
+    1,
+    "hubs were manufactured at ashgill works"
+   ],
+   [
+    33,
+    "director of quality is dr. ambrose tiernan"
+   ]
+  ]
+ },
+ {
+  "id": 211,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who heads the metallurgical laboratory at the plant that cast the Quarrel Hill pump-turbine casings?",
+  "expected_keywords": [
+   "Greenfield"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   2,
+   33
+  ],
+  "evidence": [
+   [
+    33,
+    "cast the pump-turbine casings of the quarrel hill"
+   ],
+   [
+    33,
+    "head of the metallurgical laboratory at ashgill works is dr. obadiah greenfield"
+   ]
+  ]
+ },
+ {
+  "id": 212,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who heads the polymer laboratory at the plant that made the Wetmoor membrane modules?",
+  "expected_keywords": [
+   "Ashworth"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   17,
+   33
+  ],
+  "evidence": [
+   [
+    17,
+    "made at corran mill"
+   ],
+   [
+    33,
+    "head of corran mill's polymer laboratory is dr. fatima ashworth"
+   ]
+  ]
+ },
+ {
+  "id": 213,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the chief executive of the public body that funded the Gantry Line?",
+  "expected_keywords": [
+   "Sandoval"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   4,
+   29
+  ],
+  "evidence": [
+   [
+    29,
+    "gantry line light rail project, for which it has committed 140 million"
+   ],
+   [
+    29,
+    "chief executive is margit sandoval"
+   ]
+  ]
+ },
+ {
+  "id": 214,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the director of finance of the public body that owns the Hollin Fibre Backbone?",
+  "expected_keywords": [
+   "Thackeray"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   13,
+   29
+  ],
+  "evidence": [
+   [
+    29,
+    "owns the facility itself"
+   ],
+   [
+    29,
+    "hollin fibre backbone"
+   ],
+   [
+    29,
+    "director of finance is ingolf thackeray"
+   ]
+  ]
+ },
+ {
+  "id": 215,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who chairs the board of directors of the group whose plant made the Gantry Line's precision oscillators?",
+  "expected_keywords": [
+   "Aldrich"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   4,
+   33
+  ],
+  "evidence": [
+   [
+    33,
+    "precision oscillators of the gantry line"
+   ],
+   [
+    33,
+    "the chair matthias aldrich"
+   ]
+  ]
+ },
+ {
+  "id": 216,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the chief financial officer of the group that cast the Quarrel Hill pump-turbine casings?",
+  "expected_keywords": [
+   "Castellanos"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   2,
+   33
+  ],
+  "evidence": [
+   [
+    33,
+    "pump-turbine casings of the quarrel hill"
+   ],
+   [
+    33,
+    "chief financial officer is henriette castellanos"
+   ]
+  ]
+ },
+ {
+  "id": 217,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who chairs the energy committee of the body that funded the Quarrel Hill Pumped Storage plant?",
+  "expected_keywords": [
+   "Mulholland"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   2,
+   29
+  ],
+  "evidence": [
+   [
+    29,
+    "quarrel hill pumped storage plant with 62 million"
+   ],
+   [
+    29,
+    "committee on energy is chaired by one of the regional council representatives, fergus mulholland"
+   ]
+  ]
+ },
+ {
+  "id": 218,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the deputy director of the project whose duplicate seed bank was lost at the Dunmarrow cold store in November 2023?",
+  "expected_keywords": [
+   "Hartigan"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   21,
+   7
+  ],
+  "evidence": [
+   [
+    21,
+    "duplicate seed bank"
+   ],
+   [
+    7,
+    "her deputy is olumide hartigan"
+   ]
+  ]
+ },
+ {
+  "id": 219,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the chief engineer of the tidal array whose hub seals failed in February 2023?",
+  "expected_keywords": [
+   "Okonkwo"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   15,
+   1
+  ],
+  "evidence": [
+   [
+    15,
+    "hub seals"
+   ],
+   [
+    1,
+    "chief engineer is lazar okonkwo"
+   ]
+  ]
+ },
+ {
+  "id": 220,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the chief engineer of the pumped storage plant that tripped off the grid in August 2022?",
+  "expected_keywords": [
+   "Boateng"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   16,
+   2
+  ],
+  "evidence": [
+   [
+    16,
+    "quarrel hill pumped storage plant tripped off the regional grid"
+   ],
+   [
+    2,
+    "chief engineer is henrik boateng"
+   ]
+  ]
+ },
+ {
+  "id": 221,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the hydraulics chief of the barrier that closed all its gates without a real surge in January 2024?",
+  "expected_keywords": [
+   "Wanjiru"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   25,
+   11
+  ],
+  "evidence": [
+   [
+    25,
+    "closed all six of its gates"
+   ],
+   [
+    11,
+    "hydraulics chief is pilar wanjiru"
+   ]
+  ]
+ },
+ {
+  "id": 222,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the head of marine operations of the wind farm whose export cable fault disconnected 48 turbines?",
+  "expected_keywords": [
+   "Nilsen"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   24,
+   10
+  ],
+  "evidence": [
+   [
+    24,
+    "disconnected all 48 turbines"
+   ],
+   [
+    10,
+    "head of marine operations is gustav nilsen"
+   ]
+  ]
+ },
+ {
+  "id": 223,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the network chief of the fibre network whose trunk cable a dredging barge severed in June 2023?",
+  "expected_keywords": [
+   "Valera"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   27,
+   13
+  ],
+  "evidence": [
+   [
+    27,
+    "dredging barge"
+   ],
+   [
+    13,
+    "network chief is ngozi valera"
+   ]
+  ]
+ },
+ {
+  "id": 224,
+  "category": "multi_hop_2",
+  "confidence": "high",
+  "question": "Who is the deputy director of the station whose director wrote the report on the lightning-damaged antenna?",
+  "expected_keywords": [
+   "Baek"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   19,
+   5
+  ],
+  "evidence": [
+   [
+    19,
+    "written by the station's director, dr. anneliese prowse"
+   ],
+   [
+    5,
+    "her deputy is jun-seo baek"
+   ]
+  ]
+ },
+ {
+  "id": 225,
+  "category": "multi_hop_3",
+  "confidence": "high",
+  "question": "Who is the director of finance of the body that funded the water reuse project led by a former researcher of the Marrow Institute?",
+  "expected_keywords": [
+   "Thackeray"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   44,
+   3,
+   29
+  ],
+  "evidence": [
+   [
+    44,
+    "worked as a researcher at the institute"
+   ],
+   [
+    29,
+    "wetmoor water reuse project with 38 million"
+   ],
+   [
+    29,
+    "director of finance is ingolf thackeray"
+   ]
+  ]
+ },
+ {
+  "id": 226,
+  "category": "multi_hop_3",
+  "confidence": "high",
+  "question": "Who is the chief executive of the public body that funded the light rail project whose director once worked for the freight carrier at Dunmarrow Port?",
+  "expected_keywords": [
+   "Sandoval"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   39,
+   4,
+   29
+  ],
+  "evidence": [
+   [
+    39,
+    "strand & keel shipping"
+   ],
+   [
+    29,
+    "gantry line light rail project, for which it has committed 140 million"
+   ],
+   [
+    29,
+    "chief executive is margit sandoval"
+   ]
+  ]
+ },
+ {
+  "id": 227,
+  "category": "multi_hop_3",
+  "confidence": "high",
+  "question": "Who is the head of the technology office at the body that funded the timing station, whose director once worked in that body's rail office?",
+  "expected_keywords": [
+   "Voss"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   40,
+   5,
+   29
+  ],
+  "evidence": [
+   [
+    40,
+    "development board's rail office"
+   ],
+   [
+    29,
+    "lodestar timing station with 21 million"
+   ],
+   [
+    29,
+    "head of the technology office"
+   ]
+  ]
+ },
+ {
+  "id": 228,
+  "category": "multi_hop_3",
+  "confidence": "high",
+  "question": "Who chairs the group that made the antenna bearings for the timing station directed by a former railway signal engineer?",
+  "expected_keywords": [
+   "Aldrich"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   40,
+   5,
+   33
+  ],
+  "evidence": [
+   [
+    40,
+    "signal engineer"
+   ],
+   [
+    33,
+    "azimuth bearings and mounting frames for the antennas of the lodestar"
+   ],
+   [
+    33,
+    "the chair matthias aldrich"
+   ]
+  ]
+ },
+ {
+  "id": 229,
+  "category": "multi_hop_3",
+  "confidence": "high",
+  "question": "Who heads the metallurgical laboratory at the plant that made the pivot blocks of the barrier whose false closure blocked Dunmarrow Port?",
+  "expected_keywords": [
+   "Greenfield"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   25,
+   11,
+   33
+  ],
+  "evidence": [
+   [
+    25,
+    "closed all six of its gates"
+   ],
+   [
+    33,
+    "pivot blocks for the six gates of the beacon hill"
+   ],
+   [
+    33,
+    "dr. obadiah greenfield"
+   ]
+  ]
+ },
+ {
+  "id": 230,
+  "category": "multi_hop_3",
+  "confidence": "high",
+  "question": "Who is the deputy director of the wind farm whose export cable fault caused the brownout that cost Isotope Works a production run?",
+  "expected_keywords": [
+   "Valdez"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   22,
+   24,
+   10
+  ],
+  "evidence": [
+   [
+    22,
+    "export cable of the ferrous bay offshore wind farm"
+   ],
+   [
+    24,
+    "disconnected all 48 turbines"
+   ],
+   [
+    10,
+    "deputy is saoirse valdez"
+   ]
+  ]
+ },
+ {
+  "id": 231,
+  "category": "multi_hop_3",
+  "confidence": "high",
+  "question": "Who is the deputy director of the cold chain project whose Dunmarrow depot froze out the duplicate seed bank in the brownout?",
+  "expected_keywords": [
+   "Rojas"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   21,
+   26,
+   12
+  ],
+  "evidence": [
+   [
+    21,
+    "dunmarrow depot of the merrow cold chain"
+   ],
+   [
+    26,
+    "duplicate seed bank of the seedvault north"
+   ],
+   [
+    12,
+    "deputy is annika rojas"
+   ]
+  ]
+ },
+ {
+  "id": 232,
+  "category": "multi_hop_3",
+  "confidence": "high",
+  "question": "Who is the field manager of the project whose duplicate seed bank was damaged in the brownout caused by the Ferrous Bay cable fault?",
+  "expected_keywords": [
+   "Nakamura"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   21,
+   24,
+   7
+  ],
+  "evidence": [
+   [
+    21,
+    "brownout"
+   ],
+   [
+    24,
+    "export cable of the ferrous bay offshore wind farm"
+   ],
+   [
+    7,
+    "field manager is beatrix nakamura"
+   ]
+  ]
+ },
+ {
+  "id": 233,
+  "category": "multi_hop_3",
+  "confidence": "high",
+  "question": "Who is the clinical chief of the telehealth network whose mountain clinics were cut off by the dredging barge?",
+  "expected_keywords": [
+   "Tan"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   27,
+   28,
+   14
+  ],
+  "evidence": [
+   [
+    27,
+    "dredging barge"
+   ],
+   [
+    28,
+    "thirteen mountain clinics"
+   ],
+   [
+    14,
+    "clinical chief is dr. mireille tan"
+   ]
+  ]
+ },
+ {
+  "id": 234,
+  "category": "multi_hop_3",
+  "confidence": "high",
+  "question": "Who is the signals chief of the light rail project that suffered fail-safe stops when the timing signal from Cairn Head degraded?",
+  "expected_keywords": [
+   "Lindgren"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   18,
+   5,
+   4
+  ],
+  "evidence": [
+   [
+    18,
+    "fail-safe stops"
+   ],
+   [
+    18,
+    "timing signal supplied by the lodestar timing station at cairn head"
+   ],
+   [
+    4,
+    "signals chief is pavel lindgren"
+   ]
+  ]
+ },
+ {
+  "id": 235,
+  "category": "multi_hop_3",
+  "confidence": "high",
+  "question": "Who is the control room chief of the port project whose cranes collided after the timing station's signal degraded?",
+  "expected_keywords": [
+   "Marsh"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   20,
+   19,
+   6
+  ],
+  "evidence": [
+   [
+    20,
+    "timing drift originating at the lodestar timing station"
+   ],
+   [
+    19,
+    "collision between two automated cranes at dunmarrow port"
+   ],
+   [
+    6,
+    "control room chief is stellan marsh"
+   ]
+  ]
+ },
+ {
+  "id": 236,
+  "category": "multi_hop_3",
+  "confidence": "high",
+  "question": "What was the designation of the membrane batch that caused the 2022 fouling at the project directed by the former Marrow Institute researcher?",
+  "expected_keywords": [
+   "C-31"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   44,
+   3,
+   17
+  ],
+  "evidence": [
+   [
+    44,
+    "worked as a researcher at the institute"
+   ],
+   [
+    3,
+    "dr. naledi mokoena has directed wetmoor works"
+   ],
+   [
+    17,
+    "designated c-31"
+   ]
+  ]
+ },
+ {
+  "id": 237,
+  "category": "multi_hop_3",
+  "confidence": "high",
+  "question": "What was the designation of the hub casting batch that failed in the array led by the engineer who did his doctorate under the Marrow Institute's director?",
+  "expected_keywords": [
+   "AH-14"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   37,
+   1,
+   15
+  ],
+  "evidence": [
+   [
+    37,
+    "his doctoral supervisor was professor ottoline brandvik"
+   ],
+   [
+    1,
+    "dr. bjorn halvorsen has led the tidewrack project"
+   ],
+   [
+    15,
+    "designated ah-14"
+   ]
+  ]
+ },
+ {
+  "id": 238,
+  "category": "multi_hop_3",
+  "confidence": "high",
+  "question": "Who leads the audit team that investigated the failure at the water project directed by the former Marrow Institute researcher?",
+  "expected_keywords": [
+   "Idowu"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   44,
+   3,
+   17
+  ],
+  "evidence": [
+   [
+    44,
+    "worked as a researcher at the institute"
+   ],
+   [
+    17,
+    "an independent investigation was led by dr. kasper idowu"
+   ],
+   [
+    3,
+    "wetmoor works"
+   ]
+  ]
+ },
+ {
+  "id": 239,
+  "category": "multi_hop_4",
+  "confidence": "high",
+  "question": "Who is the deputy director of the project led by the former analyst of the bank that financed the wind farm whose cable fault caused the November 2023 brownout?",
+  "expected_keywords": [
+   "Odhiambo"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   24,
+   32,
+   41,
+   6
+  ],
+  "evidence": [
+   [
+    24,
+    "export cable of the ferrous bay offshore wind farm"
+   ],
+   [
+    32,
+    "120 million crowns to the ferrous bay offshore wind farm"
+   ],
+   [
+    41,
+    "analyst in its infrastructure and project finance division"
+   ],
+   [
+    6,
+    "his deputy is wilhelmina odhiambo"
+   ]
+  ]
+ },
+ {
+  "id": 240,
+  "category": "multi_hop_4",
+  "confidence": "high",
+  "question": "Who is the director of finance of the body that funded the timing station used by the automated port where the Ferrous Bay wind farm is based?",
+  "expected_keywords": [
+   "Thackeray"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   10,
+   6,
+   5,
+   29
+  ],
+  "evidence": [
+   [
+    10,
+    "operations base at dunmarrow port"
+   ],
+   [
+    5,
+    "dunmarrow port automation project uses it"
+   ],
+   [
+    29,
+    "lodestar timing station with 21 million"
+   ],
+   [
+    29,
+    "director of finance is ingolf thackeray"
+   ]
+  ]
+ },
+ {
+  "id": 241,
+  "category": "multi_hop_4",
+  "confidence": "high",
+  "question": "Who is the signals chief of the light rail project directed by the former network planner at the freight company that carries the recovered products of the recycling works led by a former Ashgill researcher?",
+  "expected_keywords": [
+   "Lindgren"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   43,
+   9,
+   31,
+   39,
+   4
+  ],
+  "evidence": [
+   [
+    43,
+    "post in the metallurgical laboratory at ashgill works"
+   ],
+   [
+    31,
+    "recovered cobalt, nickel, and lithium products of the cinder lake"
+   ],
+   [
+    39,
+    "network planner"
+   ],
+   [
+    4,
+    "signals chief is pavel lindgren"
+   ]
+  ]
+ },
+ {
+  "id": 242,
+  "category": "multi_hop_4",
+  "confidence": "high",
+  "question": "Who is the clinical chief of the telehealth network hosted by the trust that owns the facility which lost a production run in the brownout caused by the Ferrous Bay cable fault?",
+  "expected_keywords": [
+   "Tan"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   24,
+   22,
+   36,
+   14
+  ],
+  "evidence": [
+   [
+    22,
+    "export cable of the ferrous bay offshore wind farm"
+   ],
+   [
+    36,
+    "it owns the isotope works facility"
+   ],
+   [
+    36,
+    "hosts the larkspur telehealth network"
+   ],
+   [
+    14,
+    "clinical chief is dr. mireille tan"
+   ]
+  ]
+ },
+ {
+  "id": 243,
+  "category": "multi_hop_4",
+  "confidence": "high",
+  "question": "Who is the chief financial officer of the group whose plant made the pivot blocks of the flood barrier that protects the port hosting the Ferrous Bay wind farm's operations base?",
+  "expected_keywords": [
+   "Castellanos"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   10,
+   11,
+   33
+  ],
+  "evidence": [
+   [
+    10,
+    "operations base at dunmarrow port"
+   ],
+   [
+    11,
+    "protects some 14,000 homes and the dunmarrow port"
+   ],
+   [
+    33,
+    "pivot blocks for the six gates of the beacon hill"
+   ],
+   [
+    33,
+    "chief financial officer is henriette castellanos"
+   ]
+  ]
+ },
+ {
+  "id": 244,
+  "category": "aggregation",
+  "confidence": "high",
+  "question": "Which projects did the Calder Reach Development Board fund?",
+  "expected_keywords": [
+   "Gantry",
+   "Beacon",
+   "Quarrel",
+   "Hollin",
+   "Wetmoor",
+   "Lodestar",
+   "Larkspur"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   29
+  ],
+  "evidence": [
+   [
+    29,
+    "gantry line light rail project, for which it has committed 140 million"
+   ],
+   [
+    29,
+    "beacon hill flood barrier with 97 million"
+   ],
+   [
+    29,
+    "quarrel hill pumped storage plant with 62 million"
+   ],
+   [
+    29,
+    "hollin fibre backbone with 55 million"
+   ],
+   [
+    29,
+    "wetmoor water reuse project with 38 million"
+   ],
+   [
+    29,
+    "lodestar timing station with 21 million"
+   ],
+   [
+    29,
+    "larkspur telehealth network with 18 million"
+   ]
+  ]
+ },
+ {
+  "id": 245,
+  "category": "aggregation",
+  "confidence": "high",
+  "question": "Which projects did the Harbourgate Mutual Bank give its three largest infrastructure loans to?",
+  "expected_keywords": [
+   "Tidewrack",
+   "Dunmarrow",
+   "Ferrous"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   32
+  ],
+  "evidence": [
+   [
+    32,
+    "44 million crowns to the tidewrack tidal array"
+   ],
+   [
+    32,
+    "58 million crowns to the dunmarrow port automation"
+   ],
+   [
+    32,
+    "120 million crowns to the ferrous bay offshore wind farm"
+   ]
+  ]
+ },
+ {
+  "id": 246,
+  "category": "aggregation",
+  "confidence": "high",
+  "question": "Which projects received large castings or machined components from Ashgill Works?",
+  "expected_keywords": [
+   "Tidewrack",
+   "Quarrel",
+   "Beacon",
+   "Gantry",
+   "Lodestar"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   33
+  ],
+  "evidence": [
+   [
+    33,
+    "rotor hubs of all 24 turbines of the tidewrack"
+   ],
+   [
+    33,
+    "pump-turbine casings of the quarrel hill"
+   ],
+   [
+    33,
+    "pivot blocks for the six gates of the beacon hill"
+   ],
+   [
+    33,
+    "oscillators of the gantry line"
+   ],
+   [
+    33,
+    "antennas of the lodestar timing station"
+   ]
+  ]
+ },
+ {
+  "id": 247,
+  "category": "aggregation",
+  "confidence": "high",
+  "question": "Which two projects depend on products made at Corran Mill?",
+  "expected_keywords": [
+   "Wetmoor",
+   "Ferrous"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   33
+  ],
+  "evidence": [
+   [
+    33,
+    "membrane modules used by the wetmoor water reuse project"
+   ],
+   [
+    33,
+    "144 blades of the ferrous bay offshore wind farm"
+   ]
+  ]
+ },
+ {
+  "id": 248,
+  "category": "aggregation",
+  "confidence": "high",
+  "question": "Which projects and facilities were disrupted by the November 2023 brownout?",
+  "expected_keywords": [
+   "Isotope",
+   "Merrow",
+   "Wetmoor"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   22
+  ],
+  "evidence": [
+   [
+    22,
+    "lost a full production run of medical isotopes"
+   ],
+   [
+    22,
+    "disrupted the merrow cold chain's dunmarrow depot and reduced output at the wetmoor water reuse project"
+   ]
+  ]
+ },
+ {
+  "id": 249,
+  "category": "aggregation",
+  "confidence": "high",
+  "question": "Which three projects suffered incidents in the week of 14 August 2022 that were linked to the damage at the Lodestar Timing Station?",
+  "expected_keywords": [
+   "Gantry",
+   "Dunmarrow",
+   "Quarrel"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   19
+  ],
+  "evidence": [
+   [
+    19,
+    "fail-safe stops on the gantry line light rail network, a collision between two automated cranes at dunmarrow port, and the tripping of the quarrel hill pumped storage plant"
+   ]
+  ]
+ },
+ {
+  "id": 250,
+  "category": "aggregation",
+  "confidence": "high",
+  "question": "Which project directors previously worked at Strand & Keel Shipping, the Harbourgate Mutual Bank, the Lumen Grid Company or Ashgill Works?",
+  "expected_keywords": [
+   "Kowalczyk",
+   "Adebayo",
+   "Valkanova",
+   "Duarte"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   39,
+   41,
+   38,
+   43
+  ],
+  "evidence": [
+   [
+    39,
+    "to join strand & keel shipping"
+   ],
+   [
+    41,
+    "joined the harbourgate mutual bank"
+   ],
+   [
+    38,
+    "recruited by the lumen grid company"
+   ],
+   [
+    43,
+    "metallurgical laboratory at ashgill works"
+   ]
+  ]
+ },
+ {
+  "id": 251,
+  "category": "aggregation",
+  "confidence": "high",
+  "question": "Which two project directors did their doctoral studies under Professor Ottoline Brandvik?",
+  "expected_keywords": [
+   "Halvorsen",
+   "Raghunathan"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   37,
+   42
+  ],
+  "evidence": [
+   [
+    37,
+    "his doctoral supervisor was professor ottoline brandvik"
+   ],
+   [
+    42,
+    "her supervisor was professor ottoline brandvik"
+   ]
+  ]
+ },
+ {
+  "id": 252,
+  "category": "aggregation",
+  "confidence": "high",
+  "question": "Which projects does the St. Idris Hospital Trust own, host or jointly sponsor?",
+  "expected_keywords": [
+   "Isotope",
+   "Larkspur",
+   "Merrow"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   36
+  ],
+  "evidence": [
+   [
+    36,
+    "it owns the isotope works"
+   ],
+   [
+    36,
+    "it hosts the larkspur telehealth network"
+   ],
+   [
+    36,
+    "joint sponsor of the merrow cold chain"
+   ]
+  ]
+ },
+ {
+  "id": 253,
+  "category": "aggregation",
+  "confidence": "high",
+  "question": "Which organizations and projects use the timing signal of the Lodestar Timing Station?",
+  "expected_keywords": [
+   "Gantry",
+   "Dunmarrow",
+   "Lumen",
+   "Beacon"
+  ],
+  "forbidden_phrases": [],
+  "source_docs": [
+   5
+  ],
+  "evidence": [
+   [
+    5,
+    "the gantry line light rail project uses it"
+   ],
+   [
+    5,
+    "the dunmarrow port automation project uses it"
+   ],
+   [
+    5,
+    "the lumen grid company uses it"
+   ],
+   [
+    5,
+    "beacon hill flood barrier became a fourth customer"
+   ]
+  ]
+ }
+]
