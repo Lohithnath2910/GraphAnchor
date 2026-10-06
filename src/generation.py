@@ -1,4 +1,5 @@
 import logging
+import re
 import time
 
 import ollama
@@ -77,22 +78,54 @@ def extract_graph_from_chunk(text: str) -> GraphExtraction:
 
     raise RuntimeError(f"Graph extraction failed after {config.ollama_max_retries + 1} attempt(s): {last_err}") from last_err
 
+ANSWER_RULES_V1 = (
+    "4. Tone and Style:\n"
+    "   - Be direct, articulate, concise, and complete (1-3 well-constructed sentences).\n"
+    "   - Avoid conversational filler, introductory preambles (e.g., 'Based on the provided text'), disclaimers, or meta-commentary."
+)
+
+# V2 adds three rules that target failure modes seen in the benchmark: naming the wrong person from the same passages,
+# stopping a list early, and being misled by loosely related passages.
+ANSWER_RULES_V2 = (
+    "4. Precise, Grounded Answers Only:\n"
+    "   - Answer only the question asked, using only facts stated in the provided passages, facts and chains. Never use outside knowledge, "
+    "never guess, and never invent a name, number, date, or relationship that is not written in the context.\n"
+    "   - Give just the requested fact(s) in one short sentence. Do not add background, explanations, or extra details nobody asked for.\n"
+    "   - If the context does not contain the answer, reply exactly: 'The provided information does not contain the answer.' "
+    "A partial answer is fine only if every part of it is stated in the context.\n"
+    "   - Do not treat a person or entity as the answer merely because it appears nearby; check that the context states the exact "
+    "relationship the question describes.\n"
+    "5. Answer Exactly What Was Asked:\n"
+    "   - Give the specific role or item the question names. If it asks for a deputy, chief engineer, head of a department, or similar, "
+    "answer with that person, not with a different person such as the project director who appears in the same passages.\n"
+    "   - If the question asks 'Which ...' and expects several items, list every matching item that appears in any passage; do not stop at the first one or two.\n"
+    "   - If passages disagree, prefer the passage whose wording matches the question most directly.\n"
+    "6. Tone and Style:\n"
+    "   - Be direct and concise (one sentence; for list questions, name every item in one sentence).\n"
+    "   - Avoid conversational filler, introductory preambles (e.g., 'Based on the provided text'), disclaimers, or meta-commentary."
+)
+
 def _build_rag_prompts(
     query: str,
     vector_chunks: list[dict] | None = None,
     graph_edges: list[dict] | None = None,
-    traversed_chunks: list[dict] | None = None
+    traversed_chunks: list[dict] | None = None,
+    graph_paths: list[str] | None = None,
+    step_facts: list[str] | None = None
 ) -> tuple[str | None, str | None]:
     # Constructs grounded context and system/user prompts incorporating both text chunks and graph relationships.
     vector_chunks = vector_chunks or []
     graph_edges = graph_edges or []
     traversed_chunks = traversed_chunks or []
+    graph_paths = graph_paths or []
+    step_facts = step_facts or []
 
     if not vector_chunks and not graph_edges and not traversed_chunks:
         return None, None
 
     seen_texts = set()
     text_contexts = []
+    extra_contexts = []
 
     # Combined candidate chunks (ranked vector + traversed)
     combined = list(vector_chunks) + list(traversed_chunks)
@@ -103,7 +136,9 @@ def _build_rag_prompts(
             meta = item.get("metadata") or {}
             fname = meta.get("filename", "")
             header = f"[Source: {fname}]" if fname else f"[Passage {i+1}]"
-            text_contexts.append(f"{header}\n{txt.strip()}")
+            # v2 separates the passages vector search ranked highest from those only the graph added
+            target = extra_contexts if (config.prompt_v2 and item.get("source_type") == "graph") else text_contexts
+            target.append(f"{header}\n{txt.strip()}")
 
     edge_contexts = []
     for edge in graph_edges:
@@ -114,12 +149,23 @@ def _build_rag_prompts(
             edge_contexts.append(f"- {src} -> {rel} -> {tgt}")
 
     context_parts = []
+    if step_facts:
+        facts = "\n".join(f"- {f}" for f in step_facts)
+        context_parts.append(f"### Facts Established Step By Step (each answers part of the question):\n{facts}")
+    if graph_paths and config.prompt_v2:
+        chains = "\n".join(f"- {p}" for p in graph_paths)
+        context_parts.append(f"### Connection Chains (how entities in the passages link to the question):\n{chains}")
     if edge_contexts:
         triples = "\n".join(edge_contexts)
         context_parts.append(f"### Knowledge Graph Relationships:\n{triples}")
     if text_contexts:
         passages = "\n\n".join(text_contexts)
-        context_parts.append(f"### Relevant Evidence Passages:\n{passages}")
+        title = "Primary Passages (most similar to the question)" if extra_contexts else "Relevant Evidence Passages"
+        context_parts.append(f"### {title}:\n{passages}")
+    if extra_contexts:
+        extra = "\n\n".join(extra_contexts)
+        context_parts.append("### Additional Linked Passages (found through the knowledge graph; use them only for facts "
+                             f"the primary passages do not contain):\n{extra}")
 
     full_context = "\n\n".join(context_parts)
 
@@ -138,9 +184,7 @@ def _build_rag_prompts(
         "   - Formulate natural, fluent, and grammatical sentences.\n"
         "   - NEVER insert raw IDs, UUIDs, or awkward bracketed tags like '[Chunk: ...]' into your text.\n"
         "   - Do NOT extrapolate, hallucinate, or assume facts not present in the evidence.\n"
-        "4. Tone and Style:\n"
-        "   - Be direct, articulate, concise, and complete (1-3 well-constructed sentences).\n"
-        "   - Avoid conversational filler, introductory preambles (e.g., 'Based on the provided text'), disclaimers, or meta-commentary."
+        + (ANSWER_RULES_V2 if config.prompt_v2 else ANSWER_RULES_V1)
     )
 
     user_prompt = f"Context:\n{full_context}\n\nQuestion: {query}\n\nAnswer:"
@@ -150,10 +194,12 @@ def generate_answer(
     query: str,
     vector_chunks: list[dict] | None = None,
     graph_edges: list[dict] | None = None,
-    traversed_chunks: list[dict] | None = None
+    traversed_chunks: list[dict] | None = None,
+    graph_paths: list[str] | None = None,
+    step_facts: list[str] | None = None
 ) -> str:
     # Generates a grounded answer from retrieved chunks and graph facts using Ollama.
-    system_prompt, user_prompt = _build_rag_prompts(query, vector_chunks, graph_edges, traversed_chunks)
+    system_prompt, user_prompt = _build_rag_prompts(query, vector_chunks, graph_edges, traversed_chunks, graph_paths, step_facts)
     if not system_prompt or not user_prompt:
         return "I could not find any relevant information in the knowledge base to answer your question."
 
@@ -177,14 +223,68 @@ def generate_answer(
 
     raise RuntimeError(f"Answer generation failed after {config.ollama_max_retries + 1} attempt(s): {last_err}") from last_err
 
+class SubQuestions(BaseModel):
+    steps: list[str] = Field(description="Sub-questions in the order they must be answered")
+
+DECOMPOSE_SYSTEM = (
+    "You split a multi-hop question into simple sub-questions that are answered one after another.\n"
+    "Rules: write 2 or 3 steps. Each step asks for exactly one fact. A later step may refer to the answer of an earlier step with "
+    "{1} or {2} (the answer of step 1 or step 2). Keep every name from the question exactly as written. "
+    "If the question needs only one fact, return it unchanged as the single step.\n"
+    "Example question: Who is the chief executive of the company that made the rotor hubs of the Tidewrack Tidal Array?\n"
+    'Example steps: ["Which company made the rotor hubs of the Tidewrack Tidal Array?", "Who is the chief executive of {1}?"]\n'
+    "Example question: Who chairs the bank that financed the wind farm whose cable fault caused the November 2023 brownout?\n"
+    'Example steps: ["Which wind farm had a cable fault that caused the November 2023 brownout?", "Which bank financed {1}?", "Who chairs {2}?"]'
+)
+
+def decompose_question(query: str) -> list[str]:
+    # Returns the ordered sub-questions, or [] if the model output is unusable or the question is a single hop.
+    try:
+        response = _extract_client.chat(
+            model=config.llm_model,
+            messages=[{"role": "system", "content": DECOMPOSE_SYSTEM}, {"role": "user", "content": query}],
+            format=SubQuestions.model_json_schema(),
+            options={"num_ctx": 2048, "temperature": 0, "num_predict": 220}
+        )
+        steps = [x.strip() for x in SubQuestions.model_validate_json(response['message']['content']).steps if x.strip()]
+    except Exception as e:
+        logger.warning(f"Question decomposition failed: {e}")
+        return []
+    if not (2 <= len(steps) <= config.decompose_max_steps):
+        return []
+    # {n} may only point at an earlier step
+    for i, step in enumerate(steps):
+        if any(int(n) > i for n in re.findall(r"\{(\d+)\}", step)):
+            return []
+    return steps
+
+def short_answer(query: str, vector_chunks: list[dict], graph_edges: list[dict] | None = None) -> str:
+    # Answers one intermediate step with only the name or short phrase, so it can be substituted into the next step.
+    system_prompt, user_prompt = _build_rag_prompts(query, vector_chunks, graph_edges)
+    if not system_prompt or not user_prompt:
+        return ""
+    system_prompt += "\nIMPORTANT: reply with only the name or short phrase that answers the question, no full sentence."
+    try:
+        response = _answer_client.chat(
+            model=config.llm_model,
+            messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}],
+            options={"num_ctx": 8192, "temperature": 0, "num_predict": 30}
+        )
+        return response['message']['content'].strip().strip('."\'').split("\n")[0]
+    except Exception as e:
+        logger.warning(f"Intermediate answer failed: {e}")
+        return ""
+
 def stream_answer(
     query: str,
     vector_chunks: list[dict] | None = None,
     graph_edges: list[dict] | None = None,
-    traversed_chunks: list[dict] | None = None
+    traversed_chunks: list[dict] | None = None,
+    graph_paths: list[str] | None = None,
+    step_facts: list[str] | None = None
 ):
     # Streams a grounded answer token-by-token from Ollama for real-time UI display.
-    system_prompt, user_prompt = _build_rag_prompts(query, vector_chunks, graph_edges, traversed_chunks)
+    system_prompt, user_prompt = _build_rag_prompts(query, vector_chunks, graph_edges, traversed_chunks, graph_paths, step_facts)
     if not system_prompt or not user_prompt:
         yield "I could not find any relevant information in the knowledge base to answer your question."
         return

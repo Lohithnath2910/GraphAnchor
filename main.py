@@ -27,8 +27,10 @@ from pydantic import BaseModel
 
 from src.config import config
 from src.generation import (
+    decompose_question,
     extract_graph_from_chunk,
     generate_answer,
+    short_answer,
     stream_answer,
 )
 from src.ingestion import chunk_text, extract_text_from_file
@@ -427,11 +429,15 @@ QUERY_STOPWORDS = {"who", "whom", "whose", "which", "what", "when", "where", "th
                    "from", "have", "were", "been", "does", "will", "than", "then", "into", "also", "their", "there"}
 
 def rank_graph_candidates(candidate_ids: list[str], query_emb: list[float], chunks_col, limit: int,
-                          query_text: str = "", seen_doc_ids: set[str] | None = None) -> list[tuple[str, float | None]]:
+                          query_text: str = "", seen_doc_ids: set[str] | None = None,
+                          covered_texts: list[str] | None = None, min_gain: float | None = None) -> list[tuple[str, float | None]]:
     # Keeps the `limit` traversal chunks that best answer the question. Score = cosine similarity of the stored chunk
     # embedding to the question, blended with how many of the question's rarer words the chunk contains (IDF over the
     # candidate pool, so words every candidate shares count for nothing). Chunks from a document that is already
     # selected are discounted, because multi-hop answers usually need one chunk from each of several documents.
+    # Adaptive augmentation: when `covered_texts` (the vector chunks) is given and graph_min_coverage_gain > 0, no graph
+    # chunk is added if the vector chunks already contain nearly all the question's (IDF-weighted) terms, so hybrid cannot
+    # dilute an answer that vector search already found.
     # Falls back to traversal order (similarity None) if the embeddings cannot be read, so retrieval never breaks.
     if len(candidate_ids) <= 1:
         return [(cid, None) for cid in candidate_ids]
@@ -454,6 +460,15 @@ def rank_graph_candidates(candidate_ids: list[str], query_emb: list[float], chun
         w = config.graph_lexical_weight
         base = [(1.0 - w) * sim_norm[i] + w * lex[i] for i in range(len(ids))]
 
+        min_gain = config.graph_min_coverage_gain if min_gain is None else min_gain
+        if min_gain > 0 and covered_texts and idf:
+            # Query-level gate: if the vector chunks already contain (almost) every rarer word of the question, the
+            # question is answered by what vector search found and graph chunks would only add noise.
+            vec_text = " ".join(covered_texts).lower()
+            uncovered = sum(v for word, v in idf.items() if word not in vec_text) / idf_total
+            if uncovered < min_gain:
+                return []
+
         picked: list[tuple[str, float | None]] = []
         doc_count: dict[str, int] = {d: 1 for d in (seen_doc_ids or set())}
         remaining = set(range(len(ids)))
@@ -469,6 +484,23 @@ def rank_graph_candidates(candidate_ids: list[str], query_emb: list[float], chun
     except Exception as e:
         logger.warning(f"Graph chunk ranking failed, using traversal order: {e}")
         return [(cid, None) for cid in candidate_ids[:limit]]
+
+JUNK_ENTITY_RE = re.compile(r"[\[\](){}\"]|\s[.,;:]|[.,;:]\s*$")
+
+def is_junk_entity(name: str) -> bool:
+    # Extraction noise: sentence fragments, bracketed lists, and generic nouns ('plant', 'project') with no proper name.
+    # Generic hubs connect unrelated parts of the graph, so traversal must not walk through them.
+    n = (name or "").strip()
+    return not n or len(n.split()) > 6 or bool(JUNK_ENTITY_RE.search(n)) or not _distinctive_tokens(n)
+
+def select_node_edges(rows: list, q_words: set[str], keep: int = 12) -> list:
+    # Edges worth following out of one node: junk endpoints dropped, then ranked by how many of the question's words
+    # appear in the relation or the neighbouring entity, with extraction confidence as the tiebreaker.
+    clean = [r for r in rows if not is_junk_entity(r[0]) and not is_junk_entity(r[2])]
+    def score(r):
+        text = f"{r[1]} {r[0]} {r[2]}".lower()
+        return sum(1 for w in q_words if w in text) + (r[3] or 0)
+    return sorted(clean, key=score, reverse=True)[:keep]
 
 def _distinctive_tokens(text: str) -> set[str]:
     # Capitalised, non-generic words of an entity name ('Corvane battery recycling project' -> {'corvane'}).
@@ -494,6 +526,8 @@ def find_query_anchor_entities(query_text: str, query_emb: list[float], max_anch
             ent_tokens = _distinctive_tokens(ent)
             if not ent_tokens or len(ent.split()) > 6:
                 continue  # purely generic entity ('farm', 'port') or a run-on sentence fragment
+            if config.graph_hygiene and is_junk_entity(ent):
+                continue
             # Whole-phrase match (prevents partial matches like 'he' or 'con')
             if re.search(rf'\b{re.escape(ent.lower())}\b', q_lower):
                 anchor_scores[ent] = 1.0
@@ -592,16 +626,139 @@ def rank_and_fuse_chunks(
     ranked = sorted(fused.values(), key=lambda x: x["composite_score"], reverse=True)
     return ranked
 
+def _path_to_anchor(node: str, parent: dict, max_len: int = 4) -> list[tuple[str, str, str]]:
+    # Triples leading from a query anchor to `node`, following the breadth-first parents recorded during traversal.
+    triples: list[tuple[str, str, str]] = []
+    while node in parent and len(triples) < max_len:
+        prev, edge = parent[node]
+        triples.append(edge)
+        node = prev
+    return triples[::-1]
+
+def build_graph_paths(connected_chunks: list[dict], graph_results: list[dict], parent: dict, limit: int = 6) -> list[str]:
+    # One readable chain per graph chunk: how the entities in that chunk connect back to what the question mentions.
+    paths: list[str] = []
+    for c in connected_chunks:
+        best = None
+        for e in graph_results:
+            if e.get("found_in_chunk") != c["chunk_id"]:
+                continue
+            edge = (e["source"], e["relation"], e["target"])
+            for end in (e["source"], e["target"]):
+                triples = _path_to_anchor(end, parent)
+                cand = triples if edge in triples else triples + [edge]
+                if best is None or len(cand) < len(best):
+                    best = cand
+        if best and len(best) >= 2:
+            fname = (c.get("metadata") or {}).get("filename", "")
+            line = " ; ".join(f"{s} -[{r}]-> {t}" for s, r, t in best) + (f"  (evidence in {fname})" if fname else "")
+            if line not in paths:
+                paths.append(line)
+        if len(paths) >= limit:
+            break
+    return paths
+
+CHAIN_CUE_RE = re.compile(r"\b(?:(?:led|directed|hosted|funded|financed|owned|made|operated|supervised|carried|caused|sponsored)\s+by"
+                          r"|previously|formerly|former|once worked)\b")
+LIST_QUESTION_RE = re.compile(r"^(?:which|what|list|name)\b.*\b(?:projects|organizations|facilities|people|directors|incidents|"
+                              r"customers|companies|items|users)\b")
+
+def looks_multi_hop(q: str) -> bool:
+    # Cheap check for questions chained through relative clauses ("... of the company that made the hubs of ...").
+    words = q.lower().replace("?", " ").split()
+    markers = [w for w in words if w in ("that", "whose", "which", "who", "where")]
+    if words and words[0] in ("who", "which", "where"):
+        markers = markers[1:]  # the leading interrogative is not a relative clause
+    ql = q.lower()
+    return len(words) >= 9 and (len(markers) >= 1 or bool(CHAIN_CUE_RE.search(ql)) or ql.count(" of the ") >= 2)
+
+def needs_graph(q: str) -> bool:
+    # Routing signal: a chained question or a "which ...s" list question needs relations between documents; a single-fact
+    # lookup is answered by vector search alone, and graph chunks would only add noise to it.
+    return looks_multi_hop(q) or bool(LIST_QUESTION_RE.match(q.lower()))
+
+MAX_STEP_CHUNKS = 3  # chunks kept from each earlier step when the steps are merged for the final answer
+MAX_FINAL_CHUNKS = 14  # keeps the merged prompt inside the model's context window
+
+def _run_multistep(q: str, k: int, min_gain: float | None = None):
+    # Multi-hop answering: split the question into steps, retrieve (vector + graph) and answer each step in turn,
+    # substituting each short answer into the next step, then answer the original question from the merged evidence
+    # plus the facts established along the way. Returns None when the question cannot be decomposed, so the caller falls
+    # back to the single-pass pipeline.
+    steps = decompose_question(q)
+    if len(steps) < 2:
+        return None
+    answers: list[str] = []
+    step_facts: list[str] = []
+    reasoning: list[dict] = []
+    per_step: list[list[dict]] = []
+    edges: list[dict] = []
+    paths: list[str] = []
+    last = None
+    for i, step in enumerate(steps):
+        sub = re.sub(r"\{(\d+)\}", lambda m: answers[int(m.group(1)) - 1] if int(m.group(1)) - 1 < len(answers) else "", step)
+        res = _run_query(sub, k, True, generate=False, min_gain=min_gain)
+        chunks = res["ranking_breakdown"]
+        step_edges = sorted(res["graph_traversal"]["edges"], key=lambda x: -x.get("confidence", 0))[:15]
+        per_step.append(chunks)
+        edges.extend(step_edges)
+        paths.extend(p for p in res["graph_traversal"].get("paths", []) if p not in paths)
+        last = res
+        if i < len(steps) - 1:
+            ans = short_answer(sub, chunks, step_edges)
+            if not ans or "does not contain" in ans.lower():
+                return None  # an unusable intermediate answer would poison the next step
+            answers.append(ans)
+            step_facts.append(f"{sub} -> {ans}")
+            reasoning.append({"question": sub, "answer": ans})
+    merged: list[dict] = []
+    seen: set[str] = set()
+    for idx in range(len(per_step) - 1, -1, -1):  # final step first, then earlier steps' best chunks
+        take = per_step[idx] if idx == len(per_step) - 1 else per_step[idx][:MAX_STEP_CHUNKS]
+        for c in take:
+            if c["chunk_id"] not in seen:
+                seen.add(c["chunk_id"])
+                merged.append(c)
+    merged = merged[:MAX_FINAL_CHUNKS]
+    try:
+        answer = generate_answer(query=q, vector_chunks=merged, graph_edges=edges[:25], graph_paths=paths[:6], step_facts=step_facts)
+    except Exception as gen_err:
+        logger.error(f"Answer generation failed: {gen_err}")
+        answer = "Error generating answer from LLM. Please check Ollama connection."
+    reasoning.append({"question": steps[-1] if not answers else re.sub(r"\{(\d+)\}", lambda m: answers[int(m.group(1)) - 1] if int(m.group(1)) - 1 < len(answers) else "", steps[-1]), "answer": answer})
+    out = dict(last)
+    out.update({"query": q, "answer": answer, "ranking_breakdown": merged, "reasoning_steps": reasoning})
+    return out
+
+def _dispatch_query(q: str, k: int, enable_graph: bool, generate: bool = True, min_gain: float | None = None,
+                    decompose: bool | None = None):
+    # Single entry point for answering: multi-step when enabled and the question looks multi-hop, else the single pass.
+    routed_off = enable_graph and config.graph_routing and not needs_graph(q)
+    if routed_off:
+        enable_graph = False  # single-fact question: the graph is skipped, so hybrid answers exactly like vector
+    use_decompose = generate and enable_graph and (config.decompose_multihop if decompose is None else decompose)
+    if use_decompose and looks_multi_hop(q):
+        result = _run_multistep(q, k, min_gain)
+        if result is not None:
+            return result
+    result = _run_query(q, k, enable_graph, generate=generate, min_gain=min_gain)
+    if routed_off:
+        result["graph_traversal"]["metadata"] = {"message": "Graph skipped: single-fact question, vector search answers it directly.",
+                                                 "routed": False}
+    return result
+
 @app.get("/query")
 def query_chunks(
     q: str = Query(..., min_length=1),
     k: int = Query(3, ge=1, le=20),
     enable_graph: bool = Query(True, description="Toggle graph traversal augmentation"),
-    answer: bool = Query(True, description="Set false to return retrieval only (no LLM call), used by fast retrieval benchmarks")
+    answer: bool = Query(True, description="Set false to return retrieval only (no LLM call), used by fast retrieval benchmarks"),
+    min_gain: float | None = Query(None, ge=0, le=1, description="Override graph_min_coverage_gain for this request (tuning)"),
+    decompose: bool | None = Query(None, description="Override multi-step decomposition for this request (default: config)")
 ):
-    return _run_query(q, k, enable_graph, generate=answer)
+    return _dispatch_query(q, k, enable_graph, generate=answer, min_gain=min_gain, decompose=decompose)
 
-def _run_query(q: str, k: int, enable_graph: bool, generate: bool = True):
+def _run_query(q: str, k: int, enable_graph: bool, generate: bool = True, min_gain: float | None = None):
     # Executes hybrid search combining vector retrieval and graph traversal; generates an answer unless generate=False.
     t0 = time.perf_counter()
     try:
@@ -637,6 +794,8 @@ def _run_query(q: str, k: int, enable_graph: bool, generate: bool = True):
 
         graph_results = []
         connected_chunks = []
+        parent: dict[str, tuple[str, tuple[str, str, str]]] = {}  # node -> (previous node, edge) from the traversal
+        graph_paths: list[str] = []
 
         if enable_graph:
             anchor_entities = find_query_anchor_entities(q, emb, max_anchors=5)
@@ -645,7 +804,9 @@ def _run_query(q: str, k: int, enable_graph: bool, generate: bool = True):
 
             if anchor_entities:
                 visited_nodes = set()
-                current_frontier = {a[0] for a in anchor_entities}
+                q_words = {w for w in re.findall(r"[a-z0-9\-]{4,}", q.lower().replace("'s", "")) if w not in QUERY_STOPWORDS}
+                anchor_names = {a[0] for a in anchor_entities}
+                current_frontier = set(anchor_names)
 
                 with db_cursor() as cursor:
                     for depth in range(4):  # 4 hops reaches four-link chains; chunks are ranked by similarity and capped below to limit drift
@@ -661,15 +822,26 @@ def _run_query(q: str, k: int, enable_graph: bool, generate: bool = True):
                                 continue
                             visited_nodes.add(node)
 
-                            cursor.execute("""
-                                SELECT source_entity, relation, target_entity, confidence, chunk_id
-                                FROM edges
-                                WHERE source_entity = ? OR target_entity = ?
-                                ORDER BY confidence DESC
-                                LIMIT 10
-                            """, (node, node))
+                            if config.graph_hygiene:
+                                cursor.execute("""
+                                    SELECT source_entity, relation, target_entity, confidence, chunk_id
+                                    FROM edges
+                                    WHERE source_entity = ? OR target_entity = ?
+                                    ORDER BY confidence DESC
+                                    LIMIT 80
+                                """, (node, node))
+                                node_rows = select_node_edges(cursor.fetchall(), q_words)
+                            else:
+                                cursor.execute("""
+                                    SELECT source_entity, relation, target_entity, confidence, chunk_id
+                                    FROM edges
+                                    WHERE source_entity = ? OR target_entity = ?
+                                    ORDER BY confidence DESC
+                                    LIMIT 10
+                                """, (node, node))
+                                node_rows = cursor.fetchall()
 
-                            for row in cursor.fetchall():
+                            for row in node_rows:
                                 if len(traversed_edges_set) >= 200:
                                     break
                                 
@@ -689,6 +861,8 @@ def _run_query(q: str, k: int, enable_graph: bool, generate: bool = True):
                                 neighbor = row[2] if row[0] == node else row[0]
                                 if neighbor not in visited_nodes:
                                     next_frontier.add(neighbor)
+                                    if neighbor not in parent and neighbor not in anchor_names:
+                                        parent[neighbor] = (node, (row[0], row[1], row[2]))
 
                         current_frontier = next_frontier
 
@@ -711,7 +885,8 @@ def _run_query(q: str, k: int, enable_graph: bool, generate: bool = True):
                     candidate_ids.append(cid)
             candidate_ids = candidate_ids[:MAX_GRAPH_CANDIDATES]
             ranked_graph = rank_graph_candidates(candidate_ids, emb, chunks_col, MAX_GRAPH_CHUNKS, q,
-                                                 {cid.rsplit("_", 1)[0] for cid in retrieved_chunk_ids})
+                                                 {cid.rsplit("_", 1)[0] for cid in retrieved_chunk_ids},
+                                                 [v.get("text") or "" for v in vector_results], min_gain)
             needed_chunk_ids = [cid for cid, _ in ranked_graph]
             similarity_by_id = {cid: sim for cid, sim in ranked_graph}
             if needed_chunk_ids:
@@ -727,6 +902,7 @@ def _run_query(q: str, k: int, enable_graph: bool, generate: bool = True):
                             "metadata": {"filename": row[2]} if row[2] else {},
                             "similarity": similarity_by_id.get(row[0])
                         })
+            graph_paths = build_graph_paths(connected_chunks, graph_results, parent)
         else:
             graph_metadata = {"message": "Graph traversal is disabled."}
 
@@ -749,7 +925,8 @@ def _run_query(q: str, k: int, enable_graph: bool, generate: bool = True):
                 answer = generate_answer(
                     query=q,
                     vector_chunks=ranked_chunks,
-                    graph_edges=top_graph_edges
+                    graph_edges=top_graph_edges,
+                    graph_paths=graph_paths
                 )
             except Exception as gen_err:
                 logger.error(f"Answer generation failed: {gen_err}")
@@ -768,6 +945,7 @@ def _run_query(q: str, k: int, enable_graph: bool, generate: bool = True):
         "graph_traversal": {
             "metadata": graph_metadata,
             "edges": graph_results,
+            "paths": graph_paths,
             "connected_chunks": connected_chunks
         },
         "ranking_breakdown": ranked_chunks
@@ -789,13 +967,13 @@ def get_answer_endpoint(
     enable_graph: bool = Query(True, description="Toggle graph traversal")
 ):
     # Direct GET endpoint returning only the synthesized grounded answer.
-    full_result = query_chunks(q=q, k=k, enable_graph=enable_graph)
+    full_result = _dispatch_query(q, k, enable_graph)
     return AnswerResponse(query=full_result["query"], answer=full_result["answer"])
 
 @app.post("/answer", response_model=AnswerResponse)
 def post_answer_endpoint(req: QueryRequest):
     # Direct POST endpoint returning only the synthesized grounded answer.
-    full_result = query_chunks(q=req.query, k=req.k, enable_graph=req.enable_graph)
+    full_result = _dispatch_query(req.query, req.k, req.enable_graph)
     return AnswerResponse(query=full_result["query"], answer=full_result["answer"])
 
 @app.get("/answer/stream")
@@ -821,7 +999,8 @@ def get_answer_stream_endpoint(
             "edge_count": len(graph_edges)  # Send original total count for UI stats
         }
         yield f"event: meta\ndata: {json.dumps(meta)}\n\n"
-        for token in stream_answer(query=q, vector_chunks=ranked_chunks, graph_edges=top_graph_edges):
+        for token in stream_answer(query=q, vector_chunks=ranked_chunks, graph_edges=top_graph_edges,
+                                   graph_paths=full_result.get("graph_traversal", {}).get("paths", [])):
             yield f"event: token\ndata: {json.dumps(token)}\n\n"
         yield "event: done\ndata: {}\n\n"
 

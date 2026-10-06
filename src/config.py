@@ -21,6 +21,12 @@ class AppConfig(BaseModel):
     graph_edge_base_confidence: float = 0.85
     graph_lexical_weight: float = 0.5  # share of graph-chunk selection score from question-word overlap (rest: embedding similarity)
     graph_same_doc_discount: float = 0.6  # multiplier per chunk already selected from the same document
+    graph_min_coverage_gain: float = 0.0  # a graph chunk must add this share of uncovered question-term weight; 0 disables the gate
+    prompt_v2: bool = True  # answer-prompt rules (exact role, enumerate lists, prefer matching passage) and connection chains; False restores the v6-summary prompt
+    graph_routing: bool = True  # hybrid skips the graph for single-fact questions (they need no relations), so it cannot dilute a good vector answer
+    graph_hygiene: bool = False  # skip junk/generic nodes during traversal and follow the most question-relevant edges first
+    decompose_multihop: bool = True  # hybrid answers: split multi-hop questions into steps, retrieving and answering each in turn
+    decompose_max_steps: int = 3
 
 def load_config(path: str = "config.yaml") -> AppConfig:
     if not Path(path).exists():

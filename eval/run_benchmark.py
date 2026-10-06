@@ -17,7 +17,7 @@ Requirements: the server is running (`uvicorn main:app --port 8000`) with the co
 ingested. Standard library only.
 
 Usage:
-  python eval/run_benchmark.py --gold benchmark_v4/gold_qa.json --out eval/v4_results.csv
+  python eval/run_benchmark.py --gold benchmark/gold_qa.json --out eval/results/my_run.csv
   python eval/run_benchmark.py ... --resume          # continue an interrupted run
   python eval/run_benchmark.py ... --timeout 1200    # seconds allowed per query (default 900)
 """
@@ -48,9 +48,14 @@ def percentile(values, pct):
     return s[f] + (s[c] - s[f]) * (k - f)
 
 
+EXTRA_PARAMS = {}  # hybrid-only overrides from --min-gain / --decompose
+
+
 def call_query(base_url, question, enable_graph, k, timeout, answer=True):
-    params = urllib.parse.urlencode({"q": question, "k": k, "enable_graph": str(enable_graph).lower(),
-                                     "answer": str(answer).lower()})
+    p = {"q": question, "k": k, "enable_graph": str(enable_graph).lower(), "answer": str(answer).lower()}
+    if enable_graph:
+        p.update(EXTRA_PARAMS)
+    params = urllib.parse.urlencode(p)
     url = f"{base_url}/query?{params}"
     start = time.perf_counter()
     with urllib.request.urlopen(url, timeout=timeout) as resp:
@@ -266,14 +271,22 @@ def run(base_url, gold_path, out_path, k, timeout, retries, resume, retrieval_on
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--base", default="http://localhost:8000")
-    parser.add_argument("--gold", default=str(Path(__file__).parent / "gold_qa.json"))
-    parser.add_argument("--out", default=str(Path(__file__).parent / "results.csv"))
+    parser.add_argument("--base", default="http://127.0.0.1:8000")
+    parser.add_argument("--gold", default=str(Path(__file__).parent.parent / "benchmark" / "gold_qa.json"))
+    parser.add_argument("--out", default=str(Path(__file__).parent / "results" / "run.csv"))
     parser.add_argument("--k", type=int, default=3, help="vector chunks per query (default 3)")
     parser.add_argument("--timeout", type=int, default=180, help="seconds allowed per query (default 180)")
     parser.add_argument("--retries", type=int, default=1, help="retries per failed query (default 2)")
     parser.add_argument("--resume", action="store_true", help="continue an interrupted run from --out")
+    parser.add_argument("--min-gain", type=float, default=None, help="hybrid only: override graph_min_coverage_gain")
+    parser.add_argument("--decompose", choices=["on", "off"], default=None, help="hybrid only: force multi-step decomposition on or off")
+    parser.add_argument("--modes", default="vector,hybrid", help="comma-separated subset of vector,hybrid to run")
     parser.add_argument("--retrieval-only", action="store_true",
                         help="skip the LLM answer: measures retrieval only, about 10x faster")
     args = parser.parse_args()
+    MODES = tuple(m for m in args.modes.split(",") if m in ("vector", "hybrid"))
+    if args.min_gain is not None:
+        EXTRA_PARAMS["min_gain"] = args.min_gain
+    if args.decompose:
+        EXTRA_PARAMS["decompose"] = str(args.decompose == "on").lower()
     run(args.base, args.gold, args.out, args.k, args.timeout, args.retries, args.resume, args.retrieval_only)
